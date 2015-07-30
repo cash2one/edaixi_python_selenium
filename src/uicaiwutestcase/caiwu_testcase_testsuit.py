@@ -1,0 +1,129 @@
+# -*- coding: utf-8 -*-
+#encoding:utf-8 
+import unittest, time, re 
+import HTMLTestRunner
+
+from caiwu_testcase01_caiwuordermanagechongzhi import *
+from caiwu_testcase01_caiwuordermanagekoukuan import *
+from caiwu_testcase01_caiwuordermanagetuikuan import *
+from caiwu_testcase01_caiwuordermanagemore import *
+
+from caiwu_testcase02_caiwuyouhuicardgroup import *
+from caiwu_testcase02_caiwuyouhuicardlist_create import *
+from caiwu_testcase02_caiwuyouhuicardgsearch import *
+from caiwu_testcase02_caiwuyouhuiquanlist_addedit import *
+from caiwu_testcase02_caiwuyouhuiquanlist_query import *
+
+from caiwu_testcase03_caiwushiticard_create import *
+from caiwu_testcase03_caiwushiticard_crud import *
+from caiwu_testcase03_caiwushiticard_query import *
+
+from caiwu_testcase04_caiwuhuiyuancardquery_chongzhi import *
+from caiwu_testcase04_caiwuhuiyuancardquery_koukuan import *
+from caiwu_testcase04_caiwuhuiyuancardquery_tuikuan import *
+from caiwu_testcase04_caiwuhuiyuancardquery_more import *
+
+from caiwu_testcase05_caiwuyouchongzhicared_crud import *
+from caiwu_testcase05_caiwuyouchongzhicared_fenpei import *
+from caiwu_testcase05_caiwuyouchongzhicared_huishou import *
+from caiwu_testcase05_caiwuyouchongzhicared_kongbaikaCreate import *
+from caiwu_testcase05_caiwuyouchongzhicared_query import *
+
+from caiwu_testcase06_caiwuuserquery_huiyuancard_chongzhi import *
+from caiwu_testcase06_caiwuuserquery_huiyuancard_koukuan import *
+from caiwu_testcase06_caiwuuserquery_huiyuancard_tuikuan import *
+from caiwu_testcase06_caiwuuserquery_huiyuancard_more import *
+from caiwu_testcase06_caiwuuserquery_huiyuancardcrud import *
+from caiwu_testcase06_caiwuuserquery_query import *
+
+if __name__ == '__main__':  
+    suite = unittest.TestSuite()  
+ 
+    #caiwu testcase01 first need chongzhi,then koukuan,finally is tuikuan testcase
+    suite.addTest(CaiwuTestcase01Caiwuordermanagementchongzhi('test_caiwu_testcase01_caiwuordermanagementchongzhi'))
+    suite.addTest(CaiwuTestcase01Caiwuordermanagementkoukuan('test_caiwu_testcase01_caiwuordermanagementkoukuan'))
+    suite.addTest(CaiwuTestcase01Caiwuordermanagementtuikuan('test_caiwu_testcase01_caiwuordermanagementtuikuan')) 
+    
+    suite.addTest(CaiwuTestcase01Caiwuordermanagementmore('test_caiwu_testcase01_caiwuordermanagementmore')) 
+    
+    #caiwu testcase02
+    suite.addTest(CaiwuTestcase02Caiwuyouhuicardgroup('test_caiwu_testcase02_caiwuyouhuicardgroup'))
+    suite.addTest(CaiwuTestcase02Caiwuyouhuicardgsearch('test_caiwu_testcase02_caiwuyouhuicardsearch'))
+    
+    #this 
+    suite.addTest(CaiwuTestcase02caiwuYouhuiquanlistAddEdit('test_Caiwu_Testcase02_caiwuyouhuiquanlist_addedit'))
+    suite.addTest(CaiwuTestcase02CaiwuyouhuicardlistCreate('test_caiwu_testcase02_caiwuyouhuicardlist_create'))
+    suite.addTest(CaiwuTestcase02caiwuYouhuiquanlistQuery('test_CaiwuTestcase02_caiwuyouhuiquanlist_query'))
+    
+    #caiwu testcase03s
+    suite.addTest(CaiwuTestcase03CaiwushiticardCreate('test_caiwu_testcase03_caiwushiticard_create'))
+    suite.addTest(CaiwuTestcase03CaiwushiticardCrud('test_caiwu_testcase03_caiwushiticard_crud'))
+    suite.addTest(CaiwuTestcase03CaiwushiticardQuery('test_caiwu_testcase03_caiwushiticard_query'))
+    
+    #caiwu testcase04
+    suite.addTest(CaiwuTestcase04CaiwuhuiyuancardqueryChongzhi('test_caiwu_testcase04_caiwuhuiyuancardquery_chongzhi'))
+    suite.addTest(CaiwuTestcase04CaiwuhuiyuancardqueryKoukuan('test_caiwu_testcase04_caiwuhuiyuancardquery_koukuan'))
+    suite.addTest(CaiwuTestcase04CaiwuhuiyuancardqueryTuikuan('test_caiwu_testcase04_caiwuhuiyuancardquery_tuikuan'))
+    
+    suite.addTest(CaiwuTestcase04CaiwuhuiyuancardqueryMore('test_caiwu_testcase04_caiwuhuiyuancardquery_more'))
+        
+    #caiwu testcase05
+    suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredCrud('test_caiwu_testcase05_caiwuyouchongzhicared_crud'))
+    suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredFenpei('test_caiwu_testcase05_caiwuyouchongzhicared_fenpei'))
+    suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredHuishou('test_caiwu_testcase05_caiwuyouchongzhicared_huishou'))
+    suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredKongbaikaCreate('test_caiwu_testcase05_caiwuyouchongzhicared_kongbaika_create'))
+    suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredQuery('test_caiwu_testcase05_caiwuyouchongzhicared_query'))
+    
+    #caiwu testcase06
+    suite.addTest(CaiwuTestcase06CaiwuuserqueryQuery('test_caiwu_testcase06_caiwuuserquery_query'))
+    suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuancardcrud('test_caiwu_testcase06_caiwuuserquery_huiyuancardcrud'))
+    suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuanMore('test_caiwu_testcase06_caiwuuserquery_Huiyuan_more'))
+        
+    suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuncardChongzhi('test_caiwu_testcase06_caiwuuserquery_Huiyuncard_Chongzhi'))
+    suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuncardKoukuan('test_caiwu_testcase06_caiwuuserquery_Huiyuncard_Koukuan'))
+    suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuanTuikuan('test_caiwu_testcase06_caiwuuserquery_Huiyuan_Tuikuan'))
+    
+
+    currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
+    print currenttime
+
+    fp = file("c:\\edaixi_testdata\\"+currenttime+"-caiwu_test_report.html", 'wb')
+    
+    htmlRunner= HTMLTestRunner.HTMLTestRunner(stream=fp,title="edaixi uicaiwu testing result",description="201508 luke")
+    #suite =  unittest.TestLoader().loadTestsFromTestCase(MyTest)  
+    htmlRunner.run(suite)
+    fp.close()
+'''
+def test_caiwu_suite():
+    suite= unittest.TestSuite()  
+
+    suite.addTest(CaiwuHuiyuancardquery('test_caiwu_huiyuancardquery'))
+    suite.addTest(CaiwuUserquery('test_caiwu_userquery'))
+    
+    suite.addTest(CaiwuShitika('test_caiwu_shitika'))
+    suite.addTest(CaiwuShitikaShengchenka('test_caiwu_shitika_shengchenka')) 
+    suite.addTest(CaiwuShitikaQuery('test_caiwu_shitika_query'))
+    suite.addTest(CaiwuShitikaModify('test_caiwu_shitika_modify'))
+    suite.addTest(CaiwuShitikaChongzhi('test_caiwu_shitika_chongzhi'))
+    
+    suite.addTest(CaiwuYouhuiquangroup('test_caiwu_youhuiquangroup'))
+    suite.addTest(CaiwuYouhuiquanlist('test_caiwu_youhuiquanlist'))
+    suite.addTest(CaiwuYouhuiquanlistAdd('test_caiwu_youhuiquanlist_add'))
+    suite.addTest(CaiwuYouhuiquanlistExport('test_caiwu_youhuiquanlist_export'))
+    suite.addTest(CaiwuYouhuiquanlistModify('test_caiwu_youhuiquanlist_modify'))
+    
+
+    #outfile=open("c://edaixi_testdata//report.html",'wb')
+    #filename = 'G:\\seleniums\\result.html'
+    currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
+    print currenttime
+    #fp = file("/usr/edaixi_report/"+currenttime+"caiwu_test_report.html", 'wb')
+    fp = file("c:\\edaixi_testdata\\"+currenttime+"caiwu_test_report.html", 'wb')
+    #fp = file("c:\\edaixi_testdata\\20150717caiwu_test_report.html", 'wb')
+
+    htmlRunner= HTMLTestRunner.HTMLTestRunner(stream=fp,title="edaixi uicaiwu testing result",description="201507 luke")
+    #suite =  unittest.TestLoader().loadTestsFromTestCase(MyTest)  
+    htmlRunner.run(suite)
+    fp.close()
+ '''
+    
