@@ -7,15 +7,14 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
-#from pty import CHILD
 
-class WuliuTestcase02factorysign(unittest.TestCase):
+class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_wuliu.conf")
-        global WULIU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqlrongchangdb
+        global WULIU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase
         WULIU_URL = conf.get("wuliusection", "uihostname")
         USER_NAME = conf.get("wuliusection", "uiusername")
         PASS_WORD = conf.get("wuliusection", "uipassword")
@@ -24,17 +23,15 @@ class WuliuTestcase02factorysign(unittest.TestCase):
         mysqlhostname = conf.get("databaseconn", "mysqlhostname")
         mysqlusername = conf.get("databaseconn", "mysqlusername")
         mysqlpassword = conf.get("databaseconn", "mysqlpassword")
-        mysqlrongchangdb  = conf.get("databaseconn", "mysqlrongchangdb")
-        
-        print mysqlhostname,mysqlusername,mysqlpassword,mysqlrongchangdb
-        
+        mysqldatabase = conf.get("databaseconn", "mysqlwuliudb")
+        print mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase
         
         self.base_url = WULIU_URL
         #self.base_url = "http://wuliu05.edaixi.cn:81/"
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_wuliu_testcase02factory_sign(self):
+    def test_wuliu_testcase08_citylist_addedit(self):
         driver = self.driver
         
         driver.get(self.base_url + "/")
@@ -48,44 +45,11 @@ class WuliuTestcase02factorysign(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         print driver.title
         self.assertTrue(driver.title, u"物流")
-        time.sleep(2)
         
-        conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
-        global cursor 
-        cursor = conn.cursor() 
         
-        cursor.execute("UPDATE ims_washing_order SET status_delivery='1' ,qianshoudian_id= NULL WHERE bagsn='E0000000006'")
-        conn.commit()
+
+    
         
-     
-        n = cursor.execute("SELECT ordersn,bagsn,status_delivery,jiagongdian_id,qianshoudian_id  FROM ims_washing_order WHERE bagsn='E0000000006'") 
-        for i in xrange(cursor.rowcount):
-            ordersn ,bagsn,status_delivery,jiagongdian_id,qianshoudian_id = cursor.fetchone()
-        print ordersn ,bagsn,status_delivery,jiagongdian_id,qianshoudian_id
-        
-        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(2).dropdown a").click()
-        
-        #driver.find_element_by_css_selector("div.container > ul.nav.navbar-nav > li:nth-child(2).dropdown > ul.dropdown-menu > li:first-child > a").click()
-        #print rukuqinshou
-        
-        #ActionChains(driver).context_click(rukuqinshou).perform()
-        #ActionChains(driver).double_click(rukuqinshou).perform()
-        
-        #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
-        #driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:nth-child(2)>ul.dropdown-menu>li:first-child>a").click()
-        driver.find_element_by_xpath("/html/body/header/div/nav/ul/li[2]/ul/li[1]/a").click()
-        #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a
-        driver.find_element_by_id("bagsn").clear()
-        driver.find_element_by_id("bagsn").send_keys(bagsn)
-        driver.find_element_by_name("commit").click()
-        
-        print driver.title
-        
-        #cursor.execute("UPDATE ims_washing_order SET status_delivery='1',qianshoudian_id= NULL WHERE bagsn='E0000000006'")
-        #conn.commit()
-        
-        cursor.close()
-        conn.close()
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
