@@ -26,18 +26,19 @@ class WuliuTestcase05takecloth(unittest.TestCase):
     
     def test_wuliu_testcase05_takecloth(self):
         driver = self.driver
-        driver.get(self.base_url + "/workers")
-        driver.find_element_by_id("name").clear()
-        driver.find_element_by_id("name").send_keys(u"技术测试账号1")
-        driver.find_element_by_name("commit").click()
-        driver.find_element_by_link_text(u"编辑权限").click()
-        driver.find_element_by_id("worker_is_shouyidian").click()
-        driver.find_element_by_id("worker_is_jiagongdian").click()
-        driver.find_element_by_id("worker_is_zb_yunying").click()
-        driver.find_element_by_name("commit").click()
-        driver.find_element_by_link_text(u"加工店出入库管理").click()
-        driver.find_element_by_link_text(u"站点出入库管理").click()
-    
+        
+        driver.get(self.base_url + "/")
+
+        loginclick=driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center")
+        ActionChains(driver).double_click(loginclick).perform()
+        driver.find_element_by_id("username").clear()
+        driver.find_element_by_id("username").send_keys(USER_NAME)
+        driver.find_element_by_id("password").clear()
+        driver.find_element_by_id("password").send_keys(PASS_WORD)
+        driver.find_element_by_id("login-submit").click()
+        print driver.title
+        self.assertTrue(driver.title, u"物流")
+        time.sleep(2)
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
