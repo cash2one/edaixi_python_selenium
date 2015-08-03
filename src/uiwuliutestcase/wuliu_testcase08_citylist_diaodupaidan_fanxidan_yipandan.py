@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
-
+import wuliu_utiltools
 
 class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
     def setUp(self):
@@ -140,6 +140,11 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         driver.find_element_by_id("fanxi_order_form_remark").clear()
         driver.find_element_by_id("fanxi_order_form_remark").send_keys("beijingjiangtailu")
         
+        
+        driver.find_element_by_id("fanxi_order_form_washing_date").clear()
+        driver.find_element_by_id("fanxi_order_form_washing_date").send_keys(str(wuliu_utiltools.get_day_of_day(1)))
+        
+        
         #driver.find_element_by_css_selector("div#container.container form#new_fanxi_order_form_254.form-horizontal.new_fanxi_order_form table.table.table-striped.search-table tbody tr:last-child td:last-child input.button.btn.btn-info.btn-style-width").click()
         driver.find_element_by_xpath("//input[@type='submit']").click()
         #/html/body/div[1]/form/table/tbody/tr[11]/td[2]/input
@@ -194,7 +199,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        #self.driver.quit()
+        self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
