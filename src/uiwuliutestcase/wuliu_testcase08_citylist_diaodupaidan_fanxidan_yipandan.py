@@ -9,7 +9,7 @@ import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-class WuliuTestcase08citylistdiaodupaidanfanxidan(unittest.TestCase):
+class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
@@ -34,7 +34,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidan(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_wuliu_testcase08citylist_diaodupaidan_fanxidan(self):
+    def test_wuliu_testcase08citylist_diaodupaidan_fanxidan_yipandan(self):
         driver = self.driver
         
         driver.get(self.base_url + "/")
