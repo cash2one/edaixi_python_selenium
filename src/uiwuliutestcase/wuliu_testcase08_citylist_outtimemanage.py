@@ -14,7 +14,7 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_wuliu.conf")
-        global WULIU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase
+        global WULIU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqlwuliudb,mysqlrongchangdb
         WULIU_URL = conf.get("wuliusection", "uihostname")
         USER_NAME = conf.get("wuliusection", "uiusername")
         PASS_WORD = conf.get("wuliusection", "uipassword")
@@ -23,8 +23,10 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         mysqlhostname = conf.get("databaseconn", "mysqlhostname")
         mysqlusername = conf.get("databaseconn", "mysqlusername")
         mysqlpassword = conf.get("databaseconn", "mysqlpassword")
-        mysqldatabase = conf.get("databaseconn", "mysqlwuliudb")
-        print mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase
+        mysqlwuliudb = conf.get("databaseconn", "mysqlwuliudb")
+        
+        mysqlrongchangdb  = conf.get("databaseconn", "mysqlrongchangdb")
+        print mysqlhostname,mysqlusername,mysqlpassword,mysqlwuliudb,mysqlrongchangdb
         
         self.base_url = WULIU_URL
         #self.base_url = "http://wuliu05.edaixi.cn:81/"
@@ -45,12 +47,10 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         print driver.title
         self.assertTrue(driver.title, u"物流")
-        
-        
+           
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
         
-
-        conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
+        conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
         global cursor 
         cursor = conn.cursor() 
         
@@ -75,38 +75,42 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         
         driver.find_element_by_name("commit").click()
         
-
+        self.assertEqual(driver.title, u"物流")
                 
         addsuccess=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         print addsuccess
         #shtml body div#container.container>div:nth-child(2)>a.btn.btn-default
         
-        #driver.switch_to_window(winBeforeHandle)
-        #driver.find_element_by_link_text(u"返回").click()
-        
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
-        #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:last-child td:last-child a.btn.btn-info.btn-xs
-        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:last-child td:last-child a").click()
-        #driver.find_element_by_xpath(u"(//a[contains(text(),'编辑')])[16]").click()
-        driver.find_element_by_id("map_city_gaode_map_code").clear()
-        driver.find_element_by_id("map_city_gaode_map_code").send_keys("beijinggaodecode")
-        driver.find_element_by_name("commit").click()
+                 
+        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(3)").click()
+        #.btn.btn-success
+
+        #sdriver.find_element_by_link_text(u"城市列表").click()
+        #driver.find_element_by_link_text(u"超时订单").click()
+        driver.find_element_by_id("timeout_qu_list_btn").click()
+
+        driver.find_element_by_id("timeout_song_list_btn").click()
+        driver.find_element_by_id("warning_qu_list_btn").click()
+        driver.find_element_by_id("warning_song_list_btn").click()
         
-        
-        #cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0 WHERE ordersn='"+ordersn+"'")
-        
-        #n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
-        #for i in xrange(cursor.rowcount):
-        #    ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
-        #print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
+        driver.find_element_by_xpath("/html/body/div/div[1]/ul/li[1]/a").click()
+        driver.find_element_by_xpath("/html/body/div/div[1]/ul/li[2]/a").click()
+        driver.find_element_by_xpath("/html/body/div/div[1]/ul/li[3]/a").click()
+        driver.find_element_by_xpath("/html/body/div/div[1]/ul/li[4]/a").click()
         print driver.title
-        cursor.execute("DELETE FROM  map_cities WHERE gaode_map_code LIKE 'beijinggaode%'")
+        self.assertEqual(driver.title, u"物流")
+        wuliuconn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlwuliudb,charset="utf8")    
+        global wuliucursor 
+        wuliucursor = wuliuconn.cursor() 
         
-        #submit to database
-        conn.commit()
+        wuliucursor.execute("DELETE FROM  map_cities WHERE gaode_map_code LIKE 'beijinggaode%'")
+        
+        wuliuconn.commit()
+        wuliucursor.close()
         cursor.close()
+        wuliuconn.close()
         conn.close()
-    
         
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
