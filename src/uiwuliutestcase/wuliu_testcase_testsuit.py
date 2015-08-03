@@ -23,7 +23,7 @@ from wuliu_testcase06_pushcloth import *
 from wuliu_testcase07_accountbalancequery import *
 
 from wuliu_testcase08_citylist_addredit import *
-from wuliu_testcase08_citylist_diaodupaidan_fanxidan import *
+from uiwuliutestcase.wuliu_testcase08_citylist_diaodupaidan_fanxidan_yiconfirm import *
 from wuliu_testcase08_citylist_diaoduquery_fanxidan import *
 
 from wuliu_testcase09_factory_orderquery import *

@@ -124,6 +124,14 @@ class WuliuTestcase08citylistdiaodupaidanfanxidan(unittest.TestCase):
         #html body div#container.container a#fanxi_button.btn.btn-info
         #submit to database
      
+        #html body div#container.container form#new_fanxi_order_form_1039373.form-horizontal.new_fanxi_order_form table.table.table-striped.search-table tbody tr td div.form-group.select.optional.fanxi_order_form_courier_qu div.col-sm-8 select#fanxi_order_form_courier_qu.select.optional.form-control option
+        
+        diaoduperson=driver.find_element_by_xpath("/html/body/div[1]/form/table/tbody/tr[6]/td[2]/div/div/select/option[2]").text
+        
+        print " the diaoduperson is ",diaoduperson
+        Select(driver.find_element_by_id("fanxi_order_form_courier_qu")).select_by_visible_text(diaoduperson)
+        
+        
         fanxiwashingtime=driver.find_element_by_xpath("/html/body/div[1]/form/table/tbody/tr[8]/td[2]/div/div/select/option[2]").text
         #fanxiwashingtime=driver.find_element_by_css_selector("div#container.container form#new_fanxi_order_form_1039230.form-horizontal.new_fanxi_order_form table.table.table-striped.search-table tbody tr:nth-last-child(4) td:last-child div.form-group.select.required.fanxi_order_form_washing_time div.col-sm-8 select#fanxi_order_form_washing_time.select.required.form-control option:nth-child(2)").text
         print " the fanxiwashingtime is ",fanxiwashingtime
@@ -137,6 +145,16 @@ class WuliuTestcase08citylistdiaodupaidanfanxidan(unittest.TestCase):
         #/html/body/div[1]/form/table/tbody/tr[11]/td[2]/input
         
         self.assertTrue(driver.title, u"物流")
+        
+        daioduconfirm=driver.find_element_by_css_selector("div#container.container div.info-div div.row div.col-md-6 div.panel.panel-primary.checkout-order div.panle-body table.table tbody tr:first-child.success td:nth-child(2) span").text
+        #html body div#container.container div.info-div div.row div.col-md-6 div.panel.panel-primary.checkout-order div.panle-body table.table tbody tr:first-child.success td:nth-child(2) span.label.label-primary
+        print daioduconfirm
+        
+        self.assertTrue(daioduconfirm, u"调度已派单")
+        #if daioduconfirm==u"调度已确认":
+        #    pass
+        #else:
+        #    raise ValueError
         
         cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0' WHERE ordersn='15072110393738'")
         conn.commit()
@@ -176,7 +194,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidan(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

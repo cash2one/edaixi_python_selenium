@@ -83,7 +83,10 @@ class WuliuTestcase02factorysign(unittest.TestCase):
         
         #cursor.execute("UPDATE ims_washing_order SET status_delivery='1',qianshoudian_id= NULL WHERE bagsn='E0000000006'")
         #conn.commit()
-        
+        self.assertEqual(driver.title, u"物流")
+        qianshousuccess=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary p.text-center b").text#check_in_msg
+        print qianshousuccess
+        self.assertEqual(qianshousuccess, u"签收成功！")
         cursor.close()
         conn.close()
     def is_element_present(self, how, what):
