@@ -33,6 +33,7 @@ class OpsTestcase01Distributioneditgoods(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(2) a").click()
         

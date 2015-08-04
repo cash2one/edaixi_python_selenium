@@ -26,11 +26,14 @@ class OpsTestcase01PermissionmanagePermission(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         print driver.title
 
-        self.assert_(driver.title, u"e袋洗城市运营后台")
-
+        #self.assert_(driver.title, u"e袋洗城市运营后台")
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        
         driver.find_element_by_link_text(u"版面管理").click()
         
         driver.find_element_by_link_text(u"顶部banner图片").click()
+        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_link_text(u"上移").click()
         
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认上移[\s\S]$")
@@ -44,7 +47,7 @@ class OpsTestcase01PermissionmanagePermission(unittest.TestCase):
         
         driver.find_element_by_xpath("//li[2]/a/b").click()
 
-    
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

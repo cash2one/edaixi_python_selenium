@@ -73,6 +73,7 @@ class OpsTestcase08rechargereturncrash(unittest.TestCase):
         deletechizhifanxian=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         print deletechizhifanxian
         #self.assertEqual(deletechizhifanxian, u"返现设置删除成功")
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

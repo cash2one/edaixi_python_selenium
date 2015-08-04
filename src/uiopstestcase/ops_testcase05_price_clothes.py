@@ -39,7 +39,6 @@ class OpsTestcase05PriceClothes(unittest.TestCase):
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(4) a").click()
         #shtml body div#container.container ul#myTab.nav.nav-tabs li a.active
         #ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
-        
         #driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li:nth-child(1) a").click()
         
         driver.find_element_by_css_selector("div#container.container a.btn.btn-sm.btn-info").click()

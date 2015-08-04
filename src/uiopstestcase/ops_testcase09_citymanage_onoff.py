@@ -45,8 +45,8 @@ class OpsTestcase09citymanageonoff(unittest.TestCase):
         #driver.find_element_by_name("commit").click()
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         
-        onoffname=driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child.btn.btn-sm.btn-danger").text
-        print onoffname
+        #onoffname=driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child.btn.btn-sm.btn-danger").text
+        #print onoffname
         #if onoffname == u"":
         self.assertEqual(driver.title, u"e袋洗城市运营后台")    
         #else:

@@ -34,7 +34,8 @@ class OpsTestcase03DistributionAddgoods(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+                
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(2) a").click()
         
         driver.find_element_by_css_selector("div#container.container a.btn.btn-info.btn-sm").click()
@@ -46,6 +47,7 @@ class OpsTestcase03DistributionAddgoods(unittest.TestCase):
         shitigoodname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body form#new_fenxiao_form.form-horizontal.new_fenxiao_form div.form-group.select.optional.fenxiao_form_good_id div.col-sm-8 select#fenxiao_form_good_id.select.optional.form-control option:nth-child(2)").text
         #html body div#container.container div.panel.panel-primary div.pnale-body form#new_fenxiao_form.form-horizontal.new_fenxiao_form div.form-group.select.optional.fenxiao_form_good_id div.col-sm-8 select#fenxiao_form_good_id.select.optional.form-control option:nth-child(2)
         print shitigoodname
+
         Select(driver.find_element_by_id("fenxiao_form_good_id")).select_by_visible_text(shitigoodname)
         driver.find_element_by_id("fenxiao_form_product_status").click()
         driver.find_element_by_id("fenxiao_form_start_time").click()

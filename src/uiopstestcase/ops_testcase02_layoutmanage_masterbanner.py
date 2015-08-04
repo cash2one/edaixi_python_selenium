@@ -53,6 +53,8 @@ class OpsTestcase02LayoutManageMasterBanner(unittest.TestCase):
         
         linktypename=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body form#new_banner.form-horizontal.new_banner div:nth-child(3).form-group.select.optional.banner_website_type div.col-sm-8 select#banner_website_type.select.optional.form-control option:nth-child(2)").text
         
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+                
         Select(driver.find_element_by_id("banner_website_type")).select_by_visible_text(linktypename)
         driver.find_element_by_id("banner_description").clear()
         driver.find_element_by_id("banner_description").send_keys("hello")

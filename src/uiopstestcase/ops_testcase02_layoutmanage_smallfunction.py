@@ -33,6 +33,7 @@ class OpsTestcase02LayoutManageSmallFunction(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
         driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li.dropdown a.dropdown-toggle").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:first-child.dropdown ul.dropdown-menu li:nth-child(3) a").click()
@@ -43,6 +44,7 @@ class OpsTestcase02LayoutManageSmallFunction(unittest.TestCase):
         driver.find_element_by_id("banner_title").send_keys("bigbutton")
         
         linktypename=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body form#new_banner.form-horizontal.new_banner div:nth-child(3).form-group.select.optional.banner_website_type div.col-sm-8 select#banner_website_type.select.optional.form-control option:nth-child(2)").text
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
         Select(driver.find_element_by_id("banner_website_type")).select_by_visible_text(linktypename)
         driver.find_element_by_id("banner_description").clear()

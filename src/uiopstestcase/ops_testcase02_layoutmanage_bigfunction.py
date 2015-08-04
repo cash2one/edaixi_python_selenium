@@ -37,13 +37,13 @@ class OpsTestcase02LayoutManageBigFunction(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li.dropdown a.dropdown-toggle").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:first-child.dropdown ul.dropdown-menu li:nth-child(2) a").click()
-       
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_css_selector("div#container.container a.btn.btn-sm.btn-info.col-md-1").click()
        
-  
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("banner_title").clear()
         driver.find_element_by_id("banner_title").send_keys("bigbutton")
         

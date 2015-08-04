@@ -50,7 +50,7 @@ class OpsTestcase01Permissionmanagepermission(unittest.TestCase):
         #ActionChains.click(permissionclick)
         #ActionChains(driver)..sigle_click(permissionclick).perform()
         #driver.find_element_by_link_text(u"权限管理").click()
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_xpath("/html/body/div[1]/div/div/ul/li[1]/ul/li[1]/a").click()
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body table.table.table-striped tbody tr:first-child td:last-child div.btn-toolbar a.btn.btn-sm.btn-success").click()
         

@@ -37,7 +37,7 @@ class OpsTestcase01PermissionmanagePosition(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         
-
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li.dropdown a.dropdown-toggle").click()
         
         driver.find_element_by_css_selector("ul.dropdown-menu > li:nth-child(2) > a").click()
@@ -59,7 +59,7 @@ class OpsTestcase01PermissionmanagePosition(unittest.TestCase):
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         Select(driver.find_element_by_id("position_to_role_role_key")).select_by_visible_text(u"营销中心负责人")
         driver.find_element_by_name("commit").click()
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_xpath(u"(//a[contains(text(),'删除')])[1]").click()
         driver.find_element_by_css_selector("div#container.container div#content div.panel.panel-primary div.panle-body table.table.table-striped tbody tr:last-child td:last-child a.btn.btn-sm.btn-danger").click()
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除岗位角色映射[\s\S]$")
