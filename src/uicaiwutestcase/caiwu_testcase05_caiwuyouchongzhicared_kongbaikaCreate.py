@@ -63,6 +63,10 @@ class CaiwuTestcase05CaiwuyouchongzhicaredKongbaikaCreate(unittest.TestCase):
         #print chongzhireturnvalue
         #self.assertTrue(chongzhireturnvalue, u"充值卡生成任务提交成功")
         #self.assert_(driver.title, u"财务")
+        
+        kongbaikacreate=driver.find_element_by_css_selector("div.container div.alert.fade.in.alert-success").text
+        print kongbaikacreate
+        assert u"充值卡生成任务提交成功" in kongbaikacreate
         self.assertEqual(driver.title, u"财务")
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

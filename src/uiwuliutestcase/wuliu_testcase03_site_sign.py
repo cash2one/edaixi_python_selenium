@@ -5,20 +5,29 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-import unittest, time, re,ConfigParser
+import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
-
+#from pty import CHILD
 class WuliuTestcase03sitesign(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_wuliu.conf")
-        global WULIU_URL,USER_NAME,PASS_WORD
+        global WULIU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqlrongchangdb
         WULIU_URL = conf.get("wuliusection", "uihostname")
         USER_NAME = conf.get("wuliusection", "uiusername")
         PASS_WORD = conf.get("wuliusection", "uipassword")
         print WULIU_URL,USER_NAME,PASS_WORD  
+        
+        mysqlhostname = conf.get("databaseconn", "mysqlhostname")
+        mysqlusername = conf.get("databaseconn", "mysqlusername")
+        mysqlpassword = conf.get("databaseconn", "mysqlpassword")
+        mysqlrongchangdb  = conf.get("databaseconn", "mysqlrongchangdb")
+        
+        print mysqlhostname,mysqlusername,mysqlpassword,mysqlrongchangdb
+        
+        
         self.base_url = WULIU_URL
         #self.base_url = "http://wuliu05.edaixi.cn:81/"
         self.verificationErrors = []
@@ -39,6 +48,50 @@ class WuliuTestcase03sitesign(unittest.TestCase):
         print driver.title
         self.assertTrue(driver.title, u"物流")
         time.sleep(2)
+        
+        
+        conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
+        global cursor 
+        cursor = conn.cursor() 
+        
+        cursor.execute("UPDATE ims_washing_order SET status_delivery='1' ,qianshoudian_id= NULL WHERE bagsn='E0000000006'")
+        conn.commit()
+        
+     
+        n = cursor.execute("SELECT ordersn,bagsn,status_delivery,jiagongdian_id,qianshoudian_id  FROM ims_washing_order WHERE bagsn='E0000000006'") 
+        for i in xrange(cursor.rowcount):
+            ordersn ,bagsn,status_delivery,jiagongdian_id,qianshoudian_id = cursor.fetchone()
+        print ordersn ,bagsn,status_delivery,jiagongdian_id,qianshoudian_id
+        
+        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(3).dropdown a").click()
+        
+        self.assertEqual(driver.title, u"物流")
+  
+        #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
+        #driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:nth-child(2)>ul.dropdown-menu>li:first-child>a").click()
+        #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li a
+        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li a").click()
+        #driver.find_element_by_xpath("/html/body/header/div/nav/ul/li[2]/ul/li[1]/a").click()
+        #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a
+        driver.find_element_by_id("bagsn").clear()
+        driver.find_element_by_id("bagsn").send_keys(bagsn)
+        driver.find_element_by_name("commit").click()
+        
+        print driver.title
+        self.assertEqual(driver.title, u"物流")
+        
+        #cursor.execute("UPDATE ims_washing_order SET status_delivery='1',qianshoudian_id= NULL WHERE bagsn='E0000000006'")
+        #conn.commit()
+        #self.assertEqual(driver.title, u"物流")
+        qianshousuccess=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary p.text-center b").text
+        #check_in_msg
+        print "===============",qianshousuccess
+        #self.assertEqual(qianshousuccess, u"签收成功！")
+        
+        cursor.close()
+        conn.close()
+        
+        
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

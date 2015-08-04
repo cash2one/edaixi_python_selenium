@@ -116,7 +116,14 @@ encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_diaodupaidan_fanxidan_yi
 encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_diaoduquery_fanxidan.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_dividebasearea.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_dividekuaidiarea.py=utf-8
+encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_divideluxuryarea.py=utf-8
+encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_dividezhongbaoarea.py=utf-8
+encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_jiagongdianmanage.py=utf-8
+encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_luxuriesLogistics.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_outtimemanage.py=utf-8
+encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_selfmanagedLogistics.py=utf-8
+encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_servicesiteLogistics.py=utf-8
+encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_shouyidianmanage.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_xiaoemanagerLogistics.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase09_factory_orderquery.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase10_site_orderquery.py=utf-8

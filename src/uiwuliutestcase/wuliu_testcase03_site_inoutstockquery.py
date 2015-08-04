@@ -39,6 +39,21 @@ class WuliuTestcase03siteinoutstockquery(unittest.TestCase):
         print driver.title
         self.assertTrue(driver.title, u"物流")
         time.sleep(2)
+        
+        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(3).dropdown a").click()
+        self.assertEqual(driver.title, u"物流")
+        #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
+        #driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:nth-child(2)>ul.dropdown-menu>li:first-child>a").click()
+        #driver.find_element_by_xpath("/html/body/header/div/nav/ul/li[2]/ul/li[3]/a").click()
+        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li:nth-child(3) a").click()
+      
+        #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a
+
+        driver.find_element_by_name("commit").click()
+        
+        print driver.title
+        self.assertEqual(driver.title, u"物流")
+        
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

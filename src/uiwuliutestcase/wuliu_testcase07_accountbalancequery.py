@@ -41,6 +41,15 @@ class WuliuTestcase07AccountBalance(unittest.TestCase):
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
         
+        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(7) a").click()
+        self.assertEqual(driver.title, u"物流")
+        
+        driver.find_element_by_id("sn_code").clear()
+        driver.find_element_by_id("sn_code").send_keys("100000072915")
+        driver.find_element_by_name("commit").click()
+        
+        self.assertEqual(driver.title, u"物流")
+                
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

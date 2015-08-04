@@ -48,48 +48,31 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         self.assertEqual(driver.title, u"物流")
         
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
-        
+        '''
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
         global cursor 
         cursor = conn.cursor() 
         self.assertEqual(driver.title, u"物流")
         #driver.find_element_by_link_text(u"新建城市").click()
         #driver.find_elements_by_css_selector("div#container.container a.btn.btn-infos").click()
-        driver.find_element_by_xpath("/html/body/div/a").click()
-        cityidname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body div.orders_container form#new_map_city.form-horizontal.new_map_city div.form-inputs div.form-group.select.required.map_city_api_city_id div.col-sm-8 select#map_city_api_city_id.select.required.form-control option:nth-child(2)").text
-        print cityidname
-        Select(driver.find_element_by_id("map_city_api_city_id")).select_by_visible_text(cityidname)
-
-        driver.find_element_by_id("map_city_center_lat").clear()
-        driver.find_element_by_id("map_city_center_lat").send_keys("-5")
-
-        driver.find_element_by_id("map_city_center_lng").clear()
-        driver.find_element_by_id("map_city_center_lng").send_keys("-3")
-
-        driver.find_element_by_id("map_city_search_radius").clear()
-        driver.find_element_by_id("map_city_search_radius").send_keys("-5")
-        
-        driver.find_element_by_id("map_city_gaode_map_code").clear()
-        driver.find_element_by_id("map_city_gaode_map_code").send_keys("beijinggaode")
-        
-        driver.find_element_by_name("commit").click()
-        
-
+        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-last-child(2).btn-link a").click()
+        #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr td:nth-last-child(2).btn-link a.btn.btn-success
+        '''
+        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-last-child(2).btn-link a").click()
         self.assertEqual(driver.title, u"物流")
-        addsuccess=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
-        print addsuccess
-        #shtml body div#container.container>div:nth-child(2)>a.btn.btn-default
+        time.sleep(2)
+        driver.find_element_by_id("address_input").clear()
+        driver.find_element_by_id("address_input").send_keys("addmuiltlgraphic")
         
-        #driver.switch_to_window(winBeforeHandle)
-        #driver.find_element_by_link_text(u"返回").click()
+
+        driver.find_element_by_css_selector("#address_search_bar > div.btn.btn-info").click()
+        driver.find_element_by_id("add_polygon_btn").click()
         
-        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
-        #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:last-child td:last-child a.btn.btn-info.btn-xs
-        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:last-child td:last-child a").click()
-        #driver.find_element_by_xpath(u"(//a[contains(text(),'编辑')])[16]").click()
-        driver.find_element_by_id("map_city_gaode_map_code").clear()
-        driver.find_element_by_id("map_city_gaode_map_code").send_keys("beijinggaodecode")
-        driver.find_element_by_name("commit").click()
+        #driver.find_element_by_id("address_input").clear()
+        #driver.find_element_by_id("address_input").send_keys("111")
+        #driver.find_element_by_css_selector("#address_search_bar > div.btn.btn-info").click()
+        #driver.find_element_by_id("edit_polygon_btn").click()
+        
         
         self.assertEqual(driver.title, u"物流")
         #cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0 WHERE ordersn='"+ordersn+"'")
@@ -99,13 +82,13 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         #    ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
         #print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
         #print driver.title
+        '''
         cursor.execute("DELETE FROM  map_cities WHERE gaode_map_code LIKE 'beijinggaode%'")
-        
         #submit to database
         conn.commit()
         cursor.close()
         conn.close()
-    
+        '''
         
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

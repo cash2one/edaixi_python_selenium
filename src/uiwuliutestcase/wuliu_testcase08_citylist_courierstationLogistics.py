@@ -47,6 +47,51 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
 
+        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
+        
+        self.assertEqual(driver.title, u"物流")
+        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:last-child").click()
+        #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(4).btn.btn-success
+    
+        self.assertEqual(driver.title, u"物流")
+        
+        #driver.find_element_by_link_text(u"新建小e驿站").click()
+        
+        #html body div#container.container a.btn.btn-info.col-md-1
+        driver.find_element_by_css_selector("div#container.container a.btn.btn-info.col-md-1").click()
+        driver.find_element_by_id("outlet_form_title").clear()
+        driver.find_element_by_id("outlet_form_title").send_keys(u"小e驿站test")
+        
+        driver.find_element_by_id("outlet_form_tel").clear()
+        driver.find_element_by_id("outlet_form_tel").send_keys("18701112200")
+        
+        driver.find_element_by_id("outlet_form_usertel").clear()
+        driver.find_element_by_id("outlet_form_usertel").send_keys(u"测试张三")
+        
+        #html body div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.required.outlet_form_area div.col-sm-8 select#outlet_form_area.select.required.form-control option:nth-child(2)
+        outletarea=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.required.outlet_form_area div.col-sm-8 select#outlet_form_area.select.required.form-control option:nth-child(2)").text
+        Select(driver.find_element_by_id("outlet_form_area")).select_by_visible_text(outletarea)
+        
+        driver.find_element_by_id("outlet_form_address").clear()
+        driver.find_element_by_id("outlet_form_address").send_keys(u"朝阳区酒仙桥")
+        
+        driver.find_element_by_id("get_pos").click()
+        driver.find_element_by_name("commit").click()
+        
+        
+        #driver.find_element_by_link_text(u"编辑").click()
+        driver.find_element_by_css_selector("div#container.container table.table.table-striped tbody tr:nth-child(2) td:last-child a").click()
+        #html body div#container.container table.table.table-striped tbody tr:nth-child(2) td:last-child a.btn.btn-primary.btn-sm
+        driver.find_element_by_id("outlet_form_title").clear()
+        driver.find_element_by_id("outlet_form_title").send_keys(u"小e驿站test修改")
+        driver.find_element_by_name("commit").click()
+        
+        
+        driver.find_element_by_id("title").clear()
+        driver.find_element_by_id("title").send_keys(u"小e驿站test")
+        driver.find_element_by_name("commit").click()
+        
+        print driver.title
         
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
