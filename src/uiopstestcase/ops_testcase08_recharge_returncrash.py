@@ -35,7 +35,7 @@ class OpsTestcase08rechargereturncrash(unittest.TestCase):
         print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7) a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(8) a").click()
         driver.implicitly_wait(10)
         print driver.title
         driver.find_element_by_css_selector("div#container.container a.btn.btn-sm.btn-info").send_keys(Keys.ENTER)
@@ -51,6 +51,7 @@ class OpsTestcase08rechargereturncrash(unittest.TestCase):
         
         addchizhifanxian=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         print addchizhifanxian
+        assert u"返现设置已添加"  in (addchizhifanxian)
         #self.assertEqual(addchizhifanxian, u"返现设置已添加")
         
         driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child").send_keys(Keys.ENTER)
@@ -61,6 +62,7 @@ class OpsTestcase08rechargereturncrash(unittest.TestCase):
         #html body div#container.container div.alert.fade.in.alert-success
         editchizhifanxian=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         print editchizhifanxian
+        assert u"返现设置已更新" in (editchizhifanxian)
         #self.assertEqual(editchizhifanxian, u"返现设置已更新")
         
         #html body div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:last-child.btn.btn-sm.btn-danger
@@ -72,6 +74,7 @@ class OpsTestcase08rechargereturncrash(unittest.TestCase):
         #html body div#container.container
         deletechizhifanxian=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         print deletechizhifanxian
+        assert u"返现设置删除成功" in (deletechizhifanxian)
         #self.assertEqual(deletechizhifanxian, u"返现设置删除成功")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
