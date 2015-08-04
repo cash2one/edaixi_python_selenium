@@ -36,7 +36,7 @@ class CaiwuTestcase06CaiwuuserqueryHuiyuncardChongzhi(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         driver.implicitly_wait(10)
-
+        self.assertEqual(driver.title, u"财务")
         #driver.find_element_by_link_text(u"会员卡").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(6).dropdown a.dropdown-toggle").click()
         #driver.find_element_by_link_text(u"会员卡查询").click()
@@ -51,9 +51,6 @@ class CaiwuTestcase06CaiwuuserqueryHuiyuncardChongzhi(unittest.TestCase):
         driver.find_element_by_link_text(huiyuancardnum).click()
         
         #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed())
-        
-        #useridnum=driver.find_element_by_css_selector("div.container > table.table.table-striped.table-bordered > tbody > tr:last-child  > td >a").text
-        #driver.find_element_by_link_text(useridnum).click()
         #driver.find_element_by_link_text(u"充 值").click()
         driver.find_element_by_css_selector("div.container a.btn.btn-sm.btn-info").click()
         winBeforeHandle = driver.current_window_handle

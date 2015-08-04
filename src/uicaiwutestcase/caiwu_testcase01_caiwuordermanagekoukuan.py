@@ -40,7 +40,7 @@ class CaiwuTestcase01Caiwuordermanagementkoukuan(unittest.TestCase):
         #driver.find_element_by_link_text(u"财务单管理").click()
         driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:first-child a").click()
         driver.find_element_by_id("settlement_search_form_ordersn").clear()
-        driver.find_element_by_id("settlement_search_form_ordersn").send_keys(caiwu_edaixi_mysql.getordersn())
+        driver.find_element_by_id("settlement_search_form_ordersn").send_keys(caiwu_edaixi_mysql.ordersnnumber)
         driver.find_element_by_name("commit").click()
 
         ordernumber=driver.find_element_by_css_selector("div.container>div#content div.panel.panel-primary>table.table.table-striped.list-table>tbody>tr:first-child>td:nth-child(3)>a").text
@@ -75,6 +75,7 @@ class CaiwuTestcase01Caiwuordermanagementkoukuan(unittest.TestCase):
         driver.find_element_by_id("btnOn").click()
         #self.assert_(driver.title, u"财务")
         self.assertEquals(driver.title,u"财务")
+        caiwu_edaixi_mysql.getcloseconn()
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

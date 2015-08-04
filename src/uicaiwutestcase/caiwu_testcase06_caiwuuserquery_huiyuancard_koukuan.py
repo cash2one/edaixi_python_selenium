@@ -37,7 +37,7 @@ class CaiwuTestcase06CaiwuuserqueryHuiyuncardKoukuan(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         driver.implicitly_wait(10)
 
-   
+        self.assertEqual(driver.title, u"财务")
                 #driver.find_element_by_link_text(u"会员卡").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(6).dropdown a.dropdown-toggle").click()
         #driver.find_element_by_link_text(u"会员卡查询").click()
@@ -56,6 +56,8 @@ class CaiwuTestcase06CaiwuuserqueryHuiyuncardKoukuan(unittest.TestCase):
         
         #driver.find_element_by_link_text(u"扣 款").click()
         driver.find_element_by_css_selector("div.container>a:last-child.btn.btn-sm.btn-primary").click()
+        
+        self.assertEqual(driver.title, u"财务")
         winBeforeHandle = driver.current_window_handle
         #print "winBeforeHandle==",winBeforeHandle
         winHandles = driver.window_handles

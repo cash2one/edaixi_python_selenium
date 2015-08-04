@@ -41,48 +41,70 @@ if __name__ == '__main__':
  
     #caiwu testcase01 first need chongzhi,then koukuan,finally is tuikuan testcase
     suite.addTest(CaiwuTestcase01Caiwuordermanagementchongzhi('test_caiwu_testcase01_caiwuordermanagementchongzhi'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase01Caiwuordermanagementkoukuan('test_caiwu_testcase01_caiwuordermanagementkoukuan'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase01Caiwuordermanagementtuikuan('test_caiwu_testcase01_caiwuordermanagementtuikuan')) 
-    
+    time.sleep(2)
     suite.addTest(CaiwuTestcase01Caiwuordermanagementmore('test_caiwu_testcase01_caiwuordermanagementmore')) 
-    
+    time.sleep(2)
     #caiwu testcase02
     suite.addTest(CaiwuTestcase02Caiwuyouhuicardgroup('test_caiwu_testcase02_caiwuyouhuicardgroup'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase02Caiwuyouhuicardgsearch('test_caiwu_testcase02_caiwuyouhuicardsearch'))
+    time.sleep(2)
     
-    #this 
     suite.addTest(CaiwuTestcase02caiwuYouhuiquanlistAddEdit('test_Caiwu_Testcase02_caiwuyouhuiquanlist_addedit'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase02CaiwuyouhuicardlistCreate('test_caiwu_testcase02_caiwuyouhuicardlist_create'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase02caiwuYouhuiquanlistQuery('test_CaiwuTestcase02_caiwuyouhuiquanlist_query'))
-    
+    time.sleep(2)
+        
     #caiwu testcase03s
     suite.addTest(CaiwuTestcase03CaiwushiticardCreate('test_caiwu_testcase03_caiwushiticard_create'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase03CaiwushiticardCrud('test_caiwu_testcase03_caiwushiticard_crud'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase03CaiwushiticardQuery('test_caiwu_testcase03_caiwushiticard_query'))
+    time.sleep(2)
     
     #caiwu testcase04
     suite.addTest(CaiwuTestcase04CaiwuhuiyuancardqueryChongzhi('test_caiwu_testcase04_caiwuhuiyuancardquery_chongzhi'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase04CaiwuhuiyuancardqueryKoukuan('test_caiwu_testcase04_caiwuhuiyuancardquery_koukuan'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase04CaiwuhuiyuancardqueryTuikuan('test_caiwu_testcase04_caiwuhuiyuancardquery_tuikuan'))
-    
+    time.sleep(2)
     suite.addTest(CaiwuTestcase04CaiwuhuiyuancardqueryMore('test_caiwu_testcase04_caiwuhuiyuancardquery_more'))
-        
+    time.sleep(2)
+            
     #caiwu testcase05
     suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredCrud('test_caiwu_testcase05_caiwuyouchongzhicared_crud'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredFenpei('test_caiwu_testcase05_caiwuyouchongzhicared_fenpei'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredHuishou('test_caiwu_testcase05_caiwuyouchongzhicared_huishou'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredKongbaikaCreate('test_caiwu_testcase05_caiwuyouchongzhicared_kongbaika_create'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredQuery('test_caiwu_testcase05_caiwuyouchongzhicared_query'))
-    
+    time.sleep(2)
+        
     #caiwu testcase06
     suite.addTest(CaiwuTestcase06CaiwuuserqueryQuery('test_caiwu_testcase06_caiwuuserquery_query'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuancardcrud('test_caiwu_testcase06_caiwuuserquery_huiyuancardcrud'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuanMore('test_caiwu_testcase06_caiwuuserquery_Huiyuan_more'))
-        
+    time.sleep(2)
+            
     suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuncardChongzhi('test_caiwu_testcase06_caiwuuserquery_Huiyuncard_Chongzhi'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuncardKoukuan('test_caiwu_testcase06_caiwuuserquery_Huiyuncard_Koukuan'))
+    time.sleep(2)
     suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuanTuikuan('test_caiwu_testcase06_caiwuuserquery_Huiyuan_Tuikuan'))
-    
+    time.sleep(2)
 
     currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
     print currenttime

@@ -59,6 +59,7 @@ class CaiwuTestcase01Caiwuordermanagementmore(unittest.TestCase):
         driver.find_element_by_css_selector("div.container h4 a.btn.btn-sm.btn-primary").click()
         #self.assert_(driver.title, u"财务")
         self.assertEquals(driver.title,u"财务")
+        caiwu_edaixi_mysql.getcloseconn()
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

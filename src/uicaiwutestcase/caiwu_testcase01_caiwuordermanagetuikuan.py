@@ -38,10 +38,10 @@ class CaiwuTestcase01Caiwuordermanagementtuikuan(unittest.TestCase):
         #driver.find_element_by_link_text(u"财务单管理").click()
         driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:first-child a").click()
         driver.find_element_by_id("settlement_search_form_ordersn").clear()
-        driver.find_element_by_id("settlement_search_form_ordersn").send_keys(caiwu_edaixi_mysql.getordersn())
+        driver.find_element_by_id("settlement_search_form_ordersn").send_keys(caiwu_edaixi_mysql.ordersnnumber)
         driver.find_element_by_name("commit").click()
         
-        caiwu_edaixi_mysql.getcloseconn() 
+ 
         driver.find_element_by_link_text(caiwu_edaixi_mysql.ordersnnumber).click()
         WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container div.info-div div.col-md-6 div.panel.panel-primary.checkout-order div.panel-heading").is_displayed()) 
 
@@ -60,6 +60,8 @@ class CaiwuTestcase01Caiwuordermanagementtuikuan(unittest.TestCase):
 
         #self.assert_(driver.title, u"财务")
         self.assertEquals(driver.title,u"财务")
+        caiwu_edaixi_mysql.getcloseconn()
+                
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

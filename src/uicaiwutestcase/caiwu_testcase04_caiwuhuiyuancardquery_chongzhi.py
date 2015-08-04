@@ -65,7 +65,7 @@ class CaiwuTestcase04CaiwuhuiyuancardqueryChongzhi(unittest.TestCase):
         driver.find_element_by_name("commit").click()
         #self.assert_(driver.title, u"财务")
         self.assertEqual(driver.title, u"财务")
-        
+        caiwu_edaixi_mysql.getcloseconn()
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
