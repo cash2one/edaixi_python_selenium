@@ -47,7 +47,8 @@ class WuliuTestcase02factorysign(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-        self.assertTrue(driver.title, u"物流")
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         time.sleep(2)
         
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
@@ -65,6 +66,7 @@ class WuliuTestcase02factorysign(unittest.TestCase):
         
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(2).dropdown a").click()
         
+        self.assertEqual(driver.title, u"物流")
         #driver.find_element_by_css_selector("div.container > ul.nav.navbar-nav > li:nth-child(2).dropdown > ul.dropdown-menu > li:first-child > a").click()
         #print rukuqinshou
         
@@ -80,13 +82,15 @@ class WuliuTestcase02factorysign(unittest.TestCase):
         driver.find_element_by_name("commit").click()
         
         print driver.title
+        self.assertEqual(driver.title, u"物流")
         
         #cursor.execute("UPDATE ims_washing_order SET status_delivery='1',qianshoudian_id= NULL WHERE bagsn='E0000000006'")
         #conn.commit()
-        self.assertEqual(driver.title, u"物流")
+        #self.assertEqual(driver.title, u"物流")
         qianshousuccess=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary p.text-center b").text#check_in_msg
         print qianshousuccess
         self.assertEqual(qianshousuccess, u"签收成功！")
+        
         cursor.close()
         conn.close()
     def is_element_present(self, how, what):

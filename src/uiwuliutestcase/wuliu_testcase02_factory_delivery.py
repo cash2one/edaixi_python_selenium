@@ -45,7 +45,8 @@ class WuliuTestcase02factorydelivery(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-        self.assertTrue(driver.title, u"物流")
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         time.sleep(2)
         
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
@@ -65,22 +66,28 @@ class WuliuTestcase02factorydelivery(unittest.TestCase):
         
         #driver.find_element_by_css_selector("div.container > ul.nav.navbar-nav > li:nth-child(2).dropdown > ul.dropdown-menu > li:first-child > a").click()
         #print rukuqinshou
-        self.assertTrue(driver.title, u"物流")
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         #ActionChains(driver).context_click(rukuqinshou).perform()
         #ActionChains(driver).double_click(rukuqinshou).perform()
         
         #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
         #driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:nth-child(2)>ul.dropdown-menu>li:first-child>a").click()
         driver.find_element_by_xpath("/html/body/header/div/nav/ul/li[2]/ul/li[1]/a").click()
-        self.assertTrue(driver.title, u"物流")
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a
         driver.find_element_by_id("bagsn").clear()
         driver.find_element_by_id("bagsn").send_keys(bagsn)
         driver.find_element_by_name("commit").click()
         
-        print driver.title
-        self.assertTrue(driver.title, u"物流")
+        #print driver.title
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
+        
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(2).dropdown a").click()
+        self.assertEqual(driver.title, u"物流")
+        
         driver.find_element_by_xpath("/html/body/header/div/nav/ul/li[2]/ul/li[2]/a").click()
                 
         Select(driver.find_element_by_id("store_type")).select_by_visible_text(u"加工店")
@@ -91,7 +98,7 @@ class WuliuTestcase02factorydelivery(unittest.TestCase):
         print driver.title
         #cursor.execute("UPDATE ims_washing_order SET status_delivery='1',qianshoudian_id= NULL WHERE bagsn='E0000000006'")
         #conn.commit()
-        self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         
         cursor.close()
         conn.close()

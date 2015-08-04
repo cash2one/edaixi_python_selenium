@@ -45,15 +45,15 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-        self.assertTrue(driver.title, u"物流")
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
         
-
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
         global cursor 
         cursor = conn.cursor() 
-        
+        self.assertEqual(driver.title, u"物流")
         #driver.find_element_by_link_text(u"新建城市").click()
         #driver.find_elements_by_css_selector("div#container.container a.btn.btn-infos").click()
         driver.find_element_by_xpath("/html/body/div/a").click()
@@ -75,18 +75,20 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         
         driver.find_element_by_name("commit").click()
         
-        self.assertTrue(driver.title, u"物流")
-                
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
+        
         addsuccess=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         print addsuccess
         #shtml body div#container.container>div:nth-child(2)>a.btn.btn-default
         
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
                 
-                
+        self.assertEqual(driver.title, u"物流")
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(2)").click()
         #.btn.btn-success
-
+        self.assertEqual(driver.title, u"物流")
+        
         n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id  FROM ims_washing_order WHERE status_delivery='3' AND ordersn='15072110393738'") 
         for i in xrange(cursor.rowcount):
             ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
@@ -96,7 +98,8 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         driver.find_element_by_id("order_search_form_ordersn").send_keys(ordersn)
         driver.find_element_by_name("commit").click()
         
-        self.assertTrue(driver.title, u"物流")
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         #driver.find_element_by_css_selector("div#container.container> div#paidan_list_container> div.panel.panel-primary.tab-content> div>form> table.table> tbody tr:first-child> td:nth-child(2)> a").click()
         driver.find_element_by_css_selector("div#container.container div.checkout-order div.panle-body div.panel.panel-primary form.form-horizontal.batch_update table.table.table-striped tbody tr:first-child td:nth-child(2) a").click()
         #html body div#container.container div.checkout-order div.panle-body div.panel.panel-primary form.form-horizontal.batch_update table.table.table-striped tbody tr:first-child td:nth-child(2) a
@@ -107,7 +110,7 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         #for i in xrange(cursor.rowcount):
         #    ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
         #print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
-        print driver.title
+        #print driver.title
         #cursor.execute("DELETE FROM  map_cities WHERE gaode_map_code LIKE 'beijinggaode%'")
         winBeforeHandle = driver.current_window_handle
         print "winBeforeHandle==",winBeforeHandle
@@ -119,7 +122,8 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         
         driver.find_element_by_css_selector("div#container.container a#fanxi_button").click()
         
-        self.assertTrue(driver.title, u"物流")
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         #html body div#container.container a#fanxi_button.btn.btn-info
         #submit to database
      
@@ -135,8 +139,8 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         driver.find_element_by_xpath("//input[@type='submit']").click()
         #/html/body/div[1]/form/table/tbody/tr[11]/td[2]/input
         
-        self.assertTrue(driver.title, u"物流")
-        
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0' WHERE ordersn='15072110393738'")
         conn.commit()
         

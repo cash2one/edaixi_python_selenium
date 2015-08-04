@@ -44,12 +44,12 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-        self.assertTrue(driver.title, u"物流")
-        
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
         
-
+        self.assertEqual(driver.title, u"物流")
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
         global cursor 
         cursor = conn.cursor() 
@@ -75,12 +75,11 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         
         driver.find_element_by_name("commit").click()
         
-
-                
+        self.assertEqual(driver.title, u"物流")
+        
         addsuccess=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         print addsuccess
-        #shtml body div#container.container>div:nth-child(2)>a.btn.btn-default
-        
+
         #driver.switch_to_window(winBeforeHandle)
         #driver.find_element_by_link_text(u"返回").click()
         
@@ -92,7 +91,7 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         driver.find_element_by_id("map_city_gaode_map_code").send_keys("beijinggaodecode")
         driver.find_element_by_name("commit").click()
         
-        
+        self.assertEqual(driver.title, u"物流")
         #cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0 WHERE ordersn='"+ordersn+"'")
         
         #n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 

@@ -44,11 +44,9 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-        self.assertTrue(driver.title, u"物流")
-        
-        
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
 
-    
         
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

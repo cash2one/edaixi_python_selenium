@@ -35,7 +35,8 @@ class WuliuTestcase01Querypermission(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-        self.assertTrue(driver.title, u"物流")
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         time.sleep(2)
         
         driver.find_element_by_xpath("/html/body/header/div/nav/ul/li[1]/a").click()
@@ -44,12 +45,17 @@ class WuliuTestcase01Querypermission(unittest.TestCase):
         driver.find_element_by_id("name").send_keys(u"技术测试账号1")
         driver.find_element_by_name("commit").click()
         time.sleep(2)
-        driver.find_element_by_link_text(u"编辑权限").click()
-        driver.find_element_by_id("worker_is_shouyidian").click()
-        driver.find_element_by_id("worker_is_jiagongdian").click()
-        driver.find_element_by_id("worker_is_zb_yunying").click()
-        driver.find_element_by_name("commit").click()
-    
+        self.assertEqual(driver.title, u"物流")
+        
+        #driver.find_element_by_link_text(u"编辑权限").click()
+         
+        #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped tbody tr:last-child td:last-child div.btn-toolbar a.btn.btn-sm.btn-success
+        #driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped tbody tr:last-child td:last-child div.btn-toolbar a").click()
+        #driver.find_element_by_id("worker_is_shouyidian").click()
+        #driver.find_element_by_id("worker_is_jiagongdian").click()
+        #driver.find_element_by_id("worker_is_zb_yunying").click()
+        #driver.find_element_by_name("commit").click()
+        #self.assertEqual(driver.title, u"物流")
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

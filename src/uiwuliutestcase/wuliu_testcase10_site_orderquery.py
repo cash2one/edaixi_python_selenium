@@ -38,7 +38,28 @@ class WuliuTestcase10SiteOrderquery(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-    
+        self.assertEqual(driver.title, u"物流")
+        
+        #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:last-child.active a
+        driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:last-child>a").click()
+        
+        driver.find_element_by_id("ordersn").clear()
+        driver.find_element_by_id("ordersn").send_keys("110500367088")
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title, u"物流")
+        
+        driver.find_element_by_id("seal_sn").clear()
+        driver.find_element_by_id("seal_sn").send_keys("E0000000006")
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title, u"物流")
+        
+        driver.find_element_by_id("tel").clear()
+        driver.find_element_by_id("tel").send_keys("1888888888")
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title, u"物流")
+        
+
+        
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
