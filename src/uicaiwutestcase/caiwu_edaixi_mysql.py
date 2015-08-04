@@ -61,10 +61,10 @@ conn.commit()
 #conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
 #global cursor ,ordernumber
 #cursor = conn.cursor()
-n = cursor.execute("SELECT ordersn ,username,tel,address FROM ims_washing_order WHERE status_delivery=1 AND bagsn IS NOT NULL ORDER BY id") 
-for i in xrange(cursor.rowcount):
-    ordersn ,username,tel,address = cursor.fetchone()
-getcloseconn() 
+#n = cursor.execute("SELECT ordersn ,username,tel,address FROM ims_washing_order WHERE status_delivery=1 AND bagsn IS NOT NULL ORDER BY id") 
+#for i in xrange(cursor.rowcount):
+ #   ordersn ,username,tel,address = cursor.fetchone()
+#getcloseconn() 
 
 #print ordersn ,username,tel,address
 #for row in cursor.fetchone():
