@@ -69,6 +69,7 @@ encoding//src/uiopstestcase/ops_testcase02_layoutmanage_bigfunction.py=utf-8
 encoding//src/uiopstestcase/ops_testcase02_layoutmanage_branchbanner.py=utf-8
 encoding//src/uiopstestcase/ops_testcase02_layoutmanage_masterbanner.py=utf-8
 encoding//src/uiopstestcase/ops_testcase02_layoutmanage_smallfunction.py=utf-8
+encoding//src/uiopstestcase/ops_testcase02_mapsetting_subcitymapsetting.py=utf-8
 encoding//src/uiopstestcase/ops_testcase03_distribution_addgoods.py=utf-8
 encoding//src/uiopstestcase/ops_testcase03_distribution_editgoods.py=utf-8
 encoding//src/uiopstestcase/ops_testcase03_distribution_query.py=utf-8

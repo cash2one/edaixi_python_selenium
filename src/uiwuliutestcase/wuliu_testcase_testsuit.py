@@ -37,45 +37,51 @@ if __name__ == '__main__':
  
     #caiwu testcase01 first need chongzhi,then koukuan,finally is tuikuan testcase
     suite.addTest(WuliuTestcase01EditPermission('test_wuliu_testcase01_EditPermission'))
+    time.sleep(2)
     suite.addTest(WuliuTestcase01Querypermission('test_wuliu_testcase01_querypermission'))
-    time.sleep(1)
+    time.sleep(2)
     #caiwu testcase02
     suite.addTest(WuliuTestcase02factorydelivery('test_wuliu_testcase02_factory_delivery'))
+    time.sleep(2)
     suite.addTest(WuliuTestcase02factoryinoutstockquery('test_wuliu_testcase02_factory_inoutstockquery'))
+    time.sleep(2)
     suite.addTest(WuliuTestcase02factorysign('test_wuliu_testcase02factory_sign'))
-    time.sleep(1)
+    time.sleep(2)
     #caiwu testcase03s
     suite.addTest(WuliuTestcase03sitedelivery('test_wuliu_testcase03_site_delivery'))
+    time.sleep(2)
     suite.addTest(WuliuTestcase03siteinoutstockquery('test_wuliu_testcase03_site_inoutstockquery'))
+    time.sleep(2)
     suite.addTest(WuliuTestcase03sitesign('test_wuliu_testcase03_site_sign'))
-    time.sleep(1)
+    time.sleep(2)
     #caiwu testcase04
     suite.addTest(WuliuTestcase04pushorder('test_wuliu_testcase04_pushorder'))
-    time.sleep(1)
+    time.sleep(2)
     #caiwu testcase05
     suite.addTest(WuliuTestcase05takecloth('test_wuliu_testcase05_takecloth'))
-    time.sleep(1)
+    time.sleep(2)
     #caiwu testcase06
     suite.addTest(WuliuTestcase06pushcloth('test_wuliu_testcase06_pushcloth'))
-    time.sleep(1)
+    time.sleep(2)
     #ops testcase07
     suite.addTest(WuliuTestcase07AccountBalance('test_wuliu_testcase07_accountbalance'))
-    time.sleep(1)
+    time.sleep(2)
     #ops testcase08
     suite.addTest(WuliuTestcase08CitylistAddEdit('test_wuliu_testcase08_citylist_addedit'))
-    
+    time.sleep(2)
     suite.addTest(WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan('test_wuliu_testcase08citylist_diaodupaidan_fanxidan_yipandan'))
+    time.sleep(2)
     suite.addTest(WuliuTestcase08citylistdiaodupaidanfanxidanYiConfirm('test_wuliu_testcase08citylist_diaodupaidan_fanxidan_yiconfirm'))
-    
+    time.sleep(2)
     suite.addTest(WuliuTestcase08citylistdiaoduqueryfanxidan('test_wuliu_testcase08_citylist_diaoduquery_fanxidan'))
-    
-    time.sleep(1)
+    time.sleep(2)
     #ops testcase09
     suite.addTest(WuliuTestcase09FactoryOrderQuery('test_wuliu_testcase09_factory_orderquery'))
-    time.sleep(1)
+    time.sleep(2)
     #ops testcase10
     suite.addTest(WuliuTestcase10SiteOrderquery('test_wuliu_testcase10_site_orderquery'))
-    time.sleep(1)
+    time.sleep(2)
+    
     currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
     print currenttime
 

@@ -6,8 +6,9 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
+from xlwt.antlr import ifelse
 
-class OpsTestcase07clothesmanageeffect(unittest.TestCase):
+class OpsTestcase02LayoutManageSmallFunction(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
@@ -23,7 +24,7 @@ class OpsTestcase07clothesmanageeffect(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_ops_testcase07_clothesmanageeffect(self):
+    def test_ops_testcase02_layoutmanage_smallfunction(self):
         driver = self.driver
         driver.get(self.base_url + "/")
         driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center").click()
@@ -33,32 +34,30 @@ class OpsTestcase07clothesmanageeffect(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-        #self.assert_(driver.title, u"e袋洗城市运营后台")
-        #self.assertTrue(driver.title, u"e袋洗城市运营后台")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
-                
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7) a").click()
-        driver.implicitly_wait(10)
-        
-        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child(7).dropdown ul.dropdown-menu li:nth-child(5) a").send_keys(Keys.ENTER)
-        
-        print driver.title
-        
-        #driver.find_element_by_link_text(u"洗衣").click()
-        driver.find_element_by_css_selector("div#container.container ul#myTab.nav.nav-tabs li:first-child a").send_keys(Keys.ENTER)
-        #driver.find_element_by_link_text(u"新 建").click()
-        driver.find_element_by_css_selector("div#container.container a.btn.btn-info.btn-sm").click()
-        
-        driver.find_element_by_id("yiwu_constant_form_value").clear()
-        driver.find_element_by_id("yiwu_constant_form_value").send_keys("lukebrand")
-        pinleiname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body form#new_yiwu_constant_form.form-horizontal.new_yiwu_constant_form div.form-group.select.required.yiwu_constant_form_category_id div.col-sm-8 select#yiwu_constant_form_category_id.select.required.form-control option:nth-child(2)").text
-        Select(driver.find_element_by_id("yiwu_constant_form_category_id")).select_by_visible_text(pinleiname)
-        driver.find_element_by_name("commit").click()
-    
-        print driver.title
-        #self.assert_(driver.title, u"e袋洗城市运营后台")
-        #self.assertTrue(driver.title, u"e袋洗城市运营后台")
+        #html body div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li.dropdown a.dropdown-toggle
+        driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
+        time.sleep(2)
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a").click()
+       
+        #driver.find_element_by_css_selector("div#container.container a.btn.btn-sm.btn-info.col-md-1").click()
+        #html body div#container.container div.panel.panel-primary div.pnale-body table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child
+        mapsetoperatename=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child").text
+
+        print " mapsetoperatename is ",mapsetoperatename
+        
+        lastmapsetoperatename=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body table.table.table-bordered.table-striped tbody tr:last-child td:last-child").text
+
+        print " lastmapsetoperatename is ",lastmapsetoperatename
+        
+        if mapsetoperatename!="":
+            #html body div#container.container div.panel.panel-primary div.pnale-body table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a
+            driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a").click()
+        else:
+            pass
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

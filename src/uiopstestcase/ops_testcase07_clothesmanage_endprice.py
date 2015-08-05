@@ -36,16 +36,15 @@ class OpsTestcase07clothesmanageendprice(unittest.TestCase):
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
                 
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(6) a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7) a").click()
         driver.implicitly_wait(10)
-        
-        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child(6).dropdown ul.dropdown-menu li:nth-child(2) a").send_keys(Keys.ENTER)
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child(7).dropdown ul.dropdown-menu li:nth-child(2) a").send_keys(Keys.ENTER)
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         print driver.title
         
         randomstr=str(random.randint(0,999999))
         print randomstr
-        
         #driver.find_element_by_link_text(u"新 建").click()
         driver.find_element_by_css_selector("div#container.container a.btn.btn-info.btn-sm").send_keys(Keys.ENTER)
         
@@ -71,11 +70,14 @@ class OpsTestcase07clothesmanageendprice(unittest.TestCase):
         
         driver.find_element_by_name("commit").click()
         
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         randomstr2=str(random.randint(0,999999))
         print randomstr2
         #html body div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child
         #driver.find_element_by_link_text(u"编辑").click()
         driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child").send_keys(Keys.ENTER)
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        
         driver.find_element_by_id("yiwu_price_form_cloth_name").clear()
         driver.find_element_by_id("yiwu_price_form_cloth_name").send_keys(u"羽绒服1"+randomstr2)
         driver.find_element_by_id("yiwu_price_form_smart_key").clear()
@@ -92,6 +94,7 @@ class OpsTestcase07clothesmanageendprice(unittest.TestCase):
         #html body div#container.container table.table.table-bordered.table-striped tbody tr td a.btn.btn-sm.btn-danger
         driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:last-child").send_keys(Keys.ENTER)
         #driver.find_element_by_link_text(u"删除").click()
+        #self.assertEqual(driver.title, u"e袋洗城市运营后台")
         print driver.switch_to_alert().text
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), ur"^确认删除衣物价格[\s\S]$")
         

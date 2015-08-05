@@ -80,9 +80,9 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
-        
-        addsuccess=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
-        print addsuccess
+        time.sleep(2)
+        #addsuccess=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
+        #print addsuccess
         #shtml body div#container.container>div:nth-child(2)>a.btn.btn-default
         
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()

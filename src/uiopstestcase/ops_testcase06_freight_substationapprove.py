@@ -38,11 +38,11 @@ class OpsTestcase06freightsubstationapprove(unittest.TestCase):
                 
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(5) a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(6) a").click()
         driver.implicitly_wait(10)
-        
-        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child(5).dropdown ul.dropdown-menu li:last-child a").send_keys(Keys.ENTER)
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child(6).dropdown ul.dropdown-menu li:last-child a").send_keys(Keys.ENTER)
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #html body div#container.container table.table.table-bordered.table-striped tbody tr td a.btn.btn-sm.btn-info
         agreewithfiled=driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:last-child td:last-child").text
         print agreewithfiled
