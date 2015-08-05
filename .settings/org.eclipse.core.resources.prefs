@@ -27,6 +27,8 @@ encoding//src/uicaiwutestcase/caiwu_testcase06_caiwuuserquery_huiyuancard_more.p
 encoding//src/uicaiwutestcase/caiwu_testcase06_caiwuuserquery_huiyuancard_tuikuan.py=utf-8
 encoding//src/uicaiwutestcase/caiwu_testcase06_caiwuuserquery_huiyuancardcrud.py=utf-8
 encoding//src/uicaiwutestcase/caiwu_testcase06_caiwuuserquery_query.py=utf-8
+encoding//src/uicaiwutestcase/caiwu_testcase08_citylist_jiagongdian_factorbalancebranch.py=utf-8
+encoding//src/uicaiwutestcase/caiwu_testcase08_citylist_jiagongdian_factorbalancemaster.py=utf-8
 encoding//src/uicaiwutestcase/caiwu_testcase_testsuit.py=utf-8
 encoding//src/uicaiwutestcase/edaixi_conn.py=utf-8
 encoding//src/uikefutestcase/PythonDateUtils.py=utf-8
@@ -118,6 +120,7 @@ encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_dividebasearea.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_dividekuaidiarea.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_divideluxuryarea.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_dividezhongbaoarea.py=utf-8
+encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_jiagongdian_factorbalance.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_jiagongdianmanage.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_luxuriesLogistics.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase08_citylist_outtimemanage.py=utf-8
