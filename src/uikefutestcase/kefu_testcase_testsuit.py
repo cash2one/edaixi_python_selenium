@@ -47,49 +47,75 @@ if __name__ == '__main__':
  
     #caiwu testcase01 first need chongzhi,then koukuan,finally is tuikuan testcase
     suite.addTest(KefuTestcase01FeedbackAlllistAll('test_kefu_testcase01_feedback_alllist_all'))
+    time.sleep(2)
     suite.addTest(KefuTestcase01FeedbackAlllistAnswered('test_kefu_testcase01_feedback_alllist_answered'))
+    time.sleep(2)
     suite.addTest(KefuTestcase01FeedbackAlllistFiltered('test_kefu_testcase01_feedback_alllist_filtered')) 
+    time.sleep(2)
     suite.addTest(KefuTestcase01FeedbackAlllistNeedFeedback('test_kefu_testcase01_feedback_alllist_needfeedback')) 
+    time.sleep(2)
     suite.addTest(KefuTestcase01FeedbackAlllistNoback('test_kefu_testcase01_feedback_alllist_noback')) 
-    
+    time.sleep(2)
     #caiwu testcase02
     suite.addTest(KefuTestcase02MyUserFeedbackAlllistAll('test_kefu_testcase02_myuserfeedback_alllist_all'))
+    time.sleep(2)
     suite.addTest(KefuTestcase02MyUserFeedbackAlllistAnswered('test_kefu_testcase02_myuserfeedback_alllist_answered'))
+    time.sleep(2)
     suite.addTest(KefuTestcase02MyUserFeedbackAlllistFiltered('test_kefu_testcase02_myuserfeedback_alllist_filtered'))
+    time.sleep(2)
     suite.addTest(KefuTestcase02MyUserFeedbackAlllistNeedfeedback('test_kefu_testcase02_myuserfeedback_alllist_needfeedback'))
+    time.sleep(2)
     suite.addTest(KefuTestcase02MyUserFeedbackAlllistNoback('test_kefu_testcase02_myuserfeedback_alllist_noback'))
-    
+    time.sleep(2)
     #caiwu testcase03s
     suite.addTest(KefuTestcase03OrderlistCreateorder('test_kefu_testcase03_orderlist_createorder'))
+    time.sleep(2)
     suite.addTest(KefuTestcase03OrderlistCreatefanxiorder('test_kefu_testcase03_orderlist_createfanxiorder'))
+    time.sleep(2)
     suite.addTest(KefuTestcase03OrderlistSearchorder('test_kefu_testcase03_orderlist_searchorder'))
+    time.sleep(2)
     suite.addTest(KefuTestcase03OrderlistCancellorder('test_kefu_testcase03_orderlist_cancellorder'))
+    time.sleep(2)
     
     #caiwu testcase04
     suite.addTest(KefuTestcase04TabmanageCreateMastertab('test_kefu_testcase04_tabmanage_createmastertab'))
+    time.sleep(2)
     suite.addTest(KefuTestcase04TabmanageCreatesubtab('test_kefu_testcase04_tabmanage_createsubtab'))
+    time.sleep(2)
 
     #caiwu testcase05
     suite.addTest(KefuTestcase05UsuallyreplySearch('test_kefu_testcase05_usuallyreply_search'))
+    time.sleep(2)
     suite.addTest(KefuTestcase05UsuallyreplyCrud('test_kefu_testcase05_usuallyreply_crud'))
-
+    time.sleep(2)
     #caiwu testcase06
     suite.addTest(KefuTestcase06UsuallyqueryChongzhimaquery('test_kefu_testcase06_usuallyquery_chongzhimaquery'))
+    time.sleep(2)
     suite.addTest(KefuTestcase06UsuallyqueryDianzikaquery('test_kefu_testcase06_usuallyquery_dianzikaquery'))
+    time.sleep(2)
     suite.addTest(KefuTestcase06UsuallyqueryKuaidiyuanquery('test_kefu_testcase06_usuallyquery_kuaidiyuanquery'))
+    time.sleep(2)
     suite.addTest(KefuTestcase06UsuallyquerySendSms('test_kefu_testcase06_usuallyquery_sendsms'))
+    time.sleep(2)
     suite.addTest(KefuTestcase06UsuallyqueryShitikaquery('test_kefu_testcase06_usuallyquery_shitikaquery'))
+    time.sleep(2)
     suite.addTest(KefuTestcase06UsuallyqueryTelephoneVerify('test_kefu_testcase06_usuallyquery_telephoneverify'))
+    time.sleep(2)
     suite.addTest(KefuTestcase06UsuallyqueryUserquery('test_kefu_testcase06_usuallyquery_userquery'))
+    time.sleep(2)
     suite.addTest(KefuTestcase06UsuallyqueryYiwuquery('test_kefu_testcase06_usuallyquery_yiwuquery'))
+    time.sleep(2)
     suite.addTest(KefuTestcase06UsuallyqueryYouhuiquanquery('test_kefu_testcase06_usuallyquery_youhuiquanquery'))
+    time.sleep(2)
     
     #ops testcase07
     suite.addTest(KefuTestcase07EstimatemanageGoodinfos('test_kefu_testcase07_estimatemanage_goodinfos'))
+    time.sleep(2)
     suite.addTest(KefuTestcase07EstimatemanageMiddleinfos('test_kefu_testcase07_estimatemanage_middleinfos'))
+    time.sleep(2)
     suite.addTest(KefuTestcase07EstimatemanageBandinfos('test_kefu_testcase07_estimatemanage_bandinfos'))
+    time.sleep(2)
     
-
 
     currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
     print currenttime

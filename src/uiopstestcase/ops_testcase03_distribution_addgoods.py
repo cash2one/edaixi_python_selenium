@@ -44,7 +44,7 @@ class OpsTestcase03DistributionAddgoods(unittest.TestCase):
         driver.find_element_by_id("fenxiao_form_product_name").clear()
         driver.find_element_by_id("fenxiao_form_product_name").send_keys("addgoodsfenxiao")
         
-        shitigoodname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body form#new_fenxiao_form.form-horizontal.new_fenxiao_form div.form-group.select.optional.fenxiao_form_good_id div.col-sm-8 select#fenxiao_form_good_id.select.optional.form-control option:nth-child(2)").text
+        shitigoodname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body form#new_fenxiao_form.form-horizontal.new_fenxiao_form div.form-group.select.optional.fenxiao_form_good_id div.col-sm-8 select#fenxiao_form_good_id.select.optional.form-control option:nth-child(3)").text
         #html body div#container.container div.panel.panel-primary div.pnale-body form#new_fenxiao_form.form-horizontal.new_fenxiao_form div.form-group.select.optional.fenxiao_form_good_id div.col-sm-8 select#fenxiao_form_good_id.select.optional.form-control option:nth-child(2)
         print shitigoodname
 
