@@ -48,7 +48,7 @@ class CaiwuTestcase01Caiwuordermanagementkoukuan(unittest.TestCase):
         ordernumber=driver.find_element_by_css_selector("div.container>div#content div.panel.panel-primary>table.table.table-striped.list-table>tbody>tr:first-child>td:nth-child(3)>a").text
         print " the ordernumber is :",ordernumber
         driver.find_element_by_link_text(ordernumber).click()
-        WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container div.info-div div.col-md-6 div.panel.panel-primary.checkout-order div.panel-heading").is_displayed()) 
+        #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container div.info-div div.col-md-6 div.panel.panel-primary.checkout-order div.panel-heading").is_displayed()) 
     
         driver.find_element_by_id("remark_content").clear()
         driver.find_element_by_id("remark_content").send_keys("hello,testing")
@@ -59,10 +59,10 @@ class CaiwuTestcase01Caiwuordermanagementkoukuan(unittest.TestCase):
         
         driver.find_element_by_link_text(huiyuancardnum).click()
         #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
-        WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed())
+        #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed())
         
         #driver.find_element_by_link_text(u"扣 款").click()
-        driver.find_element_by_css_selector("div.container > a:last-child.btn.btn-sm.btn-primary").click()
+        driver.find_element_by_css_selector("div.container > a:last-child").click()
         self.assertEqual(driver.title,u"财务")
                 
         winBeforeHandle = driver.current_window_handle

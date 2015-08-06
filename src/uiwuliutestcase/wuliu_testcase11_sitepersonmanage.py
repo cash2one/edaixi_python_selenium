@@ -9,7 +9,7 @@ import unittest, time, re,ConfigParser
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-class WuliuTestcase10SiteOrderquery(unittest.TestCase):
+class WuliuTestcase11SitePersonManage(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
@@ -25,7 +25,7 @@ class WuliuTestcase10SiteOrderquery(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_wuliu_testcase10_site_orderquery(self):
+    def test_wuliu_testcase11_site_personmanage(self):
         driver = self.driver
         
         driver.get(self.base_url + "/")
@@ -39,24 +39,25 @@ class WuliuTestcase10SiteOrderquery(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         print driver.title
         self.assertEqual(driver.title, u"物流")
-        
+        driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:last-child>a").click()
+        self.assertEqual(driver.title, u"物流")
         #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:last-child.active a
-        driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:nth-child(10)>a").click()
-        
-        driver.find_element_by_id("ordersn").clear()
-        driver.find_element_by_id("ordersn").send_keys("110500367088")
-        driver.find_element_by_name("commit").click()
-        self.assertEqual(driver.title, u"物流")
-        
-        driver.find_element_by_id("seal_sn").clear()
-        driver.find_element_by_id("seal_sn").send_keys("E0000000006")
-        driver.find_element_by_name("commit").click()
-        self.assertEqual(driver.title, u"物流")
-        
-        driver.find_element_by_id("tel").clear()
-        driver.find_element_by_id("tel").send_keys("1888888888")
-        driver.find_element_by_name("commit").click()
-        self.assertEqual(driver.title, u"物流")
+#         driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:last-child>a").click()
+#         
+#         driver.find_element_by_id("ordersn").clear()
+#         driver.find_element_by_id("ordersn").send_keys("110500367088")
+#         driver.find_element_by_name("commit").click()
+#         self.assertEqual(driver.title, u"物流")
+#         
+#         driver.find_element_by_id("seal_sn").clear()
+#         driver.find_element_by_id("seal_sn").send_keys("E0000000006")
+#         driver.find_element_by_name("commit").click()
+#         self.assertEqual(driver.title, u"物流")
+#         
+#         driver.find_element_by_id("tel").clear()
+#         driver.find_element_by_id("tel").send_keys("1888888888")
+#         driver.find_element_by_name("commit").click()
+#         self.assertEqual(driver.title, u"物流")
         
 
         

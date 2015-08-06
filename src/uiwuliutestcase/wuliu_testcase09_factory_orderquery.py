@@ -40,7 +40,7 @@ class WuliuTestcase09FactoryOrderQuery(unittest.TestCase):
         self.assertEqual(driver.title, u"物流")
 
         #driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(9).active a").click()
-        driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:nth-last-child(2)>a").click()
+        driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:nth-last-child(3)>a").click()
         self.assertEqual(driver.title, u"物流")
 
         driver.find_element_by_id("ordersn").clear()

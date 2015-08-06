@@ -10,6 +10,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 class WuliuTestcase01EditPermission(unittest.TestCase):
     def setUp(self):
+        self.verificationErrors=[]
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
