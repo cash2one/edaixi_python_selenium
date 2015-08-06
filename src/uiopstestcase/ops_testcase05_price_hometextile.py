@@ -37,7 +37,7 @@ class OpsTestcase05PriceHometextile(unittest.TestCase):
 
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(4) a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(5) a").click()
         driver.implicitly_wait(10)
         driver.find_element_by_css_selector("div#container.container ul#myTab.nav.nav-tabs li:nth-child(3) a").send_keys(Keys.ENTER)
         #html body div#container.container ul#myTab.nav.nav-tabs li a

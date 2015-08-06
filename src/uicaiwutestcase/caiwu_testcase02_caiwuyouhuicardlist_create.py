@@ -33,13 +33,13 @@ class CaiwuTestcase02CaiwuyouhuicardlistCreate(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         #self.assert_(driver.title, u"财务")
-        self.assertEquals(driver.title,u"财务")
+        self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"优惠券").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
        #driver.find_element_by_link_text(u"优惠券组").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a").click()
         #self.assert_(driver.title, u"财务")
-        self.assertEquals(driver.title,u"财务")
+        self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"生成券").click()
         driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:nth-child(1) td:nth-child(11) a:nth-child(2)").click()
         #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
@@ -54,7 +54,7 @@ class CaiwuTestcase02CaiwuyouhuicardlistCreate(unittest.TestCase):
         driver.find_element_by_css_selector("div.container form.form-horizontal.coupon_list input.button").click()
         #html body div.container form.form-horizontal.coupon_list input.button
         #self.assert_(driver.title, u"财务")
-        self.assertEquals(driver.title,u"财务")
+        self.assertEqual(driver.title,u"财务")
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

@@ -37,7 +37,8 @@ class KefuTestcase03OrderlistCreateorder(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         
         print driver.title
-        
+        self.assertEqual(driver.title,u"客服系统")
+    
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(3)>a").click()
        
         #html body div#container.container>div#content-container>a.btn.btn-info.col-md-1

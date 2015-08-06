@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
 from xlwt.antlr import ifelse
 
-class OpsTestcase02LayoutManageSmallFunction(unittest.TestCase):
+class OpsTestcase02MapSettingSubCityMapSetting(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
@@ -24,7 +24,7 @@ class OpsTestcase02LayoutManageSmallFunction(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_ops_testcase02_layoutmanage_smallfunction(self):
+    def test_ops_testcase02_mapSetting_subCityMapSetting(self):
         driver = self.driver
         driver.get(self.base_url + "/")
         driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center").click()

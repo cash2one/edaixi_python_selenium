@@ -83,9 +83,12 @@ class OpsTestcase07clothesmanageendprice(unittest.TestCase):
         driver.find_element_by_id("yiwu_price_form_smart_key").clear()
         driver.find_element_by_id("yiwu_price_form_smart_key").send_keys("22")
         driver.find_element_by_name("commit").click()
-        driver.find_element_by_id("yiwu_price_form_smart_key").clear()
-        driver.find_element_by_id("yiwu_price_form_smart_key").send_keys(randomstr2)
-        driver.find_element_by_name("commit").click()
+        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        time.sleep(1)
+        #driver.find_element_by_id("yiwu_price_form_smart_key").clear()
+        #driver.find_element_by_id("yiwu_price_form_smart_key").send_keys(randomstr2)
+        #driver.find_element_by_name("commit").click()
         
         updateinfo=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         print updateinfo

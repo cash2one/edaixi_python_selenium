@@ -33,7 +33,8 @@ class KefuTestcase01FeedbackAlllistNoback(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-
+        self.assertEqual(driver.title,u"客服系统")
+    
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:first-child>a").click()
         #driver.find_element_by_link_text(u"反馈总列表").click()
         #driver.find_element_by_link_text(u"踢").click()
@@ -51,7 +52,7 @@ class KefuTestcase01FeedbackAlllistNoback(unittest.TestCase):
         
         print driver.title
         #self.assert_(driver.title, u"客服系统")
-        self.assertEquals(driver.title,u"客服系统")
+        self.assertEqual(driver.title,u"客服系统")
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

@@ -10,6 +10,7 @@ from ops_testcase02_layoutmanage_bigfunction import *
 from ops_testcase02_layoutmanage_branchbanner import *
 from ops_testcase02_layoutmanage_masterbanner import *
 from ops_testcase02_layoutmanage_smallfunction import *
+from ops_testcase02_mapsetting_subcitymapsetting import *
 
 from ops_testcase03_distribution_addgoods import *
 from ops_testcase03_distribution_editgoods import *
@@ -51,7 +52,7 @@ from ops_testcase11_marketingtools_sendyouhuiquan import *
 
 if __name__ == '__main__':  
     suite = unittest.TestSuite()  
- 
+
     #caiwu testcase01 permission and position manage testcase
     suite.addTest(OpsTestcase01Permissionmanagepermission('test_ops_testcase01_permissionmanage_permission'))
     time.sleep(2)
@@ -64,6 +65,10 @@ if __name__ == '__main__':
     time.sleep(2)
     suite.addTest(OpsTestcase02LayoutManageSmallFunction('test_ops_testcase02_layoutmanage_smallfunction'))
     time.sleep(2)
+    
+    suite.addTest(OpsTestcase02MapSettingSubCityMapSetting('test_ops_testcase02_mapSetting_subCityMapSetting'))
+    time.sleep(2)
+
     #caiwu testcase03s
     suite.addTest(OpsTestcase03DistributionQuery('test_ops_testcase03_distribution_query'))
     time.sleep(2)
