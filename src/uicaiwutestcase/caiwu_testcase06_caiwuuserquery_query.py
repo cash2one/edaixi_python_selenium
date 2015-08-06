@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-import unittest, time, re,ConfigParser
+import unittest, time, re,ConfigParser,MySQLdb
 
 class CaiwuTestcase06CaiwuuserqueryQuery(unittest.TestCase):
     def setUp(self):
@@ -13,11 +13,21 @@ class CaiwuTestcase06CaiwuuserqueryQuery(unittest.TestCase):
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_caiwu.conf")
-        global CAIWU_URL,USER_NAME,PASS_WORD
+        global CAIWU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqlwuliudb,mysqlrongchangdb
         CAIWU_URL = conf.get("caiwusection", "uihostname")
         USER_NAME = conf.get("caiwusection", "uiusername")
         PASS_WORD = conf.get("caiwusection", "uipassword")
         print CAIWU_URL,USER_NAME,PASS_WORD 
+        
+        mysqlhostname = conf.get("databaseconn", "mysqlhostname")
+        mysqlusername = conf.get("databaseconn", "mysqlusername")
+        mysqlpassword = conf.get("databaseconn", "mysqlpassword")
+        mysqlwuliudb = conf.get("databaseconn", "mysqlwuliudb")
+        
+        mysqlrongchangdb  = conf.get("databaseconn", "mysqlrongchangdb")
+        print mysqlhostname,mysqlusername,mysqlpassword,mysqlwuliudb,mysqlrongchangdb
+        
+        
         self.base_url = CAIWU_URL
         #self.base_url = "http://caiwu05.edaixi.cn:81/"
         self.verificationErrors = []
@@ -51,6 +61,23 @@ class CaiwuTestcase06CaiwuuserqueryQuery(unittest.TestCase):
         driver.find_element_by_xpath("(//input[@name='commit'])[1]").click()
         #self.assert_(driver.title, u"财务")
         self.assertEqual(driver.title, u"财务")
+        
+        conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
+        global cursor 
+        cursor = conn.cursor() 
+        cursor.execute("DELETE FROM ims_rcard WHERE title LIKE '%testshitika111%'")
+        conn.commit()
+        cursor.execute("DELETE FROM ims_recharge WHERE title LIKE '%chongzhicardnameedit%'")
+        conn.commit()
+        cursor.execute("DELETE FROM coupon_groups WHERE NAME LIKE '%testyouhuiquan%'")
+        conn.commit()
+        cursor.close()
+        conn.close()
+        
+        #DELETE FROM ims_rcard WHERE title LIKE '%testshitika111%'
+        #DELETE FROM ims_recharge WHERE title LIKE '%chongzhicardnameedit%'
+
+        #DELETE FROM coupon_groups WHERE NAME LIKE '%testyouhuiquan%'
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

@@ -7,6 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
+import wuliu_utiltools
 
 class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
     def setUp(self):
@@ -14,7 +15,7 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_wuliu.conf")
-        global WULIU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase
+        global WULIU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqlwuliudb,mysqlrongchangdb
         WULIU_URL = conf.get("wuliusection", "uihostname")
         USER_NAME = conf.get("wuliusection", "uiusername")
         PASS_WORD = conf.get("wuliusection", "uipassword")
@@ -23,8 +24,10 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         mysqlhostname = conf.get("databaseconn", "mysqlhostname")
         mysqlusername = conf.get("databaseconn", "mysqlusername")
         mysqlpassword = conf.get("databaseconn", "mysqlpassword")
-        mysqldatabase = conf.get("databaseconn", "mysqlwuliudb")
-        print mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase
+        mysqlwuliudb = conf.get("databaseconn", "mysqlwuliudb")
+        
+        mysqlrongchangdb  = conf.get("databaseconn", "mysqlrongchangdb")
+        print mysqlhostname,mysqlusername,mysqlpassword,mysqlwuliudb,mysqlrongchangdb
         
         self.base_url = WULIU_URL
         #self.base_url = "http://wuliu05.edaixi.cn:81/"
@@ -46,18 +49,68 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         print driver.title
         self.assertTrue(driver.title, u"物流")
         
+        conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
+        global cursor 
+        cursor = conn.cursor() 
         
-        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
-        
+        driver.find_element_by_css_selector("div.container > nav > ul > li:nth-child(8) >a").click()
+        #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li.active a
+        #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li.active a
+        #html body header.navbar.navbar-default.navbar-static-top div.container>ul.nav.navbar-nav>li:nth-child(8).active a
         self.assertEqual(driver.title, u"物流")
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(9)").click()
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(4).btn.btn-success
     
         self.assertEqual(driver.title, u"物流")
-    
-    
-    
         
+        #driver.find_element_by_link_text(u"新建加工店").click()
+        driver.find_element_by_css_selector("div#container.container a.btn.btn-info.col-md-1").click()
+        self.assertEqual(driver.title, u"物流")
+        
+        driver.find_element_by_id("outlet_form_title").clear()
+        driver.find_element_by_id("outlet_form_title").send_keys("testjiagongdian")
+        driver.find_element_by_id("outlet_form_tel").clear()
+        driver.find_element_by_id("outlet_form_tel").send_keys("18701112200")
+        driver.find_element_by_id("outlet_form_usertel").clear()
+        driver.find_element_by_id("outlet_form_usertel").send_keys(u"测试张三")
+        Select(driver.find_element_by_id("outlet_form_area")).select_by_visible_text(u"朝阳区")
+ #div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.required.outlet_form_area div.col-sm-8 select#outlet_form_area.select.required.form-control option
+        driver.find_element_by_id("outlet_form_address").clear()
+        driver.find_element_by_id("outlet_form_address").send_keys(u"朝阳区酒仙桥")
+        driver.find_element_by_id("get_pos").click()
+        #driver.find_element_by_id("get_pos").click()
+        time.sleep(2)
+        driver.find_element_by_id("outlet_form_total").clear()
+        driver.find_element_by_id("outlet_form_total").send_keys("10")
+        
+        #driver.find_element_by_id("outlet_form_end_date").click()
+        #driver.find_element_by_link_text("6").click()
+        print wuliu_utiltools.today()
+        driver.find_element_by_id("outlet_form_end_date").clear()
+        driver.find_element_by_id("outlet_form_end_date").send_keys(str(wuliu_utiltools.today()))
+
+        driver.find_element_by_id("outlet_form_can_xiyi").click()
+        driver.find_element_by_id("outlet_form_can_xixie").click()
+        driver.find_element_by_id("outlet_form_can_luxury").click()
+        driver.find_element_by_name("commit").click()
+        
+        self.assertEqual(driver.title, u"物流")
+        
+        driver.find_element_by_link_text(u"编辑").click()
+        driver.find_element_by_id("outlet_form_usertel").clear()
+        driver.find_element_by_id("outlet_form_usertel").send_keys(u"测试张三update")
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title, u"物流")
+        
+        driver.find_element_by_id("title").clear()
+        driver.find_element_by_id("title").send_keys("testjiagongdian")
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title, u"物流")
+            
+        cursor.execute("DELETE FROM ims_icard_outlet WHERE title LIKE '%testjiagongdian%'")
+        conn.commit()
+        cursor.close()
+        conn.close()
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

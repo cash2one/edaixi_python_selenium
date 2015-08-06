@@ -38,7 +38,8 @@ from caiwu_testcase06_caiwuuserquery_query import *
 
 if __name__ == '__main__':  
     suite = unittest.TestSuite()  
- 
+
+
     #caiwu testcase01 first need chongzhi,then koukuan,finally is tuikuan testcase
     suite.addTest(CaiwuTestcase01Caiwuordermanagementchongzhi('test_caiwu_testcase01_caiwuordermanagementchongzhi'))
     time.sleep(2)
