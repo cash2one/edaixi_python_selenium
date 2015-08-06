@@ -50,7 +50,10 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
         
-        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
+        #driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
+        
+        driver.find_element_by_css_selector("div.container > nav > ul > li:nth-child(8) >a").click()
+        
         
         self.assertEqual(driver.title, u"物流")
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
@@ -164,12 +167,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         
         self.assertEqual(daioduconfirm, u"调度已派单")
         #self.assertEqual(driver.title, u"物流")
-        
-        #if daioduconfirm==u"调度已确认":
-        #    pass
-        #else:
-        #    raise ValueError
-        
+ 
         cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0' WHERE ordersn='15072110393738'")
         conn.commit()
         

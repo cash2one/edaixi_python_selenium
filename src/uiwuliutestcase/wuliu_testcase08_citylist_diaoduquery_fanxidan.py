@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-import unittest, time, re,ConfigParser,MySQLdb
+import unittest, time, re,ConfigParser,MySQLdb,wuliu_utiltools
 from selenium.webdriver.common.action_chains import ActionChains
 
 class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
@@ -48,7 +48,8 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
         
-        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
+        #driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
+        driver.find_element_by_css_selector("div.container > nav > ul > li:nth-child(8) >a").click()
         
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
         global cursor 
@@ -88,6 +89,9 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(2)").click()
         #.btn.btn-success
         self.assertEqual(driver.title, u"物流")
+        
+        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',status_delivery='3',STATUS='7' WHERE ordersn='15072110393738'")
+        conn.commit()
         
         n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id  FROM ims_washing_order WHERE status_delivery='3' AND ordersn='15072110393738'") 
         for i in xrange(cursor.rowcount):
@@ -134,6 +138,9 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         
         driver.find_element_by_id("fanxi_order_form_remark").clear()
         driver.find_element_by_id("fanxi_order_form_remark").send_keys("beijingjiangtailu")
+        
+        driver.find_element_by_id("fanxi_order_form_washing_date").clear()
+        driver.find_element_by_id("fanxi_order_form_washing_date").send_keys(str(wuliu_utiltools.get_day_of_day(1)))
         
         #driver.find_element_by_css_selector("div#container.container form#new_fanxi_order_form_254.form-horizontal.new_fanxi_order_form table.table.table-striped.search-table tbody tr:last-child td:last-child input.button.btn.btn-info.btn-style-width").click()
         driver.find_element_by_xpath("//input[@type='submit']").click()
