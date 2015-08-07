@@ -34,12 +34,15 @@ class CaiwuTestcase05CaiwuyouchongzhicaredFenpei(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
+        
+        self.assertEqual(driver.title,u"财务")
         WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed())
         #driver.find_element_by_link_text(u"充值卡").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(5).dropdown a").click()
+        self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"充值卡列表").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(5).dropdown ul.dropdown-menu li:first-child a").click()
- 
+        self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"分 配").click()
         driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:nth-child(8) a:nth-child(2).btn.btn-sm.btn-info").click()
         driver.find_element_by_id("recharge_list_start_num").clear()
@@ -48,7 +51,16 @@ class CaiwuTestcase05CaiwuyouchongzhicaredFenpei(unittest.TestCase):
         driver.find_element_by_id("recharge_list_end_num").send_keys("000000250770")
         driver.find_element_by_name("commit").click()
         #self.assert_(driver.title, u"财务")
+        chongzhikaishengcheng=driver.find_element_by_css_selector("div.container div.alert.fade.in.alert-success").text
+        print chongzhikaishengcheng
+        assert u"充值卡分配任务提交成功" in chongzhikaishengcheng
+        #self.assertEqual(chongzhikaishengcheng, u"充值卡分配任务提交成功")
         self.assertEqual(driver.title, u"财务")
+        
+        driver.find_element_by_css_selector("div.container div:nth-child(3)#content div.panel.panel-primary div.panel-body div.text-right ul.pagination.pagination li:nth-child(3) a").click()
+        self.assertEqual(driver.title, u"财务")
+        
+        #html body div.container div:nth-child(3)#content div.panel.panel-primary div.panel-body div.text-right ul.pagination.pagination li:nth-child(3) a
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
@@ -71,7 +83,7 @@ class CaiwuTestcase05CaiwuyouchongzhicaredFenpei(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

@@ -35,18 +35,20 @@ class CaiwuTestcase05CaiwuyouchongzhicaredKongbaikaCreate(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         driver.implicitly_wait(10)
+        self.assertEqual(driver.title, u"财务")
          #driver.find_element_by_link_text(u"充值卡").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(5).dropdown a").click()
         #driver.find_element_by_link_text(u"充值卡列表").click()
+        self.assertEqual(driver.title, u"财务")
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(5).dropdown ul.dropdown-menu li:first-child a").click()
-        
+        self.assertEqual(driver.title, u"财务")
         totolpagenum=driver.find_element_by_css_selector("div.container > div#content > ul > li:nth-last-child(2)").text
         time.sleep(2)
         print totolpagenum
         driver.find_element_by_link_text(totolpagenum).click()
         time.sleep(2)
         driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:last-child td:nth-last-child(3) a:nth-child(2).btn.btn-sm.btn-info").click()
-        
+        self.assertEqual(driver.title, u"财务")
         #html body div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:last-child td:nth-last-child(3) a:nth-child(2).btn.btn-sm.btn-info
         #driver.find_element_by_link_text(u"生成卡").click()
         winBeforeHandle = driver.current_window_handle

@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-import unittest, time, re,ConfigParser
+import unittest, time, re,ConfigParser,string
 from selenium.webdriver.support.ui import WebDriverWait 
 
 class CaiwuTestcase03CaiwushiticardCreate(unittest.TestCase):
@@ -39,6 +39,7 @@ class CaiwuTestcase03CaiwushiticardCreate(unittest.TestCase):
         #driver.find_element_by_link_text(u"实体卡").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown a.dropdown-toggle").click()
         #driver.find_element_by_link_text(u"实体卡列表").click()
+        self.assertEqual(driver.title, u"财务")
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li:first-child a").click()
         #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
         time.sleep(1)
@@ -53,10 +54,97 @@ class CaiwuTestcase03CaiwushiticardCreate(unittest.TestCase):
                 driver.switch_to_window(handle)
         time.sleep(1)
         
+        #rcard_list_amount
+        driver.find_element_by_id("rcard_list_amount").clear()
+        driver.find_element_by_id("rcard_list_amount").send_keys("1")
         driver.find_element_by_css_selector("div.container form.form-horizontal.rcard_list input.button").click()
         #driver.find_element_by_name("commit").click()
         #self.assert_(driver.title, u"财务")
         self.assertEqual(driver.title, u"财务")
+        
+        shiticardcreate=driver.find_element_by_css_selector("html body div.container div.alert.fade.in.alert-success").text
+        print " the shiticardcreate is ",shiticardcreate
+        assert u"实体卡生成任务提交成功" in shiticardcreate
+        #html body div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:first-child
+        createshiticarednum=driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:first-child").text
+        print " the createshiticarednum is ",createshiticarednum
+        
+        createshiticarednumnew=''.join(createshiticarednum.split(' '))
+        print " the createshiticarednumnew is ",createshiticarednumnew
+        
+#         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li:first-child a").click()
+#         #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
+#         time.sleep(1)
+#         #self.assert_(driver.title, u"财务")
+#         self.assertEqual(driver.title, u"财务")
+#         driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:nth-child(7) a:nth-child(4)").click()
+#         winBeforeHandle = driver.current_window_handle
+#         winHandles = driver.window_handles
+#         for handle in winHandles:
+#             if winBeforeHandle != handle:
+#                 driver.switch_to_window(handle)
+#         time.sleep(1)
+#         driver.find_element_by_id("rcard_recharge_form_from_no").clear()
+#         driver.find_element_by_id("rcard_recharge_form_from_no").send_keys(createshiticarednumnew)
+#         driver.find_element_by_id("rcard_recharge_form_to_no").clear()
+#         driver.find_element_by_id("rcard_recharge_form_to_no").send_keys(createshiticarednumnew)
+#         driver.find_element_by_id("rcard_recharge_form_xiaoshoujia").clear()
+#         driver.find_element_by_id("rcard_recharge_form_xiaoshoujia").send_keys("100")
+#         driver.find_element_by_id("rcard_recharge_form_chongzhijine").clear()
+#         driver.find_element_by_id("rcard_recharge_form_chongzhijine").send_keys("100")
+#         
+#         driver.find_element_by_css_selector("div.container form#new_rcard_recharge_form.form-horizontal.new_rcard_recharge_form input.button.btn.btn-info").click()
+#         #html body div.container form#new_rcard_recharge_form.form-horizontal.new_rcard_recharge_form input.button.btn.btn-info
+#         
+#         chiticardcreate=driver.find_element_by_css_selector("html body div.container div.alert.fade.in.alert-success").text
+#         print " the chiticardcreate is ",chiticardcreate
+        time.sleep(2)
+        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown a.dropdown-toggle").click()
+        #driver.find_element_by_link_text(u"实体卡列表").click()
+        self.assertEqual(driver.title, u"财务")
+        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li:last-child a").click()
+        
+        driver.find_element_by_id("sn_code").clear()
+        driver.find_element_by_id("sn_code").send_keys(createshiticarednumnew)
+        #driver.find_element_by_name("commit").click()
+        driver.find_element_by_css_selector(".btn.btn-default").click()
+        self.assertEqual(driver.title, u"财务")
+        
+        driver.find_element_by_css_selector("div.container a.btn.btn-sm.btn-info.col-md-1").click()
+        #html body div.container a.btn.btn-sm.btn-info.col-md-1
+        winBeforeHandle = driver.current_window_handle
+        winHandles = driver.window_handles
+        for handle in winHandles:
+            if winBeforeHandle != handle:
+                driver.switch_to_window(handle)
+        time.sleep(1)
+        
+        driver.find_element_by_id("rcard_recharge_form_xiaoshoujia").clear()
+        driver.find_element_by_id("rcard_recharge_form_xiaoshoujia").send_keys("100")
+        driver.find_element_by_id("rcard_recharge_form_chongzhijine").clear()
+        driver.find_element_by_id("rcard_recharge_form_chongzhijine").send_keys("100")
+        
+        driver.find_element_by_css_selector("div.container form#new_rcard_recharge_form.form-horizontal.new_rcard_recharge_form input.button.btn.btn-info").click()
+        
+        self.assertEqual(driver.title, u"财务")
+        chongzhisuccess=driver.find_element_by_css_selector("div.container div.alert.fade.in.alert-success").text
+        print " the chongzhisuccess is ",chongzhisuccess
+        #html body div.container div.alert.fade.in.alert-success
+        assert u"充值成功" in chongzhisuccess
+        
+        
+        #self.assertEqual(chongzhisuccess, u"充值成功")
+        
+        chongzhimoney=driver.find_element_by_css_selector("html body div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:nth-child(4)").text
+        print " the chongzhimoney is ",chongzhimoney
+        
+        chongzhimoneyint=int(float(chongzhimoney))
+        print " the chongzhimoneyint is ",chongzhimoneyint
+        
+        if chongzhimoneyint>0:
+            pass
+        else:
+            raise NameError 
         
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
@@ -80,7 +168,7 @@ class CaiwuTestcase03CaiwushiticardCreate(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
