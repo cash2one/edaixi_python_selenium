@@ -7,6 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
+import wuliu_utiltools
 
 class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
     def setUp(self):
@@ -14,7 +15,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_wuliu.conf")
-        global WULIU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase
+        global WULIU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqlwuliudb,mysqlrongchangdb
         WULIU_URL = conf.get("wuliusection", "uihostname")
         USER_NAME = conf.get("wuliusection", "uiusername")
         PASS_WORD = conf.get("wuliusection", "uipassword")
@@ -23,8 +24,9 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         mysqlhostname = conf.get("databaseconn", "mysqlhostname")
         mysqlusername = conf.get("databaseconn", "mysqlusername")
         mysqlpassword = conf.get("databaseconn", "mysqlpassword")
-        mysqldatabase = conf.get("databaseconn", "mysqlwuliudb")
-        print mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase
+        mysqlwuliudb = conf.get("databaseconn", "mysqlwuliudb")
+        mysqlrongchangdb  = conf.get("databaseconn", "mysqlrongchangdb")
+        print mysqlhostname,mysqlusername,mysqlpassword,mysqlwuliudb,mysqlrongchangdb
         
         self.base_url = WULIU_URL
         #self.base_url = "http://wuliu05.edaixi.cn:81/"
@@ -46,16 +48,92 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         print driver.title
         self.assertTrue(driver.title, u"物流")
         
-         
-        
-        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
-        
+        conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
+        global cursor 
+        cursor = conn.cursor() 
+        cursor.execute("DELETE FROM outlet_rules")
+        conn.commit()
+        cursor.close()
+        conn.close()
+        #driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
+        driver.find_element_by_css_selector("div.container > nav > ul > li:nth-child(8) >a").click()
         self.assertEqual(driver.title, u"物流")
+        
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(9)").click()
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(4).btn.btn-success
-    
         self.assertEqual(driver.title, u"物流")
     
+        driver.find_element_by_css_selector("div#container.container >table.table.table-striped> tbody > tr:nth-child(2) > td:nth-last-child(2) > a:last-child").click()
+        #div#container.container > tbody > tr:nth-child(2) > td:nth-last-child(2) > a:last-child
+        #html body div#container.container table.table.table-striped tbody tr#outlets_279 td a.btn.btn-primary.btn-sm
+        self.assertEqual(driver.title, u"物流")
+    
+        Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"高端服饰")
+        driver.find_element_by_id("outlet_rule_form_discount").clear()
+        driver.find_element_by_id("outlet_rule_form_discount").send_keys("22")
+
+        print str(wuliu_utiltools.today())
+        driver.find_element_by_id("outlet_rule_form_start_time_display").send_keys(str(wuliu_utiltools.today()))
+        #driver.find_element_by_link_text("6").click()
+        driver.find_element_by_id("outlet_rule_form_end_time").send_keys(str(wuliu_utiltools.get_day_of_day(3)))
+        #driver.find_element_by_link_text("20").click()
+        driver.find_element_by_name("commit").click()
+        
+        time.sleep(2)
+        hell=driver.find_element_by_css_selector("div#container.container>div#outlet_rule>table.table.table-striped>tbody>tr:last-child>td:last-child>a").text
+        print hell
+        #html body div#container.container div#outlet_rule table.table.table-striped tbody tr:last-child td:last-child a.btn.btn-sm.btn-danger
+        #driver.find_element_by_xpath(u"(//a[contains(text(),'删除')])[4]").click()
+        driver.find_element_by_css_selector("div#container.container>div#outlet_rule>table.table.table-striped>tbody>tr:last-child>td:last-child>a").click()
+        #print driver.switch_to_alert().text()
+        #time.sleep(1)
+        self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除吗[\s\S]$")
+        
+        self.assertEqual(driver.title, u"物流")
+    
+
+    
+        #driver.find_element_by_link_text(u"创建规则").click()
+        Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"洗衣")
+        driver.find_element_by_id("outlet_rule_form_discount").clear()
+        driver.find_element_by_id("outlet_rule_form_discount").send_keys("100")
+        
+        driver.find_element_by_id("outlet_rule_form_start_time_display").send_keys(str(wuliu_utiltools.today()))
+        #driver.find_element_by_link_text("6").click()
+        driver.find_element_by_id("outlet_rule_form_end_time").send_keys(str(wuliu_utiltools.get_day_of_day(3)))
+        #driver.find_element_by_link_text("20").click()
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title, u"物流")
+    
+        time.sleep(2)
+
+#         driver.find_element_by_id("outlet_rule_form_start_time_display").click()
+#         driver.find_element_by_link_text("6").click()
+#         driver.find_element_by_id("outlet_rule_form_end_time").click()
+#         driver.find_element_by_link_text("20").click()
+#         driver.find_element_by_name("commit").click()
+        Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"洗鞋")
+        driver.find_element_by_id("outlet_rule_form_start_time_display").send_keys(str(wuliu_utiltools.today()))
+        #driver.find_element_by_link_text("6").click()
+        driver.find_element_by_id("outlet_rule_form_end_time").send_keys(str(wuliu_utiltools.get_day_of_day(3)))
+        #driver.find_element_by_link_text("20").click()
+        driver.find_element_by_id("outlet_rule_form_discount").clear()
+        driver.find_element_by_id("outlet_rule_form_discount").send_keys("2")
+        driver.find_element_by_name("commit").click()
+
+        self.assertEqual(driver.title, u"物流")
+        time.sleep(2)
+        
+        Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"窗帘")
+        driver.find_element_by_id("outlet_rule_form_discount").clear()
+        driver.find_element_by_id("outlet_rule_form_discount").send_keys("12")
+        
+        driver.find_element_by_id("outlet_rule_form_start_time_display").send_keys(str(wuliu_utiltools.today()))
+        #driver.find_element_by_link_text("6").click()
+        driver.find_element_by_id("outlet_rule_form_end_time").send_keys(str(wuliu_utiltools.get_day_of_day(3)))
+        #driver.find_element_by_link_text("20").click()
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title, u"物流")
     
         
     def is_element_present(self, how, what):
@@ -80,7 +158,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

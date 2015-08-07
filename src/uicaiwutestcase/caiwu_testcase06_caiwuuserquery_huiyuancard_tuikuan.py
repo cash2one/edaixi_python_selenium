@@ -60,7 +60,11 @@ class CaiwuTestcase06CaiwuuserqueryHuiyuanTuikuan(unittest.TestCase):
         driver.implicitly_wait(10)
         #self.assert_(driver.title, u"财务")
         self.assertEqual(driver.title, u"财务")
-   
+        tuikuansuccess=driver.find_element_by_css_selector("div.container div.alert.fade.in.alert-success").text
+        
+        print " the tuikuansuccess is ",tuikuansuccess
+        #self.assertEqual(tuikuansuccess,u"退款成功")
+        assert u"退款成功" in tuikuansuccess
         
     
     def is_element_present(self, how, what):

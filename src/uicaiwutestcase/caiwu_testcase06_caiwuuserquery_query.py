@@ -13,7 +13,7 @@ class CaiwuTestcase06CaiwuuserqueryQuery(unittest.TestCase):
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_caiwu.conf")
-        global CAIWU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqlwuliudb,mysqlrongchangdb
+        global CAIWU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqlcaiwudb,mysqlrongchangdb
         CAIWU_URL = conf.get("caiwusection", "uihostname")
         USER_NAME = conf.get("caiwusection", "uiusername")
         PASS_WORD = conf.get("caiwusection", "uipassword")
@@ -22,10 +22,10 @@ class CaiwuTestcase06CaiwuuserqueryQuery(unittest.TestCase):
         mysqlhostname = conf.get("databaseconn", "mysqlhostname")
         mysqlusername = conf.get("databaseconn", "mysqlusername")
         mysqlpassword = conf.get("databaseconn", "mysqlpassword")
-        mysqlwuliudb = conf.get("databaseconn", "mysqlwuliudb")
+        mysqlcaiwudb = conf.get("databaseconn", "mysqlcaiwudb")
         
         mysqlrongchangdb  = conf.get("databaseconn", "mysqlrongchangdb")
-        print mysqlhostname,mysqlusername,mysqlpassword,mysqlwuliudb,mysqlrongchangdb
+        print mysqlhostname,mysqlusername,mysqlpassword,mysqlcaiwudb,mysqlrongchangdb
         
         
         self.base_url = CAIWU_URL

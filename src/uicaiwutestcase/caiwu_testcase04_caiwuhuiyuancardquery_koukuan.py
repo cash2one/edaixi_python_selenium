@@ -60,7 +60,14 @@ class CaiwuTestcase04CaiwuhuiyuancardqueryKoukuan(unittest.TestCase):
             
         self.assertEqual(driver.title, u"财务")
         #self.assert_(driver.title, u"财务")
+        
         caiwu_edaixi_mysql.getcloseconn()
+        
+        koukuansuccess=driver.find_element_by_css_selector("div.container div.alert.fade.in.alert-success").text
+        print " the koukuansuccess is ",koukuansuccess
+        #self.assertEqual(koukuansuccess,u"扣款成功")
+        assert u"扣款成功" in koukuansuccess
+        
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

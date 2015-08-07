@@ -32,23 +32,29 @@ class CaiwuTestcase02caiwuYouhuiquanlistQuery(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
+        self.assertEqual(driver.title,u"财务")
+        
         #driver.find_element_by_link_text(u"优惠券").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
        #driver.find_element_by_link_text(u"优惠券列表").click()
+        self.assertEqual(driver.title,u"财务")
+        
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a").click()
+        self.assertEqual(driver.title,u"财务")
         
         driver.find_element_by_id("title").clear()
         driver.find_element_by_id("title").send_keys(u"测试")
         driver.find_element_by_xpath("(//input[@name='commit'])[1]").click()
-  
+        self.assertEqual(driver.title,u"财务")
+        
         driver.find_element_by_id("apply_department").clear()
         driver.find_element_by_id("apply_department").send_keys(u"测试")
         driver.find_element_by_xpath("(//input[@name='commit'])[3]").click()
         
-        driver.find_element_by_id("coupon_list_id").clear()
-        driver.find_element_by_id("coupon_list_id").send_keys("533")
-        driver.find_element_by_xpath("(//input[@name='commit'])[2]").click()
-        
+#         driver.find_element_by_id("coupon_list_id").clear()
+#         driver.find_element_by_id("coupon_list_id").send_keys("533")
+#         driver.find_element_by_xpath("(//input[@name='commit'])[2]").click()
+#         
         ''''
         bodycontent=driver.find_element_by_xpath("//body").text
         print bodycontent
@@ -57,7 +63,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistQuery(unittest.TestCase):
         else:
             pass
         '''
-        self.assertEquals(driver.title,u"财务")
+        self.assertEqual(driver.title,u"财务")
         
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

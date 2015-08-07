@@ -34,7 +34,7 @@ from wuliu_testcase10_site_orderquery import *
 
 if __name__ == '__main__':  
     suite = unittest.TestSuite()  
- 
+
     #caiwu testcase01 first need chongzhi,then koukuan,finally is tuikuan testcase
     suite.addTest(WuliuTestcase01EditPermission('test_wuliu_testcase01_EditPermission'))
     time.sleep(2)
