@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser
 from selenium.webdriver.support.ui import WebDriverWait 
 
-class CaiwuTestcase02caiwuYouhuiquanlistAddEdit(unittest.TestCase):
+class CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
@@ -24,7 +24,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEdit(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_Caiwu_Testcase02_caiwuyouhuiquanlist_addedit(self):
+    def test_Caiwu_Testcase02_caiwuyouhuiquanlist_addedit_ecouple(self):
         driver = self.driver
         driver.get(self.base_url + "/")
         driver.find_element_by_css_selector("div.container h3.text-center.text-primary a.btn.btn-success.text-center").click()

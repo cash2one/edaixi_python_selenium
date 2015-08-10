@@ -12,7 +12,7 @@ import caiwu_edaixi_mysql
 
 
 
-class CaiwuTestcase01Caiwuordermanagementchongzhi(unittest.TestCase):
+class CaiwuTestcase01Caiwuordermanagementshoukuanmanagei(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
@@ -30,7 +30,7 @@ class CaiwuTestcase01Caiwuordermanagementchongzhi(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_caiwu_testcase01_caiwuordermanagementchongzhi(self):
+    def test_caiwu_testcase01_caiwuordermanagement_shoukuanmanage(self):
         driver = self.driver
         driver.get(self.base_url + "/")
         driver.find_element_by_css_selector("div.container h3.text-center.text-primary a.btn.btn-success.text-center").click()

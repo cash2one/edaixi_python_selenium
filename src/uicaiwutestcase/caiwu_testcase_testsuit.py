@@ -7,11 +7,15 @@ from caiwu_testcase01_caiwuordermanagechongzhi import *
 from caiwu_testcase01_caiwuordermanagekoukuan import *
 from caiwu_testcase01_caiwuordermanagetuikuan import *
 from caiwu_testcase01_caiwuordermanagemore import *
+from caiwu_testcase01_caiwuordermanageshoukuanmanage import *
+
 
 from caiwu_testcase02_caiwuyouhuicardgroup import *
 from caiwu_testcase02_caiwuyouhuicardlist_create import *
 from caiwu_testcase02_caiwuyouhuicardgsearch import *
-from uicaiwutestcase.caiwu_testcase02_caiwuyouhuiquanlist_addedit_shiticouple import *
+from caiwu_testcase02_caiwuyouhuiquanlist_addedit_ecouple import *
+from caiwu_testcase02_caiwuyouhuiquanlist_addedit_shiticouple import *
+
 from caiwu_testcase02_caiwuyouhuiquanlist_query import *
 
 from caiwu_testcase03_caiwushiticard_create import *
@@ -49,13 +53,17 @@ if __name__ == '__main__':
     time.sleep(2)
     suite.addTest(CaiwuTestcase01Caiwuordermanagementmore('test_caiwu_testcase01_caiwuordermanagementmore')) 
     time.sleep(2)
+    suite.addTest(CaiwuTestcase01Caiwuordermanagementshoukuanmanagei('test_caiwu_testcase01_caiwuordermanagement_shoukuanmanage')) 
+    time.sleep(2)
     #caiwu testcase02
     suite.addTest(CaiwuTestcase02Caiwuyouhuicardgroup('test_caiwu_testcase02_caiwuyouhuicardgroup'))
     time.sleep(2)
     suite.addTest(CaiwuTestcase02Caiwuyouhuicardgsearch('test_caiwu_testcase02_caiwuyouhuicardsearch'))
     time.sleep(2)
     
-    suite.addTest(CaiwuTestcase02caiwuYouhuiquanlistAddEdit('test_Caiwu_Testcase02_caiwuyouhuiquanlist_addedit'))
+    suite.addTest(CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple('test_Caiwu_Testcase02_caiwuyouhuiquanlist_addedit_ecouple'))
+    time.sleep(2)
+    suite.addTest(CaiwuTestcase02caiwuYouhuiquanlistAddEditShitiCouple('test_Caiwu_Testcase02_caiwuyouhuiquanlist_addedit_shiticouple'))
     time.sleep(2)
     suite.addTest(CaiwuTestcase02CaiwuyouhuicardlistCreate('test_caiwu_testcase02_caiwuyouhuicardlist_create'))
     time.sleep(2)
