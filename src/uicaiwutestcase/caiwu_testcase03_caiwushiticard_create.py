@@ -144,7 +144,7 @@ class CaiwuTestcase03CaiwushiticardCreate(unittest.TestCase):
         if chongzhimoneyint>0:
             pass
         else:
-            raise NameError 
+            raise NameError ("chongzhi money is 0")
         
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
@@ -168,7 +168,7 @@ class CaiwuTestcase03CaiwushiticardCreate(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        #self.driver.quit()
+        self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

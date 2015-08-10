@@ -57,8 +57,8 @@ class CaiwuTestcase05CaiwuyouchongzhicaredFenpei(unittest.TestCase):
         #self.assertEqual(chongzhikaishengcheng, u"充值卡分配任务提交成功")
         self.assertEqual(driver.title, u"财务")
         
-        driver.find_element_by_css_selector("div.container div:nth-child(3)#content div.panel.panel-primary div.panel-body div.text-right ul.pagination.pagination li:nth-child(3) a").click()
-        self.assertEqual(driver.title, u"财务")
+        #driver.find_element_by_css_selector("div.container>div:nth-child(3)>div.panel.panel-primary>ul.pagination.pagination>li:nth-child(3)>a").click()
+        #self.assertEqual(driver.title, u"财务")
         
         #html body div.container div:nth-child(3)#content div.panel.panel-primary div.panel-body div.text-right ul.pagination.pagination li:nth-child(3) a
     def is_element_present(self, how, what):
@@ -83,7 +83,7 @@ class CaiwuTestcase05CaiwuyouchongzhicaredFenpei(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        #self.driver.quit()
+        self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

@@ -115,7 +115,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple(unittest.TestCase):
         dianzicoupleresult=driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:nth-child(6)").text
   
         print " the dianzicoupleresult is ",dianzicoupleresult
-        self.assertEqual(driver.title,u"电子优惠券")
+        self.assertEqual(dianzicoupleresult,u"电子优惠券")
         #self.assert_(expr, msg)
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
@@ -139,7 +139,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        #self.driver.quit()
+        self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
