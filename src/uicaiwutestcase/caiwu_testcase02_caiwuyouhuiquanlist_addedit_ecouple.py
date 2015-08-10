@@ -98,10 +98,11 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple(unittest.TestCase):
         print " the pingleiname is ",pingleiname
         Select(driver.find_element_by_id("coupon_list_form_category_id")).select_by_visible_text(pingleiname)
         
-        youhuiquangrpname=driver.find_element_by_css_selector("div.container form#new_coupon_list_form.form-horizontal.new_coupon_list_form div.form-group.select.optional.coupon_list_form_coupon_group_id div.col-sm-8 select#coupon_list_form_coupon_group_id.select.optional.form-control option:nth-child(2)").text
-        print " the youhuiquangrpname is ",youhuiquangrpname
-        Select(driver.find_element_by_id("coupon_list_form_coupon_group_id")).select_by_visible_text(youhuiquangrpname)
-        
+        #youhuiquangrpname=driver.find_element_by_css_selector("div.container form#new_coupon_list_form.form-horizontal.new_coupon_list_form div.form-group.select.optional.coupon_list_form_coupon_group_id div.col-sm-8 select#coupon_list_form_coupon_group_id.select.optional.form-control option:nth-child(2)").text
+        #print " the youhuiquangrpname is ",youhuiquangrpname
+        #Select(driver.find_element_by_id("coupon_list_form_coupon_group_id")).select_by_visible_text(u"北京")
+        Select(driver.find_element_by_id("coupon_list_form_city_id")).select_by_visible_text(u"北京")
+        #coupon_list_form_city_id
         driver.find_element_by_id("coupon_list_form_channel").clear()
         driver.find_element_by_id("coupon_list_form_channel").send_keys("website")
         
