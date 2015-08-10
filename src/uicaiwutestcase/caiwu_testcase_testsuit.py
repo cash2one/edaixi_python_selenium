@@ -11,7 +11,7 @@ from caiwu_testcase01_caiwuordermanagemore import *
 from caiwu_testcase02_caiwuyouhuicardgroup import *
 from caiwu_testcase02_caiwuyouhuicardlist_create import *
 from caiwu_testcase02_caiwuyouhuicardgsearch import *
-from caiwu_testcase02_caiwuyouhuiquanlist_addedit import *
+from uicaiwutestcase.caiwu_testcase02_caiwuyouhuiquanlist_addedit_shiticouple import *
 from caiwu_testcase02_caiwuyouhuiquanlist_query import *
 
 from caiwu_testcase03_caiwushiticard_create import *

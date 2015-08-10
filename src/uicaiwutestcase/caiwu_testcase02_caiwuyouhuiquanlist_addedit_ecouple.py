@@ -33,18 +33,21 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEdit(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
+        self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"优惠券").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
+        #self.assertEqual(driver.title,u"财务")
        #driver.find_element_by_link_text(u"优惠券列表").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a").click()
-        
+        self.assertEqual(driver.title,u"财务")
+        #youhuiquan list add function
         #driver.find_element_by_link_text(u"新 建").click()
         driver.find_element_by_css_selector("div.container a.btn.btn-info.col-md-1").click()
         #starting add youhuiquan account
         driver.find_element_by_id("coupon_list_form_title_alias").clear()
-        driver.find_element_by_id("coupon_list_form_title_alias").send_keys(u"优惠券添加新测试")
+        driver.find_element_by_id("coupon_list_form_title_alias").send_keys(u"电子优惠券添加新测试")
         driver.find_element_by_id("coupon_list_form_title").clear()
-        driver.find_element_by_id("coupon_list_form_title").send_keys(u"优惠券添加新测试账户")
+        driver.find_element_by_id("coupon_list_form_title").send_keys(u"电子优惠券添加新测试账户")
         driver.find_element_by_id("coupon_list_form_totalnum").clear()
         driver.find_element_by_id("coupon_list_form_totalnum").send_keys("11")
         driver.find_element_by_id("coupon_list_form_least_price").clear()
@@ -53,7 +56,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEdit(unittest.TestCase):
         driver.find_element_by_id("coupon_list_form_coupon_price").send_keys("110")
         
         #html body div.container form#new_coupon_list_form.form-horizontal.new_coupon_list_form div.form-group.select.required.coupon_list_form_coupon_type div.col-sm-8 select#coupon_list_form_coupon_type.select.required.form-control option:nth-child(2)
-        yuhuiquantypename=driver.find_element_by_css_selector("div.container form#new_coupon_list_form.form-horizontal.new_coupon_list_form div.form-group.select.required.coupon_list_form_coupon_type div.col-sm-8 select#coupon_list_form_coupon_type.select.required.form-control option:nth-child(2)").text
+        yuhuiquantypename=driver.find_element_by_css_selector("div.container form#new_coupon_list_form.form-horizontal.new_coupon_list_form div.form-group.select.required.coupon_list_form_coupon_type div.col-sm-8 select#coupon_list_form_coupon_type.select.required.form-control option:nth-child(1)").text
         print yuhuiquantypename
         Select(driver.find_element_by_id("coupon_list_form_coupon_type")).select_by_visible_text(yuhuiquantypename)
         #div.container form#new_coupon_list_form.form-horizontal.new_coupon_list_form div:nth-child(9) div.col-sm-8 select#coupon_list_form_coupon_type.select.required.form-control option:nth-child(2)     
@@ -62,14 +65,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEdit(unittest.TestCase):
         driver.find_element_by_id("coupon_list_form_limit_count").send_keys("10")
         driver.find_element_by_id("coupon_list_form_use_limit").clear()
         driver.find_element_by_id("coupon_list_form_use_limit").send_keys("10")
-        #inputs = driver.find_elements_by_tag_name('input')
-        #for input in inputs:
-            #if input.get_attribute('type') == 'checkbox':
-               #input.click()
-        #time.sleep(2)
-        #driver.find_element_by_id("coupon_list_form_exclusive_channels_2").click()
-        #driver.find_element_by_id("coupon_list_form_exclusive_channels_1").click()
-        #driver.find_element_by_id("coupon_list_form_exclusive_channels_3").click()
+
         checkboxes = driver.find_elements_by_css_selector('input[type=checkbox]')
         for checkbox in checkboxes:
             checkbox.click()
@@ -81,7 +77,6 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEdit(unittest.TestCase):
         firsttime=starttime+currenttime
         #firsttime="2015-07-31" #print currenttime#print endtime
         finaltime=starttime+endtime
-        
         #time.sleep(3)
         driver.find_element_by_id("coupon_list_form_starttime").clear()
         driver.find_element_by_id("coupon_list_form_starttime").send_keys(firsttime)
@@ -91,12 +86,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEdit(unittest.TestCase):
         
         #youxiaoqiname=driver.find_element_by_xpath("/html/body/div[2]/form/div[13]/div/select/option[2]").text
         print firsttime,finaltime
-        #youxiaoqiname=driver.find_element_by_css_selector("div.container form#new_coupon_list_form.form-horizontal.new_coupon_list_form div.form-group.select.optional.coupon_list_form_validity_type div.col-sm-8 select#coupon_list_form_validity_type.select.optional.form-control option:first-child").text
-        #Select(driver.find_element_by_id("coupon_list_form_validity_type")).select_by_visible_text(u"相对有效期")
-        #print youxiaoqiname
-        #Select(driver.find_element_by_id("coupon_list_form_validity_type")).select_by_visible_text(youxiaoqiname)
-        #driver.find_element_by_id("coupon_list_form_validity_type").send_keys(youxiaoqiname)
-        #driver.implicitly_wait(10)
+
         
         driver.find_element_by_id("coupon_list_form_apply_department").clear()
         driver.find_element_by_id("coupon_list_form_apply_department").send_keys(u"技术测试部")
@@ -105,9 +95,11 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEdit(unittest.TestCase):
         driver.find_element_by_id("coupon_list_form_applicant").send_keys("luke")
         
         pingleiname=driver.find_element_by_css_selector("div.container form#new_coupon_list_form.form-horizontal.new_coupon_list_form div.form-group.select.optional.coupon_list_form_category_id div.col-sm-8 select#coupon_list_form_category_id.select.optional.form-control option:nth-child(2)").text
+        print " the pingleiname is ",pingleiname
         Select(driver.find_element_by_id("coupon_list_form_category_id")).select_by_visible_text(pingleiname)
         
         youhuiquangrpname=driver.find_element_by_css_selector("div.container form#new_coupon_list_form.form-horizontal.new_coupon_list_form div.form-group.select.optional.coupon_list_form_coupon_group_id div.col-sm-8 select#coupon_list_form_coupon_group_id.select.optional.form-control option:nth-child(2)").text
+        print " the youhuiquangrpname is ",youhuiquangrpname
         Select(driver.find_element_by_id("coupon_list_form_coupon_group_id")).select_by_visible_text(youhuiquangrpname)
         
         driver.find_element_by_id("coupon_list_form_channel").clear()
@@ -118,20 +110,12 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEdit(unittest.TestCase):
         #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container div.info-div div.col-md-6 div.panel.panel-primary.checkout-order div.panel-heading").is_displayed()) 
 
         #self.assert_(driver.title, u"财务")
-        self.assertEquals(driver.title,u"财务")
-        #driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:nth-child(11) a:first-child.btn.btn-sm.btn-info").click()
-        #driver.find_element_by_xpath("/html/body/div[2]/div[2]/div[1]/table/tbody/tr[20]/td[11]/a[1]").click()
-        #html body div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:nth-last-child td:nth-last-child(4) a:first-child.btn.btn-sm.btn-info
-        driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:nth-last-child(4) a:first-child").click()
-        #driver.find_element_by_link_text(u"编辑").click()
-        driver.find_element_by_id("coupon_list_form_title_alias").clear()
-        driver.find_element_by_id("coupon_list_form_title_alias").send_keys("asassedi")
-        driver.find_element_by_id("coupon_list_form_title").clear()
-        driver.find_element_by_id("coupon_list_form_title").send_keys("asasasasss")
-        driver.find_element_by_name("commit").click()
-        #self.assert_(driver.title, u"财务")
-        self.assertEquals(driver.title,u"财务")
-        print driver.title
+        self.assertEqual(driver.title,u"财务")
+        
+        dianzicoupleresult=driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:nth-child(6)").text
+  
+        print " the dianzicoupleresult is ",dianzicoupleresult
+        self.assertEqual(driver.title,u"电子优惠券")
         #self.assert_(expr, msg)
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
@@ -155,7 +139,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEdit(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
