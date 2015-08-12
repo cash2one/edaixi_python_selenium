@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 #encoding:utf-8 
 import unittest, time, re 
-import HTMLTestRunner
-
 from caiwu_testcase01_caiwuordermanagechongzhi import *
 from caiwu_testcase01_caiwuordermanagekoukuan import *
 from caiwu_testcase01_caiwuordermanagetuikuan import *
@@ -39,6 +37,8 @@ from caiwu_testcase06_caiwuuserquery_huiyuancard_tuikuan import *
 from caiwu_testcase06_caiwuuserquery_huiyuancard_more import *
 from caiwu_testcase06_caiwuuserquery_huiyuancardcrud import *
 from caiwu_testcase06_caiwuuserquery_query import *
+
+import HTMLTestRunner
 
 if __name__ == '__main__':  
     suite = unittest.TestSuite()  
@@ -116,7 +116,7 @@ if __name__ == '__main__':
     time.sleep(3)
 
     currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
-    print currenttime
+    #print currenttime
 
     fp = file("c:\\edaixi_testdata\\"+currenttime+"-caiwu_test_report.html", 'wb')
     
