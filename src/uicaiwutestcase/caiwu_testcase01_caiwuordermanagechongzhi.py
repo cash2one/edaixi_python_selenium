@@ -106,29 +106,29 @@ class CaiwuTestcase01Caiwuordermanagementchongzhi(unittest.TestCase):
         assert u"充值成功" in chongzhisuccess
         #self.assertEqual(chongzhisuccess,u"充值成功")
         
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        #except NoSuchElementException, e: return False
-        except Exception, e: return False
-        return True
-    
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        #except NoAlertPresentException, e: return False
-        except Exception, e: return False
-        return True
-    
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
-    
+#     def is_element_present(self, how, what):
+#         try: self.driver.find_element(by=how, value=what)
+#         #except NoSuchElementException, e: return False
+#         except Exception, e: return False
+#         return True
+#     
+#     def is_alert_present(self):
+#         try: self.driver.switch_to_alert()
+#         #except NoAlertPresentException, e: return False
+#         except Exception, e: return False
+#         return True
+#     
+#     def close_alert_and_get_its_text(self):
+#         try:
+#             alert = self.driver.switch_to_alert()
+#             alert_text = alert.text
+#             if self.accept_next_alert:
+#                 alert.accept()
+#             else:
+#                 alert.dismiss()
+#             return alert_text
+#         finally: self.accept_next_alert = True
+#     
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)

@@ -11,7 +11,7 @@ mysqlusername = conf.get("databaseconn", "mysqlusername")
 mysqlpassword = conf.get("databaseconn", "mysqlpassword")
 mysqldatabase = conf.get("databaseconn", "mysqldatabase")
 
-print mysqlhostname,mysqlusername,mysqlpassword, mysqldatabase
+#print mysqlhostname,mysqlusername,mysqlpassword, mysqldatabase
 conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
 global cursor
 global ordersnnumber,huiyuannumber
@@ -25,7 +25,7 @@ def getordersn():
 
     #return ordersn
 #sglobal ordersn 
-print getordersn()           
+#print getordersn()           
 #global ordersnnumber
 ordersnnumber=str(getordersn())
         #print "the random ordersn  is ",ordersn  
@@ -36,7 +36,7 @@ def gethuiyuanid():
       for huiyuanid in row: 
           return huiyuanid  
       
-print gethuiyuanid()  
+#print gethuiyuanid()  
 huiyuannumber=str(gethuiyuanid())
 
 
