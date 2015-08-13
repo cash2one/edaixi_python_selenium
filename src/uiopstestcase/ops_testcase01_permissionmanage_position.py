@@ -39,19 +39,19 @@ class OpsTestcase01PermissionmanagePosition(unittest.TestCase):
         
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li.dropdown a.dropdown-toggle").click()
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_css_selector("ul.dropdown-menu > li:nth-child(2) > a").click()
-
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_css_selector("div#container.container div#content-container a.btn.btn-info.col-md-1").click()
         #driver.find_element_by_link_text(u"新建").click()
-        print driver.title
+        print "ops pozition manage assert title is ",driver.title
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
         Select(driver.find_element_by_id("position_to_role_position")).select_by_visible_text(u"市场策划")
         Select(driver.find_element_by_id("position_to_role_role_key")).select_by_visible_text(u"市场经理")
         driver.find_element_by_name("commit").click()
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_xpath(u"(//a[contains(text(),'编辑')])[1]").click()
         driver.find_element_by_css_selector("div#container.container div#content div.panel.panel-primary div.panle-body table.table.table-striped tbody tr:last-child td:last-child a.btn.btn-sm.btn-info").click()
         print driver.title

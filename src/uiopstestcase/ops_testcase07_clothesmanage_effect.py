@@ -37,18 +37,20 @@ class OpsTestcase07clothesmanageeffect(unittest.TestCase):
         #self.assertTrue(driver.title, u"e袋洗城市运营后台")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
                 
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7) a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(6)+")>a").click()
         driver.implicitly_wait(10)
-        
-        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child(7).dropdown ul.dropdown-menu li:nth-child(5) a").send_keys(Keys.ENTER)
-        
-        print driver.title
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        #driver.find_element_by_css_selector("div.container>div>ul.nav.navbar-nav>li:nth-child("+str(6)+").dropdown>ul.dropdown-menu>li:nth-child(5)>a").send_keys(Keys.ENTER)
+        driver.find_element_by_css_selector("div.container>div>ul.nav.navbar-nav>li:nth-child("+str(6)+").dropdown>ul.dropdown-menu>li:last-child>a").send_keys(Keys.ENTER)
+        #self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        #print driver.title
         
         #driver.find_element_by_link_text(u"洗衣").click()
-        driver.find_element_by_css_selector("div#container.container ul#myTab.nav.nav-tabs li:first-child a").send_keys(Keys.ENTER)
+        driver.find_element_by_css_selector("div#container.container>ul#myTab.nav.nav-tabs>li:first-child>a").send_keys(Keys.ENTER)
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_link_text(u"新 建").click()
         driver.find_element_by_css_selector("div#container.container a.btn.btn-info.btn-sm").click()
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("yiwu_constant_form_value").clear()
         driver.find_element_by_id("yiwu_constant_form_value").send_keys("lukebrand")
         pinleiname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body form#new_yiwu_constant_form.form-horizontal.new_yiwu_constant_form div.form-group.select.required.yiwu_constant_form_category_id div.col-sm-8 select#yiwu_constant_form_category_id.select.required.form-control option:nth-child(2)").text

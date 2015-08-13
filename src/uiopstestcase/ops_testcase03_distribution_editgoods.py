@@ -35,13 +35,15 @@ class OpsTestcase01Distributioneditgoods(unittest.TestCase):
         print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(3) a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(2)+") a").click()
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
         #driver.find_element_by_css_selector("div#container.container a.btn.btn-info.btn-sm").click()
         #driver.find_element_by_link_text(u"分销系统").click()
         
         driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child.btn.btn-sm.btn-info").click()
         #driver.find_element_by_link_text(u"编辑").click()
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("fenxiao_form_product_name").clear()
         driver.find_element_by_id("fenxiao_form_product_name").send_keys("addgoodsfenxiaoediting")
         driver.find_element_by_name("commit").click()

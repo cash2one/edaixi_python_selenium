@@ -35,18 +35,39 @@ class OpsTestcase01DistributionUpDown(unittest.TestCase):
         print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(3) a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(3)+")>a").send_keys(Keys.ENTER)
         #div#container.container table.table.table-bordered.table-striped tbody tr: td a.btn.btn-sm.btn-danger
-        downactivename=driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:last-child").text
-        print downactivename
-        if downactivename == u"上架":
-           driver.find_element_by_link_text(u"上架").click()
-           self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认上架这件商品吗[\s\S]$")
-        elif downactivename == u"下架":
-           driver.find_element_by_link_text(u"下架").click()
-           self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认下架这件商品吗[\s\S]$")
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        driver.find_element_by_xpath("/html/body/div[1]/div/div/ul/li[3]/ul/li[3]/a").click()
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        #html body div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a
+        downactivename=driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a").text
+        print " the downactivename is ",downactivename
+        
+        if downactivename == u"审核":
+           driver.find_element_by_link_text(u"审核").click()
+           self.assertEqual(driver.title, u"e袋洗城市运营后台")
+           driver.find_element_by_link_text(u"同意").click()
+           self.assertEqual(driver.title, u"e袋洗城市运营后台")
+           #self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认上架这件商品吗[\s\S]$")
+        elif downactivename == u"查看":
+           driver.find_element_by_link_text(u"查看").click()
+           self.assertEqual(driver.title, u"e袋洗城市运营后台")
+           #self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认下架这件商品吗[\s\S]$")
         else:
            pass
+
+        #html body div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li.dropdown.open ul.dropdown-menu li a
+#         downactivename=driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:last-child").text
+#         print downactivename
+#         if downactivename == u"上架":
+#            driver.find_element_by_link_text(u"上架").click()
+#            self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认上架这件商品吗[\s\S]$")
+#         elif downactivename == u"下架":
+#            driver.find_element_by_link_text(u"下架").click()
+#            self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认下架这件商品吗[\s\S]$")
+#         else:
+#            pass
     
         #print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")

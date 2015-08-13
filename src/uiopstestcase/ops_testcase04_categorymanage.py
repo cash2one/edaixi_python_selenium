@@ -37,13 +37,15 @@ class OpsTestcase04Categorymanage(unittest.TestCase):
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         
         #driver.find_element_by_link_text(u"类目管理").click()
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(4) a").click()
-        
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(3)+") a").click()
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
-        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(4).dropdown ul.dropdown-menu li:nth-child(1) a").click()
+        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child("+str(3)+").dropdown ul.dropdown-menu li:nth-child(1) a").click()
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_css_selector("li.dropdown.open > ul.dropdown-menu > li > a").click()
         #driver.find_element_by_link_text(u"新 建").click()
         driver.find_element_by_css_selector("div#container.container a.btn.btn-sm.btn-info").click()
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("service_category_form_name").clear()
         driver.find_element_by_id("service_category_form_name").send_keys("addleimu")
         selectempname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body form#new_service_category_form.form-horizontal.new_service_category_form div.form-group.select.required.service_category_form_ability_name div.col-sm-8 select#service_category_form_ability_name.select.required.form-control option:nth-child(2)").text

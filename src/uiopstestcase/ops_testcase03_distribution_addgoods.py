@@ -36,17 +36,17 @@ class OpsTestcase03DistributionAddgoods(unittest.TestCase):
         print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
                 
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(3) a").click()
-        
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(2)+") a").click()
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_css_selector("div#container.container a.btn.btn-info.btn-sm").click()
         #driver.find_element_by_link_text(u"分销系统").click()
-  
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("fenxiao_form_product_name").clear()
         driver.find_element_by_id("fenxiao_form_product_name").send_keys("addgoodsfenxiao")
         
         shitigoodname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body form#new_fenxiao_form.form-horizontal.new_fenxiao_form div.form-group.select.optional.fenxiao_form_good_id div.col-sm-8 select#fenxiao_form_good_id.select.optional.form-control option:nth-child(3)").text
         #html body div#container.container div.panel.panel-primary div.pnale-body form#new_fenxiao_form.form-horizontal.new_fenxiao_form div.form-group.select.optional.fenxiao_form_good_id div.col-sm-8 select#fenxiao_form_good_id.select.optional.form-control option:nth-child(2)
-        print shitigoodname
+        print " the shitigoodname is ",shitigoodname
 
         Select(driver.find_element_by_id("fenxiao_form_good_id")).select_by_visible_text(shitigoodname)
         driver.find_element_by_id("fenxiao_form_product_status").click()
@@ -62,7 +62,7 @@ class OpsTestcase03DistributionAddgoods(unittest.TestCase):
         #driver.find_element_by_id("fenxiao_form_product_name").send_keys("addgoodsfenxiaoediting")
         #driver.find_element_by_name("commit").click()
         
-        print driver.title
+        print " the submit add goods is ",driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
        
     

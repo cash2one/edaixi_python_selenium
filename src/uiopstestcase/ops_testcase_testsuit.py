@@ -113,8 +113,8 @@ if __name__ == '__main__':
     time.sleep(3)
     suite.addTest(OpsTestcase07clothesmanageendprice('test_ops_testcase07_clothesmanageendprice'))
     time.sleep(3)
-    suite.addTest(OpsTestcase07clothesmanagehistoryprice('test_ops_testcase07_clothesmanageendprice'))
-    time.sleep(3)
+    #suite.addTest(OpsTestcase07clothesmanagehistoryprice('test_ops_testcase07_clothesmanageendprice'))
+    #time.sleep(3)
     #ops testcase08
        
     suite.addTest(OpsTestcase08rechargereturncrash('test_ops_testcase08_rechargereturncrash'))
