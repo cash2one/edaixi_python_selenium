@@ -11,3 +11,5 @@ print browser.title
 assert "Yahoo!" in browser.title
 
 browser.close()
+
+
