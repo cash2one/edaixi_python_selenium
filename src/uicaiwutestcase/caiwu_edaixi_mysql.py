@@ -2,7 +2,9 @@
 #enc oding:utf-8
 #mysqldb      
 import time, MySQLdb, sys  ,ConfigParser
-
+import sys
+import logging
+import time
 conf = ConfigParser.ConfigParser()
    
 conf.read("C:/edaixi_testdata/userdata_caiwu.conf")
@@ -91,8 +93,30 @@ for id, name in cursor.fetchall():
  print id, name
         '''
         
-        
+def Logger(message):
+    logger=logging.getLogger()
+    filename = time.strftime('%Y-%m-%d',time.localtime(time.time()))
 
+    #handler=logging.FileHandler("./log/"+filename+"error")
+    handler=logging.FileHandler("C:/edaixi_testdata/"+filename+"error")
+    #C:/edaixi_testdata/userdata_caiwu.conf
+    logger.addHandler(handler)
+    logger.setLevel(logging.NOTSET)
+    logger.info(message)
+       
+def writeLog(message):
+    logger=logging.getLogger()
+    filename = time.strftime('%Y-%m-%d',time.localtime(time.time()))
+
+    #handler=logging.FileHandler("./log/"+filename+"error")
+    handler=logging.FileHandler("C:/edaixi_testdata/"+filename+"error")
+    #C:/edaixi_testdata/userdata_caiwu.conf
+    logger.addHandler(handler)
+    logger.setLevel(logging.NOTSET)
+    logger.info(message)
+
+if __name__ == '__main__': 
+    writeLog("hello")
 
 
 
