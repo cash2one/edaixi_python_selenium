@@ -36,13 +36,12 @@ class OpsTestcase11MarketingToolsSendSms(unittest.TestCase):
         print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-               
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(11) a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(10)+") a").click()
         driver.implicitly_wait(10)
         print driver.title
-        
-        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child(11).dropdown ul.dropdown-menu li:nth-child(1) a").send_keys(Keys.ENTER)
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child("+str(10)+").dropdown ul.dropdown-menu li:nth-child(1) a").send_keys(Keys.ENTER)
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("sms_form_tel").clear()
         driver.find_element_by_id("sms_form_tel").send_keys("18701524517")
         driver.find_element_by_id("sms_form_sms").clear()

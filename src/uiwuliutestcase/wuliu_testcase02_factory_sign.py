@@ -89,7 +89,7 @@ class WuliuTestcase02factorysign(unittest.TestCase):
         #conn.commit()
         #self.assertEqual(driver.title, u"物流")
         qianshousuccess=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary p.text-center b").text#check_in_msg
-        print qianshousuccess
+        print " the qianshousuccess result is ",qianshousuccess
         self.assertEqual(qianshousuccess, u"签收成功！")
         
         cursor.close()

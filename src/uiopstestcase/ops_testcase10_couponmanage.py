@@ -36,7 +36,7 @@ class OpsTestcase10couponmanage(unittest.TestCase):
         print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(10) a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(9)+") a").click()
         driver.implicitly_wait(10)
         print driver.title
         #driver.find_element_by_css_selector("div#container.container a.btn.btn-sm.btn-info").send_keys(Keys.ENTER)

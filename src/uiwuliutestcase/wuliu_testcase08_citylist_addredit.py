@@ -33,7 +33,6 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
     
     def test_wuliu_testcase08_citylist_addedit(self):
         driver = self.driver
-        
         driver.get(self.base_url + "/")
 
         loginclick=driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center")
@@ -47,17 +46,18 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
         
-        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
-        
+        driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8) a").click()
+        #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8) a
         self.assertEqual(driver.title, u"物流")
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
         global cursor 
         cursor = conn.cursor() 
-        
         #driver.find_element_by_link_text(u"新建城市").click()
         #driver.find_elements_by_css_selector("div#container.container a.btn.btn-infos").click()
         driver.find_element_by_xpath("/html/body/div/a").click()
+        self.assertEqual(driver.title, u"物流")
         cityidname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body div.orders_container form#new_map_city.form-horizontal.new_map_city div.form-inputs div.form-group.select.required.map_city_api_city_id div.col-sm-8 select#map_city_api_city_id.select.required.form-control option:nth-child(2)").text
+        self.assertEqual(driver.title, u"物流")
         print cityidname
         Select(driver.find_element_by_id("map_city_api_city_id")).select_by_visible_text(cityidname)
 
@@ -85,15 +85,16 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:last-child td:last-child a.btn.btn-info.btn-xs
+        self.assertEqual(driver.title, u"物流")
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:last-child td:last-child a").click()
         #driver.find_element_by_xpath(u"(//a[contains(text(),'编辑')])[16]").click()
+        self.assertEqual(driver.title, u"物流")
         driver.find_element_by_id("map_city_gaode_map_code").clear()
         driver.find_element_by_id("map_city_gaode_map_code").send_keys("beijinggaodecode")
         driver.find_element_by_name("commit").click()
         
         self.assertEqual(driver.title, u"物流")
         #cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0 WHERE ordersn='"+ordersn+"'")
-        
         #n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
         #for i in xrange(cursor.rowcount):
         #    ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()

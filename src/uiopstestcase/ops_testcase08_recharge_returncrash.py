@@ -35,11 +35,11 @@ class OpsTestcase08rechargereturncrash(unittest.TestCase):
         print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(8) a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(7)+") a").click()
         driver.implicitly_wait(10)
         print driver.title
         driver.find_element_by_css_selector("div#container.container a.btn.btn-sm.btn-info").send_keys(Keys.ENTER)
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_link_text(u"新 建").click()
         driver.find_element_by_id("recharge_setting_form_money_give").clear()
         driver.find_element_by_id("recharge_setting_form_money_give").send_keys("100")
@@ -48,7 +48,7 @@ class OpsTestcase08rechargereturncrash(unittest.TestCase):
         driver.find_element_by_id("recharge_setting_form_max").clear()
         driver.find_element_by_id("recharge_setting_form_max").send_keys("1000")
         driver.find_element_by_name("commit").click()
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         addchizhifanxian=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         print addchizhifanxian
         assert u"返现设置已添加"  in (addchizhifanxian)
@@ -56,6 +56,7 @@ class OpsTestcase08rechargereturncrash(unittest.TestCase):
         
         driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child").send_keys(Keys.ENTER)
         #driver.find_element_by_link_text(u"编辑").click()
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("recharge_setting_form_min").clear()
         driver.find_element_by_id("recharge_setting_form_min").send_keys("200")
         driver.find_element_by_name("commit").click()

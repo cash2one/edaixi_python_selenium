@@ -34,20 +34,21 @@ class CaiwuTestcase02Caiwuyouhuicardgroup(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        
+        self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"优惠券").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
         #driver.find_element_by_link_text(u"优惠券组").click()
+        self.assertEqual(driver.title,u"财务")
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:last-child a").click()
-        
+        self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"新 建").click()
         driver.find_element_by_css_selector("div.container a.btn.btn-info.col-md-1").click()
-        WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
-   
+        #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
+        self.assertEqual(driver.title,u"财务")
         driver.find_element_by_id("coupon_group_form_name").clear()
         driver.find_element_by_id("coupon_group_form_name").send_keys("testyouhuiquangrup")
         driver.find_element_by_name("commit").click()
-        
+        self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"编辑").click()
         driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:last-child td:last-child a.btn.btn-sm.btn-info").click()
         driver.find_element_by_id("coupon_group_form_name").clear()
@@ -57,7 +58,7 @@ class CaiwuTestcase02Caiwuyouhuicardgroup(unittest.TestCase):
         driver.find_element_by_id("name").send_keys("test")
         driver.find_element_by_name("commit").click()
         #self.assert_(driver.title, u"财务")
-        self.assertEquals(driver.title,u"财务")
+        self.assertEqual(driver.title,u"财务")
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
