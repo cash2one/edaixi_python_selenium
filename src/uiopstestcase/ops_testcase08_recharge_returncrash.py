@@ -6,10 +6,12 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
+from uiappobject.appobjectutils import SingleWebDriver
 
 class OpsTestcase08rechargereturncrash(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
+        #self.driver =SingleWebDriver.getWebDriverInstance(self)
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_ops.conf")
@@ -35,18 +37,22 @@ class OpsTestcase08rechargereturncrash(unittest.TestCase):
         print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(7)+") a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(8)+") a").click()
+        #getWebElementOpsRechargereturncrash(driver).click()
+        
         driver.implicitly_wait(10)
         print driver.title
-        driver.find_element_by_css_selector("div#container.container a.btn.btn-sm.btn-info").send_keys(Keys.ENTER)
+        driver.find_element_by_css_selector("div#container.container div a.btn.btn-info.btn-info").send_keys(Keys.ENTER)
+        
+        #html body div#container.container div a.btn.btn-info.btn-info
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_link_text(u"新 建").click()
         driver.find_element_by_id("recharge_setting_form_money_give").clear()
         driver.find_element_by_id("recharge_setting_form_money_give").send_keys("100")
         driver.find_element_by_id("recharge_setting_form_min").clear()
         driver.find_element_by_id("recharge_setting_form_min").send_keys("100")
-        driver.find_element_by_id("recharge_setting_form_max").clear()
-        driver.find_element_by_id("recharge_setting_form_max").send_keys("1000")
+#         driver.find_element_by_id("recharge_setting_form_max").clear()
+#         driver.find_element_by_id("recharge_setting_form_max").send_keys("1000")
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         addchizhifanxian=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text

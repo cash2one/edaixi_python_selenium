@@ -36,7 +36,7 @@ class OpsTestcase05PriceClothes(unittest.TestCase):
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(4)+") a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(5)+") a").click()
         #shtml body div#container.container ul#myTab.nav.nav-tabs li a.active
         #ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
         #driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li:nth-child(1) a").click()
@@ -59,7 +59,8 @@ class OpsTestcase05PriceClothes(unittest.TestCase):
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         #html body div#container.container table.table.table-bordered.table-striped tbody tr:last-child td:last-child a.btn.btn-sm.btn-info
         #driver.find_element_by_xpath(u"(//a[contains(text(),'编辑')])[6]").click()
-        driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child.btn.btn-sm.btn-info").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(5)+") a").click()
+        #driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child.btn.btn-sm.btn-info").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("supplier_good_form_description").clear()
         driver.find_element_by_id("supplier_good_form_description").send_keys("addleimuedit")

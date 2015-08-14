@@ -36,25 +36,26 @@ class KefuTestcase07EstimatemanageMiddleinfos(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         
         print driver.title
-        
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(8)>a").click() 
-        
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div#container.container>ul.nav.navbar-nav.btn-box>li:nth-child(2)>a").click()
-    
+        self.assertEqual(driver.title,u"客服系统")
         #html body #popover_27181.btn.btn-info.my_popover
         driver.find_element_by_css_selector("div#container.container table.table.table-striped tbody tr:first-child td:nth-child(7) a").click()
         #driver.find_element_by_id("popover_27181").click()
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_id("note").clear()
         driver.find_element_by_id("note").send_keys("pingjiamiddle")
         driver.find_element_by_name("commit").click()
-        
+        self.assertEqual(driver.title,u"客服系统")
         #driver.find_element_by_link_text("714604").click()
         
         driver.find_element_by_css_selector("div#container.container table.table.table-striped tbody tr:first-child td:nth-child(2) a").click()
         #html body div#container.container table.table.table-striped tbody tr:first-child td:nth-child(2) a
         
         print driver.title
-        self.assertEquals(driver.title,u"客服系统")
+        self.assertEqual(driver.title,u"客服系统")
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
