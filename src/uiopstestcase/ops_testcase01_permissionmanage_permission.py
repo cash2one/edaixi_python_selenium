@@ -7,6 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser
 from selenium.webdriver.common.action_chains import ActionChains
+from uiappobject.appobjectops import appobjectops
 
 class OpsTestcase01Permissionmanagepermission(unittest.TestCase):
     def setUp(self):
@@ -29,7 +30,8 @@ class OpsTestcase01Permissionmanagepermission(unittest.TestCase):
         driver.get(self.base_url + "/")
         #html body div#container.container h3.text-center.text-primary a.btn.btn-success.text-center
         #driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center").click()
-        loginclick=driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center")
+        #loginclick=driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center")
+        loginclick=driver.find_element_by_css_selector(appobjectops.permloginClickButton)
         ActionChains(driver).double_click(loginclick).perform()
         driver.find_element_by_id("username").clear()
         driver.find_element_by_id("username").send_keys(USER_NAME)
@@ -39,9 +41,10 @@ class OpsTestcase01Permissionmanagepermission(unittest.TestCase):
         print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         time.sleep(2)
+        driver.find_element_by_css_selector(appobjectops.clickPermissionLink).click()
         #permissionlinkclick=driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li.dropdown a.dropdown-toggle")
         #ActionChains(driver).double_click(permissionlinkclick).perform()
-        driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li.dropdown a.dropdown-toggle").click()
+        #driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li.dropdown a.dropdown-toggle").click()
         #driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:first-child.dropdown ul.dropdown-menu li:first-child a").click()
         #driver.find_element_by_link_text(u"权限管理").click()
         #driver.find_element_by_css_selector("ul.nav.navbar-nav > li:first-child.dropdown > ul.dropdown-menu > li:first-child > a").send_keys(Keys.ENTER)
@@ -53,7 +56,9 @@ class OpsTestcase01Permissionmanagepermission(unittest.TestCase):
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_xpath("/html/body/div[1]/div/div/ul/li[1]/ul/li[1]/a").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
-        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body table.table.table-striped tbody tr:first-child td:last-child div.btn-toolbar a.btn.btn-sm.btn-success").click()
+        #driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body table.table.table-striped tbody tr:first-child td:last-child div.btn-toolbar a.btn.btn-sm.btn-success").click()
+        driver.find_element_by_css_selector(appobjectops.clickPermissionButton).click()
+        
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("worker_is_admin").click()
         driver.find_element_by_id("worker_is_city_manager").click()
