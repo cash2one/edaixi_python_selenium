@@ -40,6 +40,7 @@ from kefu_testcase07_estimatemanage_bandinfos import *
 from kefu_testcase07_estimatemanage_goodinfos import *
 from kefu_testcase07_estimatemanage_middleinfos  import  *
 
+from kefu_testcase08_estimatecomplain_process import *
 
 
 if __name__ == '__main__':  
@@ -116,6 +117,9 @@ if __name__ == '__main__':
     suite.addTest(KefuTestcase07EstimatemanageBandinfos('test_kefu_testcase07_estimatemanage_bandinfos'))
     time.sleep(3)
     
+    #ops testcase08
+    suite.addTest(KefuTestcase08EstimateComplainProcess('test_kefu_testcase08_estimatecomplain_process'))
+    time.sleep(3)
 
     currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
     print currenttime

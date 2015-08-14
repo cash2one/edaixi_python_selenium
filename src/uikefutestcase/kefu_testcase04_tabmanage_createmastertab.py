@@ -43,7 +43,7 @@ class KefuTestcase04TabmanageCreateMastertab(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         
         print driver.title
-        
+        self.assertEqual(driver.title,u"客服系统")
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
         global cursor 
         cursor = conn.cursor() 
@@ -54,9 +54,10 @@ class KefuTestcase04TabmanageCreateMastertab(unittest.TestCase):
         conn.close()
         
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(4)>a").click()
-       
+        self.assertEqual(driver.title,u"客服系统")
         #driver.find_element_by_id("add_tag").click()
         driver.find_element_by_css_selector("div#container.container div.col-sm-4 a#add_tag").send_keys(Keys.ENTER)
+        self.assertEqual(driver.title,u"客服系统")
         #html body div#container.container div.col-sm-4 a#add_tag.btn.btn-success
         driver.find_element_by_id("tag_name").clear()
         driver.find_element_by_id("tag_name").send_keys("addmastertagluke"+str(random.randint(1,100)))

@@ -57,6 +57,7 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         #driver.find_element_by_link_text(u"新建城市").click()
         #driver.find_elements_by_css_selector("div#container.container a.btn.btn-infos").click()
         driver.find_element_by_xpath("/html/body/div/a").click()
+        self.assertEqual(driver.title,u"物流")
         cityidname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body div.orders_container form#new_map_city.form-horizontal.new_map_city div.form-inputs div.form-group.select.required.map_city_api_city_id div.col-sm-8 select#map_city_api_city_id.select.required.form-control option:nth-child(2)").text
         print cityidname
         Select(driver.find_element_by_id("map_city_api_city_id")).select_by_visible_text(cityidname)

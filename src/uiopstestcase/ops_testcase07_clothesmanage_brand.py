@@ -37,16 +37,16 @@ class OpsTestcase07clothesmanagebrand(unittest.TestCase):
         #self.assertTrue(driver.title, u"e袋洗城市运营后台")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
                         
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(8)+")>a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(7)+")>a").click()
         driver.implicitly_wait(10)
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
-        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child("+str(8)+").dropdown ul.dropdown-menu li:nth-child("+str(3)+") a").send_keys(Keys.ENTER)
+        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child("+str(7)+").dropdown ul.dropdown-menu li:nth-child("+str(3)+") a").send_keys(Keys.ENTER)
         
         print driver.title
         #self.assertTrue(driver.title, u"e袋洗城市运营后台111s")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_link_text(u"洗衣").click()
-        driver.find_element_by_css_selector("div#container.container ul#myTab.nav.nav-tabs li:first-child a").send_keys(Keys.ENTER)
+        driver.find_element_by_css_selector("div#container.container>ul#myTab.nav.nav-tabs>li:first-child>a").send_keys(Keys.ENTER)
         #driver.find_element_by_link_text(u"新 建").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         

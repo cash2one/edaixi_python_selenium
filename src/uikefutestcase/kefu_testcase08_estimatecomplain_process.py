@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
 
-class KefuTestcase06UsuallyqueryUserquery(unittest.TestCase):
+class KefuTestcase08EstimateComplainProcess(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
@@ -23,7 +23,7 @@ class KefuTestcase06UsuallyqueryUserquery(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_kefu_testcase06_usuallyquery_userquery(self):
+    def test_kefu_testcase08_estimatecomplain_process(self):
         driver = self.driver
         #driver.get(self.base_url + "/orders/new")
         driver.get(self.base_url + "/")
@@ -37,13 +37,28 @@ class KefuTestcase06UsuallyqueryUserquery(unittest.TestCase):
         
         print driver.title
         self.assertEqual(driver.title,u"客服系统")
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7)>a").click() 
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(9)+")>a").click() 
+#         self.assertEqual(driver.title,u"客服系统")
+#         driver.find_element_by_css_selector("div#container.container>ul.nav.navbar-nav.btn-box>li:nth-child(3)>a").click()
+#         self.assertEqual(driver.title,u"客服系统")
+#         #html body #popover_27181.btn.btn-info.my_popover
+#         driver.find_element_by_css_selector("div#container.container table.table.table-striped tbody tr:first-child td:nth-child(7) a").click()
+#         #driver.find_element_by_id("popover_27181").click()
+#         self.assertEqual(driver.title,u"客服系统")
+#         driver.find_element_by_id("note").clear()
+#         driver.find_element_by_id("note").send_keys("pingjiagood")
+#         driver.find_element_by_name("commit").click()
+        driver.find_element_by_link_text(u"订单投诉").click()
         self.assertEqual(driver.title,u"客服系统")
-        
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7).dropdown>ul.dropdown-menu>li:nth-child(4)>a").click()
+        driver.find_element_by_link_text(u"处理中").click()
         self.assertEqual(driver.title,u"客服系统")
+        #driver.find_element_by_link_text("714604").click()
+        self.assertEqual(driver.title,u"客服系统")
+
+        #html body div#container.container table.table.table-striped tbody tr:first-child td:nth-child(2) a
         
-    
+        print driver.title
+        self.assertEqual(driver.title,u"客服系统")
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

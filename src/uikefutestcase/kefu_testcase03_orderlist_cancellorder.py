@@ -45,7 +45,7 @@ class KefuTestcase03OrderlistCancellorder(unittest.TestCase):
         self.assertEqual(driver.title,u"客服系统")
     
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(3)>a").click()
-       
+        self.assertEqual(driver.title,u"客服系统")
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
         global cursor 
         cursor = conn.cursor() 
@@ -59,7 +59,7 @@ class KefuTestcase03OrderlistCancellorder(unittest.TestCase):
         
         driver.find_element_by_css_selector("input.btn.btn-success.col-md-1").click()
         time.sleep(2)
-        
+        self.assertEqual(driver.title,u"客服系统")
         checkboxes = driver.find_elements_by_css_selector('input[type=checkbox]')
         for checkbox in checkboxes:
             checkbox.click()
@@ -88,7 +88,7 @@ class KefuTestcase03OrderlistCancellorder(unittest.TestCase):
         conn.commit()
         cursor.close()
         conn.close()
-        self.assertEquals(driver.title,u"客服系统")
+        self.assertEqual(driver.title,u"客服系统")
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

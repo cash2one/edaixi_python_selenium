@@ -36,11 +36,11 @@ class KefuTestcase06UsuallyquerySendSms(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         
         print driver.title
-        
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7)>a").click() 
-
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7).dropdown>ul.dropdown-menu>li:nth-child(8)>a").click()
-        
+        self.assertEqual(driver.title,u"客服系统")
         
         driver.find_element_by_id("sms_form_tel").clear()
         driver.find_element_by_id("sms_form_tel").send_keys("18701524517")
@@ -52,7 +52,7 @@ class KefuTestcase06UsuallyquerySendSms(unittest.TestCase):
         driver.implicitly_wait(20)
         
         
-        self.assertEquals(driver.title,u"客服系统")
+        self.assertEqual(driver.title,u"客服系统")
         #kefusendsms=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         
         ''''

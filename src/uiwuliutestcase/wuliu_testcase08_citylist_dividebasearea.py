@@ -73,7 +73,6 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         #driver.find_element_by_css_selector("#address_search_bar > div.btn.btn-info").click()
         #driver.find_element_by_id("edit_polygon_btn").click()
         
-        
         self.assertEqual(driver.title, u"物流")
         #cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0 WHERE ordersn='"+ordersn+"'")
         

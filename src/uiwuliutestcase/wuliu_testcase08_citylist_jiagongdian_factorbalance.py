@@ -91,7 +91,6 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         
         self.assertEqual(driver.title, u"物流")
     
-
     
         #driver.find_element_by_link_text(u"创建规则").click()
         Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"洗衣")

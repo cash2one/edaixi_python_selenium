@@ -33,25 +33,27 @@ class KefuTestcase01FeedbackAlllistFiltered(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:first-child>a").click()
         #driver.find_element_by_link_text(u"反馈总列表").click()
-
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary ul.nav.nav-tabs li:nth-child(4) a").click()
         #driver.find_element_by_link_text(u"处理").click()
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("a.btn.btn-success.btn-sm").click()
         #driver.find_element_by_id("tag_to_feedback_71874").click()
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div#container.container div.col-sm-6 ul#replies_navi.nav.nav-tabs li:first-child#ajax_customer_feedbacks_all.active a").click()
         
- 
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div#container.container div.row div.col-sm-12 div.div a.btn.btn-info.pull-right").click()
-    
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div#container.container table.table.table-striped tbody tr:first-child td:nth-child(8) a.btn.btn-sm.btn-info").click()
         self.assertEqual(u"确认发券吗？", self.close_alert_and_get_its_text())
         
         print driver.title
         #self.assert_(driver.title, u"客服系统")
-        self.assertEquals(driver.title,u"客服系统")
+        self.assertEqual(driver.title,u"客服系统")
         
         
     def is_element_present(self, how, what):

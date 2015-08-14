@@ -62,10 +62,12 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         driver.find_element_by_id("order_search_form_ordersn").send_keys(ordersn)
         
         driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title,u"客服系统")
         
         driver.find_element_by_css_selector("div#container.container div#content-container div#content div.panel.panel-primary form.form-horizontal.batch_update table.table.table-striped tbody tr:first-child td:nth-child(2) a").click()
-        
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div#container.container a#fanxi_button.btn.btn-info").click()
+        self.assertEqual(driver.title,u"客服系统")
         winBeforeHandle = driver.current_window_handle
         winHandles = driver.window_handles
         for handle in winHandles:
@@ -75,7 +77,7 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
                 
         #datestr=str(PythonDateUtils.get_day_of_day(1))[-2:]
         datestr=str(PythonDateUtils.get_day_of_day(1))
-        print datestr
+        print " the datestr is ",datestr
         
         #driver.find_element_by_id("fanxi_order_form_washing_date").send_keys(datestr)
         #driver.find_element_by_id("fanxi_order_form_washing_date").click()
@@ -92,7 +94,11 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         driver.find_element_by_xpath("//input[@type='submit']")
         #driver.find_elements(By.XPATH, "//input[@type='submit']")
         
-        self.assertEquals(driver.title,u"客服系统")
+        self.assertEqual(driver.title,u"客服系统")
+        
+#         createfanxidanresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
+# #         print " the createfanxidanresult is ",createfanxidanresult
+# #         
         cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0 WHERE ordersn='"+ordersn+"'")
 
         #提交到数据库执行
@@ -122,7 +128,7 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

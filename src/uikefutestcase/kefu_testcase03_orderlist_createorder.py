@@ -40,12 +40,12 @@ class KefuTestcase03OrderlistCreateorder(unittest.TestCase):
         self.assertEqual(driver.title,u"客服系统")
     
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(3)>a").click()
-       
+        self.assertEqual(driver.title,u"客服系统")
         #html body div#container.container>div#content-container>a.btn.btn-info.col-md-1
         #createorderclick=driver.find_element_by_css_selector("div#container.container>div#content-container>a.btn.btn-info.col-md-1")
         createorderclick=driver.find_element_by_xpath("/html/body/div[2]/div/form/a[1]")
         ActionChains(driver).double_click(createorderclick).perform()
-        
+        self.assertEqual(driver.title,u"客服系统")
         Select(driver.find_element_by_id("new_order_form_good")).select_by_visible_text(u"洗衣")
         
         driver.find_element_by_id("new_order_form_totalnum").clear()
@@ -73,7 +73,7 @@ class KefuTestcase03OrderlistCreateorder(unittest.TestCase):
         #driver.find_element_by_id("new_order_form_washing_date").click()
         #driver.find_element_by_link_text("29").click()
         datestr=str(PythonDateUtils.get_day_of_day(2))
-        print datestr
+        print " the datestr is ",datestr
         
         driver.find_element_by_id("new_order_form_washing_date").send_keys(datestr)
         
@@ -84,16 +84,13 @@ class KefuTestcase03OrderlistCreateorder(unittest.TestCase):
         
         driver.find_element_by_name("commit").click()
         #driver.find_element_by_css_selector("input.button.btn.btn-info.btn-style-width").send_keys(Keys.ENTER)
-    
         #html body div#container.container div.alert.fade.in.alert-success
         #createorderresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         #print createorderresult
         #if createorderresult== u"订单已添加":
             #print "create order is ok"
-
-        #else:
-            #raise Exception  
-        self.assertEquals(driver.title,u"客服系统")
+ 
+        self.assertEqual(driver.title,u"客服系统")
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

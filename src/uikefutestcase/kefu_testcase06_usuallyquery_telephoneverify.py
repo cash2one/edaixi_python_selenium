@@ -36,9 +36,9 @@ class KefuTestcase06UsuallyqueryTelephoneVerify(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         
         print driver.title
-        
+        self.assertEqual(driver.title,u"客服系统")  
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7)>a").click() 
-
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7).dropdown>ul.dropdown-menu>li:nth-child(9)>a").click()
         driver.find_element_by_id("mobile").clear()
         driver.find_element_by_id("mobile").send_keys("18888888888")
@@ -46,7 +46,7 @@ class KefuTestcase06UsuallyqueryTelephoneVerify(unittest.TestCase):
         driver.find_element_by_name("commit").click()
         assert u"客服系统" in driver.title
         #html body div#container.container form div.input-group span.input-group-btn input.btn.btn-info
-        self.assertEquals(driver.title,u"客服系统")
+        self.assertEqual(driver.title,u"客服系统")
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

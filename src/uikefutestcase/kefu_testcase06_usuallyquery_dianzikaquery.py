@@ -35,15 +35,15 @@ class KefuTestcase06UsuallyqueryDianzikaquery(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         
-        print driver.title
-        
+        #print driver.title
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7)>a").click() 
-
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7).dropdown>ul.dropdown-menu>li:nth-child(3)>a").click()
         
         print driver.title
         #self.assertTrue(driver.title, u"1客服系统")
-        self.assertEquals(driver.title,u"客服系统")
+        self.assertEqual(driver.title,u"客服系统")
         #self.asserte
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

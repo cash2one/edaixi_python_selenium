@@ -36,9 +36,10 @@ class KefuTestcase05UsuallyreplyCrud(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         
         print driver.title
-        
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(5)>a").click() 
-
+        self.assertEqual(driver.title,u"客服系统")
+        
         driver.find_element_by_id("content").clear()
         driver.find_element_by_id("content").send_keys("hell,changyonghuifu")
         driver.find_element_by_name("commit").click()
@@ -47,7 +48,7 @@ class KefuTestcase05UsuallyreplyCrud(unittest.TestCase):
         time.sleep(2)
         
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body table.table.table-striped tbody tr:first-child td:last-child a").click()
-        
+        self.assertEqual(driver.title,u"客服系统")
         #driver.find_element_by_link_text(u"删除").click()
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确定删除[\s\S]$")
     

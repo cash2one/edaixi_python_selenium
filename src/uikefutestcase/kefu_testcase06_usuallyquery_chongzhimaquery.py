@@ -36,12 +36,12 @@ class KefuTestcase06UsuallyqueryChongzhimaquery(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         
         print driver.title
-        
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7)>a").click() 
-
+        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(7).dropdown>ul.dropdown-menu>li:nth-child(5)>a").click()
         
-        self.assertEquals(driver.title,u"客服系统")
+        self.assertEqual(driver.title,u"客服系统")
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
