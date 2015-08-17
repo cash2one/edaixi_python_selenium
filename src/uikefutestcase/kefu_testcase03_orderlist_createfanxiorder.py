@@ -52,11 +52,18 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         global cursor 
         cursor = conn.cursor() 
         
-        n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
-        for i in xrange(cursor.rowcount):
-            ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
-        print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
-        
+#         n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
+#         for i in xrange(cursor.rowcount):
+#             ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
+#         print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
+#         
+#         global ordersn
+#         n = cursor.execute("SELECT ordersn FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
+#         for i in xrange(cursor.rowcount):
+#             ordersn = cursor.fetchone()
+#             ordervrnum=ordersn
+#         print ordervrnum
+        ordersn="0723821336144"
 
         driver.find_element_by_id("order_search_form_ordersn").clear()
         driver.find_element_by_id("order_search_form_ordersn").send_keys(ordersn)
@@ -76,11 +83,11 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
                 
                 
         #datestr=str(PythonDateUtils.get_day_of_day(1))[-2:]
-        datestr=str(PythonDateUtils.get_day_of_day(1))
+        datestr=str(PythonDateUtils.get_day_of_day(3))
         print " the datestr is ",datestr
         
-        #driver.find_element_by_id("fanxi_order_form_washing_date").send_keys(datestr)
-        #driver.find_element_by_id("fanxi_order_form_washing_date").click()
+        driver.find_element_by_id("fanxi_order_form_washing_date").send_keys(datestr)
+        driver.find_element_by_id("fanxi_order_form_washing_date").click()
         #driver.find_element_by_link_text(datestr).click()
         fanxiwashingtime=driver.find_element_by_xpath("/html/body/div[2]/form/table/tbody/tr[8]/td[2]/div/div/select/option[2]").text
         #fanxiwashingtime=driver.find_element_by_css_selector("div#container.container form#new_fanxi_order_form_1039230.form-horizontal.new_fanxi_order_form table.table.table-striped.search-table tbody tr:nth-last-child(4) td:last-child div.form-group.select.required.fanxi_order_form_washing_time div.col-sm-8 select#fanxi_order_form_washing_time.select.required.form-control option:nth-child(2)").text
@@ -91,14 +98,15 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         driver.find_element_by_id("fanxi_order_form_remark").send_keys("beijingjiangtailu")
         
         #driver.find_element_by_css_selector("div#container.container form#new_fanxi_order_form_254.form-horizontal.new_fanxi_order_form table.table.table-striped.search-table tbody tr:last-child td:last-child input.button.btn.btn-info.btn-style-width").click()
-        driver.find_element_by_xpath("//input[@type='submit']")
+        driver.find_element_by_xpath("//input[@type='submit']").click()
         #driver.find_elements(By.XPATH, "//input[@type='submit']")
         
         self.assertEqual(driver.title,u"客服系统")
         
-#         createfanxidanresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
-# #         print " the createfanxidanresult is ",createfanxidanresult
-# #         
+        createfanxidanresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
+
+        print " the createfanxidanresult is ",createfanxidanresult
+        #self.assertEqual(createfanxidanresult,u"客服系统")
         cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0 WHERE ordersn='"+ordersn+"'")
 
         #提交到数据库执行
@@ -128,7 +136,7 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        #self.driver.quit()
+        self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
