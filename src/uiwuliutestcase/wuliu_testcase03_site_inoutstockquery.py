@@ -37,7 +37,7 @@ class WuliuTestcase03siteinoutstockquery(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-        self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         time.sleep(2)
         
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(3).dropdown a").click()
@@ -46,12 +46,31 @@ class WuliuTestcase03siteinoutstockquery(unittest.TestCase):
         #driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:nth-child(2)>ul.dropdown-menu>li:first-child>a").click()
         #driver.find_element_by_xpath("/html/body/header/div/nav/ul/li[2]/ul/li[3]/a").click()
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li:nth-child(3) a").click()
-      
         #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a
-
-        driver.find_element_by_name("commit").click()
         
-        print driver.title
+#         jiagongdian=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body form#jiagongdian_form table tbody tr td:nth-last-child(3) select#target_type.form-control.single_input option:nth-child(2)").text
+#         print jiagongdian
+#         Select(driver.find_element_by_id("target_type")).select_by_visible_text(jiagongdian)
+#         
+#         chukuname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body form#jiagongdian_form table tbody tr td:nth-child(2) select#in_out_type.form-control.single_input option:nth-child(2)").text
+#         print chukuname
+#         #html body div#container.container div.panel.panel-primary div.panle-body form#jiagongdian_form table tbody tr td:nth-child(2) select#in_out_type.form-control.single_input option:nth-child(2)
+#         Select(driver.find_element_by_id("in_out_type")).select_by_visible_text(chukuname)
+        
+#         driver.find_element_by_name("commit").click()
+#         
+#         print driver.title
+#         self.assertEqual(driver.title, u"物流")
+        #html body div#container.container div.panel.panel-primary div.panle-body form#wangdian_form table tbody tr td:nth-child(2) select#in_out_type.form-control.single_input option:nth-child(1)
+        #rukuname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body form#jiagongdian_form table tbody tr td:nth-child(2) select#in_out_type.form-control.single_input option:nth-child(1)").text
+        rukuname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body form#wangdian_form table tbody tr td:nth-child(2) select#in_out_type.form-control.single_input option:nth-child(1)").text
+        
+        #div#container.container div.panel.panel-primary div.panle-body form#wangdian_form table tbody tr td:nth-child(2) select#in_out_type.form-control.single_input option:nth-child(1)
+        print rukuname
+        
+        Select(driver.find_element_by_id("in_out_type")).select_by_visible_text(rukuname)
+        driver.find_element_by_name("commit").click()
+        #print driver.title
         self.assertEqual(driver.title, u"物流")
         
     def is_element_present(self, how, what):

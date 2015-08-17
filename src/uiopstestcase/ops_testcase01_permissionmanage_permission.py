@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser
 from selenium.webdriver.common.action_chains import ActionChains
-from uiappobject.appobjectops import appobjectops
+import appobjectops
 
 class OpsTestcase01Permissionmanagepermission(unittest.TestCase):
     def setUp(self):

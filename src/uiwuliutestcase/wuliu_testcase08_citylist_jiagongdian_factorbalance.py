@@ -78,7 +78,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         driver.find_element_by_id("outlet_rule_form_end_time").send_keys(str(wuliu_utiltools.get_day_of_day(3)))
         #driver.find_element_by_link_text("20").click()
         driver.find_element_by_name("commit").click()
-        
+        self.assertEqual(driver.title, u"物流")
         time.sleep(2)
         hell=driver.find_element_by_css_selector("div#container.container>div#outlet_rule>table.table.table-striped>tbody>tr:last-child>td:last-child>a").text
         print hell

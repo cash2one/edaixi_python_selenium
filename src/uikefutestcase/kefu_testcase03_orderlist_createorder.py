@@ -86,10 +86,7 @@ class KefuTestcase03OrderlistCreateorder(unittest.TestCase):
         #driver.find_element_by_css_selector("input.button.btn.btn-info.btn-style-width").send_keys(Keys.ENTER)
         #html body div#container.container div.alert.fade.in.alert-success
         #createorderresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
-        #print createorderresult
-        #if createorderresult== u"订单已添加":
-            #print "create order is ok"
- 
+
         self.assertEqual(driver.title,u"客服系统")
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

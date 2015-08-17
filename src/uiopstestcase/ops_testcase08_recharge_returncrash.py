@@ -6,8 +6,8 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
-from uiappobject.appobjectops import appobjectops
-
+#from uiappobject.appobjectops import appobjectops
+import appobjectops
 class OpsTestcase08rechargereturncrash(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()

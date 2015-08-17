@@ -45,7 +45,7 @@ class WuliuTestcase03sitedelivery(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         print driver.title
-        self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         time.sleep(2)
         
                 
@@ -95,7 +95,8 @@ class WuliuTestcase03sitedelivery(unittest.TestCase):
         
         #driver.find_element_by_xpath("/html/body/header/div/nav/ul/li[2]/ul/li[2]/a").click()
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li:nth-child(2) a").click()
-              
+        self.assertEqual(driver.title, u"物流")
+        
         Select(driver.find_element_by_id("store_type")).select_by_visible_text(u"加工店")
         driver.find_element_by_id("order_key").clear()
         driver.find_element_by_id("order_key").send_keys("E0000000006")
@@ -107,7 +108,6 @@ class WuliuTestcase03sitedelivery(unittest.TestCase):
         for handle in winHandles:
             if winBeforeHandle != handle:
                 driver.switch_to_window(handle)
-        
         
         #html body div#container.container div.panel.panel-primary p.text-center b#check_in_msg
         delicerysitename=driver.find_element_by_xpath("/html/body/div/div/p[1]/b").text

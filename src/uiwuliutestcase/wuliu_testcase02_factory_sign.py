@@ -69,11 +69,7 @@ class WuliuTestcase02factorysign(unittest.TestCase):
         
         self.assertEqual(driver.title, u"物流")
         #driver.find_element_by_css_selector("div.container > ul.nav.navbar-nav > li:nth-child(2).dropdown > ul.dropdown-menu > li:first-child > a").click()
-        #print rukuqinshou
-        
-        #ActionChains(driver).context_click(rukuqinshou).perform()
-        #ActionChains(driver).double_click(rukuqinshou).perform()
-        
+
         #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
         #driver.find_element_by_css_selector("div.container>nav.collapse.navbar-collapse.bs-navbar-collapse>ul.nav.navbar-nav>li:nth-child(2)>ul.dropdown-menu>li:first-child>a").click()
         driver.find_element_by_xpath("/html/body/header/div/nav/ul/li[2]/ul/li[1]/a").click()

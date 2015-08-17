@@ -45,8 +45,9 @@ class WuliuTestcase03sitesign(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
-        self.assertTrue(driver.title, u"物流")
+        #print driver.title
+        #self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         time.sleep(2)
         
         
@@ -54,11 +55,16 @@ class WuliuTestcase03sitesign(unittest.TestCase):
         global cursor 
         cursor = conn.cursor() 
         
-        cursor.execute("UPDATE ims_washing_order SET status_delivery='1' ,qianshoudian_id= NULL WHERE bagsn='E0000000006'")
+        n = cursor.execute("SELECT washorder.bagsn FROM ims_washing_order AS washorder WHERE washorder.status_delivery=1 AND washorder.bagsn IS NOT NULL ORDER BY washorder.id") 
+        for i in xrange(cursor.rowcount):
+            bagsn= cursor.fetchone()
+        print " the bagsn is ",str(bagsn)[3:-3]
+        
+        cursor.execute("UPDATE ims_washing_order SET status_delivery='1' ,status='7' ,jiagongdian_id=NULL,qianshoudian_id= NULL WHERE bagsn='"+str(bagsn)[3:-3]+"'")
         conn.commit()
         
      
-        n = cursor.execute("SELECT ordersn,bagsn,status_delivery,jiagongdian_id,qianshoudian_id  FROM ims_washing_order WHERE bagsn='E0000000006'") 
+        n = cursor.execute("SELECT ordersn,bagsn,status_delivery,jiagongdian_id,qianshoudian_id  FROM ims_washing_order WHERE bagsn='"+str(bagsn)[3:-3]+"'") 
         for i in xrange(cursor.rowcount):
             ordersn ,bagsn,status_delivery,jiagongdian_id,qianshoudian_id = cursor.fetchone()
         print ordersn ,bagsn,status_delivery,jiagongdian_id,qianshoudian_id
@@ -79,15 +85,13 @@ class WuliuTestcase03sitesign(unittest.TestCase):
         
         print driver.title
         self.assertEqual(driver.title, u"物流")
-        
         #cursor.execute("UPDATE ims_washing_order SET status_delivery='1',qianshoudian_id= NULL WHERE bagsn='E0000000006'")
         #conn.commit()
-        #self.assertEqual(driver.title, u"物流")
-        qianshousuccess=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary p.text-center b").text
-        #check_in_msg
-        print "===============",qianshousuccess
-        #self.assertEqual(qianshousuccess, u"签收成功！")
-        
+#         qianshousuccess=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary p.text-center b").text
+#         #check_in_msg
+#         print "===============qianshousuccess is  ",qianshousuccess
+#         #self.assertEqual(qianshousuccess, u"签收成功！")
+#         self.assertEqual(qianshousuccess, u"签收成功！")
         cursor.close()
         conn.close()
         

@@ -36,11 +36,6 @@ class KefuTestcase01FeedbackAlllistAll(unittest.TestCase):
         
         self.assertEqual(driver.title,u"客服系统")
 
-#         if "We're sorry" in driver.title:
-#             print "We're sorry, but something went wrong."
-#             raise NameError
-#         else:
-#             pass
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:first-child>a").click()
         #driver.find_element_by_link_text(u"反馈总列表").click()
         #driver.find_element_by_link_text(u"踢").click()

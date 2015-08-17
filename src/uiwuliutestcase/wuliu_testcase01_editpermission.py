@@ -61,7 +61,7 @@ class WuliuTestcase01EditPermission(unittest.TestCase):
         driver.find_element_by_name("commit").click()
         #self.asser.assertTrue(driver.title, u"物流111")
         self.assertEqual(driver.title, u"物流")
-        driver.get_screenshot_as_file("C:\\edaixi_testdata\\myluke.png")
+        #driver.get_screenshot_as_file("C:\\edaixi_testdata\\myluke.png")
         
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
