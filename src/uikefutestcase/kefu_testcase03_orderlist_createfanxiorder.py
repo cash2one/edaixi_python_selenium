@@ -52,17 +52,26 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         global cursor 
         cursor = conn.cursor() 
         
-#         n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
-#         for i in xrange(cursor.rowcount):
-#             ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
-#         print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
 #         
+#         n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
+#         print " the n  is ",n 
+# 
+#         print " the cursor.fetchone() is ",cursor.fetchone()
+#         for i in xrange(cursor.rowcount):
+#             cursor.fetchone()
+#             print " the cursor.fetchone() is ",cursor.fetchone()
+        #print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
+         
 #         global ordersn
 #         n = cursor.execute("SELECT ordersn FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
 #         for i in xrange(cursor.rowcount):
 #             ordersn = cursor.fetchone()
 #             ordervrnum=ordersn
 #         print ordervrnum
+#         cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0 WHERE ordersn='"+ordersn+"'")
+
+        #conn.commit()
+        #This is test data for kefu create fanxidan business
         ordersn="0723821336144"
 
         driver.find_element_by_id("order_search_form_ordersn").clear()
