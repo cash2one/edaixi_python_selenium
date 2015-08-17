@@ -48,6 +48,9 @@ class OpsTestcase04CategorySubStation(unittest.TestCase):
         print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #self.assert_(driver.title, u"e袋洗城市运营后台")
+        
+        ##Master admin login can approve and agrre with 
+        ##Brach admin login and submit a request 
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
