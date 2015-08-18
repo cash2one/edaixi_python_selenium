@@ -6,10 +6,11 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
-
+import appobjectops
 class OpsTestcase07clothesmanageeffect(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectops.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_ops.conf")
@@ -32,6 +33,7 @@ class OpsTestcase07clothesmanageeffect(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
+        time.sleep(2)
         print driver.title
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         #self.assertTrue(driver.title, u"e袋洗城市运营后台")

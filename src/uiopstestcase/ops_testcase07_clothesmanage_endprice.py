@@ -7,9 +7,11 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
 import random
+import appobjectops
 class OpsTestcase07clothesmanageendprice(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectops.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_ops.conf")
@@ -34,7 +36,7 @@ class OpsTestcase07clothesmanageendprice(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         print driver.title
         #self.assert_(driver.title, u"e袋洗城市运营后台")
-        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        #self.assertEqual(driver.title, u"e袋洗城市运营后台")
                 
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(7)+") a").click()
         driver.implicitly_wait(10)
@@ -70,6 +72,11 @@ class OpsTestcase07clothesmanageendprice(unittest.TestCase):
         
         driver.find_element_by_name("commit").click()
         
+        
+        addinfo=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
+        print " the addinfo is ",addinfo
+        
+        
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         randomstr2=str(random.randint(0,999999))
         print randomstr2
@@ -91,20 +98,24 @@ class OpsTestcase07clothesmanageendprice(unittest.TestCase):
         #driver.find_element_by_name("commit").click()
         
         updateinfo=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
-        print updateinfo
-
+        print " the updateinfo is ",updateinfo
+        assert u"衣物价格已更新" in updateinfo
+        time.sleep(2)
         #html body div#container.container table.table.table-bordered.table-striped tbody tr td a.btn.btn-sm.btn-danger
         driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:last-child").send_keys(Keys.ENTER)
         #driver.find_element_by_link_text(u"删除").click()
         #self.assertEqual(driver.title, u"e袋洗城市运营后台")
-        print driver.switch_to_alert().text
-        self.assertRegexpMatches(self.close_alert_and_get_its_text(), ur"^确认删除衣物价格[\s\S]$")
+        #print driver.switch_to_alert().text
+        time.sleep(2)
+        driver.switch_to_alert().accept()
+        #self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除衣物价格[\s\S]$")
         
         #html body div#container.container div.alert.fade.in.alert-error
         deleteinfo=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-error").text
-        print deleteinfo
+#         print deleteinfo
+        print " the deleteinfo is ",deleteinfo
         #self.assertEqual(deleteinfo, u"衣物价格删除成功")
-        
+        assert u"衣物价格删除成功" in deleteinfo
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
        # 衣物价格已更新  衣物价格删除成功
     

@@ -6,10 +6,11 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
-
+import appobjectops
 class OpsTestcase01DistributionUpDown(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectops.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_ops.conf")
@@ -38,8 +39,8 @@ class OpsTestcase01DistributionUpDown(unittest.TestCase):
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(3)+")>a").send_keys(Keys.ENTER)
         #div#container.container table.table.table-bordered.table-striped tbody tr: td a.btn.btn-sm.btn-danger
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
-        driver.find_element_by_xpath("/html/body/div[1]/div/div/ul/li[3]/ul/li[3]/a").click()
-        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        ##driver.find_element_by_xpath("/html/body/div[1]/div/div/ul/li[3]/ul/li[3]/a").click()
+        #self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #html body div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a
         downactivename=driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a").text
         print " the downactivename is ",downactivename

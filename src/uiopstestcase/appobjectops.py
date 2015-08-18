@@ -1,6 +1,55 @@
 #-*-coding:utf-8-*- 
 #coding=utf-8
 
+from selenium import webdriver
+import threading 
+
+
+
+#@staticmethod  
+def GetInstance():  
+    instance = None  
+    mutex = threading.Lock() 
+    if(instance == None):  
+            mutex.acquire()   
+            if(instance == None):  
+                #printInfo(u'初始化单例')  
+                print u"initial singleton .........."
+                #instance = webdriver.Firefox()
+                instance = webdriver.Ie()
+            else:  
+                print u" Sigleton has been initial...."
+                #printInfo(u'单例已经初始化')    
+            mutex.release()  
+    else:  
+            print u" Sigleton has been initial...."
+            #printInfo(u'单例已经初始化')          
+    return instance  
+    
+    
+class Singleton(): 
+    instance = None  
+    mutex = threading.Lock()    
+    def __init__(self):  
+        pass  
+     
+    @staticmethod  
+    def GetInstance():  
+        if(Singleton.instance == None):  
+            Singleton.mutex.acquire()   
+            if(Singleton.instance == None):  
+                #printInfo(u'初始化单例')  
+                print u"initial singleton .........."
+                Singleton.instance = webdriver.Firefox()
+            else:  
+                print u" Sigleton has been initial...."
+                #printInfo(u'单例已经初始化')    
+            Singleton.mutex.release()  
+        else:  
+            print u" Sigleton has been initial...."
+            #printInfo(u'单例已经初始化')          
+        return Singleton.instance  
+
 #class appobjectops:
 # class appObjectUtils(self):
 #     

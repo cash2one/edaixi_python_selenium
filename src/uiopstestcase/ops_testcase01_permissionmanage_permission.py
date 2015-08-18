@@ -11,7 +11,8 @@ import appobjectops
 
 class OpsTestcase01Permissionmanagepermission(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectops.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_ops.conf")

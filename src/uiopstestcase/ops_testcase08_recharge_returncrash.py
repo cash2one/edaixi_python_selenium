@@ -10,7 +10,8 @@ import unittest, time, re ,ConfigParser
 import appobjectops
 class OpsTestcase08rechargereturncrash(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectops.GetInstance()
         #self.driver =SingleWebDriver.getWebDriverInstance(self)
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()

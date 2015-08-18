@@ -6,10 +6,11 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
-
+import appobjectops
 class OpsTestcase11MarketingToolsSendyouhuiquan(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectops.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_ops.conf")
@@ -44,9 +45,9 @@ class OpsTestcase11MarketingToolsSendyouhuiquan(unittest.TestCase):
         driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child("+str(11)+").dropdown ul.dropdown-menu li:nth-child(2) a").send_keys(Keys.ENTER)
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_link_text(u"发送优惠券").click()
-        driver.find_element_by_id("send_coupon_form_fan_ids").clear()
+        #driver.find_element_by_id("send_coupon_form_fan_ids").clear()
         driver.find_element_by_id("send_coupon_form_fan_ids").send_keys("C:\\edaixi_testdata\\user1.txt")
-        driver.find_element_by_id("send_coupon_form_coupon_id").clear()
+        #driver.find_element_by_id("send_coupon_form_coupon_id").clear()
         driver.find_element_by_id("send_coupon_form_coupon_id").send_keys("544")
         driver.find_element_by_name("commit").click()
         #html body div#container.container div.alert.fade.in.alert-success

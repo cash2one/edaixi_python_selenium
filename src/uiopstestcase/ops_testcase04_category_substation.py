@@ -6,10 +6,11 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser
-
+import appobjectops
 class OpsTestcase04CategorySubStation(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Ie()
+        #self.driver = webdriver.Ie()
+        self.driver = appobjectops.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_ops.conf")
@@ -55,24 +56,27 @@ class OpsTestcase04CategorySubStation(unittest.TestCase):
             if shenqingvar=="":
                driver.find_element_by_css_selector("button.btn.dropdown-toggler").click()
                driver.find_element_by_link_text("logout").click()
-               print " the driver title is ",driver.title
+               print " the driver title is ",driver.title  
+               driver.implicitly_wait(20)             
                self.loginMasterApproveMethod()
         except NoSuchElementException:
             shenqingvarobj=driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:last-child").text
             print " the shenqingvarobj is  ",shenqingvarobj
             if shenqingvarobj==u"申请下线":
                 driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:last-child").click()
+
                 self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认申请下线?[\s\S]$")
                 shenqingsubmitresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
                 print " the shenqingsubmitresult is  ",shenqingsubmitresult
-                
                 #self.assertEqual(shenqingsubmitresult, u"申请已提交")
                 assert u"申请已提交" in shenqingsubmitresult
                 driver.find_element_by_css_selector("button.btn.dropdown-toggler").click()
                 driver.find_element_by_link_text("logout").click()
+                driver.implicitly_wait(20)  
                 self.loginMasterApproveMethod()
             elif shenqingvarobj==u"申请上线":
                 driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:last-child").click()
+
                 self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认申请上线?[\s\S]$")
                 shenqingsubmitresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
                 print " the shenqingsubmitresult is  ",shenqingsubmitresult
@@ -80,8 +84,9 @@ class OpsTestcase04CategorySubStation(unittest.TestCase):
                 assert u"申请已提交" in shenqingsubmitresult
                 driver.find_element_by_css_selector("button.btn.dropdown-toggler").click()
                 driver.find_element_by_link_text("logout").click()
+                driver.implicitly_wait(20)  
                 self.loginMasterApproveMethod()
-            else:
+        else:
                 pass
         #html body div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2).danger>td:last-child
 
@@ -102,8 +107,8 @@ class OpsTestcase04CategorySubStation(unittest.TestCase):
  
     def loginMasterApproveMethod(self):
         driver = self.driver
-        driver.get(self.base_url + "/")
-        driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center").click()
+#         driver.get(self.base_url + "/")
+#         driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center").click()
         driver.find_element_by_id("username").clear()
         driver.find_element_by_id("username").send_keys(USER_NAME)
         driver.find_element_by_id("password").clear()
@@ -115,8 +120,8 @@ class OpsTestcase04CategorySubStation(unittest.TestCase):
         #ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child("+str(4)+").dropdown ul.dropdown-menu li:nth-child("+str(3)+") a").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
-        
-        shenhecheckfiled=driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child.btn.btn-sm.btn-info").text
+        #html body div#container.container table.table.table-bordered.table-striped tbody tr td a.btn.btn-sm.btn-info
+        shenhecheckfiled=driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:first-child").text
         print " the shenhecheckfiled is ",shenhecheckfiled
         #html body div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child.btn.btn-sm.btn-info
         if shenhecheckfiled==u"审核":

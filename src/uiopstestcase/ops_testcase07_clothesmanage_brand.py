@@ -6,10 +6,11 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser
-
+import appobjectops
 class OpsTestcase07clothesmanagebrand(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectops.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_ops.conf")
@@ -40,7 +41,7 @@ class OpsTestcase07clothesmanagebrand(unittest.TestCase):
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(7)+")>a").click()
         driver.implicitly_wait(10)
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
-        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child("+str(7)+").dropdown ul.dropdown-menu li:nth-child("+str(3)+") a").send_keys(Keys.ENTER)
+        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child("+str(7)+").dropdown ul.dropdown-menu li:nth-child("+str(4)+") a").send_keys(Keys.ENTER)
         
         print driver.title
         #self.assertTrue(driver.title, u"e袋洗城市运营后台111s")
@@ -82,7 +83,7 @@ class OpsTestcase07clothesmanagebrand(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
