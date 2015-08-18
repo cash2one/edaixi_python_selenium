@@ -9,7 +9,7 @@ import unittest, time, re,ConfigParser
 
 class OpsTestcase04CategorySubStation(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.Ie()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_ops.conf")
@@ -28,29 +28,112 @@ class OpsTestcase04CategorySubStation(unittest.TestCase):
         driver.get(self.base_url + "/")
         driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center").click()
         driver.find_element_by_id("username").clear()
-        driver.find_element_by_id("username").send_keys(USER_NAME)
+        driver.find_element_by_id("username").send_keys("rdt7")
         driver.find_element_by_id("password").clear()
-        driver.find_element_by_id("password").send_keys(PASS_WORD)
+        driver.find_element_by_id("password").send_keys("abc123")
         driver.find_element_by_id("login-submit").click()
-        print driver.title
+        print " login ops subsystem admin permisssion is ",driver.title
         
-        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        #self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(4)+") a").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
-        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child("+str(4)+").dropdown ul.dropdown-menu li:nth-child(3) a").click()
+        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child("+str(4)+").dropdown ul.dropdown-menu li:nth-child("+str(1)+") a").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_link_text(u"类目管理").click()
         #driver.find_element_by_link_text(u"分站类目审核").click()
         #driver.find_element_by_link_text(u"查看").click()
-        driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a.btn.btn-sm.btn-info").click()
+        driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child("+str(2)+") td:last-child a.btn.btn-sm.btn-info").click()
+        #html body div#container.container table.table.table-bordered.table-striped tbody tr td a.btn.btn-sm.btn-info
         print driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
-        #self.assert_(driver.title, u"e袋洗城市运营后台")
+        
+        try:
+            shenqingvar=driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2).danger>td:last-child").text
+            print " the shenqingvar is  ",shenqingvar
+            if shenqingvar=="":
+               driver.find_element_by_css_selector("button.btn.dropdown-toggler").click()
+               driver.find_element_by_link_text("logout").click()
+               print " the driver title is ",driver.title
+               self.loginMasterApproveMethod()
+        except NoSuchElementException:
+            shenqingvarobj=driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:last-child").text
+            print " the shenqingvarobj is  ",shenqingvarobj
+            if shenqingvarobj==u"申请下线":
+                driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:last-child").click()
+                self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认申请下线?[\s\S]$")
+                shenqingsubmitresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
+                print " the shenqingsubmitresult is  ",shenqingsubmitresult
+                
+                #self.assertEqual(shenqingsubmitresult, u"申请已提交")
+                assert u"申请已提交" in shenqingsubmitresult
+                driver.find_element_by_css_selector("button.btn.dropdown-toggler").click()
+                driver.find_element_by_link_text("logout").click()
+                self.loginMasterApproveMethod()
+            elif shenqingvarobj==u"申请上线":
+                driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:last-child").click()
+                self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认申请上线?[\s\S]$")
+                shenqingsubmitresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
+                print " the shenqingsubmitresult is  ",shenqingsubmitresult
+                #self.assertEqual(shenqingsubmitresult, u"申请已提交")
+                assert u"申请已提交" in shenqingsubmitresult
+                driver.find_element_by_css_selector("button.btn.dropdown-toggler").click()
+                driver.find_element_by_link_text("logout").click()
+                self.loginMasterApproveMethod()
+            else:
+                pass
+        #html body div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2).danger>td:last-child
+
+#         driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:last-child").click()
+#         #html body div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:last-child.btn.btn-sm.btn-warning
+#         #self.assert_(driver.title, u"e袋洗城市运营后台")
+#         
+#         #driver.find_element_by_link_text(u"申请下线").click()
+#         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认申请下线[\s\S]$")
+        #申请已提交
         
         ##Master admin login can approve and agrre with 
         ##Brach admin login and submit a request 
+#         driver.find_element_by_css_selector("button.btn.dropdown-toggler").click()
+#         driver.find_element_by_link_text("logout").click()
+#         print " the driver title is ",driver.title
+#         
+ 
+    def loginMasterApproveMethod(self):
+        driver = self.driver
+        driver.get(self.base_url + "/")
+        driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center").click()
+        driver.find_element_by_id("username").clear()
+        driver.find_element_by_id("username").send_keys(USER_NAME)
+        driver.find_element_by_id("password").clear()
+        driver.find_element_by_id("password").send_keys(PASS_WORD)
+        driver.find_element_by_id("login-submit").click()
+        
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(4)+") a").click()
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        #ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
+        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child("+str(4)+").dropdown ul.dropdown-menu li:nth-child("+str(3)+") a").click()
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        
+        shenhecheckfiled=driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child.btn.btn-sm.btn-info").text
+        print " the shenhecheckfiled is ",shenhecheckfiled
+        #html body div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child.btn.btn-sm.btn-info
+        if shenhecheckfiled==u"审核":
+           driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child.btn.btn-sm.btn-info").click()
+           
+           driver.find_element_by_css_selector("div#container.container div.text-right a.btn.btn-sm.btn-info").click()
+           
+           shehepass=driver.find_element_by_css_selector("html body div#container.container div.alert.fade.in.alert-success").text
+           print " the shehepass is ",shehepass
+           #self.assertEqual(shehepass, u"操作成功")
+           assert u"操作成功" in shehepass
+        else:
+            pass
+        #driver.find_element_by_link_text(u"分站类目审核").click()
+        #driver.find_element_by_link_text(u"审核").click()
+        print " the login master permission system is ",driver.title
+        
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
