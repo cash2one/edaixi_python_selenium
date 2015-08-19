@@ -7,11 +7,12 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
-import wuliu_utiltools
+import wuliu_utiltools,appobjectwuliu
 
 class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectwuliu.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_wuliu.conf")
@@ -88,10 +89,43 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         print wuliu_utiltools.today()
         driver.find_element_by_id("outlet_form_end_date").clear()
         driver.find_element_by_id("outlet_form_end_date").send_keys(str(wuliu_utiltools.today()))
+# 
 
-        driver.find_element_by_id("outlet_form_can_xiyi").click()
-        driver.find_element_by_id("outlet_form_can_xixie").click()
-        driver.find_element_by_id("outlet_form_can_luxury").click()
+        driver.find_element_by_id("capacity_1_is_enabled").click()
+        driver.find_element_by_id("capacity_2_is_enabled").click()
+        driver.find_element_by_id("capacity_3_is_enabled").click()
+        driver.find_element_by_id("capacity_5_is_enabled").click()
+        driver.find_element_by_id("capacity_9_is_enabled").click()
+        
+        driver.find_element_by_id("capacity_1_count").clear()
+        driver.find_element_by_id("capacity_1_count").send_keys("4")
+        driver.find_element_by_id("capacity_1_count").clear()
+        driver.find_element_by_id("capacity_1_count").send_keys("5")
+        
+        driver.find_element_by_id("capacity_2_count").clear()
+        driver.find_element_by_id("capacity_2_count").send_keys("1")
+        driver.find_element_by_id("capacity_2_count").clear()
+        driver.find_element_by_id("capacity_2_count").send_keys("2")
+        driver.find_element_by_id("capacity_2_count").clear()
+        driver.find_element_by_id("capacity_2_count").send_keys("3")
+        driver.find_element_by_id("capacity_2_count").clear()
+        driver.find_element_by_id("capacity_2_count").send_keys("4")
+        driver.find_element_by_id("capacity_2_count").clear()
+        driver.find_element_by_id("capacity_2_count").send_keys("5")
+        
+        driver.find_element_by_id("capacity_3_count").clear()
+        driver.find_element_by_id("capacity_3_count").send_keys("5")
+        
+
+        driver.find_element_by_id("capacity_5_count").clear()
+        driver.find_element_by_id("capacity_5_count").send_keys("5")
+
+        driver.find_element_by_id("capacity_9_count").clear()
+        driver.find_element_by_id("capacity_9_count").send_keys("5")
+        
+#         driver.find_element_by_id("outlet_form_can_xiyi").click()
+#         driver.find_element_by_id("outlet_form_can_xixie").click()
+#         driver.find_element_by_id("outlet_form_can_luxury").click()
         driver.find_element_by_name("commit").click()
         
         self.assertEqual(driver.title, u"物流")

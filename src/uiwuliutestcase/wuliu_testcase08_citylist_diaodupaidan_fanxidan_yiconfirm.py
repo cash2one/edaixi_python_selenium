@@ -7,11 +7,12 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
-import wuliu_utiltools
+import wuliu_utiltools,appobjectwuliu
 
 class WuliuTestcase08citylistdiaodupaidanfanxidanYiConfirm(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectwuliu.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_wuliu.conf")
@@ -91,13 +92,13 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiConfirm(unittest.TestCase):
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a").click()
         #.btn.btn-success
 
-        n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id  FROM ims_washing_order WHERE status_delivery='3' AND ordersn='15072110393738'") 
-        for i in xrange(cursor.rowcount):
-            ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
-        print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
-        
+#         n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id  FROM ims_washing_order WHERE status_delivery='3' AND ordersn='15072110393738'") 
+#         for i in xrange(cursor.rowcount):
+#             ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
+#         print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
+#         
         driver.find_element_by_id("order_search_form_ordersn").clear()
-        driver.find_element_by_id("order_search_form_ordersn").send_keys(ordersn)
+        driver.find_element_by_id("order_search_form_ordersn").send_keys("15072110393738")
         driver.find_element_by_name("commit").click()
         
         self.assertTrue(driver.title, u"物流")

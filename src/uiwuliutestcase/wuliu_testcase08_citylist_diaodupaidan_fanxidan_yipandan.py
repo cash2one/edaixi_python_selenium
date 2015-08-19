@@ -7,11 +7,12 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
-import wuliu_utiltools
+import wuliu_utiltools,appobjectwuliu
 
 class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectwuliu.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_wuliu.conf")
@@ -168,7 +169,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         self.assertEqual(daioduconfirm, u"调度已派单")
         #self.assertEqual(driver.title, u"物流")
  
-        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0' WHERE ordersn='15072110393738'")
+        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',fan_id='0' WHERE ordersn='15072110393738'")
         conn.commit()
         
         wuliuconn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlwuliudb,charset="utf8")    

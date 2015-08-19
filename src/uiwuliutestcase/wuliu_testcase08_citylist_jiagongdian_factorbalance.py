@@ -7,11 +7,12 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
-import wuliu_utiltools
+import wuliu_utiltools,appobjectwuliu
 
 class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectwuliu.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_wuliu.conf")
@@ -68,7 +69,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         #html body div#container.container table.table.table-striped tbody tr#outlets_279 td a.btn.btn-primary.btn-sm
         self.assertEqual(driver.title, u"物流")
     
-        Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"高端服饰")
+        Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"家纺")
         driver.find_element_by_id("outlet_rule_form_discount").clear()
         driver.find_element_by_id("outlet_rule_form_discount").send_keys("22")
 
@@ -123,7 +124,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         self.assertEqual(driver.title, u"物流")
         time.sleep(2)
         
-        Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"窗帘")
+        Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"奢侈品")
         driver.find_element_by_id("outlet_rule_form_discount").clear()
         driver.find_element_by_id("outlet_rule_form_discount").send_keys("12")
         
@@ -157,7 +158,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        #self.driver.quit()
+        self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
