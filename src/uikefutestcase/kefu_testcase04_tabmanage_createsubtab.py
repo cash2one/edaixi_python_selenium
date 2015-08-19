@@ -6,10 +6,11 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser ,random
-
+import appobjectkefu
 class KefuTestcase04TabmanageCreatesubtab(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectkefu.GetInstance()
         #self.driver.implicitly_wait(30)
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()

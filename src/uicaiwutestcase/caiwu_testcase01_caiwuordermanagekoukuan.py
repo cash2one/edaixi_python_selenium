@@ -9,10 +9,11 @@ import unittest, time, re
 from selenium.webdriver.support.ui import WebDriverWait 
 import ConfigParser
 import caiwu_edaixi_mysql
-
+import appobjectcaiwu
 class CaiwuTestcase01Caiwuordermanagementkoukuan(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectcaiwu.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_caiwu.conf")

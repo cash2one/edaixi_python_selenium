@@ -8,10 +8,12 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser ,MySQLdb
 import PythonDateUtils
 from selenium.webdriver.common.by import By
+import appobjectkefu
 class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
     
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        #self.driver = webdriver.Firefox()
+        self.driver = appobjectkefu.GetInstance()
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_kefu.conf")

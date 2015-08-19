@@ -16,7 +16,8 @@ def GetInstance():
                 #printInfo(u'初始化单例')  
                 print u"initial singleton .........."
                 #instance = webdriver.Firefox()
-                instance = webdriver.Ie()
+                #instance = webdriver.Ie()
+                instance = webdriver.Chrome()
             else:  
                 print u" Sigleton has been initial...."
                 #printInfo(u'单例已经初始化')    

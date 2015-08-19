@@ -51,9 +51,12 @@ class OpsTestcase07clothesmanagebrand(unittest.TestCase):
         #driver.find_element_by_link_text(u"新 建").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-        driver.find_element_by_css_selector("div#container.container a.btn.btn-info.btn-sm").click()
-        self.assertEqual(driver.title, u"e袋洗城市运营后台")
-        driver.find_element_by_id("yiwu_constant_form_value").clear()
+        #driver.find_element_by_css_selector("div#container.container a.btn.btn-info.btn-sm").click()
+        #driver.find_element_by_xpath("/html/body/div[2]/a").click()
+        driver.find_element_by_link_text(u"新建").click()
+        #self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        
+        #driver.find_element_by_id("yiwu_constant_form_value").clear()
         driver.find_element_by_id("yiwu_constant_form_value").send_keys("lukebrand")
         pinleiname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body form#new_yiwu_constant_form.form-horizontal.new_yiwu_constant_form div.form-group.select.required.yiwu_constant_form_category_id div.col-sm-8 select#yiwu_constant_form_category_id.select.required.form-control option:nth-child(2)").text
         Select(driver.find_element_by_id("yiwu_constant_form_category_id")).select_by_visible_text(pinleiname)
@@ -83,7 +86,7 @@ class OpsTestcase07clothesmanagebrand(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        #self.driver.quit()
+        self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

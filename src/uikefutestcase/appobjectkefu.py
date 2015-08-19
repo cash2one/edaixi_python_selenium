@@ -1,11 +1,33 @@
 #-*-coding:utf-8-*- 
 #coding=utf-8
+from selenium import webdriver
+import threading 
 
 #class appobjectops:
 # class appObjectUtils(self):
 #     
-class appobjectops:
-    
+def GetInstance():  
+    instance = None  
+    mutex = threading.Lock() 
+    if(instance == None):  
+            mutex.acquire()   
+            if(instance == None):  
+                #printInfo(u'初始化单例')  
+                print u"initial kefu webdriver singleton .........."
+                instance = webdriver.Chrome()
+                #instance = webdriver.Firefox()
+                #instance = webdriver.Ie()
+            else:  
+                print u" kefu webdriver Sigleton has been initial...."
+                #printInfo(u'单例已经初始化')    
+            mutex.release()  
+    else:  
+            print u" kefu webdriver Sigleton has been initial...."
+            #printInfo(u'单例已经初始化')          
+    return instance  
+
+# class appobjectkefu:
+#     
     #operation system testcase01 perminssion manage module appobject
     permloginClickButton="div#container.container h3.text-center.text-primary a.btn.btn-success.text-center"
     clickPermissionLink="div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li.dropdown a.dropdown-toggle"

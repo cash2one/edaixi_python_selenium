@@ -13,17 +13,17 @@ def GetInstance():
     if(instance == None):  
             mutex.acquire()   
             if(instance == None):  
-                #printInfo(u'初始化单例')  
-                print u"initial singleton .........."
+                
+                print u"initial caiwu system singleton .........."
                 #instance = webdriver.Firefox()
-                instance = webdriver.Ie()
+                instance = webdriver.Chrome()
             else:  
-                print u" Sigleton has been initial...."
-                #printInfo(u'单例已经初始化')    
+                print u" caiwu system Sigleton has been initial...."
+                
             mutex.release()  
     else:  
-            print u" Sigleton has been initial...."
-            #printInfo(u'单例已经初始化')          
+            print u" caiwu system Sigleton has been initial...."
+                
     return instance  
     
     
