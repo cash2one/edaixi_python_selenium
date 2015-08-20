@@ -156,7 +156,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         
         
         #driver.find_element_by_css_selector("div#container.container form#new_fanxi_order_form_254.form-horizontal.new_fanxi_order_form table.table.table-striped.search-table tbody tr:last-child td:last-child input.button.btn.btn-info.btn-style-width").click()
-        driver.find_element_by_xpath("//input[@type='submit']").click()
+        #driver.find_element_by_xpath("//input[@type='submit']").click()
         #/html/body/div[1]/form/table/tbody/tr[11]/td[2]/input
         
         #self.assertTrue(driver.title, u"物流")
@@ -208,7 +208,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
