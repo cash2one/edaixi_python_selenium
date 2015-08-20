@@ -81,11 +81,20 @@ class WuliuTestcase02factorysign(unittest.TestCase):
         
         print driver.title
         self.assertEqual(driver.title, u"物流")
-        
+        winBeforeHandle = driver.current_window_handle
+        print "winBeforeHandle==",winBeforeHandle
+        winHandles = driver.window_handles
+        print "winHandles==",winHandles
+        for handle in winHandles:
+            if winBeforeHandle != handle:
+                driver.switch_to_window(handle)
         #cursor.execute("UPDATE ims_washing_order SET status_delivery='1',qianshoudian_id= NULL WHERE bagsn='E0000000006'")
         #conn.commit()
         #self.assertEqual(driver.title, u"物流")
-        qianshousuccess=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary p.text-center b").text#check_in_msg
+        
+        #html body div#container.container div.panel.panel-primary p.text-center b#check_in_msg
+        qianshousuccess=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary p.text-center b#check_in_msg").text
+        #check_in_msg
         print " the qianshousuccess result is ",qianshousuccess
         
         self.assertEqual(qianshousuccess, u"签收成功！")

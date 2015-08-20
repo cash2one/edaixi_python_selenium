@@ -97,6 +97,7 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         datestr=str(PythonDateUtils.get_day_of_day(3))
         print " the datestr is ",datestr
         
+        driver.find_element_by_id("fanxi_order_form_washing_date").clear()
         driver.find_element_by_id("fanxi_order_form_washing_date").send_keys(datestr)
         driver.find_element_by_id("fanxi_order_form_washing_date").click()
         #driver.find_element_by_link_text(datestr).click()
@@ -110,7 +111,7 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         
         #driver.find_element_by_css_selector("div#container.container form#new_fanxi_order_form_254.form-horizontal.new_fanxi_order_form table.table.table-striped.search-table tbody tr:last-child td:last-child input.button.btn.btn-info.btn-style-width").click()
         driver.find_element_by_xpath("//input[@type='submit']").click()
-        #driver.find_elements(By.XPATH, "//input[@type='submit']")
+        #driver.find_elements(By.XPATH, "//input[@type='submit']").click()
         
         self.assertEqual(driver.title,u"客服系统")
         

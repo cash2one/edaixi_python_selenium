@@ -49,8 +49,9 @@ class KefuTestcase03OrderlistCreateorder(unittest.TestCase):
         self.assertEqual(driver.title,u"客服系统")
         
         #driver.find_element_by_css_selector(css_selector)
+        #html body div#container.container div.sidebar_container form#new_new_order_form.form-horizontal.new_new_order_form div.form-group.select.required.new_order_form_good div.col-sm-8 select#new_order_form_good.select.required.form-control option
         #html body div#container.container div.sidebar_container form#new_new_order_form.form-horizontal.new_new_order_form div.form-group.select.optional.new_order_form_good div.col-sm-8 select#new_order_form_good.select.optional.form-control option:nth-child(2)
-        goodnanemtext=driver.find_element_by_css_selector("div#container.container div.sidebar_container form#new_new_order_form.form-horizontal.new_new_order_form div.form-group.select.optional.new_order_form_good div.col-sm-8 select#new_order_form_good.select.optional.form-control option:nth-child(2)").text
+        goodnanemtext=driver.find_element_by_css_selector("div#container.container>div.sidebar_container>form>div>div.col-sm-8>select>option:nth-child(2)").text
         print " the goodnanemtext is ",goodnanemtext
         Select(driver.find_element_by_id("new_order_form_good")).select_by_visible_text(goodnanemtext)
         
@@ -118,7 +119,7 @@ class KefuTestcase03OrderlistCreateorder(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

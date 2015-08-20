@@ -53,6 +53,11 @@ class OpsTestcase02LayoutManageSmallFunction(unittest.TestCase):
         driver.find_element_by_id("banner_description").clear()
         driver.find_element_by_id("banner_description").send_keys("hello")
         
+        driver.find_element_by_id("banner_inner_url").clear()
+        driver.find_element_by_id("banner_inner_url").send_keys("http://localhost.hello")
+        
+        driver.find_element_by_id("banner_inner_title").clear()
+        driver.find_element_by_id("banner_inner_title").send_keys("hello")
         #driver.find_element_by_id("banner_ios").clear()
         driver.find_element_by_id("banner_ios").send_keys("C:\edaixi_testdata\edaixi_ops_banner1.jpg")
         #driver.find_element_by_id("banner_android").clear()
@@ -66,6 +71,11 @@ class OpsTestcase02LayoutManageSmallFunction(unittest.TestCase):
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body table.table.table-striped tbody tr:first-child td:last-child a:nth-child(2).btn.btn-sm.btn-info").click()
         driver.find_element_by_id("banner_description").clear()
         driver.find_element_by_id("banner_description").send_keys("hello1111")
+        driver.find_element_by_id("banner_inner_url").clear()
+        driver.find_element_by_id("banner_inner_url").send_keys("http://localhost.cn")
+        
+        driver.find_element_by_id("banner_inner_title").clear()
+        driver.find_element_by_id("banner_inner_title").send_keys("hello")
         driver.find_element_by_name("commit").click()
         
         self.assertEqual(driver.title, u"e袋洗城市运营后台")

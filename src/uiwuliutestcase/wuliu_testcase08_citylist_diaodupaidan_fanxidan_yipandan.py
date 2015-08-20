@@ -101,6 +101,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
             ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
         print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
         
+        print " the ordersn is ",ordersn
         driver.find_element_by_id("order_search_form_ordersn").clear()
         driver.find_element_by_id("order_search_form_ordersn").send_keys(ordersn)
         driver.find_element_by_name("commit").click()
