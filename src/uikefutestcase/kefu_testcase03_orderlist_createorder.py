@@ -47,7 +47,12 @@ class KefuTestcase03OrderlistCreateorder(unittest.TestCase):
         createorderclick=driver.find_element_by_xpath("/html/body/div[2]/div/form/a[1]")
         ActionChains(driver).double_click(createorderclick).perform()
         self.assertEqual(driver.title,u"客服系统")
-        Select(driver.find_element_by_id("new_order_form_good")).select_by_visible_text(u"洗衣")
+        
+        #driver.find_element_by_css_selector(css_selector)
+        #html body div#container.container div.sidebar_container form#new_new_order_form.form-horizontal.new_new_order_form div.form-group.select.optional.new_order_form_good div.col-sm-8 select#new_order_form_good.select.optional.form-control option:nth-child(2)
+        goodnanemtext=driver.find_element_by_css_selector("div#container.container div.sidebar_container form#new_new_order_form.form-horizontal.new_new_order_form div.form-group.select.optional.new_order_form_good div.col-sm-8 select#new_order_form_good.select.optional.form-control option:nth-child(2)").text
+        print " the goodnanemtext is ",goodnanemtext
+        Select(driver.find_element_by_id("new_order_form_good")).select_by_visible_text(goodnanemtext)
         
         driver.find_element_by_id("new_order_form_totalnum").clear()
         driver.find_element_by_id("new_order_form_totalnum").send_keys("10")
@@ -65,8 +70,10 @@ class KefuTestcase03OrderlistCreateorder(unittest.TestCase):
         driver.find_element_by_id("new_order_form_tel").send_keys("beijingjiangtailu")
         
         Select(driver.find_element_by_id("new_order_form_city")).select_by_visible_text(u"北京")
-        
-        Select(driver.find_element_by_id("new_order_form_area")).select_by_visible_text(u"朝阳区")
+        #html body div#container.container div.sidebar_container form#new_new_order_form.form-horizontal.new_new_order_form div.form-group.select.required.new_order_form_area div.col-sm-8 select#new_order_form_area.select.required.form-control option:first-child
+        cityareaname=driver.find_element_by_css_selector("div#container.container div.sidebar_container form#new_new_order_form.form-horizontal.new_new_order_form div.form-group.select.required.new_order_form_area div.col-sm-8 select#new_order_form_area.select.required.form-control option:first-child").text
+        print " the cityareaname is ",cityareaname
+        Select(driver.find_element_by_id("new_order_form_area")).select_by_visible_text(cityareaname)
   
         driver.find_element_by_id("new_order_form_address").clear()
         driver.find_element_by_id("new_order_form_address").send_keys("beijingjiangtailu")

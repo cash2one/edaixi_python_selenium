@@ -9,7 +9,7 @@ import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
 import wuliu_utiltools,appobjectwuliu
 
-class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
+class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
         self.driver = appobjectwuliu.GetInstance()
@@ -35,7 +35,7 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_wuliu_testcase08_citylist_addedit(self):
+    def test_wuliu_testcase08_citylist_jiagongdianmanage(self):
         driver = self.driver
         
         driver.get(self.base_url + "/")

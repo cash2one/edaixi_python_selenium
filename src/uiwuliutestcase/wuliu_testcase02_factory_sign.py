@@ -87,6 +87,7 @@ class WuliuTestcase02factorysign(unittest.TestCase):
         #self.assertEqual(driver.title, u"物流")
         qianshousuccess=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary p.text-center b").text#check_in_msg
         print " the qianshousuccess result is ",qianshousuccess
+        
         self.assertEqual(qianshousuccess, u"签收成功！")
         
         cursor.close()
@@ -113,7 +114,7 @@ class WuliuTestcase02factorysign(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
 import appobjectwuliu
-class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
+class WuliuTestcase08CitylistxiaoemanagerLogistics(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
         self.driver = appobjectwuliu.GetInstance()
@@ -32,7 +32,7 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_wuliu_testcase08_citylist_addedit(self):
+    def test_wuliu_testcase08_citylist_xiaoemanagerLogistics(self):
         driver = self.driver
         
         driver.get(self.base_url + "/")

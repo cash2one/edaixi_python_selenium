@@ -27,10 +27,15 @@ from wuliu_testcase08_citylist_diaodupaidan_fanxidan_yiconfirm import *
 from wuliu_testcase08_citylist_diaodupaidan_fanxidan_yipandan import *
 from wuliu_testcase08_citylist_diaoduquery_fanxidan import *
 
+from wuliu_testcase08_citylist_jiagongdian_factorbalance import *
+from wuliu_testcase08_citylist_jiagongdianmanage import *
+
+
 from wuliu_testcase09_factory_orderquery import *
 
 from wuliu_testcase10_site_orderquery import *
 
+from wuliu_testcase11_sitepersonmanage import *
 
 if __name__ == '__main__':  
     suite = unittest.TestSuite()  
@@ -75,11 +80,21 @@ if __name__ == '__main__':
     time.sleep(3)
     suite.addTest(WuliuTestcase08citylistdiaoduqueryfanxidan('test_wuliu_testcase08_citylist_diaoduquery_fanxidan'))
     time.sleep(3)
-    #ops testcase09
+    
+    suite.addTest(WuliuTestcase08CitylistJiagongdianFactoryBalance('test_wuliu_testcase08_citylist_jiagongdian_factorybalance'))
+    time.sleep(3)
+    suite.addTest(WuliuTestcase08Citylistjiagongdianmanage('test_wuliu_testcase08_citylist_jiagongdianmanage'))
+    time.sleep(3)
+    
+    #wuliu testcase09
     suite.addTest(WuliuTestcase09FactoryOrderQuery('test_wuliu_testcase09_factory_orderquery'))
     time.sleep(3)
-    #ops testcase10
+    #wuliu testcase10
     suite.addTest(WuliuTestcase10SiteOrderquery('test_wuliu_testcase10_site_orderquery'))
+    time.sleep(3)
+    
+    #wuliu testcase11
+    suite.addTest(WuliuTestcase11SitePersonManage('test_wuliu_testcase11_site_personmanage'))
     time.sleep(3)
     
     currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())

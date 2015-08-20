@@ -50,7 +50,7 @@ class KefuTestcase03OrderlistCancellorder(unittest.TestCase):
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
         global cursor 
         cursor = conn.cursor() 
-        n = cursor.execute("SELECT ordersn ,username,tel,address FROM ims_washing_order WHERE status_delivery=1 AND bagsn IS NOT NULL ORDER BY id") 
+        n = cursor.execute("SELECT ordersn ,username,tel,address FROM ims_washing_order WHERE status_delivery=1 AND pay_status=1 AND bagsn IS NOT NULL ORDER BY id") 
         for i in xrange(cursor.rowcount):
             ordersn ,username,tel,address = cursor.fetchone()
         print ordersn ,username,tel,address
