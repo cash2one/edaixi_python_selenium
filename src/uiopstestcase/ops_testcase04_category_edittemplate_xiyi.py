@@ -43,10 +43,12 @@ class OpsTestcase04Categoryedittemplatexiyi(unittest.TestCase):
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child("+str(4)+").dropdown ul.dropdown-menu li:nth-child(2) a").click()
         
         #self.assert_(driver.title, u"e袋洗城市运营后台")
+        #self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        #driver.find_element_by_css_selector("div#container.container ul#myTab.nav.nav-tabs li:first-child a").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
-        driver.find_element_by_css_selector("div#container.container ul#myTab.nav.nav-tabs li:first-child a").click()
-        
-        driver.find_element_by_css_selector("div#container.container>a.btn.btn-sm.btn-info").click()
+        driver.find_element_by_css_selector("div#container.container a.btn.btn-sm.btn-info").click()
+        #driver.find_element_by_css_selector("div#container.container>a.btn.btn-sm.btn-info").click()
+        #driver.find_element_by_link_text(u"新建").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
         #driver.find_element_by_link_text(u"新 建").click()

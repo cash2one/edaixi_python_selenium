@@ -34,7 +34,7 @@ class OpsTestcase07clothesmanageeffect(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         time.sleep(2)
-        print driver.title
+        print " the testcase  test_ops_testcase07_clothesmanageeffect driver.title is ",driver.title
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         #self.assertTrue(driver.title, u"e袋洗城市运营后台")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
@@ -45,12 +45,12 @@ class OpsTestcase07clothesmanageeffect(unittest.TestCase):
         #driver.find_element_by_css_selector("div.container>div>ul.nav.navbar-nav>li:nth-child("+str(6)+").dropdown>ul.dropdown-menu>li:nth-child(5)>a").send_keys(Keys.ENTER)
         driver.find_element_by_css_selector("div.container>div>ul.nav.navbar-nav>li:nth-child("+str(7)+").dropdown>ul.dropdown-menu>li:last-child>a").send_keys(Keys.ENTER)
         #self.assertEqual(driver.title, u"e袋洗城市运营后台")
-        #print driver.title
-        
+
         #driver.find_element_by_link_text(u"洗衣").click()
         driver.find_element_by_css_selector("div#container.container>ul#myTab.nav.nav-tabs>li:first-child>a").send_keys(Keys.ENTER)
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_link_text(u"新 建").click()
+        time.sleep(2)
         driver.find_element_by_css_selector("div#container.container a.btn.btn-info.btn-sm").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("yiwu_constant_form_value").clear()
@@ -58,8 +58,7 @@ class OpsTestcase07clothesmanageeffect(unittest.TestCase):
         pinleiname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body form#new_yiwu_constant_form.form-horizontal.new_yiwu_constant_form div.form-group.select.required.yiwu_constant_form_category_id div.col-sm-8 select#yiwu_constant_form_category_id.select.required.form-control option:nth-child(2)").text
         Select(driver.find_element_by_id("yiwu_constant_form_category_id")).select_by_visible_text(pinleiname)
         driver.find_element_by_name("commit").click()
-    
-        print driver.title
+
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         #self.assertTrue(driver.title, u"e袋洗城市运营后台")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")

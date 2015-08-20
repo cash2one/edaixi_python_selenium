@@ -53,11 +53,11 @@ class OpsTestcase02LayoutManageSmallFunction(unittest.TestCase):
         driver.find_element_by_id("banner_description").clear()
         driver.find_element_by_id("banner_description").send_keys("hello")
         
-        driver.find_element_by_id("banner_ios").clear()
+        #driver.find_element_by_id("banner_ios").clear()
         driver.find_element_by_id("banner_ios").send_keys("C:\edaixi_testdata\edaixi_ops_banner1.jpg")
-        driver.find_element_by_id("banner_android").clear()
+        #driver.find_element_by_id("banner_android").clear()
         driver.find_element_by_id("banner_android").send_keys("C:\edaixi_testdata\edaixi_ops_banner2.jpg")
-        driver.find_element_by_id("banner_web").clear()
+        #driver.find_element_by_id("banner_web").clear()
         driver.find_element_by_id("banner_web").send_keys("C:\edaixi_testdata\edaixi_ops_banner3.jpg")
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
@@ -76,14 +76,21 @@ class OpsTestcase02LayoutManageSmallFunction(unittest.TestCase):
         if downactivename == u"下线":
            driver.find_element_by_link_text(u"下线").click()
            self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认下线[\s\S]$")
+           self.assertEqual(driver.title, u"e袋洗城市运营后台")
+           driver.find_element_by_css_selector("div#container.container>div.panel.panel-primary>div.pnale-body>table.table.table-striped>tbody>tr:first-child>td:last-child>a:last-child").click()
+           self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除图片[\s\S]$")
         elif downactivename == u"激活":
            driver.find_element_by_link_text(u"激活").click()
            self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认激活[\s\S]$")
+           self.assertEqual(driver.title, u"e袋洗城市运营后台")
+           driver.find_element_by_css_selector("div#container.container>div.panel.panel-primary>div.pnale-body>table.table.table-striped>tbody>tr:first-child>td:last-child>a:last-child").click()
+           self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除图片[\s\S]$")
         else:
            pass
+           driver.find_element_by_css_selector("div#container.container>div.panel.panel-primary>div.pnale-body>table.table.table-striped>tbody>tr:first-child>td:last-child>a:last-child").click()
+           self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除图片[\s\S]$")
         
-        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.pnale-body table.table.table-striped tbody tr:first-child td:last-child a:nth-child(3).btn.btn-sm.btn-danger").click()
-        self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除图片[\s\S]$")
+
     
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         

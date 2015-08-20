@@ -42,12 +42,14 @@ class OpsTestcase05PriceHometextile(unittest.TestCase):
         driver.implicitly_wait(10)
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-        driver.find_element_by_css_selector("div#container.container ul#myTab.nav.nav-tabs li:nth-child(3) a").send_keys(Keys.ENTER)
+        driver.find_element_by_css_selector("div#container.container>ul#myTab.nav.nav-tabs>li:nth-child(3)>a").send_keys(Keys.ENTER)
         #html body div#container.container ul#myTab.nav.nav-tabs li a
         #ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
         #driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li:nth-child(1) a").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        time.sleep(2)
         driver.find_element_by_css_selector("div#container.container a.btn.btn-sm.btn-info").click()
+        #html body div#container.container a.btn.btn-sm.btn-info
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
         driver.find_element_by_id("supplier_good_form_name").clear()

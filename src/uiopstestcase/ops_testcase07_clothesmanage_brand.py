@@ -33,7 +33,7 @@ class OpsTestcase07clothesmanagebrand(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
+        print " the testcase  test_ops_testcase07_clothesmanagebrand driver.title is ",driver.title
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         #self.assertTrue(driver.title, u"e袋洗城市运营后台")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
@@ -51,9 +51,10 @@ class OpsTestcase07clothesmanagebrand(unittest.TestCase):
         #driver.find_element_by_link_text(u"新 建").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
-        #driver.find_element_by_css_selector("div#container.container a.btn.btn-info.btn-sm").click()
+        time.sleep(2)
+        driver.find_element_by_css_selector("div#container.container a.btn.btn-info.btn-sm").click()
         #driver.find_element_by_xpath("/html/body/div[2]/a").click()
-        driver.find_element_by_link_text(u"新建").click()
+        #driver.find_element_by_link_text(u"新建").click()
         #self.assertEqual(driver.title, u"e袋洗城市运营后台")
         
         #driver.find_element_by_id("yiwu_constant_form_value").clear()

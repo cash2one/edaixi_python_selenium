@@ -34,7 +34,7 @@ class OpsTestcase05PriceShoes(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
+        print "the testcase test_ops_testcase05_PriceShoes is ",driver.title
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         #self.assertTrue(driver.title, u"e袋洗城市运营后台")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")        
@@ -46,8 +46,10 @@ class OpsTestcase05PriceShoes(unittest.TestCase):
         #ul.nav.navbar-nav li.dropdown ul.dropdown-menu li a
         #time.sleep(5)
         #driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li:nth-child(1) a").click()
-        self.assertEqual(driver.title, u"e袋洗城市运营后台")   
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")  
+        time.sleep(2) 
         driver.find_element_by_css_selector("div#container.container a.btn.btn-sm.btn-info").click()
+        
         self.assertEqual(driver.title, u"e袋洗城市运营后台")   
         driver.find_element_by_id("supplier_good_form_name").clear()
         driver.find_element_by_id("supplier_good_form_name").send_keys("addleimu")
@@ -57,7 +59,6 @@ class OpsTestcase05PriceShoes(unittest.TestCase):
         driver.find_element_by_id("supplier_good_form_rongchang_price").send_keys("100")
         driver.find_element_by_id("supplier_good_form_description").clear()
         driver.find_element_by_id("supplier_good_form_description").send_keys("addleimudescription")
-
         driver.find_element_by_name("commit").click()
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         #self.assertTrue(driver.title, u"e袋洗城市运营后台")

@@ -33,7 +33,7 @@ class OpsTestcase05PriceClothes(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
+        print "the testcase test_ops_testcase05_PriceClothes is ",driver.title
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         
@@ -55,14 +55,15 @@ class OpsTestcase05PriceClothes(unittest.TestCase):
         driver.find_element_by_id("supplier_good_form_description").send_keys("addleimudescription")
 
         driver.find_element_by_name("commit").click()
-        
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         #html body div#container.container table.table.table-bordered.table-striped tbody tr:last-child td:last-child a.btn.btn-sm.btn-info
         #driver.find_element_by_xpath(u"(//a[contains(text(),'编辑')])[6]").click()
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(5)+") a").click()
+        #sdriver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(5)+") a").click()
+        #html body div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:first-child
+        driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:first-child").click()
         #driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child.btn.btn-sm.btn-info").click()
-        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+        #self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("supplier_good_form_description").clear()
         driver.find_element_by_id("supplier_good_form_description").send_keys("addleimuedit")
         driver.find_element_by_name("commit").click()

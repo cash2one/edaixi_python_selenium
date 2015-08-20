@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-import unittest, time, re ,ConfigParser
+import unittest, time, re ,ConfigParser,random
 #from uiappobject.appobjectops import appobjectops
 import appobjectops
 class OpsTestcase08rechargereturncrash(unittest.TestCase):
@@ -48,10 +48,12 @@ class OpsTestcase08rechargereturncrash(unittest.TestCase):
         #html body div#container.container div a.btn.btn-info.btn-info
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_link_text(u"新 建").click()
+        print " the str(random.randint(10, 100)) is ",str(random.randint(10, 100))
         driver.find_element_by_id("recharge_setting_form_money_give").clear()
-        driver.find_element_by_id("recharge_setting_form_money_give").send_keys("100")
+        driver.find_element_by_id("recharge_setting_form_money_give").send_keys(str(random.randint(10,100)))
+                                                                                
         driver.find_element_by_id("recharge_setting_form_min").clear()
-        driver.find_element_by_id("recharge_setting_form_min").send_keys("100")
+        driver.find_element_by_id("recharge_setting_form_min").send_keys(str(random.randint(10,100)))
 #         driver.find_element_by_id("recharge_setting_form_max").clear()
 #         driver.find_element_by_id("recharge_setting_form_max").send_keys("1000")
         driver.find_element_by_name("commit").click()
@@ -61,29 +63,32 @@ class OpsTestcase08rechargereturncrash(unittest.TestCase):
         print addchizhifanxian
         assert u"返现设置已添加"  in (addchizhifanxian)
         #self.assertEqual(addchizhifanxian, u"返现设置已添加")
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:first-child").send_keys(Keys.ENTER)
         driver.find_element_by_css_selector(appobjectops.clickEditButtonRechargeReturncrash).click()
         #driver.find_element_by_link_text(u"编辑").click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         driver.find_element_by_id("recharge_setting_form_min").clear()
-        driver.find_element_by_id("recharge_setting_form_min").send_keys("200")
+        driver.find_element_by_id("recharge_setting_form_min").send_keys(str(random.randint(10, 100)))
         driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #html body div#container.container div.alert.fade.in.alert-success
         #editchizhifanxian=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         editchizhifanxian=driver.find_element_by_css_selector(appobjectops.editchizhifanxianresult).text
         print editchizhifanxian
         assert u"返现设置已更新" in (editchizhifanxian)
         #self.assertEqual(editchizhifanxian, u"返现设置已更新")
-        
+        self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #html body div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:last-child.btn.btn-sm.btn-danger
         #driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:last-child").send_keys(Keys.ENTER)
         #driver.find_element_by_link_text(u"删除").click()
         driver.find_element_by_css_selector(appobjectops.clickDeleteButtonRechargeReturncrash).click()
         time.sleep(2)
+        #self.assertEqual(u"确认删除", self.close_alert_and_get_its_text())
         self.assertEqual(u"确认删除", self.close_alert_and_get_its_text())
         #driver.find_element_by_link_text(u"城市管理").click()
         #html body div#container.container
+        time.sleep(2)
         #deletechizhifanxian=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
         deletechizhifanxian=driver.find_element_by_css_selector(appobjectops.deletechizhifanxianresult).text
         print deletechizhifanxian
