@@ -91,7 +91,7 @@ class KefuTestcase03OrderlistCreateorder(unittest.TestCase):
         driver.find_element_by_id("new_order_form_remark").clear()
         driver.find_element_by_id("new_order_form_remark").send_keys("hellodedaixi")
         
-        driver.find_element_by_name("commit").click()
+        #driver.find_element_by_name("commit").click()
         #driver.find_element_by_css_selector("input.button.btn.btn-info.btn-style-width").send_keys(Keys.ENTER)
         #html body div#container.container div.alert.fade.in.alert-success
         #createorderresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text

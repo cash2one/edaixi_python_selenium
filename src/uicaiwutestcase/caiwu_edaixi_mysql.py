@@ -40,7 +40,7 @@ def gethuiyuanid():
       
 #print gethuiyuanid()  
 huiyuannumber=str(gethuiyuanid())
-
+print huiyuannumber
 
 def getcloseconn():
    if cursor!="":

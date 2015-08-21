@@ -1,13 +1,58 @@
 # -*- coding: utf-8 -*-
 
-'''获取当前日期前后N天或N月的日期'''
-
 from time import strftime, localtime
 from datetime import timedelta, date
 import calendar
 import time
 import datetime
+import ConfigParser,MySQLdb
 
+
+conf = ConfigParser.ConfigParser()
+conf.read("C:/edaixi_testdata/userdata_wuliu.conf")
+global CAIWU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase
+mysqlhostname = conf.get("databaseconn", "mysqlhostname")
+mysqlusername = conf.get("databaseconn", "mysqlusername")
+mysqlpassword = conf.get("databaseconn", "mysqlpassword")
+mysqldatabase = conf.get("databaseconn", "mysqlrongchangdb")
+print mysqlhostname, mysqlusername, mysqlpassword, mysqldatabase
+
+conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
+global cursor
+global ordersnnumber,fanidnumber
+cursor = conn.cursor()
+
+def getordersn():
+   n = cursor.execute("SELECT ordersn FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
+   for row in cursor.fetchall():
+      for ordersn in row: 
+           return ordersn
+
+    #return ordersn
+#sglobal ordersn 
+#print getordersn()           
+#global ordersnnumber
+#ordersnnumber=str(getordersn())
+ordersnnumber=str(15072110393738)
+print "the random ordersn  is ",ordersnnumber  
+#print ordersn
+def getfanid():
+    n = cursor.execute("SELECT fan_id FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
+    for row in cursor.fetchall():
+      for fanid in row: 
+          return fanid  
+      
+#print gethuiyuanid()  
+fanidnumber=str(getfanid())
+print fanidnumber
+
+def getcloseconn():
+   if cursor!="":
+     cursor.close()
+   elif conn!="":
+     conn.close()
+     
+     
 year = strftime("%Y",localtime())
 mon  = strftime("%m",localtime())
 day  = strftime("%d",localtime())

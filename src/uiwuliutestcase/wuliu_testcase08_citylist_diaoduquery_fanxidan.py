@@ -91,10 +91,10 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         #.btn.btn-success
         self.assertEqual(driver.title, u"物流")
         
-        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',status_delivery='3',STATUS='7' WHERE ordersn='15072110393738'")
+        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',status_delivery='3',STATUS='7',paytype='1' WHERE ordersn='"+wuliu_utiltools.ordersnnumber+"'")
         conn.commit()
         
-        n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id  FROM ims_washing_order WHERE status_delivery='3' AND ordersn='15072110393738'") 
+        n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id  FROM ims_washing_order WHERE status_delivery='3' AND ordersn='"+wuliu_utiltools.ordersnnumber+"'") 
         for i in xrange(cursor.rowcount):
             ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
         print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
@@ -149,7 +149,7 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
-        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0' WHERE ordersn='15072110393738'")
+        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',paytype='1' WHERE ordersn='"+wuliu_utiltools.ordersnnumber+"'")
         conn.commit()
         
         wuliuconn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlwuliudb,charset="utf8")    
@@ -163,7 +163,7 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         cursor.close()
         wuliuconn.close()
         conn.close()
-        
+        wuliu_utiltools.getcloseconn()
         
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

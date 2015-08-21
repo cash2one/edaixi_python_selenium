@@ -53,17 +53,20 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
         global cursor 
         cursor = conn.cursor() 
-        
-#         
-#         n = cursor.execute("SELECT ordersn ,username,tel,address ,status_delivery,STATUS ,fanxidan_id FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
-#         print " the n  is ",n 
-# 
-#         print " the cursor.fetchone() is ",cursor.fetchone()
+      
+#         n = cursor.execute("SELECT ordersn,fan_id FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
+#         #print " the cursor.fetchone() is ",cursor.fetchone()
 #         for i in xrange(cursor.rowcount):
-#             cursor.fetchone()
-#             print " the cursor.fetchone() is ",cursor.fetchone()
-        #print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
-         
+#             ordersn,fan_id=cursor.fetchone()
+#             #print " the cursor.fetchone() is ",cursor.fetchone()
+#         print "ordersn,fan_id is ",ordersn,fan_id
+#         
+#         global ordernumber
+#         cursor.execute("SELECT ordersn,fan_id FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
+#         for i in xrange(cursor.rowcount):
+#             ordersn,fan_id = cursor.fetchone()
+#             #print ordersn,fan_id
+#         ordernumber=ordersn
 #         global ordersn
 #         n = cursor.execute("SELECT ordersn FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
 #         for i in xrange(cursor.rowcount):
@@ -72,12 +75,11 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
 #         print ordervrnum
 #         cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0 WHERE ordersn='"+ordersn+"'")
 
-        #conn.commit()
         #This is test data for kefu create fanxidan business
-        ordersn="0723821336144"
+        #ordersn="0723821336144"
 
         driver.find_element_by_id("order_search_form_ordersn").clear()
-        driver.find_element_by_id("order_search_form_ordersn").send_keys(ordersn)
+        driver.find_element_by_id("order_search_form_ordersn").send_keys(PythonDateUtils.ordersnnumber)
         
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title,u"客服系统")
@@ -119,12 +121,13 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
 
         print " the createfanxidanresult is ",createfanxidanresult
         #self.assertEqual(createfanxidanresult,u"客服系统")
-        cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0 WHERE ordersn='"+ordersn+"'")
+        cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0,fan_id='"+PythonDateUtils.fanidnumber+"' WHERE ordersn='"+PythonDateUtils.ordersnnumber+"'")
 
         #提交到数据库执行
         conn.commit()
         cursor.close()
         conn.close()
+        PythonDateUtils.getcloseconn()
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
