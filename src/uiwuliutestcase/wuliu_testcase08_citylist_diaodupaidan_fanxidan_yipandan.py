@@ -104,8 +104,9 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         print " the ordersn is ",ordersn
         driver.find_element_by_id("order_search_form_ordersn").clear()
         driver.find_element_by_id("order_search_form_ordersn").send_keys(ordersn)
-        driver.find_element_by_name("commit").click()
         
+        driver.find_element_by_name("commit").click()
+        time.sleep(2)
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
         
@@ -156,7 +157,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         
         
         #driver.find_element_by_css_selector("div#container.container form#new_fanxi_order_form_254.form-horizontal.new_fanxi_order_form table.table.table-striped.search-table tbody tr:last-child td:last-child input.button.btn.btn-info.btn-style-width").click()
-        #driver.find_element_by_xpath("//input[@type='submit']").click()
+        driver.find_element_by_xpath("//input[@type='submit']").click()
         #/html/body/div[1]/form/table/tbody/tr[11]/td[2]/input
         
         #self.assertTrue(driver.title, u"物流")
@@ -166,7 +167,6 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         daioduconfirm=driver.find_element_by_css_selector("div#container.container div.info-div div.row div.col-md-6 div.panel.panel-primary.checkout-order div.panle-body table.table tbody tr:first-child.success td:nth-child(2) span").text
         #html body div#container.container div.info-div div.row div.col-md-6 div.panel.panel-primary.checkout-order div.panle-body table.table tbody tr:first-child.success td:nth-child(2) span.label.label-primary
         print daioduconfirm
-        
         self.assertEqual(daioduconfirm, u"调度已派单")
         #self.assertEqual(driver.title, u"物流")
  

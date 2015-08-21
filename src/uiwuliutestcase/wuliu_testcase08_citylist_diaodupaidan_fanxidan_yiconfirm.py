@@ -100,6 +100,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiConfirm(unittest.TestCase):
         driver.find_element_by_id("order_search_form_ordersn").clear()
         driver.find_element_by_id("order_search_form_ordersn").send_keys("15072110393738")
         driver.find_element_by_name("commit").click()
+        driver.find_element_by_xpath("//input[@type='submit']").click()
         
         self.assertEqual(driver.title, u"物流")
         driver.find_element_by_css_selector("div#container.container> div#paidan_list_container> div.panel.panel-primary.tab-content> div>form> table.table> tbody tr:first-child> td:nth-child(2)> a").click()
