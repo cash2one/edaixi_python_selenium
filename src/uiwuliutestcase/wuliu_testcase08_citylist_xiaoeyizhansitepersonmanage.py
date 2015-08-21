@@ -5,10 +5,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-import unittest, time, re,ConfigParser,MySQLdb
+import unittest, time, re,ConfigParser,MySQLdb,random
 from selenium.webdriver.common.action_chains import ActionChains
-import appobjectwuliu,wuliu_utiltools,random
-class WuliuTestcase08CitylistxiaoemanagerLogistics(unittest.TestCase):
+import appobjectwuliu,wuliu_utiltools
+class WuliuTestcase08Citylistxiaoeyizhansitepersonmanage(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
         self.driver = appobjectwuliu.GetInstance()
@@ -26,6 +26,7 @@ class WuliuTestcase08CitylistxiaoemanagerLogistics(unittest.TestCase):
         mysqlpassword = conf.get("databaseconn", "mysqlpassword")
         mysqldatabase = conf.get("databaseconn", "mysqlwuliudb")
         mysqlrongchangdb = conf.get("databaseconn", "mysqlrongchangdb")
+
         print mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase,mysqlrongchangdb
         
         self.base_url = WULIU_URL
@@ -33,7 +34,7 @@ class WuliuTestcase08CitylistxiaoemanagerLogistics(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_wuliu_testcase08_citylist_xiaoemanagerLogistics(self):
+    def test_wuliu_testcase08_citylist_xiaoeyizhansitepersonmanage(self):
         driver = self.driver
         
         driver.get(self.base_url + "/")
@@ -45,76 +46,87 @@ class WuliuTestcase08CitylistxiaoemanagerLogistics(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print " the testcase test_wuliu_testcase08_citylist_xiaoemanagerLogistics is ",driver.title
+        print driver.title
         self.assertEqual(driver.title, u"物流")
         
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
         global cursor 
         cursor = conn.cursor() 
+
         
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
         
         self.assertEqual(driver.title, u"物流")
      
-        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(5)").click()
+        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(11)").click()
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(4).btn.btn-success
     
         self.assertEqual(driver.title, u"物流")
-
-        driver.find_element_by_link_text(u"新建小e管家").click()
     
-        self.assertEqual(driver.title, u"物流")
+        driver.find_element_by_css_selector("div#container.container a.btn.btn-info.col-md-1").click()
+        userrname="lukejujnjun"+str(random.randint(0,999))
         telephonenumber="18611111"+str(random.randint(0,999))
         identitnumber="152528198801280"+str(random.randint(0,999))
-        print " the telephonenumber identitnumber is ",telephonenumber,identitnumber
+        print " the telephonenumber,identitnumber is ",telephonenumber,identitnumber
+        self.assertEqual(driver.title, u"物流")
         driver.find_element_by_id("courier_form_realname").clear()
-        driver.find_element_by_id("courier_form_realname").send_keys("zhangsankuaiduyuan")
+        driver.find_element_by_id("courier_form_realname").send_keys(userrname)
         driver.find_element_by_id("courier_form_tel").clear()
         driver.find_element_by_id("courier_form_tel").send_keys(telephonenumber)
         driver.find_element_by_id("courier_form_id_number").clear()
         driver.find_element_by_id("courier_form_id_number").send_keys(identitnumber)
         driver.find_element_by_id("courier_form_password").clear()
-        driver.find_element_by_id("courier_form_password").send_keys("123")
+        driver.find_element_by_id("courier_form_password").send_keys("123456")
         driver.find_element_by_id("courier_form_bank_name").clear()
         driver.find_element_by_id("courier_form_bank_name").send_keys(u"建设银行")
         driver.find_element_by_id("courier_form_bank_card").clear()
         driver.find_element_by_id("courier_form_bank_card").send_keys("9111000029922921113")
-        time.sleep(1)
-        driver.find_element_by_id("courier_form_saofen").click()
-        driver.find_element_by_id("courier_form_shouka").click()
-        driver.find_element_by_id("courier_form_zhuanyun").click()
-        driver.find_element_by_id("parent_xiyi").click()
-        driver.find_element_by_id("courier_form_kuaixi").click()
-        driver.find_element_by_id("courier_form_luxury_logistic").click()
-        driver.find_element_by_id("courier_form_is_zhongtui").click()
-        driver.find_element_by_id("courier_form_is_employee").click()
-        #driver.find_element_by_id("courier_form_is_zancun").click()
-        #driver.find_element_by_id("courier_form_is_owner").click()
-        time.sleep(1)
+        driver.find_element_by_id("courier_form_is_zancun").click()
+        driver.find_element_by_id("courier_form_is_owner").click()
+                
+        
         driver.find_element_by_id("courier_form_start_time").send_keys(str(wuliu_utiltools.get_day_of_day(1)))
         #driver.find_element_by_link_text("21").click()
         driver.find_element_by_id("courier_form_end_time").send_keys(str(wuliu_utiltools.get_day_of_day(5)))
-        #driver.find_element_by_link_text("27").click()
+        #driver.find_element_by_link_text("24").click()
+
         driver.find_element_by_name("commit").click()
-        
-        self.assertEqual(driver.title, u"物流")
-        #driver.find_element_by_xpath("//tr[@id='courier_21']/td[6]").click()
+      
+
+
         driver.find_element_by_id("realname").clear()
-        driver.find_element_by_id("realname").send_keys("zhangsankuaiduyuan")
+        driver.find_element_by_id("realname").send_keys("luke")
         driver.find_element_by_name("commit").click()
-        self.assertEqual(driver.title, u"物流")
+        driver.find_element_by_css_selector("div.col-md-2.input-group > span.input-group-btn > input[name=\"commit\"]").click()
+        driver.find_element_by_id("realname").click()
+        driver.find_element_by_id("realname").clear()
+        driver.find_element_by_id("realname").send_keys("luke")
+        driver.find_element_by_name("commit").click()
+        time.sleep(3)
         
-        driver.find_element_by_link_text(u"编辑").click()
+        
+        #html body div#container.container>div#courier_search_container>table.table.table-striped>tbody>tr:nth-child(2)>td:last-child>a
+        driver.find_element_by_css_selector("div#container.container>div#courier_search_container>table.table.table-striped>tbody>tr:nth-child(2)>td:last-child>a").click()
+        #driver.find_element_by_link_text(u"编辑").click()
         driver.find_element_by_id("courier_form_realname").clear()
-        driver.find_element_by_id("courier_form_realname").send_keys("zhangsankuaiduyuan111")
+        driver.find_element_by_id("courier_form_realname").send_keys("lukejujnjun111")
         driver.find_element_by_name("commit").click()
-    
-        self.assertEqual(driver.title, u"物流")
-    
+        time.sleep(3)
+        
         cursor.execute("DELETE FROM ims_washing_courier where tel='"+telephonenumber+"'")
         conn.commit()
         cursor.close()
         conn.close()
+        driver.find_element_by_id("realname").clear()
+        driver.find_element_by_id("realname").send_keys("luke")
+        driver.find_element_by_name("commit").click()
+        time.sleep(3)
+        driver.find_element_by_link_text(u"超时订单").click()
+        driver.find_element_by_id("timeout_qu_list_btn").click()
+        driver.find_element_by_id("timeout_song_list_btn").click()
+        driver.find_element_by_id("warning_qu_list_btn").click()
+        driver.find_element_by_id("warning_song_list_btn").click()
+        
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

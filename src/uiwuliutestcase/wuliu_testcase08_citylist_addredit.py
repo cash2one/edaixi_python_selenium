@@ -43,7 +43,7 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
+        print " the testcase test_wuliu_testcase08_citylist_addedit is ",driver.title
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
         
@@ -57,9 +57,9 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         #driver.find_elements_by_css_selector("div#container.container a.btn.btn-infos").click()
         driver.find_element_by_xpath("/html/body/div/a").click()
         self.assertEqual(driver.title, u"物流")
-        cityidname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body div.orders_container form#new_map_city.form-horizontal.new_map_city div.form-inputs div.form-group.select.required.map_city_api_city_id div.col-sm-8 select#map_city_api_city_id.select.required.form-control option:nth-child(2)").text
+        cityidname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body div.orders_container form#new_map_city.form-horizontal.new_map_city div.form-inputs div.form-group.select.required.map_city_api_city_id div.col-sm-8 select#map_city_api_city_id.select.required.form-control option:nth-child(3)").text
         self.assertEqual(driver.title, u"物流")
-        print cityidname
+        print " the cityidname is   ",cityidname
         Select(driver.find_element_by_id("map_city_api_city_id")).select_by_visible_text(cityidname)
 
         driver.find_element_by_id("map_city_center_lat").clear()
@@ -72,7 +72,7 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         driver.find_element_by_id("map_city_search_radius").send_keys("-5")
         
         driver.find_element_by_id("map_city_gaode_map_code").clear()
-        driver.find_element_by_id("map_city_gaode_map_code").send_keys("beijinggaode")
+        driver.find_element_by_id("map_city_gaode_map_code").send_keys("test")
         
         driver.find_element_by_name("commit").click()
         
@@ -91,7 +91,7 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         #driver.find_element_by_xpath(u"(//a[contains(text(),'编辑')])[16]").click()
         self.assertEqual(driver.title, u"物流")
         driver.find_element_by_id("map_city_gaode_map_code").clear()
-        driver.find_element_by_id("map_city_gaode_map_code").send_keys("beijinggaodecode")
+        driver.find_element_by_id("map_city_gaode_map_code").send_keys("test")
         driver.find_element_by_name("commit").click()
         
         self.assertEqual(driver.title, u"物流")
@@ -101,7 +101,7 @@ class WuliuTestcase08CitylistAddEdit(unittest.TestCase):
         #    ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id = cursor.fetchone()
         #print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
         print driver.title
-        cursor.execute("DELETE FROM  map_cities WHERE gaode_map_code LIKE 'beijinggaode%'")
+        cursor.execute("DELETE FROM  map_cities WHERE  title LIKE '上%' AND gaode_map_code='test'")
         
         #submit to database
         conn.commit()

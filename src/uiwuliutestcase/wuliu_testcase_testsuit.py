@@ -30,6 +30,9 @@ from wuliu_testcase08_citylist_diaoduquery_fanxidan import *
 from wuliu_testcase08_citylist_jiagongdian_factorbalance import *
 from wuliu_testcase08_citylist_jiagongdianmanage import *
 
+from wuliu_testcase08_citylist_xiaoemanagerLogistics import *
+from wuliu_testcase08_citylist_xiaoeyizhansiteLogistics import *
+from wuliu_testcase08_citylist_xiaoeyizhansitepersonmanage import *
 
 from wuliu_testcase09_factory_orderquery import *
 
@@ -85,6 +88,13 @@ if __name__ == '__main__':
     time.sleep(3)
     suite.addTest(WuliuTestcase08Citylistjiagongdianmanage('test_wuliu_testcase08_citylist_jiagongdianmanage'))
     time.sleep(3)
+    
+    suite.addTest(WuliuTestcase08CitylistxiaoemanagerLogistics('test_wuliu_testcase08_citylist_xiaoemanagerLogistics'))
+    time.sleep(3)
+    suite.addTest(WuliuTestcase08CitylistxiaoeyizhansiteLogistics('test_wuliu_testcase08_citylist_xiaoeyizhansiteLogistics'))
+    time.sleep(3)
+#     suite.addTest(WuliuTestcase08Citylistxiaoeyizhansitepersonmanage('test_wuliu_testcase08_citylist_xiaoeyizhansitepersonmanage'))
+#     time.sleep(3)
     
     #wuliu testcase09
     suite.addTest(WuliuTestcase09FactoryOrderQuery('test_wuliu_testcase09_factory_orderquery'))
