@@ -38,7 +38,7 @@ class WuliuTestcase10SiteOrderquery(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
+        print " the testcase test_wuliu_testcase10_site_orderquery is ",driver.title
         self.assertEqual(driver.title, u"物流")
         
         #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:last-child.active a

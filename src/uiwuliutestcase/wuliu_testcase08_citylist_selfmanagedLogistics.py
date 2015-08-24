@@ -76,7 +76,7 @@ class WuliuTestcase08CitylistselfmanagedLogistics(unittest.TestCase):
         driver.find_element_by_id("courier_form_bank_card").send_keys("9111000029922921113")
         driver.find_element_by_id("courier_form_saofen").click()
         driver.find_element_by_id("courier_form_shouka").click()
-        driver.find_element_by_id("courier_form_is_zhongtui").click()
+        #driver.find_element_by_id("courier_form_is_zhongtui").click()
         
         driver.find_element_by_id("courier_form_start_time").send_keys(str(wuliu_utiltools.get_day_of_day(1)))
         #driver.find_element_by_link_text("20").click()
@@ -106,7 +106,7 @@ class WuliuTestcase08CitylistselfmanagedLogistics(unittest.TestCase):
         driver.find_element_by_id("courier_form_password").send_keys("123")
         driver.find_element_by_id("courier_form_realname").clear()
         driver.find_element_by_id("courier_form_realname").send_keys("ziyingwuliuguanlli11")
-        driver.find_element_by_id("courier_form_is_employee").click()
+        #driver.find_element_by_id("courier_form_is_employee").click()
         driver.find_element_by_name("commit").click()
         
         self.assertEqual(driver.title, u"物流")

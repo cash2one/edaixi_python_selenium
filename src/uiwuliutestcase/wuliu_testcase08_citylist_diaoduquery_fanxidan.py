@@ -141,7 +141,7 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         driver.find_element_by_id("fanxi_order_form_remark").send_keys("beijingjiangtailu")
         
         driver.find_element_by_id("fanxi_order_form_washing_date").clear()
-        driver.find_element_by_id("fanxi_order_form_washing_date").send_keys(str(wuliu_utiltools.get_day_of_day(1)))
+        driver.find_element_by_id("fanxi_order_form_washing_date").send_keys(str(wuliu_utiltools.get_day_of_day(2)))
         
         #driver.find_element_by_css_selector("div#container.container form#new_fanxi_order_form_254.form-horizontal.new_fanxi_order_form table.table.table-striped.search-table tbody tr:last-child td:last-child input.button.btn.btn-info.btn-style-width").click()
         driver.find_element_by_xpath("//input[@type='submit']").click()
@@ -149,7 +149,7 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
-        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',paytype='1' WHERE ordersn='"+wuliu_utiltools.ordersnnumber+"'")
+        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',paytype='1',pay_status='1',fan_id='0',status_delivery='3'  WHERE ordersn='"+wuliu_utiltools.ordersnnumber+"'")
         conn.commit()
         
         wuliuconn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlwuliudb,charset="utf8")    

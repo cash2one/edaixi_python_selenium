@@ -124,7 +124,8 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         self.assertEqual(driver.title, u"物流")
         time.sleep(2)
         
-        Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"奢侈品")
+        #Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"奢侈品")
+        Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"家纺")
         driver.find_element_by_id("outlet_rule_form_discount").clear()
         driver.find_element_by_id("outlet_rule_form_discount").send_keys("12")
         

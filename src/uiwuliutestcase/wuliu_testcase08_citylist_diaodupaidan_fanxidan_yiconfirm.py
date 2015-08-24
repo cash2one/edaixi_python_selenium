@@ -98,10 +98,11 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiConfirm(unittest.TestCase):
 #         print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
 #         
         driver.find_element_by_id("order_search_form_ordersn").clear()
-        driver.find_element_by_id("order_search_form_ordersn").send_keys("15072110393738")
+        driver.find_element_by_id("order_search_form_ordersn").send_keys(wuliu_utiltools.ordersnnumber)
         driver.find_element_by_name("commit").click()
-        driver.find_element_by_xpath("//input[@type='submit']").click()
+#         driver.find_element_by_xpath("//input[@type='submit']").click()
         
+        time.sleep(2)
         self.assertEqual(driver.title, u"物流")
         driver.find_element_by_css_selector("div#container.container> div#paidan_list_container> div.panel.panel-primary.tab-content> div>form> table.table> tbody tr:first-child> td:nth-child(2)> a").click()
         #html body div#container.container div#paidan_list_container div.panel.panel-primary.tab-content div#order_1039373 form#form_1039373.single_order_form table.table tbody tr:first-child td:nth-child(2) a
@@ -149,7 +150,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiConfirm(unittest.TestCase):
         
         daioduconfirm=driver.find_element_by_css_selector("div#container.container div.info-div div.row div.col-md-6 div.panel.panel-primary.checkout-order div.panle-body table.table tbody tr:first-child.success td:nth-child(2) span").text
         #html body div#container.container div.info-div div.row div.col-md-6 div.panel.panel-primary.checkout-order div.panle-body table.table tbody tr:first-child.success td:nth-child(2) span.label.label-primary
-        print daioduconfirm
+        print " the daioduconfirm(diaodu yi queren) is ",daioduconfirm
         
         self.assertEqual(daioduconfirm, u"调度已确认")
         #if daioduconfirm==u"调度已确认":
@@ -157,7 +158,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiConfirm(unittest.TestCase):
         #else:
         #    raise ValueError
         
-        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0' WHERE ordersn='15072110393738'")
+        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',paytype='1',pay_status='1',fan_id='0',status_delivery='3' WHERE ordersn='"+wuliu_utiltools.ordersnnumber+"'")
         conn.commit()
         
         wuliuconn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlwuliudb,charset="utf8")    

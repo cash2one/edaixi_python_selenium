@@ -87,7 +87,7 @@ class WuliuTestcase08CitylistluxuriesLogistics(unittest.TestCase):
         driver.find_element_by_id("courier_form_end_time").send_keys(str(wuliu_utiltools.get_day_of_day(8)))
 #         driver.find_element_by_link_text("26").click()
         
-        driver.find_element_by_id("courier_form_is_employee").click()
+        #driver.find_element_by_id("courier_form_is_employee").click()
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"物流")
         

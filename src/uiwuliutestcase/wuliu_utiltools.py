@@ -53,7 +53,7 @@ def getordersn():
 #print getordersn()           
 #global ordersnnumber
 #ordersnnumber=str(getordersn())
-ordersnnumber=str(15072110393738)
+ordersnnumber=str(15051110387266)
 print "the random ordersn  is ",ordersnnumber  
 #print ordersn
 def getfanid():

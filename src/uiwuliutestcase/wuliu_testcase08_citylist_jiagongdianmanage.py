@@ -95,8 +95,8 @@ class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
         driver.find_element_by_id("capacity_1_is_enabled").click()
         driver.find_element_by_id("capacity_2_is_enabled").click()
         driver.find_element_by_id("capacity_3_is_enabled").click()
-        driver.find_element_by_id("capacity_5_is_enabled").click()
-        driver.find_element_by_id("capacity_9_is_enabled").click()
+#         driver.find_element_by_id("capacity_5_is_enabled").click()
+#         driver.find_element_by_id("capacity_9_is_enabled").click()
         
 #         driver.find_element_by_id("capacity_1_count").clear()
 #         driver.find_element_by_id("capacity_1_count").send_keys("4")
@@ -118,11 +118,11 @@ class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
         driver.find_element_by_id("capacity_3_count").send_keys("5")
         
 
-        driver.find_element_by_id("capacity_5_count").clear()
-        driver.find_element_by_id("capacity_5_count").send_keys("5")
-
-        driver.find_element_by_id("capacity_9_count").clear()
-        driver.find_element_by_id("capacity_9_count").send_keys("5")
+#         driver.find_element_by_id("capacity_5_count").clear()
+#         driver.find_element_by_id("capacity_5_count").send_keys("5")
+# 
+#         driver.find_element_by_id("capacity_9_count").clear()
+#         driver.find_element_by_id("capacity_9_count").send_keys("5")
         
 #         driver.find_element_by_id("outlet_form_can_xiyi").click()
 #         driver.find_element_by_id("outlet_form_can_xixie").click()
