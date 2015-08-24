@@ -29,6 +29,17 @@ from wuliu_testcase08_citylist_diaoduquery_fanxidan import *
 
 from wuliu_testcase08_citylist_jiagongdian_factorbalance import *
 from wuliu_testcase08_citylist_jiagongdianmanage import *
+from wuliu_testcase08_citylist_luxuriesLogistics import *
+from wuliu_testcase08_citylist_outtimemanage import *
+from wuliu_testcase08_citylist_selfmanagedLogistics import *
+from wuliu_testcase08_citylist_servicesiteLogistics import *
+from wuliu_testcase08_citylist_shouyidianmanage import *
+
+from wuliu_testcase08_citylist_dividebasearea import *
+from wuliu_testcase08_citylist_dividekuaidiarea import *
+from wuliu_testcase08_citylist_divideluxuryarea import *
+from wuliu_testcase08_citylist_dividexiaoesitearea import *
+from wuliu_testcase08_citylist_dividezhongbaoarea import *
 
 from wuliu_testcase08_citylist_xiaoemanagerLogistics import *
 from wuliu_testcase08_citylist_xiaoeyizhansiteLogistics import *
@@ -84,10 +95,33 @@ if __name__ == '__main__':
     suite.addTest(WuliuTestcase08citylistdiaoduqueryfanxidan('test_wuliu_testcase08_citylist_diaoduquery_fanxidan'))
     time.sleep(3)
     
+    suite.addTest(WuliuTestcase08Citylistdividebasearea('test_wuliu_testcase08_citylist_dividebasearea'))
+    time.sleep(3)
+    suite.addTest(WuliuTestcase08Citylistdividekuaidiarea('test_wuliu_testcase08_citylist_dividekuaidiarea'))
+    time.sleep(3)
+    suite.addTest(WuliuTestcase08Citylistdivideluxuryarea('test_wuliu_testcase08_citylist_divideluxuryarea'))
+    time.sleep(3)
+    suite.addTest(WuliuTestcase08Citylistdividexiaoesitearea('test_wuliu_testcase08_citylist_dividexiaoesitearea'))
+    time.sleep(3)
+    suite.addTest(WuliuTestcase08Citylistdividezhongbaoarea('test_wuliu_testcase08_citylist_dividezhongbaoarea'))
+    time.sleep(3)
+    
     suite.addTest(WuliuTestcase08CitylistJiagongdianFactoryBalance('test_wuliu_testcase08_citylist_jiagongdian_factorybalance'))
     time.sleep(3)
     suite.addTest(WuliuTestcase08Citylistjiagongdianmanage('test_wuliu_testcase08_citylist_jiagongdianmanage'))
     time.sleep(3)
+    
+    suite.addTest(WuliuTestcase08CitylistluxuriesLogistics('test_wuliu_testcase08_citylist_luxuriesLogistics'))
+    time.sleep(3)
+    suite.addTest(WuliuTestcase08Citylistouttimemanage('test_wuliu_testcase08_citylist_outtimemanage'))
+    time.sleep(3)
+    suite.addTest(WuliuTestcase08CitylistselfmanagedLogistics('test_wuliu_testcase08_citylist_selfmanagedLogistics'))
+    time.sleep(3)
+    suite.addTest(WuliuTestcase08CitylistservicesiteLogistics('test_wuliu_testcase08_citylist_servicesiteLogistics'))
+    time.sleep(3)
+    suite.addTest(WuliuTestcase08Citylistshouyidianmanage('test_wuliu_testcase08_citylist_shouyidianmanage'))
+    time.sleep(3)
+
     
     suite.addTest(WuliuTestcase08CitylistxiaoemanagerLogistics('test_wuliu_testcase08_citylist_xiaoemanagerLogistics'))
     time.sleep(3)
