@@ -58,7 +58,6 @@ class WuliuTestcase08CitylistxiaoemanagerLogistics(unittest.TestCase):
      
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(5)").click()
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(4).btn.btn-success
-    
         self.assertEqual(driver.title, u"物流")
 
         driver.find_element_by_link_text(u"新建小e管家").click()
@@ -68,7 +67,7 @@ class WuliuTestcase08CitylistxiaoemanagerLogistics(unittest.TestCase):
         identitnumber="152528198801280"+str(random.randint(0,999))
         print " the telephonenumber identitnumber is ",telephonenumber,identitnumber
         driver.find_element_by_id("courier_form_realname").clear()
-        driver.find_element_by_id("courier_form_realname").send_keys("zhangsankuaiduyuan")
+        driver.find_element_by_id("courier_form_realname").send_keys("xiaoeguanjiazhangsankuaiduyuan")
         driver.find_element_by_id("courier_form_tel").clear()
         driver.find_element_by_id("courier_form_tel").send_keys(telephonenumber)
         driver.find_element_by_id("courier_form_id_number").clear()
@@ -100,13 +99,13 @@ class WuliuTestcase08CitylistxiaoemanagerLogistics(unittest.TestCase):
         self.assertEqual(driver.title, u"物流")
         #driver.find_element_by_xpath("//tr[@id='courier_21']/td[6]").click()
         driver.find_element_by_id("realname").clear()
-        driver.find_element_by_id("realname").send_keys("zhangsankuaiduyuan")
+        driver.find_element_by_id("realname").send_keys("xiaoeguanjiazhangsankuaiduyuan")
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"物流")
         
         driver.find_element_by_link_text(u"编辑").click()
         driver.find_element_by_id("courier_form_realname").clear()
-        driver.find_element_by_id("courier_form_realname").send_keys("zhangsankuaiduyuan111")
+        driver.find_element_by_id("courier_form_realname").send_keys("xiaoeguanjiazhangsankuaiduyuan111")
         driver.find_element_by_name("commit").click()
     
         self.assertEqual(driver.title, u"物流")

@@ -46,7 +46,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
+        print " the testcase test_wuliu_testcase08_citylist_jiagongdian_factorybalance is ",driver.title
         self.assertTrue(driver.title, u"物流")
         
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
@@ -82,7 +82,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         self.assertEqual(driver.title, u"物流")
         time.sleep(2)
         hell=driver.find_element_by_css_selector("div#container.container>div#outlet_rule>table.table.table-striped>tbody>tr:last-child>td:last-child>a").text
-        print hell
+        print "the hell rules is ",hell
         #html body div#container.container div#outlet_rule table.table.table-striped tbody tr:last-child td:last-child a.btn.btn-sm.btn-danger
         #driver.find_element_by_xpath(u"(//a[contains(text(),'删除')])[4]").click()
         driver.find_element_by_css_selector("div#container.container>div#outlet_rule>table.table.table-striped>tbody>tr:last-child>td:last-child>a").click()

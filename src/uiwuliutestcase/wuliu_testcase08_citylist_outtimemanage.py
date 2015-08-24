@@ -46,7 +46,7 @@ class WuliuTestcase08Citylistouttimemanage(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
+        print " testcase test_wuliu_testcase08_citylist_outtimemanage is ",driver.title
         self.assertEqual(driver.title, u"物流")
            
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
@@ -60,7 +60,8 @@ class WuliuTestcase08Citylistouttimemanage(unittest.TestCase):
         driver.find_element_by_xpath("/html/body/div/a").click()
         self.assertEqual(driver.title,u"物流")
         cityidname=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body div.orders_container form#new_map_city.form-horizontal.new_map_city div.form-inputs div.form-group.select.required.map_city_api_city_id div.col-sm-8 select#map_city_api_city_id.select.required.form-control option:nth-child(2)").text
-        print cityidname
+        print " the cityidname is ",cityidname
+        
         Select(driver.find_element_by_id("map_city_api_city_id")).select_by_visible_text(cityidname)
 
         driver.find_element_by_id("map_city_center_lat").clear()
@@ -76,11 +77,10 @@ class WuliuTestcase08Citylistouttimemanage(unittest.TestCase):
         driver.find_element_by_id("map_city_gaode_map_code").send_keys("beijinggaode")
         
         driver.find_element_by_name("commit").click()
-        
         self.assertEqual(driver.title, u"物流")
                 
         addsuccess=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
-        print addsuccess
+        print " the addsuccess is ",addsuccess
         #shtml body div#container.container>div:nth-child(2)>a.btn.btn-default
         
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
@@ -100,7 +100,7 @@ class WuliuTestcase08Citylistouttimemanage(unittest.TestCase):
         driver.find_element_by_xpath("/html/body/div/div[1]/ul/li[2]/a").click()
         driver.find_element_by_xpath("/html/body/div/div[1]/ul/li[3]/a").click()
         driver.find_element_by_xpath("/html/body/div/div[1]/ul/li[4]/a").click()
-        print driver.title
+        print " test_wuliu_testcase08_citylist_outtimemanage result ",driver.title
         self.assertEqual(driver.title, u"物流")
         wuliuconn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlwuliudb,charset="utf8")    
         global wuliucursor 

@@ -68,7 +68,7 @@ class WuliuTestcase08CitylistxiaoeyizhansiteLogistics(unittest.TestCase):
         telephonenumber="18611110"+str(random.randint(0,999))
         print " the telephonenumber is ",telephonenumber
         driver.find_element_by_id("outlet_form_title").clear()
-        driver.find_element_by_id("outlet_form_title").send_keys(u"小e驿站test")
+        driver.find_element_by_id("outlet_form_title").send_keys(u"xiaoeyizhantest")
         driver.find_element_by_id("outlet_form_tel").clear()
         driver.find_element_by_id("outlet_form_tel").send_keys(telephonenumber)
         Select(driver.find_element_by_id("outlet_form_area")).select_by_visible_text(u"朝阳区")
