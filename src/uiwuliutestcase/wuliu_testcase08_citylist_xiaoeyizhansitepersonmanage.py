@@ -58,7 +58,7 @@ class WuliuTestcase08Citylistxiaoeyizhansitepersonmanage(unittest.TestCase):
         
         self.assertEqual(driver.title, u"物流")
      
-        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(11)").click()
+        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(10)").click()
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(4).btn.btn-success
     
         self.assertEqual(driver.title, u"物流")
@@ -92,7 +92,7 @@ class WuliuTestcase08Citylistxiaoeyizhansitepersonmanage(unittest.TestCase):
 
         driver.find_element_by_name("commit").click()
       
-
+        self.assertEqual(driver.title, u"物流")
 
         driver.find_element_by_id("realname").clear()
         driver.find_element_by_id("realname").send_keys("luke")
@@ -104,7 +104,7 @@ class WuliuTestcase08Citylistxiaoeyizhansitepersonmanage(unittest.TestCase):
         driver.find_element_by_name("commit").click()
         time.sleep(3)
         
-        
+        self.assertEqual(driver.title, u"物流")
         #html body div#container.container>div#courier_search_container>table.table.table-striped>tbody>tr:nth-child(2)>td:last-child>a
         driver.find_element_by_css_selector("div#container.container>div#courier_search_container>table.table.table-striped>tbody>tr:nth-child(2)>td:last-child>a").click()
         #driver.find_element_by_link_text(u"编辑").click()
@@ -126,7 +126,7 @@ class WuliuTestcase08Citylistxiaoeyizhansitepersonmanage(unittest.TestCase):
         driver.find_element_by_id("timeout_song_list_btn").click()
         driver.find_element_by_id("warning_qu_list_btn").click()
         driver.find_element_by_id("warning_song_list_btn").click()
-        
+        self.assertEqual(driver.title, u"物流")
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

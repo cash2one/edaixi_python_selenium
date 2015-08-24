@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-import unittest, time, re,ConfigParser,MySQLdb
+import unittest, time, re,ConfigParser,MySQLdb,random
 from selenium.webdriver.common.action_chains import ActionChains
 import appobjectwuliu
 class WuliuTestcase08CitylistservicesiteLogistics(unittest.TestCase):
@@ -54,9 +54,34 @@ class WuliuTestcase08CitylistservicesiteLogistics(unittest.TestCase):
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(7)").click()
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(4).btn.btn-success
         self.assertEqual(driver.title, u"物流")
-    
-
-
+#     
+#         driver.find_element_by_link_text(u"服务站点管理").click()
+        driver.find_element_by_link_text(u"新建站点").click()
+        self.assertEqual(driver.title, u"物流")
+        telephonenumber=random.choice(['139','188','185','136','158','151'])+"".join(random.choice("0123456789") for i in range(8))
+        print " the telephonenumber is ",telephonenumber
+        driver.find_element_by_id("outlet_form_title").clear()
+        driver.find_element_by_id("outlet_form_title").send_keys(u"servicesitetest1")
+        driver.find_element_by_id("outlet_form_tel").clear()
+        driver.find_element_by_id("outlet_form_tel").send_keys(telephonenumber)
+        driver.find_element_by_id("outlet_form_usertel").clear()
+        driver.find_element_by_id("outlet_form_usertel").send_keys(u"测试张三")
+        Select(driver.find_element_by_id("outlet_form_area")).select_by_visible_text(u"朝阳区")
+        driver.find_element_by_id("outlet_form_address").clear()
+        driver.find_element_by_id("outlet_form_address").send_keys(u"朝阳区酒仙桥")
+        time.sleep(1)
+        driver.find_element_by_id("get_pos").click()
+        time.sleep(2)
+        driver.find_element_by_id("set_move").click()
+        time.sleep(2)
+        driver.find_element_by_name("commit").click()
+        
+        self.assertEqual(driver.title, u"物流")
+        driver.find_element_by_link_text(u"编辑").click()
+        driver.find_element_by_id("outlet_form_title").clear()
+        driver.find_element_by_id("outlet_form_title").send_keys(u"小e驿站test11111")
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title, u"物流")
         
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

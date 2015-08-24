@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-import unittest, time, re,ConfigParser,MySQLdb
+import unittest, time, re,ConfigParser,MySQLdb,random
 from selenium.webdriver.common.action_chains import ActionChains
 import wuliu_utiltools,appobjectwuliu
 
@@ -67,11 +67,12 @@ class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
         #driver.find_element_by_link_text(u"新建加工店").click()
         driver.find_element_by_css_selector("div#container.container a.btn.btn-info.col-md-1").click()
         self.assertEqual(driver.title, u"物流")
-        
+        telephonenumber=random.choice(['139','188','185','136','158','151'])+"".join(random.choice("0123456789") for i in range(8))
+        print " the telephonenumber is ",telephonenumber
         driver.find_element_by_id("outlet_form_title").clear()
         driver.find_element_by_id("outlet_form_title").send_keys("testjiagongdian")
         driver.find_element_by_id("outlet_form_tel").clear()
-        driver.find_element_by_id("outlet_form_tel").send_keys("18701112200")
+        driver.find_element_by_id("outlet_form_tel").send_keys(telephonenumber)
         driver.find_element_by_id("outlet_form_usertel").clear()
         driver.find_element_by_id("outlet_form_usertel").send_keys(u"测试张三")
         Select(driver.find_element_by_id("outlet_form_area")).select_by_visible_text(u"朝阳区")
