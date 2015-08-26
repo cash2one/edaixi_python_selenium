@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/interfaceopen/create_address.py=utf-8
+encoding//src/interfaceopen/create_order.py=utf-8
+encoding//src/interfaceopen/pay_order.py=utf-8
 encoding//src/uiappobject/appobjectutils.py=utf-8
 encoding//src/uibusinesstestcase/AppObjectCaiwu.py=utf-8
 encoding//src/uibusinesstestcase/PythonGetBaidu.py=Utf-8
