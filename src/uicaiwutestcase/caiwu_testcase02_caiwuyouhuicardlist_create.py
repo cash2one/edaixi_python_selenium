@@ -35,6 +35,7 @@ class CaiwuTestcase02CaiwuyouhuicardlistCreate(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         #self.assert_(driver.title, u"财务")
+        time.sleep(2)
         self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"优惠券").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
@@ -47,7 +48,7 @@ class CaiwuTestcase02CaiwuyouhuicardlistCreate(unittest.TestCase):
         #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
         #driver.find_element_by_name("commit").click()
         #print  "size is ",driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:last-child td:nth-child(11) a").len
-        
+        time.sleep(1)
         winBeforeHandle = driver.current_window_handle
         winHandles = driver.window_handles
         for handle in winHandles:

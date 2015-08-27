@@ -34,6 +34,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditShitiCouple(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
+        time.sleep(2)
         self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"优惠券").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
@@ -41,6 +42,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditShitiCouple(unittest.TestCase):
        #driver.find_element_by_link_text(u"优惠券列表").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a").click()
         self.assertEqual(driver.title,u"财务")
+        time.sleep(1)
         #youhuiquan list add function
         #driver.find_element_by_link_text(u"新 建").click()
         driver.find_element_by_css_selector("div.container a.btn.btn-info.col-md-1").click()
@@ -66,18 +68,20 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditShitiCouple(unittest.TestCase):
         driver.find_element_by_id("coupon_list_form_limit_count").send_keys("10")
         driver.find_element_by_id("coupon_list_form_use_limit").clear()
         driver.find_element_by_id("coupon_list_form_use_limit").send_keys("10")
-        #inputs = driver.find_elements_by_tag_name('input')
-        #for input in inputs:
-            #if input.get_attribute('type') == 'checkbox':
-               #input.click()
-        #time.sleep(2)
+        
+        inputs = driver.find_elements_by_tag_name('input')
+        for input in inputs:
+            if input.get_attribute('type') == 'checkbox':
+                input.click()
+        time.sleep(2)
         #driver.find_element_by_id("coupon_list_form_exclusive_channels_2").click()
-        #driver.find_element_by_id("coupon_list_form_exclusive_channels_1").click()
+#         driver.find_element_by_id("coupon_list_form_exclusive_channels_1").click()
         #driver.find_element_by_id("coupon_list_form_exclusive_channels_3").click()
-        checkboxes = driver.find_elements_by_css_selector('input[type=checkbox]')
-        for checkbox in checkboxes:
-            checkbox.click()
-        #time.sleep(2)
+#         time.sleep(2)
+#         checkboxes = driver.find_elements_by_css_selector('input[type=checkbox]')
+#         for checkbox in checkboxes:
+#             checkbox.click()
+#         time.sleep(2)
         
         currenttime=str(time.strftime("%d", time.localtime()))
         starttime=str(time.strftime("%Y-%m-", time.localtime()))
@@ -137,6 +141,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditShitiCouple(unittest.TestCase):
         #driver.find_element_by_xpath("/html/body/div[2]/div[2]/div[1]/table/tbody/tr[20]/td[11]/a[1]").click()
         #html body div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:nth-last-child td:nth-last-child(4) a:first-child.btn.btn-sm.btn-info
         #youhuiquan list edit function
+        time.sleep(1)
         driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:nth-last-child(4) a:first-child").click()
         #driver.find_element_by_link_text(u"编辑").click()
         driver.find_element_by_id("coupon_list_form_title_alias").clear()

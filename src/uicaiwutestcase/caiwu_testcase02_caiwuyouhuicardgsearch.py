@@ -36,16 +36,16 @@ class CaiwuTestcase02Caiwuyouhuicardgsearch(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        
+        time.sleep(2)
         #driver.find_element_by_link_text(u"优惠券").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
         #driver.find_element_by_link_text(u"优惠券查询").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:nth-child(2) a").click()
-        
+        time.sleep(1)
         driver.find_element_by_id("coupon_sn").clear()
         driver.find_element_by_id("coupon_sn").send_keys("1069")
         driver.find_element_by_xpath("(//input[@name='commit'])[1]").click()
-        
+        time.sleep(1)
         driver.find_element_by_id("title").clear()
         driver.find_element_by_id("title").send_keys(u"测试")
         driver.find_element_by_xpath("(//input[@name='commit'])[2]").click()

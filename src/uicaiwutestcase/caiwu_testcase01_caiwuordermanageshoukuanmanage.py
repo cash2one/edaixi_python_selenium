@@ -67,7 +67,7 @@ class CaiwuTestcase01Caiwuordermanagementshoukuanmanagei(unittest.TestCase):
 #             if winBeforeHandle != handle:
 #                 driver.switch_to_window(handle)
 #         #print driver.title 
-        
+        time.sleep(1)
         successconfirmshoukuan=driver.find_element_by_css_selector("div.container div.alert.fade.in.alert-success").text
         
         print " the successconfirmshoukuan is ",successconfirmshoukuan
@@ -78,6 +78,7 @@ class CaiwuTestcase01Caiwuordermanagementshoukuanmanagei(unittest.TestCase):
         driver.find_element_by_id("settlement_search_form_ordersn").clear()
         driver.find_element_by_id("settlement_search_form_ordersn").send_keys(ordernumberconfirm)
         driver.find_element_by_name("commit").click()
+        time.sleep(2)
         #html body div.container div#content div.panel.panel-primary table.table.table-striped.list-table tbody tr td span.label.label-danger
         shoukuanstatus=driver.find_element_by_css_selector("div#content > div.panel.panel-primary > table.table.table-striped.list-table > tbody > tr:first-child > td:nth-last-child(3) > span").text
         print shoukuanstatus

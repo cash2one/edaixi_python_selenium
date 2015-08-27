@@ -33,13 +33,14 @@ class CaiwuTestcase02caiwuYouhuiquanlistQuery(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
+        time.sleep(2)
         self.assertEqual(driver.title,u"财务")
         
         #driver.find_element_by_link_text(u"优惠券").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
        #driver.find_element_by_link_text(u"优惠券列表").click()
         self.assertEqual(driver.title,u"财务")
-        
+        time.sleep(1)
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a").click()
         self.assertEqual(driver.title,u"财务")
         
@@ -47,7 +48,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistQuery(unittest.TestCase):
         driver.find_element_by_id("title").send_keys(u"测试")
         driver.find_element_by_xpath("(//input[@name='commit'])[1]").click()
         self.assertEqual(driver.title,u"财务")
-        
+        time.sleep(1)
         driver.find_element_by_id("apply_department").clear()
         driver.find_element_by_id("apply_department").send_keys(u"测试")
         driver.find_element_by_xpath("(//input[@name='commit'])[3]").click()

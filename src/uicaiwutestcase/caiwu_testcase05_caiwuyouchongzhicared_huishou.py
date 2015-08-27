@@ -36,18 +36,19 @@ class CaiwuTestcase05CaiwuyouchongzhicaredHuishou(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         
-        self.assertEqual(driver.title,u"财务")
-        WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed())
+#         self.assertEqual(driver.title,u"财务")
+        WebDriverWait(driver, 30).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed())
         #driver.find_element_by_link_text(u"充值卡").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(5).dropdown a").click()
         #driver.find_element_by_link_text(u"充值卡列表").click()
         self.assertEqual(driver.title,u"财务")
+        time.sleep(1)
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(5).dropdown ul.dropdown-menu li:first-child a").click()
         self.assertEqual(driver.title,u"财务")
-        driver.implicitly_wait(10)
+        driver.implicitly_wait(20)
         #driver.find_element_by_link_text(u"回 收").click()
         driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:nth-child(8) a:nth-child(3).btn.btn-sm.btn-info").click()
-        
+        time.sleep(2)
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认回收充值卡[\s\S]$")
         
         huishouresult=driver.find_element_by_css_selector("div.container div.alert.fade.in.alert-success").text

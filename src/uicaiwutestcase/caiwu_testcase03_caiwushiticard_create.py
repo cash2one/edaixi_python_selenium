@@ -35,6 +35,7 @@ class CaiwuTestcase03CaiwushiticardCreate(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
+        time.sleep(2)
         self.assertEqual(driver.title, u"财务")
         
         #driver.find_element_by_link_text(u"实体卡").click()
@@ -113,12 +114,13 @@ class CaiwuTestcase03CaiwushiticardCreate(unittest.TestCase):
         
         driver.find_element_by_css_selector("div.container a.btn.btn-sm.btn-info.col-md-1").click()
         #html body div.container a.btn.btn-sm.btn-info.col-md-1
+        time.sleep(2)
         winBeforeHandle = driver.current_window_handle
         winHandles = driver.window_handles
         for handle in winHandles:
             if winBeforeHandle != handle:
                 driver.switch_to_window(handle)
-        time.sleep(1)
+
         
         driver.find_element_by_id("rcard_recharge_form_xiaoshoujia").clear()
         driver.find_element_by_id("rcard_recharge_form_xiaoshoujia").send_keys("100")
@@ -132,7 +134,6 @@ class CaiwuTestcase03CaiwushiticardCreate(unittest.TestCase):
         print " the chongzhisuccess is ",chongzhisuccess
         #html body div.container div.alert.fade.in.alert-success
         assert u"充值成功" in chongzhisuccess
-        
         
         #self.assertEqual(chongzhisuccess, u"充值成功")
         

@@ -45,6 +45,7 @@ class CaiwuTestcase05CaiwuyouchongzhicaredQuery(unittest.TestCase):
         driver.find_element_by_id("sncode").send_keys("2542508117715622238")
         driver.find_element_by_xpath("(//input[@name='commit'])[1]").click()
         
+        time.sleep(2)
         driver.find_element_by_id("card_id").clear()
         driver.find_element_by_id("card_id").send_keys("000000250658")
         driver.find_element_by_xpath("(//input[@name='commit'])[2]").click()

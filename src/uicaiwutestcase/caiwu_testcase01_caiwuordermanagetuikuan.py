@@ -35,7 +35,8 @@ class CaiwuTestcase01Caiwuordermanagementtuikuan(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        driver.implicitly_wait(20)
+        driver.implicitly_wait(30)
+        time.sleep(1)
         self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"财务单管理").click()
         driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:first-child a").click()
@@ -45,11 +46,13 @@ class CaiwuTestcase01Caiwuordermanagementtuikuan(unittest.TestCase):
         self.assertEqual(driver.title,u"财务")
  
         driver.find_element_by_link_text(caiwu_edaixi_mysql.ordersnnumber).click()
-        WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container div.info-div div.col-md-6 div.panel.panel-primary.checkout-order div.panel-heading").is_displayed()) 
+        #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container div.info-div div.col-md-6 div.panel.panel-primary.checkout-order div.panel-heading").is_displayed()) 
 
+        time.sleep(1)
         driver.find_element_by_id("remark_content").clear()
         driver.find_element_by_id("remark_content").send_keys("hello,testing")
         driver.find_element_by_name("commit").click()
+        time.sleep(1)
         huiyuancardnum=driver.find_element_by_css_selector("div.container div.info-div div.col-md-6 div.panel.panel-primary.checkout-order div.panle-body div.orders_container table.table.table-striped tbody tr:nth-child(6) td:nth-child(4) a").text
         print " the huiyuancardnum is :",huiyuancardnum
         driver.find_element_by_link_text(huiyuancardnum).click()
@@ -57,7 +60,7 @@ class CaiwuTestcase01Caiwuordermanagementtuikuan(unittest.TestCase):
 
         #driver.find_element_by_link_text(u"退 款").click()
         driver.find_element_by_css_selector("div.container a.btn.btn-sm.btn-danger").click()
-        
+        time.sleep(1)
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认退款[\s\S]$")
 
         #self.assert_(driver.title, u"财务")

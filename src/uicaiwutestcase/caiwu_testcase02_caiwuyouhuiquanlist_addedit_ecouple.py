@@ -34,6 +34,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
+        time.sleep(2)
         self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"优惠券").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
@@ -42,6 +43,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple(unittest.TestCase):
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a").click()
         self.assertEqual(driver.title,u"财务")
         #youhuiquan list add function
+        time.sleep(2)
         #driver.find_element_by_link_text(u"新 建").click()
         driver.find_element_by_css_selector("div.container a.btn.btn-info.col-md-1").click()
         #starting add youhuiquan account
@@ -67,11 +69,12 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple(unittest.TestCase):
         driver.find_element_by_id("coupon_list_form_use_limit").clear()
         driver.find_element_by_id("coupon_list_form_use_limit").send_keys("10")
 
+        time.sleep(2)
         checkboxes = driver.find_elements_by_css_selector('input[type=checkbox]')
         for checkbox in checkboxes:
             checkbox.click()
         #time.sleep(2)
-        
+        time.sleep(2)
         currenttime=str(time.strftime("%d", time.localtime()))
         starttime=str(time.strftime("%Y-%m-", time.localtime()))
         endtime=str(int(currenttime)+1)
