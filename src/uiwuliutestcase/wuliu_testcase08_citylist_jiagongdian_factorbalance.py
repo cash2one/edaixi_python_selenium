@@ -46,8 +46,9 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
+        time.sleep(2)
         print " the testcase test_wuliu_testcase08_citylist_jiagongdian_factorybalance is ",driver.title
-        self.assertTrue(driver.title, u"物流")
+        self.assertEqual(driver.title, u"物流")
         
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
         global cursor 
@@ -59,7 +60,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         #driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
         driver.find_element_by_css_selector("div.container > nav > ul > li:nth-child(8) >a").click()
         self.assertEqual(driver.title, u"物流")
-        
+        time.sleep(1)
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(9)").click()
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(4).btn.btn-success
         self.assertEqual(driver.title, u"物流")
@@ -87,7 +88,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         #driver.find_element_by_xpath(u"(//a[contains(text(),'删除')])[4]").click()
         driver.find_element_by_css_selector("div#container.container>div#outlet_rule>table.table.table-striped>tbody>tr:last-child>td:last-child>a").click()
         #print driver.switch_to_alert().text()
-        #time.sleep(1)
+        time.sleep(1)
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除吗[\s\S]$")
         
         self.assertEqual(driver.title, u"物流")

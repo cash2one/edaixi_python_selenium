@@ -34,11 +34,13 @@ class KefuTestcase02MyUserFeedbackAlllistNeedfeedback(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
+        time.sleep(1)
         self.assertEqual(driver.title,u"客服系统")
     
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(2)>a").click()
         #driver.find_element_by_link_text(u"反馈总列表").click()
         #driver.find_element_by_link_text(u"踢").click()
+        time.sleep(1)
         self.assertEqual(driver.title,u"客服系统")
     
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary ul.nav.nav-tabs li:first-child.active a").click()
@@ -56,6 +58,7 @@ class KefuTestcase02MyUserFeedbackAlllistNeedfeedback(unittest.TestCase):
         driver.find_element_by_css_selector("div#container.container div.row div.col-sm-12 div.div a.btn.btn-info.pull-right").click()
     
         driver.find_element_by_css_selector("div#container.container table.table.table-striped tbody tr:first-child td:nth-child(8) a.btn.btn-sm.btn-info").click()
+        time.sleep(2)
         self.assertEqual(u"确认发券吗？", self.close_alert_and_get_its_text())
         
         print driver.title

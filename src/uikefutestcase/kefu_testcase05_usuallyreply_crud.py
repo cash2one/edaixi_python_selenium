@@ -36,7 +36,8 @@ class KefuTestcase05UsuallyreplyCrud(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         
-        print driver.title
+        print " the testcase test_kefu_testcase05_usuallyreply_crud is ",driver.title
+        time.sleep(1)
         self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(5)>a").click() 
         self.assertEqual(driver.title,u"客服系统")
@@ -51,6 +52,7 @@ class KefuTestcase05UsuallyreplyCrud(unittest.TestCase):
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body table.table.table-striped tbody tr:first-child td:last-child a").click()
         #self.assertEqual(driver.title,u"客服系统")
         #driver.find_element_by_link_text(u"删除").click()
+        time.sleep(1)
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确定删除[\s\S]$")
     
     def is_element_present(self, how, what):

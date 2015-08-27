@@ -47,7 +47,7 @@ class WuliuTestcase08Citylistdividebasearea(unittest.TestCase):
         print driver.title
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
-        
+        time.sleep(2)
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
         '''
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
@@ -59,6 +59,7 @@ class WuliuTestcase08Citylistdividebasearea(unittest.TestCase):
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-last-child(2).btn-link a").click()
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr td:nth-last-child(2).btn-link a.btn.btn-success
         '''
+        time.sleep(1)
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-last-child(2).btn-link a").click()
         self.assertEqual(driver.title, u"物流")
         time.sleep(2)
@@ -67,6 +68,7 @@ class WuliuTestcase08Citylistdividebasearea(unittest.TestCase):
         
 
         driver.find_element_by_css_selector("#address_search_bar > div.btn.btn-info").click()
+        time.sleep(1)
         driver.find_element_by_id("add_polygon_btn").click()
         
         #driver.find_element_by_id("address_input").clear()

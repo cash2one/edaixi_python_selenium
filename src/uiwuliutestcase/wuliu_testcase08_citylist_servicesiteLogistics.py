@@ -71,12 +71,13 @@ class WuliuTestcase08CitylistservicesiteLogistics(unittest.TestCase):
         driver.find_element_by_id("outlet_form_address").send_keys(u"朝阳区酒仙桥")
         time.sleep(1)
         driver.find_element_by_id("get_pos").click()
-        time.sleep(2)
+        time.sleep(1)
         driver.find_element_by_id("set_move").click()
-        time.sleep(2)
+        time.sleep(1)
         driver.find_element_by_name("commit").click()
         
         self.assertEqual(driver.title, u"物流")
+        time.sleep(2)
         driver.find_element_by_link_text(u"编辑").click()
         driver.find_element_by_id("outlet_form_title").clear()
         driver.find_element_by_id("outlet_form_title").send_keys(u"小e驿站test11111")
@@ -105,7 +106,7 @@ class WuliuTestcase08CitylistservicesiteLogistics(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

@@ -75,6 +75,7 @@ class WuliuTestcase08Citylistshouyidianmanage(unittest.TestCase):
         driver.find_element_by_name("commit").click()
         
         self.assertEqual(driver.title, u"物流")
+        time.sleep(2)
         driver.find_element_by_link_text(u"编辑").click()
         driver.find_element_by_id("outlet_form_title").clear()
         driver.find_element_by_id("outlet_form_title").send_keys("shouyiguanli111")

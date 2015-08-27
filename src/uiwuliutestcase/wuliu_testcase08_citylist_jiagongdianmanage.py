@@ -47,6 +47,7 @@ class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
+        time.sleep(2)
         print driver.title
         self.assertTrue(driver.title, u"物流")
         
@@ -55,6 +56,7 @@ class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
         cursor = conn.cursor() 
         
         driver.find_element_by_css_selector("div.container > nav > ul > li:nth-child(8) >a").click()
+        time.sleep(1)
         #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li.active a
         #html body header.navbar.navbar-default.navbar-static-top div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li.active a
         #html body header.navbar.navbar-default.navbar-static-top div.container>ul.nav.navbar-nav>li:nth-child(8).active a
@@ -79,7 +81,15 @@ class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
  #div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.required.outlet_form_area div.col-sm-8 select#outlet_form_area.select.required.form-control option
         driver.find_element_by_id("outlet_form_address").clear()
         driver.find_element_by_id("outlet_form_address").send_keys(u"朝阳区酒仙桥")
+#                 Select(driver.find_element_by_id("outlet_form_area")).select_by_visible_text(u"朝阳区")
+#         driver.find_element_by_id("outlet_form_address").clear()
+#         driver.find_element_by_id("outlet_form_address").send_keys(u"朝阳区酒仙桥")
+        time.sleep(2)
         driver.find_element_by_id("get_pos").click()
+        time.sleep(1)
+        driver.find_element_by_id("set_move").click()
+        
+
         #driver.find_element_by_id("get_pos").click()
         time.sleep(2)
         driver.find_element_by_id("outlet_form_total").clear()
@@ -130,13 +140,13 @@ class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
         driver.find_element_by_name("commit").click()
         
         self.assertEqual(driver.title, u"物流")
-        
+        time.sleep(1)
         driver.find_element_by_link_text(u"编辑").click()
         driver.find_element_by_id("outlet_form_usertel").clear()
         driver.find_element_by_id("outlet_form_usertel").send_keys(u"测试张三update")
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"物流")
-        
+        time.sleep(1)
         driver.find_element_by_id("title").clear()
         driver.find_element_by_id("title").send_keys("testjiagongdian")
         driver.find_element_by_name("commit").click()

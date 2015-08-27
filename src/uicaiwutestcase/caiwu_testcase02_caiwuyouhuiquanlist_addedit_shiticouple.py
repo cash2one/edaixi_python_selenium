@@ -68,7 +68,7 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditShitiCouple(unittest.TestCase):
         driver.find_element_by_id("coupon_list_form_limit_count").send_keys("10")
         driver.find_element_by_id("coupon_list_form_use_limit").clear()
         driver.find_element_by_id("coupon_list_form_use_limit").send_keys("10")
-        
+        time.sleep(2)
         inputs = driver.find_elements_by_tag_name('input')
         for input in inputs:
             if input.get_attribute('type') == 'checkbox':

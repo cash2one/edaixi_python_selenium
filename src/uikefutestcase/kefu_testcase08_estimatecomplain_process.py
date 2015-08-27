@@ -36,7 +36,8 @@ class KefuTestcase08EstimateComplainProcess(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         
-        print driver.title
+        time.sleep(2)
+        print "the testcase test_kefu_testcase08_estimatecomplain_process is ",driver.title
         self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child("+str(9)+")>a").click() 
 #         self.assertEqual(driver.title,u"客服系统")
@@ -49,12 +50,17 @@ class KefuTestcase08EstimateComplainProcess(unittest.TestCase):
 #         driver.find_element_by_id("note").clear()
 #         driver.find_element_by_id("note").send_keys("pingjiagood")
 #         driver.find_element_by_name("commit").click()
-        driver.find_element_by_link_text(u"订单投诉").click()
-        self.assertEqual(driver.title,u"客服系统")
         driver.find_element_by_link_text(u"处理中").click()
         self.assertEqual(driver.title,u"客服系统")
-        #driver.find_element_by_link_text("714604").click()
+        driver.find_element_by_link_text(u"未处理").click()
         self.assertEqual(driver.title,u"客服系统")
+        
+#         driver.find_element_by_link_text(u"订单投诉").click()
+#         self.assertEqual(driver.title,u"客服系统")
+#         driver.find_element_by_link_text(u"处理中").click()
+#         self.assertEqual(driver.title,u"客服系统")
+        #driver.find_element_by_link_text("714604").click()
+#         self.assertEqual(driver.title,u"客服系统")
 
         #html body div#container.container table.table.table-striped tbody tr:first-child td:nth-child(2) a
         

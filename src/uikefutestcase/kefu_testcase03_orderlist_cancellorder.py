@@ -67,19 +67,19 @@ class KefuTestcase03OrderlistCancellorder(unittest.TestCase):
         time.sleep(2)
         
         driver.find_element_by_css_selector("div#container.container div#content-container form#new_order_search_form.form-horizontal.new_order_search_form a.btn.btn-danger.col-md-1").click()
-        print driver.switch_to_alert().text
- 
+        #print driver.switch_to_alert().text
+        time.sleep(2)
         driver.switch_to_alert().accept()
+        
         winBeforeHandle = driver.current_window_handle
-        #print "winBeforeHandle==",winBeforeHandle
         winHandles = driver.window_handles
-        #print "winHandles==",winHandles
         for handle in winHandles:
             if winBeforeHandle != handle:
                 driver.switch_to_window(handle)
         #该订单已付款，已付款状态，如需退款请建工单！确认取消?
         
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order div.panle-body table.table.table-striped tbody tr:first-child td:last-child form.button_to div input.btn.btn-danger").click()
+        time.sleep(2)
         driver.switch_to_alert().accept()
         print driver.title
         #assert "Yahoo!" in driver.titlecursor = db.cursor()

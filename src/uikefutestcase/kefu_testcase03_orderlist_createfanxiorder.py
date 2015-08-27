@@ -121,7 +121,7 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
 
         print " the createfanxidanresult is ",createfanxidanresult
         #self.assertEqual(createfanxidanresult,u"客服系统")
-        cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0,fan_id='"+PythonDateUtils.fanidnumber+"' WHERE ordersn='"+PythonDateUtils.ordersnnumber+"'")
+        cursor.execute("UPDATE ims_washing_order SET status_delivery='3' ,STATUS='1' ,fanxidan_id=0,fan_id='"+PythonDateUtils.fanstableidnumber+"' WHERE ordersn='"+PythonDateUtils.ordersnnumber+"'")
 
         #提交到数据库执行
         conn.commit()

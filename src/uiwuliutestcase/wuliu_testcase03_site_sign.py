@@ -49,8 +49,9 @@ class WuliuTestcase03sitesign(unittest.TestCase):
         driver.find_element_by_id("login-submit").click()
         #print driver.title
         #self.assertTrue(driver.title, u"物流")
-        self.assertEqual(driver.title, u"物流")
         time.sleep(2)
+        self.assertEqual(driver.title, u"物流")
+        #time.sleep(2)
         
         
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    

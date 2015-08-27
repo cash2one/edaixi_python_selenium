@@ -17,7 +17,7 @@ print mysqlhostname, mysqlusername, mysqlpassword, mysqldatabase
 
 conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
 global cursor
-global ordersnnumber,fanidnumber
+global ordersnnumber,fanidnumber,fanstableidnumber
 cursor = conn.cursor()
 
 def getordersn():
@@ -42,6 +42,21 @@ def getfanid():
 #print gethuiyuanid()  
 fanidnumber=str(getfanid())
 print fanidnumber
+
+
+
+def getfantablefanid():
+    n = cursor.execute("SELECT MIN(id)  FROM ims_fans") 
+    for row in cursor.fetchall():
+      for fanid in row: 
+          return fanid  
+      
+#print gethuiyuanid()  
+fanstableidnumber=str(getfantablefanid())
+print fanstableidnumber
+
+
+
 
 def getcloseconn():
    if cursor!="":
