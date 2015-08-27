@@ -40,7 +40,7 @@ class OpsTestcase01PermissionmanagePosition(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         
-        self.assertEqual(driver.title, u"e袋洗城市运营后台")
+#         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         #driver.find_element_by_css_selector("div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li.dropdown a.dropdown-toggle").click()
         driver.find_element_by_css_selector(appobjectops.clickPositionLink).click()
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
@@ -69,6 +69,7 @@ class OpsTestcase01PermissionmanagePosition(unittest.TestCase):
         #driver.find_element_by_xpath(u"(//a[contains(text(),'删除')])[1]").click()
         #driver.find_element_by_css_selector("div#container.container div#content div.panel.panel-primary div.panle-body table.table.table-striped tbody tr:last-child td:last-child a.btn.btn-sm.btn-danger").click()
         driver.find_element_by_css_selector(appobjectops.clickPositionDeleteButton).click()
+        time.sleep(2)
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除岗位角色映射[\s\S]$")
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")

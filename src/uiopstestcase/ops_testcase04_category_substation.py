@@ -64,8 +64,9 @@ class OpsTestcase04CategorySubStation(unittest.TestCase):
             print " the shenqingvarobj is  ",shenqingvarobj
             if shenqingvarobj==u"申请下线":
                 driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:last-child").click()
-
+                time.sleep(1)
                 self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认申请下线?[\s\S]$")
+                time.sleep(2)
                 shenqingsubmitresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
                 print " the shenqingsubmitresult is  ",shenqingsubmitresult
                 #self.assertEqual(shenqingsubmitresult, u"申请已提交")
@@ -76,8 +77,9 @@ class OpsTestcase04CategorySubStation(unittest.TestCase):
                 self.loginMasterApproveMethod()
             elif shenqingvarobj==u"申请上线":
                 driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr:nth-child(2)>td:last-child>a:last-child").click()
-
+                time.sleep(1)
                 self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认申请上线?[\s\S]$")
+                time.sleep(2)
                 shenqingsubmitresult=driver.find_element_by_css_selector("div#container.container div.alert.fade.in.alert-success").text
                 print " the shenqingsubmitresult is  ",shenqingsubmitresult
                 #self.assertEqual(shenqingsubmitresult, u"申请已提交")

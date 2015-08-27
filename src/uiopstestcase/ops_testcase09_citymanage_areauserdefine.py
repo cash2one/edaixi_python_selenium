@@ -69,32 +69,38 @@ class OpsTestcase09citymanageareauserdefine(unittest.TestCase):
         
         if passOperation==u"开通":
              driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr>td:nth-last-child(3)>a").click()
+             time.sleep(2)
              self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认开通[\s\S]$")
              self.assertEqual(driver.title, u"e袋洗城市运营后台")
         elif passOperation ==u"关闭":
              #driver.find_element_by_xpath(u"(//a[contains(text(),'关闭')])[37]").click()
              driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr>td:nth-last-child(3)>a").click()
+             time.sleep(2)
              self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认关闭[\s\S]$")
              self.assertEqual(driver.title, u"e袋洗城市运营后台")
         if displayOperation==u"打开显示":
              driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr>td:nth-last-child(2)>a").click()
+             time.sleep(2)
              self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认打开显示[\s\S]$")
              self.assertEqual(driver.title, u"e袋洗城市运营后台")
         elif displayOperation ==u"关闭显示":
              #print " the self.close_alert_and_get_its_text() is ",self.close_alert_and_get_its_text()
              #driver.find_element_by_xpath(u"(//a[contains(text(),'关闭')])[37]").click()
              driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr>td:nth-last-child(2)>a").click()
+             time.sleep(2)
              self.assertRegexpMatches(self.close_alert_and_get_its_text(), ur"^确认关闭显示[\s\S]$")
              self.assertEqual(driver.title, u"e袋洗城市运营后台")
              
         if kuaixiOperation==u"开通":
              driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr>td:nth-last-child(1)>a").click()
+             time.sleep(2)
              self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认开通[\s\S]$")
              self.assertEqual(driver.title, u"e袋洗城市运营后台")
         elif kuaixiOperation ==u"关闭":
              #print " the self.close_alert_and_get_its_text() is ",self.close_alert_and_get_its_text()
              #driver.find_element_by_xpath(u"(//a[contains(text(),'关闭')])[37]").click()
              driver.find_element_by_css_selector("div#container.container>table.table.table-bordered.table-striped>tbody>tr>td:nth-last-child(1)>a").click()
+             time.sleep(2)
              self.assertRegexpMatches(self.close_alert_and_get_its_text(), ur"^确认关闭[\s\S]$")
              self.assertEqual(driver.title, u"e袋洗城市运营后台")
               

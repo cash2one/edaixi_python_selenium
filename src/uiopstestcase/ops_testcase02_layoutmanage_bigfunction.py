@@ -90,6 +90,7 @@ class OpsTestcase02LayoutManageBigFunction(unittest.TestCase):
         print downactivename
         if downactivename == u"下线":
            driver.find_element_by_link_text(u"下线").click()
+           time.sleep(2)
            self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认下线[\s\S]$")
            self.assertEqual(driver.title, u"e袋洗城市运营后台")
            driver.find_element_by_css_selector("div#container.container>div.panel.panel-primary>div.pnale-body>table.table.table-striped>tbody>tr:first-child>td:last-child>a:last-child").click()
@@ -97,6 +98,7 @@ class OpsTestcase02LayoutManageBigFunction(unittest.TestCase):
            self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除图片[\s\S]$")
         elif downactivename == u"激活":
            driver.find_element_by_link_text(u"激活").click()
+           time.sleep(2)
            self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认激活[\s\S]$")
            self.assertEqual(driver.title, u"e袋洗城市运营后台")
            driver.find_element_by_css_selector("div#container.container>div.panel.panel-primary>div.pnale-body>table.table.table-striped>tbody>tr:first-child>td:last-child>a:nth-child(3)").click()
@@ -105,9 +107,9 @@ class OpsTestcase02LayoutManageBigFunction(unittest.TestCase):
         else:
            pass
            driver.find_element_by_css_selector("div#container.container>div.panel.panel-primary>div.pnale-body>table.table.table-striped>tbody>tr:first-child>td:last-child>a:nth-child(3)").click()
+           time.sleep(2)
            self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除图片[\s\S]$")
         
-
         
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
         

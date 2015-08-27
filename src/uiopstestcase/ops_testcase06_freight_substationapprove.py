@@ -50,6 +50,7 @@ class OpsTestcase06freightsubstationapprove(unittest.TestCase):
             driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:last-child td:last-child a").click()
             #self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"同意")
             #driver.find_element_by_xpath(u"(//a[contains(text(),'同意')])[4]").click()
+            time.sleep(2)
             self.assertRegexpMatches(self.close_alert_and_get_its_text(), ur"^确认同意[\s\S]$")
             print driver.title
             

@@ -74,6 +74,7 @@ class OpsTestcase05PriceShoes(unittest.TestCase):
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
                         
         driver.find_element_by_css_selector("div#container.container table.table.table-bordered.table-striped tbody tr:nth-child(2) td:last-child a:last-child.btn.btn-sm.btn-danger").click()
+        time.sleep(2)
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除[\s\S]$")
         #self.assert_(driver.title, u"e袋洗城市运营后台")
         self.assertEqual(driver.title, u"e袋洗城市运营后台")
