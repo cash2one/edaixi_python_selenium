@@ -69,12 +69,18 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple(unittest.TestCase):
         driver.find_element_by_id("coupon_list_form_use_limit").clear()
         driver.find_element_by_id("coupon_list_form_use_limit").send_keys("10")
 
-        time.sleep(2)
-        checkboxes = driver.find_elements_by_css_selector('input[type=checkbox]')
-        for checkbox in checkboxes:
-            checkbox.click()
+#         time.sleep(2)
+#         checkboxes = driver.find_elements_by_css_selector('input[type=checkbox]')
+#         for checkbox in checkboxes:
+#             checkbox.click()
+#         driver.find_element_by_id("coupon_list_form_exclusive_channels_1").click()
+#         inputs = driver.find_elements_by_tag_name('input')
+#         for input in inputs:
+#             if input.get_attribute('type') == 'checkbox':
+#                input.click()
+#         time.sleep(2)
         #time.sleep(2)
-        time.sleep(2)
+        #time.sleep(2)
         currenttime=str(time.strftime("%d", time.localtime()))
         starttime=str(time.strftime("%Y-%m-", time.localtime()))
         endtime=str(int(currenttime)+1)
