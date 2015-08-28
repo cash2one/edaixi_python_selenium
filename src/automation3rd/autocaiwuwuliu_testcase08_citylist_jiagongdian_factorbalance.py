@@ -139,6 +139,9 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         self.assertEqual(driver.title, u"物流")
     
         
+#         driver.get("http://stackoverflow.com/questions/7794087/running-javascript-in-selenium-using-python")
+#         driver.execute_script("document.getElementsByClassName('comment-user')[0].click()")
+
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

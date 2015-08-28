@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb,random
 from selenium.webdriver.common.action_chains import ActionChains
 import wuliu_utiltools,appobjectwuliu
-
+from selenium.webdriver.common.action_chains import ActionChains
 class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
@@ -132,12 +132,21 @@ class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
 #         print " the startworktime is ",startworktime.is_displayed()
 #html body div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.optional.outlet_form_operation_time_start div.col-sm-8 select#outlet_form_operation_time_start.select.optional.form-control.start_time_select option
         #cssSelector1="div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.optional.outlet_form_operation_time_start div.col-sm-8 select#outlet_form_operation_time_start.select.optional.form-control.start_time_select option:nth-child(2)"
+        #element = driver.findElement(By.cssSelector(".user-info.right>div>p>a"));
+        #element = driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.optional.outlet_form_operation_time_start div.col-sm-8 select#outlet_form_operation_time_start.select.optional.form-control.start_time_select option:nth-child(2)")
+        driver.find_element_by_xpath("//input[@id='s2id_autogen1']").send_keys("00:00")
+        element=driver.find_element_by_xpath("//input[@id='s2id_autogen1']")
+        #element= driver.find_element_by_css_selector("select[class='select optional form-control start_time_select']>option[value='1']")
+        ActionChains(driver).move_to_element(element).perform()
+        
+        ActionChains(driver).context_click(element).perform()
+
         cssSelector1="select[class='select optional form-control start_time_select']>option[value='1']"
         #driver.find_element_by_css_selector(cssSelector1).click()
-        startimejs="var x = $(\'"+cssSelector1+"\');"
-        driver.execute_script(startimejs)
-        driver.execute_async_script("x.click();")
-        
+#         startimejs="var x = $(\'"+cssSelector1+"\');"
+#         driver.execute_script(startimejs)
+#         driver.execute_async_script("x.click();")
+#         
         #Select(driver.find_element_by_id("s2id_autogen1")).select_by_visible_text("00:00")
         #driver.find_element_by_id("select2-chosen-1").send_keys("00:00")
         #driver.find_element_by_xpath("//input[@id='s2id_autogen1']").send_keys("01:00")
@@ -149,9 +158,11 @@ class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
         #html body div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.optional.outlet_form_operation_time_end div.col-sm-8 select#outlet_form_operation_time_end.select.optional.form-control.end_time_select option:nth-child(4)
         time.sleep(2)
         #cssSelector2="div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.optional.outlet_form_operation_time_end div.col-sm-8 select#outlet_form_operation_time_end.select.optional.form-control.end_time_select option:nth-child(4)div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.optional.outlet_form_operation_time_end div.col-sm-8 select#outlet_form_operation_time_end.select.optional.form-control.end_time_select option:nth-child(4)"
-        cssSelector2="select[class='select optional form-control end_time_select']>option[value='3']"
-        endtimejs="var x = $(\'"+cssSelector2+"\'); x.click();"
-        driver.execute_script(endtimejs)
+#         cssSelector2="select[class='select optional form-control end_time_select']>option[value='3']"
+#         endtimejs="var x = $(\'"+cssSelector2+"\'); x.click();"
+#         driver.execute_script(endtimejs)
+        element= driver.find_element_by_css_selector("select[class='select optional form-control end_time_select']>option[value='3']")
+        ActionChains(driver).context_click(element).perform()
 # j.executeScript("document.findElementById('123').style.display='block';");      
         #driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.optional.outlet_form_brands div.col-sm-8 select#outlet_form_brands.select.optional.form-control option:first-child").click()
         #driver.find_element_by_xpath("//input[@id='s2id_autogen1']").click()
