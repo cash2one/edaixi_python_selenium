@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser
 from selenium.webdriver.support.ui import WebDriverWait 
-import appobjectcaiwu
+import appobjectcaiwu,caiwu_utiltools
 class CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
@@ -89,9 +89,9 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple(unittest.TestCase):
         finaltime=starttime+endtime
         #time.sleep(3)
         driver.find_element_by_id("coupon_list_form_starttime").clear()
-        driver.find_element_by_id("coupon_list_form_starttime").send_keys(firsttime)
+        driver.find_element_by_id("coupon_list_form_starttime").send_keys(str(caiwu_utiltools.get_day_of_day(1)))
         driver.find_element_by_id("coupon_list_form_endtime").clear()
-        driver.find_element_by_id("coupon_list_form_endtime").send_keys(finaltime)
+        driver.find_element_by_id("coupon_list_form_endtime").send_keys(str(caiwu_utiltools.get_day_of_day(3)))
         
         
         #youxiaoqiname=driver.find_element_by_xpath("/html/body/div[2]/form/div[13]/div/select/option[2]").text
@@ -123,9 +123,11 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple(unittest.TestCase):
         #self.assert_(driver.title, u"财务")
         self.assertEqual(driver.title,u"财务")
         
+        time.sleep(2)
         dianzicoupleresult=driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:first-child td:nth-child(6)").text
   
         print " the dianzicoupleresult is ",dianzicoupleresult
+        
         self.assertEqual(dianzicoupleresult,u"电子优惠券")
         #self.assert_(expr, msg)
     def is_element_present(self, how, what):

@@ -96,13 +96,14 @@ class WuliuTestcase08CitylistxiaoemanagerLogistics(unittest.TestCase):
         #driver.find_element_by_link_text("27").click()
         driver.find_element_by_name("commit").click()
         
+        time.sleep(1)
         self.assertEqual(driver.title, u"物流")
         #driver.find_element_by_xpath("//tr[@id='courier_21']/td[6]").click()
         driver.find_element_by_id("realname").clear()
         driver.find_element_by_id("realname").send_keys("xiaoeguanjiazhangsankuaiduyuan")
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"物流")
-        
+        time.sleep(1)
         driver.find_element_by_link_text(u"编辑").click()
         driver.find_element_by_id("courier_form_realname").clear()
         driver.find_element_by_id("courier_form_realname").send_keys("xiaoeguanjiazhangsankuaiduyuan111")

@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
-import appobjectcaiwu
+import appobjectcaiwu,caiwu_utiltools
 class CaiwuTestcase03CaiwushiticardCrud(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
@@ -36,8 +36,9 @@ class CaiwuTestcase03CaiwushiticardCrud(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         
-        self.assertEqual(driver.title, u"财务")
-        
+        time.sleep(1)
+#         self.assertEqual(driver.title, u"财务")
+#         
         #driver.find_element_by_link_text(u"实体卡").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown a.dropdown-toggle").click()
         self.assertEqual(driver.title, u"财务")
@@ -71,13 +72,14 @@ class CaiwuTestcase03CaiwushiticardCrud(unittest.TestCase):
         driver.find_element_by_id("rcard_list_form_city").send_keys("beijing")
         
         driver.find_element_by_id("rcard_list_form_starttime").clear()
-        driver.find_element_by_id("rcard_list_form_starttime").send_keys(firsttime)
+        driver.find_element_by_id("rcard_list_form_starttime").send_keys(str(caiwu_utiltools.get_day_of_day(1)))
         
         driver.find_element_by_id("rcard_list_form_endtime").clear()
-        driver.find_element_by_id("rcard_list_form_endtime").send_keys(finaltime)
+        driver.find_element_by_id("rcard_list_form_endtime").send_keys(str(caiwu_utiltools.get_day_of_day(5)))
         
         driver.find_element_by_name("commit").click()
 
+        time.sleep(1)
         self.assertEqual(driver.title, u"财务")
         
         #driver.find_element_by_link_text(u"编辑").click()

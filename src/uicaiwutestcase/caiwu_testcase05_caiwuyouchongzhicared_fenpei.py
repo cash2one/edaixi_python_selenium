@@ -36,8 +36,9 @@ class CaiwuTestcase05CaiwuyouchongzhicaredFenpei(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         
-        self.assertEqual(driver.title,u"财务")
-        WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed())
+        time.sleep(2)
+#         self.assertEqual(driver.title,u"财务")
+#         WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed())
         #driver.find_element_by_link_text(u"充值卡").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(5).dropdown a").click()
         self.assertEqual(driver.title,u"财务")

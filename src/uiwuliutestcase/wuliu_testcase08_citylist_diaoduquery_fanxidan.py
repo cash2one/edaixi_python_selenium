@@ -102,6 +102,7 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         driver.find_element_by_id("order_search_form_ordersn").send_keys(ordersn)
         driver.find_element_by_name("commit").click()
         
+        time.sleep(1)
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
         #driver.find_element_by_css_selector("div#container.container> div#paidan_list_container> div.panel.panel-primary.tab-content> div>form> table.table> tbody tr:first-child> td:nth-child(2)> a").click()
@@ -123,11 +124,12 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         for handle in winHandles:
             if winBeforeHandle != handle:
                 driver.switch_to_window(handle)
-        
-        driver.find_element_by_css_selector("div#container.container>a#fanxi_button.btn.btn-info").click()
+                
+        time.sleep(1)
+        driver.find_element_by_css_selector("div#container.container a#fanxi_button.btn.btn-info").click()
+        #driver.find_element_by_css_selector("div#container.container>a#fanxi_button.btn.btn-info").click()
 #         html body div#container.container a#fanxi_button.btn.btn-info
-        
-        #self.assertTrue(driver.title, u"物流")
+
         self.assertEqual(driver.title, u"物流")
         #html body div#container.container a#fanxi_button.btn.btn-info
         #submit to database
@@ -187,7 +189,7 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

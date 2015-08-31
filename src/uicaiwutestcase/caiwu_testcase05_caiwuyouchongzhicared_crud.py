@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
 from selenium.webdriver.support.ui import WebDriverWait 
-import appobjectcaiwu
+import appobjectcaiwu,caiwu_utiltools
 class CaiwuTestcase05CaiwuyouchongzhicaredCrud(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
@@ -72,8 +72,8 @@ class CaiwuTestcase05CaiwuyouchongzhicaredCrud(unittest.TestCase):
         driver.find_element_by_id("recharge_list_form_city").send_keys("beijing")
         
         
-        driver.find_element_by_id("recharge_list_form_starttime").send_keys(firsttime)
-        driver.find_element_by_id("recharge_list_form_endtime").send_keys(finaltime)
+        driver.find_element_by_id("recharge_list_form_starttime").send_keys(str(caiwu_utiltools.get_day_of_day(1)))
+        driver.find_element_by_id("recharge_list_form_endtime").send_keys(str(caiwu_utiltools.get_day_of_day(5)))
 
         driver.find_element_by_name("commit").click()
         

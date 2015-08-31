@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser
 from selenium.webdriver.support.ui import WebDriverWait 
-import  appobjectcaiwu
+import  appobjectcaiwu,caiwu_utiltools
 class CaiwuTestcase02caiwuYouhuiquanlistAddEditShitiCouple(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
@@ -92,9 +92,9 @@ class CaiwuTestcase02caiwuYouhuiquanlistAddEditShitiCouple(unittest.TestCase):
         
         #time.sleep(3)
         driver.find_element_by_id("coupon_list_form_starttime").clear()
-        driver.find_element_by_id("coupon_list_form_starttime").send_keys(firsttime)
+        driver.find_element_by_id("coupon_list_form_starttime").send_keys(str(caiwu_utiltools.get_day_of_day(1)))
         driver.find_element_by_id("coupon_list_form_endtime").clear()
-        driver.find_element_by_id("coupon_list_form_endtime").send_keys(finaltime)
+        driver.find_element_by_id("coupon_list_form_endtime").send_keys(str(caiwu_utiltools.get_day_of_day(3)))
         
         
         #youxiaoqiname=driver.find_element_by_xpath("/html/body/div[2]/form/div[13]/div/select/option[2]").text

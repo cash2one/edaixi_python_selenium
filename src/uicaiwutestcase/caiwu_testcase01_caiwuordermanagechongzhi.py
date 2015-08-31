@@ -66,8 +66,8 @@ class CaiwuTestcase01Caiwuordermanagementchongzhi(unittest.TestCase):
         #print " the ordernumber is :",ordernumber
         driver.find_element_by_link_text(ordernumber).click()
         
-    
-        WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container div.info-div div.col-md-6 div.panel.panel-primary.checkout-order div.panel-heading").is_displayed()) 
+        time.sleep(1)
+#         WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container div.info-div div.col-md-6 div.panel.panel-primary.checkout-order div.panel-heading").is_displayed()) 
 
         driver.find_element_by_id("remark_content").clear()
         driver.find_element_by_id("remark_content").send_keys("hello,testing")
