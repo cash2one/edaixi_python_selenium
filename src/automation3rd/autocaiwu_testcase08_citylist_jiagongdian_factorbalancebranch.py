@@ -7,8 +7,8 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
-from uicaiwutestcase import caiwu_utiltools
 from automation3rd import appobjectauto3rd
+import auto3rd_utiltools 
 class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
@@ -77,14 +77,34 @@ class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
         driver.find_element_by_id("title").send_keys(u"BJ加工店-长楹天街-店")
         driver.find_element_by_name("commit").click()
         
+        time.sleep(1)
         driver.find_element_by_link_text(u"结算").click()
         self.assertEqual(driver.title, u"财务")
         #driver.find_element_by_css_selector("div.container>tbody>tr:last-child(2)>td:last-child(2)>a:first-child").click()
-        print str(caiwu_utiltools.today())
+        print str(auto3rd_utiltools.get_day_of_day(1))
+        #validator some null exception
+#         driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").send_keys("")
+#         #driver.find_element_by_link_text("6").click()
+#         driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").send_keys("")
+#         driver.find_element_by_name("commit").click()
+#         
+#         time.sleep(1)
+#         
+#         winBeforeHandle = driver.current_window_handle
+#         #print "winBeforeHandle==",winBeforeHandle
+#         winHandles = driver.window_handles
+#         #print "winHandles==",winHandles
+#         for handle in winHandles:
+#             if winBeforeHandle != handle:
+#                 driver.switch_to_window(handle)
+#         print " the winBeforeHandle, winHandles is  ",winBeforeHandle, winHandles
+#         
+#         validrornullname=driver.find_element_by_class_name("div.container>div.alert.fade.in.alert-danger").text
+#         print " the validrornullname is ",validrornullname
         
-        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").send_keys(str(caiwu_utiltools.today()))
+        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").send_keys(str(auto3rd_utiltools.get_day_of_day(1)))
         #driver.find_element_by_link_text("6").click()
-        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").send_keys(str(caiwu_utiltools.get_day_of_day(3)))
+        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").send_keys(str(auto3rd_utiltools.get_day_of_day(5)))
         #driver.find_element_by_link_text("20").click()
         
 #         driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").click()
@@ -102,6 +122,7 @@ class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
 #                 driver.switch_to_window(handle)
 #                 
         driver.find_element_by_link_text(u"提交审核").click()
+        time.sleep(1)
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认提交审核[\s\S]$")
         #driver.find_element_by_link_text(u"明细").click()
         #driver.find_element_by_css_selector("div.btn.btn-success").click()
@@ -132,7 +153,7 @@ class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

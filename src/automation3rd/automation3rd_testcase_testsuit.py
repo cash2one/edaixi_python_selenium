@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     fp = file("c:\\edaixi_testdata\\"+currenttime+"-automation3rd_test_report.html", 'wb')
     
-    htmlRunner= HTMLTestRunner.HTMLTestRunner(stream=fp,title="edaixi uiops testing result",description="201508 luke")
+    htmlRunner= HTMLTestRunner.HTMLTestRunner(stream=fp,title="edaixi automation3rd testing result",description="201509 luke")
     #suite =  unittest.TestLoader().loadTestsFromTestCase(MyTest)  
     htmlRunner.run(suite)
     fp.close()
