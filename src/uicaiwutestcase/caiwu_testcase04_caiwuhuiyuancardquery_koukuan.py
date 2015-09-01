@@ -29,6 +29,7 @@ class CaiwuTestcase04CaiwuhuiyuancardqueryKoukuan(unittest.TestCase):
         driver = self.driver
         driver.get(self.base_url + "/")
         #driver.find_element_by_link_text(u"登陆").click()
+        time.sleep(1)
         driver.find_element_by_css_selector("div.container h3.text-center.text-primary a.btn.btn-success.text-center").click()
         driver.find_element_by_id("username").clear()
         driver.find_element_by_id("username").send_keys(USER_NAME)
@@ -39,10 +40,12 @@ class CaiwuTestcase04CaiwuhuiyuancardqueryKoukuan(unittest.TestCase):
         #self.assertEqual(driver.title, u"财务")
                 #driver.find_element_by_link_text(u"会员卡").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(4).dropdown a.dropdown-toggle").click()
+        time.sleep(1)
         self.assertEqual(driver.title, u"财务")
         #driver.find_element_by_link_text(u"会员卡查询").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(4).dropdown ul.dropdown-menu li:first-child a").click()
         #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
+        time.sleep(1)
         self.assertEqual(driver.title, u"财务")
                 
         driver.find_element_by_id("cardno").clear()
@@ -53,15 +56,18 @@ class CaiwuTestcase04CaiwuhuiyuancardqueryKoukuan(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_css_selector("div.container > a:last-child.btn.btn-sm.btn-primary").click()
 
-#         winBeforeHandle = driver.current_window_handle
-#         winHandles = driver.window_handles
-#         for handle in winHandles:
-#             if winBeforeHandle != handle:
-#                 driver.switch_to_window(handle)
-#         print " the winBeforeHandle,winHandles is ",winBeforeHandle,winHandles
-        time.sleep(1)
+        winBeforeHandle = driver.current_window_handle
+        #print "winBeforeHandle==",winBeforeHandle
+        winHandles = driver.window_handles
+        #print "winHandles==",winHandles
+        for handle in winHandles:
+            if winBeforeHandle != handle:
+                driver.switch_to_window(handle)
+        #print driver.title 
         
-#         driver.find_element_by_id("icard_koukuan_form_money").clear()
+        driver.execute_script("var doc=document.getElementById('icard_koukuan_form_cardno');doc.setAttribute('type','text');")
+        
+        driver.find_element_by_id("icard_koukuan_form_money").clear()
         driver.find_element_by_id("icard_koukuan_form_money").send_keys("10")
         driver.find_element_by_id("btnOn").click()
         

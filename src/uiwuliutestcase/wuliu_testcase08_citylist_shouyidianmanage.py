@@ -44,16 +44,17 @@ class WuliuTestcase08Citylistshouyidianmanage(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
-        self.assertEqual(driver.title, u"物流")
-        
+        print " the testcase test_wuliu_testcase08_citylist_shouyidianmanage is ",driver.title
+        #self.assertEqual(driver.title, u"物流")
+        time.sleep(1)
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
         self.assertEqual(driver.title, u"物流")
-        
+        time.sleep(1)
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(8)").click()
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(4).btn.btn-success
         self.assertEqual(driver.title, u"物流")
-    
+        time.sleep(1)
+        
         driver.find_element_by_link_text(u"新建收衣店").click()
         telephonenumber=random.choice(['139','188','185','136','158','151'])+"".join(random.choice("0123456789") for i in range(8))
         print " the telephonenumber is ",telephonenumber

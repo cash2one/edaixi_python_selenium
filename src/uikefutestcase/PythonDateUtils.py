@@ -17,9 +17,20 @@ print mysqlhostname, mysqlusername, mysqlpassword, mysqldatabase
 
 conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
 global cursor
-global ordersnnumber,fanidnumber,fanstableidnumber
+global ordersnnumber,fanidnumber,fanstableidnumber,fanxiordersnnumber
 cursor = conn.cursor()
 
+
+def getcreatefanxiordersn():
+   n = cursor.execute("SELECT ordersn FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  ORDER BY id") 
+   for row in cursor.fetchall():
+      for ordersn in row: 
+           return ordersn
+       
+  
+fanxiordersnnumber=str(getcreatefanxiordersn())
+print "the random fanxiordersnnumber  is ",fanxiordersnnumber 
+     
 def getordersn():
    n = cursor.execute("SELECT ordersn FROM ims_washing_order WHERE status_delivery=3 AND fanxidan_id=0 AND bagsn IS NOT NULL  AND id=(SELECT MIN(id) FROM ims_washing_order) ORDER BY id") 
    for row in cursor.fetchall():

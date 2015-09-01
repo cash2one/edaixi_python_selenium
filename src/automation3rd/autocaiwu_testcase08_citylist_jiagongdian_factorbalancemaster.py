@@ -45,8 +45,8 @@ class CaiwuTestcase08CitylistJiagongdianFactoryBalanceMaster(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(MasterPASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
-        self.assertTrue(driver.title, u"财务")
+        print " the testcase test_caiwu_testcase08_citylist_jiagongdian_factorybalance_master is ",driver.title
+        #self.assertTrue(driver.title, u"财务")
         
         
         #driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
@@ -57,11 +57,12 @@ class CaiwuTestcase08CitylistJiagongdianFactoryBalanceMaster(unittest.TestCase):
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(4).btn.btn-success
     
         #self.assertEqual(driver.title, u"财务")
-    
+        time.sleep(2)
         driver.find_element_by_css_selector("div.container > div > ul > li:nth-child(1) >a").click()
         #driver.find_element_by_link_text(u"结算管理").click()
         driver.find_element_by_id("title").clear()
-        driver.find_element_by_id("title").send_keys(u"BJ加工店-增光路赛洁干洗店-店")
+        #driver.find_element_by_id("title").send_keys(u"BJ加工店-增光路赛洁干洗店-店")
+        driver.find_element_by_id("title").send_keys(u"test")
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"财务")
                 

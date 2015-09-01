@@ -40,6 +40,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         
         driver.get(self.base_url + "/")
 
+        time.sleep(1)
         loginclick=driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center")
         ActionChains(driver).double_click(loginclick).perform()
         driver.find_element_by_id("username").clear()
@@ -47,14 +48,16 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
+        print " the testcase test_wuliu_testcase08citylist_diaodupaidan_fanxidan_yipandan is ",driver.title
+        time.sleep(1)
         #self.assertTrue(driver.title, u"物流")
-        self.assertEqual(driver.title, u"物流")
+        #self.assertEqual(driver.title, u"物流")
         
         #driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
         driver.find_element_by_css_selector("div.container > nav > ul > li:nth-child(8) >a").click()
         
         self.assertEqual(driver.title, u"物流")
+        time.sleep(1)
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
         global cursor 
         cursor = conn.cursor() 

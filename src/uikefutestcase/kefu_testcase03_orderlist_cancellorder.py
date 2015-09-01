@@ -42,9 +42,9 @@ class KefuTestcase03OrderlistCancellorder(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         
-        print driver.title
-        self.assertEqual(driver.title,u"客服系统")
-    
+        print " the testcase test_kefu_testcase03_orderlist_cancellorder is ",driver.title
+        #self.assertEqual(driver.title,u"客服系统")
+        time.sleep(1)
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(3)>a").click()
         self.assertEqual(driver.title,u"客服系统")
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
@@ -53,7 +53,7 @@ class KefuTestcase03OrderlistCancellorder(unittest.TestCase):
         n = cursor.execute("SELECT ordersn ,username,tel,address FROM ims_washing_order WHERE status_delivery=1 AND pay_status=1 AND bagsn IS NOT NULL ORDER BY id") 
         for i in xrange(cursor.rowcount):
             ordersn ,username,tel,address = cursor.fetchone()
-        print ordersn ,username,tel,address
+        print " the ordersn ,username,tel,address is ",ordersn ,username,tel,address
         
         driver.find_element_by_id("order_search_form_ordersn").clear()
         driver.find_element_by_id("order_search_form_ordersn").send_keys(ordersn)

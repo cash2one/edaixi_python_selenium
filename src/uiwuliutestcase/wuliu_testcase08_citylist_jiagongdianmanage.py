@@ -113,14 +113,6 @@ class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
         driver.find_element_by_id("capacity_1_count").clear()
         driver.find_element_by_id("capacity_1_count").send_keys("5")
         
-#         driver.find_element_by_id("capacity_2_count").clear()
-#         driver.find_element_by_id("capacity_2_count").send_keys("1")
-#         driver.find_element_by_id("capacity_2_count").clear()
-#         driver.find_element_by_id("capacity_2_count").send_keys("2")
-#         driver.find_element_by_id("capacity_2_count").clear()
-#         driver.find_element_by_id("capacity_2_count").send_keys("3")
-#         driver.find_element_by_id("capacity_2_count").clear()
-#         driver.find_element_by_id("capacity_2_count").send_keys("4")
         driver.find_element_by_id("capacity_2_count").clear()
         driver.find_element_by_id("capacity_2_count").send_keys("5")
         
@@ -269,7 +261,7 @@ class WuliuTestcase08Citylistjiagongdianmanage(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        #self.driver.quit()
+        self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":

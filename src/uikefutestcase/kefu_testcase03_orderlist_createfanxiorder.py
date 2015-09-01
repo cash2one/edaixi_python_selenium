@@ -45,9 +45,9 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         
-        print driver.title
-        self.assertEqual(driver.title,u"客服系统")
-    
+        print " the testcase test_kefu_testcase03_orderlist_createfanxiorder is ",driver.title
+        #self.assertEqual(driver.title,u"客服系统")
+        time.sleep(1)
         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(3)>a").click()
        
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
@@ -79,10 +79,12 @@ class KefuTestcase03OrderlistCreatefanxiorder(unittest.TestCase):
         #ordersn="0723821336144"
 
         driver.find_element_by_id("order_search_form_ordersn").clear()
-        driver.find_element_by_id("order_search_form_ordersn").send_keys(PythonDateUtils.ordersnnumber)
+        driver.find_element_by_id("order_search_form_ordersn").send_keys(PythonDateUtils.fanxiordersnnumber)
         
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title,u"客服系统")
+        print " the PythonDateUtils.fanxiordersnnumber is ",PythonDateUtils.fanxiordersnnumber
+        time.sleep(1)
         
         driver.find_element_by_css_selector("div#container.container div#content-container div#content div.panel.panel-primary form.form-horizontal.batch_update table.table.table-striped tbody tr:first-child td:nth-child(2) a").click()
         self.assertEqual(driver.title,u"客服系统")
