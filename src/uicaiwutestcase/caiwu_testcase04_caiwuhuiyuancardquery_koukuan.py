@@ -55,7 +55,7 @@ class CaiwuTestcase04CaiwuhuiyuancardqueryKoukuan(unittest.TestCase):
         #driver.find_element_by_link_text(u"扣 款").click()
         time.sleep(1)
         driver.find_element_by_css_selector("div.container > a:last-child.btn.btn-sm.btn-primary").click()
-
+        time.sleep(1)
         winBeforeHandle = driver.current_window_handle
         #print "winBeforeHandle==",winBeforeHandle
         winHandles = driver.window_handles
@@ -64,9 +64,9 @@ class CaiwuTestcase04CaiwuhuiyuancardqueryKoukuan(unittest.TestCase):
             if winBeforeHandle != handle:
                 driver.switch_to_window(handle)
         #print driver.title 
-        
+        time.sleep(1)
         driver.execute_script("var doc=document.getElementById('icard_koukuan_form_cardno');doc.setAttribute('type','text');")
-        
+        time.sleep(1)
         driver.find_element_by_id("icard_koukuan_form_money").clear()
         driver.find_element_by_id("icard_koukuan_form_money").send_keys("10")
         driver.find_element_by_id("btnOn").click()

@@ -7,8 +7,9 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
-from automation3rd import appobjectauto3rd
+import appobjectauto3rd
 import auto3rd_utiltools 
+
 class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()

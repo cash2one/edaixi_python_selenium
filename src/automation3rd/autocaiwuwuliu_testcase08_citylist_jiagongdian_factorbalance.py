@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
 import appobjectauto3rd
-from automation3rd import auto3rd_utiltools
+import auto3rd_utiltools
 
 class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
     def setUp(self):
