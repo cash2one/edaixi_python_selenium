@@ -72,8 +72,9 @@ class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
         #html body div.navbar.navbar-default.navbar-static-top 
         #driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-last-child(2)>a").click()
         #driver.find_element_by_link_text(u"结算管理").click()
+        time.sleep(1)
         driver.find_element_by_id("title").clear()
-        driver.find_element_by_id("title").send_keys(u"test")
+        driver.find_element_by_id("title").send_keys(u"BJ加工店-长楹天街-店")
         driver.find_element_by_name("commit").click()
         
         driver.find_element_by_link_text(u"结算").click()

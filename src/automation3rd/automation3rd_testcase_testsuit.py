@@ -5,6 +5,9 @@ import HTMLTestRunner
 
 from checkMysqlKeywords import *
 
+from autocaiwuwuliu_testcase08_citylist_jiagongdian_factorbalance import *
+from autocaiwu_testcase08_citylist_jiagongdian_factorbalancebranch import *
+from autocaiwu_testcase08_citylist_jiagongdian_factorbalancemaster import *
 
 if __name__ == '__main__':  
     suite = unittest.TestSuite()  
@@ -13,6 +16,12 @@ if __name__ == '__main__':
     suite.addTest(checkMysqlKeywordsClass('test_checkMysqlKeywordsMethod'))
     time.sleep(3)
 
+    suite.addTest(WuliuTestcase08CitylistJiagongdianFactoryBalance('test_wuliu_testcase08_citylist_jiagongdian_factorybalance'))
+    time.sleep(3)
+    suite.addTest(CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch('test_caiwu_testcase08_citylist_jiagongdian_factorybalance_branch'))
+    time.sleep(3)
+    suite.addTest(CaiwuTestcase08CitylistJiagongdianFactoryBalanceMaster('test_caiwu_testcase08_citylist_jiagongdian_factorybalance_master'))
+    time.sleep(3)
         
     currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
     print currenttime

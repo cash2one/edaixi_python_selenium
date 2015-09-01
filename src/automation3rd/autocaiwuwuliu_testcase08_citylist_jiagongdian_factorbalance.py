@@ -65,6 +65,10 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(9)").click()
         #html body div#container.container div.panel.panel-primary.checkout-order table.table.table-striped.city-table tbody tr:nth-child(2) td:nth-child(2).btn-link a:nth-child(4).btn.btn-success
         self.assertEqual(driver.title, u"物流")
+        #BJ加工店-长楹天街-店
+        driver.find_element_by_id("title").clear()
+        driver.find_element_by_id("title").send_keys(u"BJ加工店-长楹天街-店")
+        driver.find_element_by_name("commit").click()
         time.sleep(1)
         driver.find_element_by_css_selector("div#container.container >table.table.table-striped> tbody > tr:nth-child(2) > td:nth-last-child(2) > a:last-child").click()
         #div#container.container > tbody > tr:nth-child(2) > td:nth-last-child(2) > a:last-child
@@ -73,7 +77,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
     
         Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"家纺")
         driver.find_element_by_id("outlet_rule_form_discount").clear()
-        driver.find_element_by_id("outlet_rule_form_discount").send_keys("22")
+        driver.find_element_by_id("outlet_rule_form_discount").send_keys("9")
 
         print str(auto3rd_utiltools.today())
         driver.find_element_by_id("outlet_rule_form_start_time_display").send_keys(str(auto3rd_utiltools.today()))
@@ -89,7 +93,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         #driver.find_element_by_xpath(u"(//a[contains(text(),'删除')])[4]").click()
         driver.find_element_by_css_selector("div#container.container>div#outlet_rule>table.table.table-striped>tbody>tr:last-child>td:last-child>a").click()
         #print driver.switch_to_alert().text()
-        time.sleep(1)
+        time.sleep(2)
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认删除吗[\s\S]$")
         
         self.assertEqual(driver.title, u"物流")
@@ -98,7 +102,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         #driver.find_element_by_link_text(u"创建规则").click()
         Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"洗衣")
         driver.find_element_by_id("outlet_rule_form_discount").clear()
-        driver.find_element_by_id("outlet_rule_form_discount").send_keys("100")
+        driver.find_element_by_id("outlet_rule_form_discount").send_keys("10")
         
         driver.find_element_by_id("outlet_rule_form_start_time_display").send_keys(str(auto3rd_utiltools.today()))
         #driver.find_element_by_link_text("6").click()
@@ -129,7 +133,7 @@ class WuliuTestcase08CitylistJiagongdianFactoryBalance(unittest.TestCase):
         #Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"奢侈品")
         Select(driver.find_element_by_id("outlet_rule_form_category_id")).select_by_visible_text(u"家纺")
         driver.find_element_by_id("outlet_rule_form_discount").clear()
-        driver.find_element_by_id("outlet_rule_form_discount").send_keys("12")
+        driver.find_element_by_id("outlet_rule_form_discount").send_keys("8")
         
         driver.find_element_by_id("outlet_rule_form_start_time_display").send_keys(str(auto3rd_utiltools.today()))
         #driver.find_element_by_link_text("6").click()
