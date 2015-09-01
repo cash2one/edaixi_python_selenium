@@ -118,6 +118,7 @@ encoding//src/uiopstestcase/ops_testcase10_couponmanage.py=utf-8
 encoding//src/uiopstestcase/ops_testcase11_marketingtools_sendsms.py=utf-8
 encoding//src/uiopstestcase/ops_testcase11_marketingtools_sendyouhuiquan.py=utf-8
 encoding//src/uiopstestcase/ops_testcase_testsuit.py=utf-8
+encoding//src/uiwechatfronttestcase/wechatfront_testcase_testsuit.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase01_editpermission.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase01_querypermission.py=utf-8
 encoding//src/uiwuliutestcase/wuliu_testcase02_factory_delivery.py=utf-8

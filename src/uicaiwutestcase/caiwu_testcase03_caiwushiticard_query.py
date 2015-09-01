@@ -34,17 +34,18 @@ class CaiwuTestcase03CaiwushiticardQuery(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        self.assertEqual(driver.title, u"财务")
-        
-        WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
- 
+        time.sleep(1)
+#         self.assertEqual(driver.title, u"财务")
+#         
+#         WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
+#  
                 #driver.find_element_by_link_text(u"实体卡").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown a.dropdown-toggle").click()
         #driver.find_element_by_link_text(u"实体卡列表").click()
         self.assertEqual(driver.title, u"财务")
-        
+        time.sleep(1)
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(3).dropdown ul.dropdown-menu li:last-child a").click()
-        
+        time.sleep(1)
         driver.find_element_by_id("sn_code").clear()
         driver.find_element_by_id("sn_code").send_keys("100000065078")
         #driver.find_element_by_name("commit").click()

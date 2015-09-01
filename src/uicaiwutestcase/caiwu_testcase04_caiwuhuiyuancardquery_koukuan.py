@@ -53,15 +53,15 @@ class CaiwuTestcase04CaiwuhuiyuancardqueryKoukuan(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_css_selector("div.container > a:last-child.btn.btn-sm.btn-primary").click()
 
-        winBeforeHandle = driver.current_window_handle
-        winHandles = driver.window_handles
-        for handle in winHandles:
-            if winBeforeHandle != handle:
-                driver.switch_to_window(handle)
-
+#         winBeforeHandle = driver.current_window_handle
+#         winHandles = driver.window_handles
+#         for handle in winHandles:
+#             if winBeforeHandle != handle:
+#                 driver.switch_to_window(handle)
+#         print " the winBeforeHandle,winHandles is ",winBeforeHandle,winHandles
         time.sleep(1)
         
-        driver.find_element_by_id("icard_koukuan_form_money").clear()
+#         driver.find_element_by_id("icard_koukuan_form_money").clear()
         driver.find_element_by_id("icard_koukuan_form_money").send_keys("10")
         driver.find_element_by_id("btnOn").click()
         

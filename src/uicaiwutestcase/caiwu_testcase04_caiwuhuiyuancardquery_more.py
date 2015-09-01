@@ -35,13 +35,15 @@ class CaiwuTestcase04CaiwuhuiyuancardqueryMore(unittest.TestCase):
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
         
-        self.assertEqual(driver.title, u"财务")
-                
-        WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
+        time.sleep(1)
+#         self.assertEqual(driver.title, u"财务")
+#                 
+#         WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
 
          #driver.find_element_by_link_text(u"会员卡").click()
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(4).dropdown a.dropdown-toggle").click()
         #driver.find_element_by_link_text(u"会员卡查询").click()
+        time.sleep(1)
         self.assertEqual(driver.title, u"财务")
         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(4).dropdown ul.dropdown-menu li:first-child a").click()
         self.assertEqual(driver.title, u"财务")
@@ -49,7 +51,7 @@ class CaiwuTestcase04CaiwuhuiyuancardqueryMore(unittest.TestCase):
         driver.find_element_by_id("cardno").clear()
         driver.find_element_by_id("cardno").send_keys(caiwu_edaixi_mysql.huiyuannumber)
         #driver.find_element_by_link_text(u"退 款").click()
-        driver.implicitly_wait(10)
+        driver.implicitly_wait(30)
         #driver.find_element_by_link_text(u"更多").click()
         #html body 
         driver.find_element_by_css_selector("div.container form div.input-group span.input-group-btn input.btn.btn-default").click()
