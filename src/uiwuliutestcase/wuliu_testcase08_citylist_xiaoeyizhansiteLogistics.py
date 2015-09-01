@@ -45,7 +45,8 @@ class WuliuTestcase08CitylistxiaoeyizhansiteLogistics(unittest.TestCase):
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
+        print " the testassse test_wuliu_testcase08_citylist_xiaoeyizhansiteLogistics is ",driver.title
+        time.sleep(1)
         self.assertEqual(driver.title, u"物流")
         
         conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    

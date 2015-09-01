@@ -65,12 +65,13 @@ class CaiwuTestcase08CitylistJiagongdianFactoryBalanceMaster(unittest.TestCase):
         #driver.find_element_by_id("title").send_keys(u"test")
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"财务")
-                
+        time.sleep(1)
         driver.find_element_by_link_text(u"结算列表").click()
         self.assertEqual(driver.title, u"财务")
+        time.sleep(1)
         driver.find_element_by_link_text(u"明细").click()
         self.assertEqual(driver.title, u"财务")
-                
+        time.sleep(1)
         driver.find_element_by_link_text(u"审核通过").click()
         self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确认审核通过[\s\S]$")
  

@@ -99,7 +99,7 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
         
         driver.find_element_by_id("order_search_form_ordersn").clear()
-        driver.find_element_by_id("order_search_form_ordersn").send_keys(ordersn)
+        driver.find_element_by_id("order_search_form_ordersn").send_keys(wuliu_utiltools.ordersnnumber)
         driver.find_element_by_name("commit").click()
         
         time.sleep(1)
@@ -125,11 +125,11 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
             if winBeforeHandle != handle:
                 driver.switch_to_window(handle)
                 
-        time.sleep(1)
+        time.sleep(2)
         driver.find_element_by_css_selector("div#container.container a#fanxi_button.btn.btn-info").click()
         #driver.find_element_by_css_selector("div#container.container>a#fanxi_button.btn.btn-info").click()
 #         html body div#container.container a#fanxi_button.btn.btn-info
-
+        time.sleep(2)
         self.assertEqual(driver.title, u"物流")
         #html body div#container.container a#fanxi_button.btn.btn-info
         #submit to database
@@ -151,7 +151,7 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         
         #self.assertTrue(driver.title, u"物流")
         self.assertEqual(driver.title, u"物流")
-        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',paytype='1',pay_status='1',fan_id='0',status_delivery='3'  WHERE ordersn='"+wuliu_utiltools.ordersnnumber+"'")
+        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',paytype='1',pay_status='1',fan_id='"+wuliu_utiltools.fansfanidnumber+"',status_delivery='3'  WHERE ordersn='"+wuliu_utiltools.ordersnnumber+"'")
         conn.commit()
         
         wuliuconn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlwuliudb,charset="utf8")    

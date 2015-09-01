@@ -137,7 +137,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         self.assertEqual(driver.title, u"物流")
         
         #html body div#container.container form#new_fanxi_order_form_1039373.form-horizontal.new_fanxi_order_form table.table.table-striped.search-table tbody tr td div.form-group.select.optional.fanxi_order_form_courier_qu div.col-sm-8 select#fanxi_order_form_courier_qu.select.optional.form-control option
-        
+        time.sleep(2)
         diaoduperson=driver.find_element_by_xpath("/html/body/div[1]/form/table/tbody/tr[6]/td[2]/div/div/select/option[2]").text
          
         print " the diaoduperson is ",diaoduperson
@@ -172,7 +172,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan(unittest.TestCase):
         self.assertEqual(daioduconfirm, u"调度已派单")
         #self.assertEqual(driver.title, u"物流")
  
-        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',paytype='1',pay_status='1',fan_id='0',status_delivery='3' WHERE ordersn='"+wuliu_utiltools.ordersnnumber+"'")
+        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',paytype='1',pay_status='1',fan_id='"+wuliu_utiltools.fansfanidnumber+"',status_delivery='3' WHERE ordersn='"+wuliu_utiltools.ordersnnumber+"'")
         conn.commit()
         
         wuliuconn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlwuliudb,charset="utf8")    

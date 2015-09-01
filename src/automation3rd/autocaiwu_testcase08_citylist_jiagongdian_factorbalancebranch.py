@@ -113,6 +113,7 @@ class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
 #         driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").click()
 #         driver.find_element_by_link_text("10").click()
         driver.find_element_by_name("commit").click()
+        time.sleep(1)
         self.assertEqual(driver.title, u"财务")
 #         winBeforeHandle = driver.current_window_handle
 #         print "winBeforeHandle==",winBeforeHandle

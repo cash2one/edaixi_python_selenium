@@ -156,7 +156,7 @@ class WuliuTestcase08citylistdiaodupaidanfanxidanYiConfirm(unittest.TestCase):
         self.assertEqual(daioduconfirm, u"调度已确认")
 
         
-        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',paytype='1',pay_status='1',fan_id='0',status_delivery='3' WHERE ordersn='"+wuliu_utiltools.ordersnnumber+"'")
+        cursor.execute("UPDATE ims_washing_order SET fanxidan_id='0',paytype='1',pay_status='1',fan_id='"+wuliu_utiltools.fansfanidnumber+"',status_delivery='3' WHERE ordersn='"+wuliu_utiltools.ordersnnumber+"'")
         conn.commit()
         
         wuliuconn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlwuliudb,charset="utf8")    

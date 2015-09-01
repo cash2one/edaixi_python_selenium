@@ -64,15 +64,21 @@ class WuliuTestcase08CitylistxiaoemanagerLogistics(unittest.TestCase):
         driver.find_element_by_link_text(u"新建小e管家").click()
     
         self.assertEqual(driver.title, u"物流")
-        telephonenumber="18611111"+str(random.randint(0,999))
-        identitnumber="152528198801280"+str(random.randint(0,999))
-        print " the telephonenumber identitnumber is ",telephonenumber,identitnumber
+#         telephonenumber="18611111"+str(random.randint(0,999))
+#         identitnumber="152528198801280"+str(random.randint(0,999))
+#         
+        telephonenumber=random.choice(['139','188','185','136','158','151'])+"".join(random.choice("0123456789") for i in range(8))
+        print " the telephonenumber is ",telephonenumber
+        #identifiedCardId="152528198801280"+str(random.randint(0,999))
+        identifiedCardId=wuliu_utiltools.makeNewIdentifiedCardId()
+        print " the identifiedCardId is ",identifiedCardId
+
         driver.find_element_by_id("courier_form_realname").clear()
         driver.find_element_by_id("courier_form_realname").send_keys("xiaoeguanjiazhangsankuaiduyuan")
         driver.find_element_by_id("courier_form_tel").clear()
         driver.find_element_by_id("courier_form_tel").send_keys(telephonenumber)
         driver.find_element_by_id("courier_form_id_number").clear()
-        driver.find_element_by_id("courier_form_id_number").send_keys(identitnumber)
+        driver.find_element_by_id("courier_form_id_number").send_keys(identifiedCardId)
         driver.find_element_by_id("courier_form_password").clear()
         driver.find_element_by_id("courier_form_password").send_keys("123")
         driver.find_element_by_id("courier_form_bank_name").clear()

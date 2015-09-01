@@ -39,7 +39,7 @@ print mysqlhostname, mysqlusername, mysqlpassword, mysqldatabase
 
 conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
 global cursor
-global ordersnnumber,fanidnumber
+global ordersnnumber,fanidnumber,fansfanidnumber
 cursor = conn.cursor()
 
 def getordersn():
@@ -53,6 +53,7 @@ def getordersn():
 #print getordersn()           
 #global ordersnnumber
 #ordersnnumber=str(getordersn())
+#keep database testdb has order number 15051110387266
 ordersnnumber=str(15051110387266)
 print "the random ordersn  is ",ordersnnumber  
 #print ordersn
@@ -66,6 +67,17 @@ def getfanid():
 fanidnumber=str(getfanid())
 print fanidnumber
 
+
+
+def getfanstablefanid():
+    n = cursor.execute("SELECT MIN(id)  FROM ims_fans") 
+    for row in cursor.fetchall():
+      for fanid in row: 
+          return fanid  
+fansfanidnumber=str(getfanstablefanid())
+print " the fansfanidnumber is ",fansfanidnumber  
+      
+      
 def getcloseconn():
    if cursor!="":
      cursor.close()
