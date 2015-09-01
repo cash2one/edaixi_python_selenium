@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 #encoding:utf-8 
+
+#http://weixin03.edaixi.cn/
 import unittest, time, re 
 from caiwu_testcase01_caiwuordermanagechongzhi import *
 from caiwu_testcase01_caiwuordermanagekoukuan import *
