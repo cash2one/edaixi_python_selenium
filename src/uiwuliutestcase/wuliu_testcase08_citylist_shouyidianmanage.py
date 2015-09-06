@@ -77,7 +77,15 @@ class WuliuTestcase08Citylistshouyidianmanage(unittest.TestCase):
         
         self.assertEqual(driver.title, u"物流")
         time.sleep(2)
-        driver.find_element_by_link_text(u"编辑").click()
+        
+        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form div.input-group span.input-group-btn input.btn.btn-info").click()
+        self.assertEqual(driver.title, u"物流")
+                
+        #driver.find_element_by_link_text(u"编辑").click()
+        
+        driver.find_element_by_css_selector("div#container.container>table.table.table-striped>tbody>tr:nth-child(2)>td:nth-last-child(2)>a").click()
+        #html body div#container.container>table.table.table-striped>tbody>tr:nth-child(2)>td:nth-last-child(2)>a
+        self.assertEqual(driver.title, u"物流")
         driver.find_element_by_id("outlet_form_title").clear()
         driver.find_element_by_id("outlet_form_title").send_keys("shouyiguanli111")
         driver.find_element_by_name("commit").click()

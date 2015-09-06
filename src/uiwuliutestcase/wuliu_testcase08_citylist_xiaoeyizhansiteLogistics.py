@@ -66,7 +66,9 @@ class WuliuTestcase08CitylistxiaoeyizhansiteLogistics(unittest.TestCase):
         #driver.find_element_by_link_text(u"新建驿站人员").click()
         driver.find_element_by_css_selector("div#container.container a.btn.btn-info.col-md-1").click()
         
-        telephonenumber="18611110"+str(random.randint(0,999))
+#         telephonenumber="18611110"+str(random.randint(0,999))
+#         print " the telephonenumber is ",telephonenumber
+        telephonenumber=random.choice(['139','188','185','136','158','151'])+"".join(random.choice("0123456789") for i in range(8))
         print " the telephonenumber is ",telephonenumber
         driver.find_element_by_id("outlet_form_title").clear()
         driver.find_element_by_id("outlet_form_title").send_keys(u"xiaoeyizhantest")
@@ -80,7 +82,10 @@ class WuliuTestcase08CitylistxiaoeyizhansiteLogistics(unittest.TestCase):
         driver.find_element_by_id("set_move").click()
         time.sleep(1)
         
-        servicesitename=driver.find_element_by_css_selector("html body div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.optional.outlet_form_server_outlet_id div.col-sm-8 select#outlet_form_server_outlet_id.select.optional.form-control.server_outlet_select option:nth-child(2)").text
+        driver.execute_script("var doc=document.getElementById('outlet_form_server_outlet_id');doc.setAttribute('style','display:block');")
+        
+        
+        servicesitename=driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form#new_outlet_form.form-horizontal.new_outlet_form div.form-group.select.optional.outlet_form_server_outlet_id div.col-sm-8 select#outlet_form_server_outlet_id.select.optional.form-control.server_outlet_select option:nth-child(2)").text
         print " the servicesitename is  ",servicesitename
         Select(driver.find_element_by_id("outlet_form_server_outlet_id")).select_by_visible_text(servicesitename)
 

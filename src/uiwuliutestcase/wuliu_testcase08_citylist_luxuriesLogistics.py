@@ -39,15 +39,16 @@ class WuliuTestcase08CitylistluxuriesLogistics(unittest.TestCase):
 
         loginclick=driver.find_element_by_css_selector("div#container.container h3.text-center.text-primary a.btn.btn-success.text-center")
         ActionChains(driver).double_click(loginclick).perform()
+        time.sleep(1)
         driver.find_element_by_id("username").clear()
         driver.find_element_by_id("username").send_keys(USER_NAME)
         driver.find_element_by_id("password").clear()
         driver.find_element_by_id("password").send_keys(PASS_WORD)
         driver.find_element_by_id("login-submit").click()
-        print driver.title
+        print " the testcase WuliuTestcase08CitylistluxuriesLogistics is ",driver.title
         self.assertTrue(driver.title, u"物流")
         
-        
+        time.sleep(1)
         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
         
         self.assertEqual(driver.title, u"物流")
@@ -90,6 +91,8 @@ class WuliuTestcase08CitylistluxuriesLogistics(unittest.TestCase):
         #driver.find_element_by_id("courier_form_is_employee").click()
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"物流")
+        
+        time.sleep(2)
         
         driver.find_element_by_css_selector("div#container.container div.panel.panel-primary.checkout-order div.panle-body div.orders_container form div.col-md-4.input-group span.input-group-btn input.btn.btn-info").click()
         self.assertEqual(driver.title, u"物流")

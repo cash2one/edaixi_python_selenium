@@ -117,19 +117,21 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         #print ordersn ,username,tel,address,status_delivery,STATUS ,fanxidan_id
         #print driver.title
         #cursor.execute("DELETE FROM  map_cities WHERE gaode_map_code LIKE 'beijinggaode%'")
-        winBeforeHandle = driver.current_window_handle
-        print "winBeforeHandle==",winBeforeHandle
-        winHandles = driver.window_handles
-        print "winHandles==",winHandles
-        for handle in winHandles:
-            if winBeforeHandle != handle:
-                driver.switch_to_window(handle)
-                
-        time.sleep(2)
-        driver.find_element_by_css_selector("div#container.container a#fanxi_button.btn.btn-info").click()
+#         winBeforeHandle = driver.current_window_handle
+#         print "winBeforeHandle==",winBeforeHandle
+#         winHandles = driver.window_handles
+#         print "winHandles==",winHandles
+#         for handle in winHandles:
+#             if winBeforeHandle != handle:
+#                 driver.switch_to_window(handle)
+#         
+        self.assertEqual(driver.title, u"物流")        
+        time.sleep(1)
+        driver.find_element_by_css_selector("div#container.container>a#fanxi_button.btn.btn-info").click()
+        driver.find_element_by_xpath("//*[@id='fanxi_button']").click()
         #driver.find_element_by_css_selector("div#container.container>a#fanxi_button.btn.btn-info").click()
-#         html body div#container.container a#fanxi_button.btn.btn-info
-        time.sleep(2)
+#         html body div#container.container a#f''anxi_button.btn.btn-info
+        time.sleep(1)
         self.assertEqual(driver.title, u"物流")
         #html body div#container.container a#fanxi_button.btn.btn-info
         #submit to database
@@ -189,7 +191,7 @@ class WuliuTestcase08citylistdiaoduqueryfanxidan(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
