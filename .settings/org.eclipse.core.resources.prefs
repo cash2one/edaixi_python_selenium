@@ -92,6 +92,7 @@ encoding//src/uikefutestcase/kefu_testcase07_estimatemanage_goodinfos.py=utf-8
 encoding//src/uikefutestcase/kefu_testcase07_estimatemanage_middleinfos.py=utf-8
 encoding//src/uikefutestcase/kefu_testcase08_estimatecomplain_process.py=utf-8
 encoding//src/uikefutestcase/kefu_testcase_testsuit.py=utf-8
+encoding//src/uiopstestcase/ops_testcase00_rdt7permissionmanage.py=utf-8
 encoding//src/uiopstestcase/ops_testcase01_permissionmanage_permission.py=utf-8
 encoding//src/uiopstestcase/ops_testcase01_permissionmanage_position.py=utf-8
 encoding//src/uiopstestcase/ops_testcase02_layoutmanage_bigfunction.py=utf-8
