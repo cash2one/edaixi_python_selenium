@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
-import appobjectkefu
+import appobjectkefu,MySQLdb
 class KefuTestcase00rdt2orderlist(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
@@ -14,12 +14,17 @@ class KefuTestcase00rdt2orderlist(unittest.TestCase):
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_kefu.conf")
-        global CAIWU_URL,USER_NAME,PASS_WORD
+        global CAIWU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase
         KEFU_URL = conf.get("kefusection", "uihostname")
-        USER_NAME = conf.get("kefusection", "uiusername")
-        PASS_WORD = conf.get("kefusection", "uipassword")
+        USER_NAME = conf.get("kefusection", "rdt2uiusername")
+        PASS_WORD = conf.get("kefusection", "rdt2uipassword")
         print KEFU_URL,USER_NAME,PASS_WORD  
         self.base_url = KEFU_URL
+        mysqlhostname = conf.get("databaseconn", "mysqlhostname")
+        mysqlusername = conf.get("databaseconn", "mysqlusername")
+        mysqlpassword = conf.get("databaseconn", "mysqlpassword")
+        mysqldatabase = conf.get("databaseconn", "mysqldatabase")
+        print mysqlhostname,mysqlusername,mysqlpassword,mysqldatabase
         #self.base_url = "http://kefu05.edaixi.cn:81/"
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -37,24 +42,43 @@ class KefuTestcase00rdt2orderlist(unittest.TestCase):
         time.sleep(1)
         self.assertEqual(driver.title,u"客服系统")
 
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:first-child>a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(2)>a").click()
         #driver.find_element_by_link_text(u"反馈总列表").click()
         #driver.find_element_by_link_text(u"踢").click()
         self.assertEqual(driver.title,u"客服系统")
-        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary ul.nav.nav-tabs li:first-child.active a").click()
-        #driver.find_element_by_link_text(u"处理").click()
-        self.assertEqual(driver.title,u"客服系统")
-        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary table.table.table-stripe tbody#table_new_customer tr#customer_1239520 td a.btn.btn-success.btn-sm").click()
-        #driver.find_element_by_id("tag_to_feedback_71874").click()
-        self.assertEqual(driver.title,u"客服系统")
-        driver.find_element_by_css_selector("div#container.container div.col-sm-6 ul#replies_navi.nav.nav-tabs li:first-child#ajax_customer_feedbacks_all.active a").click()
+ 
+        conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
+        global cursor 
+        cursor = conn.cursor() 
+        n = cursor.execute("SELECT ordersn ,username,tel,address FROM ims_washing_order WHERE status_delivery=1 AND bagsn IS NOT NULL ORDER BY id") 
+        for i in xrange(cursor.rowcount):
+            ordersn ,username,tel,address = cursor.fetchone()
+        print ordersn ,username,tel,address
         
+        driver.find_element_by_id("order_search_form_ordersn").clear()
+        driver.find_element_by_id("order_search_form_ordersn").send_keys(ordersn)
+        
+        driver.find_element_by_css_selector("input.btn.btn-success.col-md-1").click()
+        time.sleep(2)
         self.assertEqual(driver.title,u"客服系统")
-        driver.find_element_by_css_selector("div#container.container div.row div.col-sm-12 div.div a.btn.btn-info.pull-right").click()
+        driver.find_element_by_id("order_search_form_ordersn").clear()
+        driver.find_element_by_id("order_search_form_username").clear()
+        driver.find_element_by_id("order_search_form_username").send_keys(username)
+        driver.find_element_by_name("commit").click()
+        time.sleep(2)
         self.assertEqual(driver.title,u"客服系统")
-        driver.find_element_by_css_selector("div#container.container table.table.table-striped tbody tr:first-child td:nth-child(8) a.btn.btn-sm.btn-info").click()
-        time.sleep(1)
-        self.assertEqual(u"确认发券吗？", self.close_alert_and_get_its_text())
+        driver.find_element_by_id("order_search_form_username").clear()
+        driver.find_element_by_id("order_search_form_address").clear()
+        driver.find_element_by_id("order_search_form_address").send_keys(address)
+        driver.find_element_by_name("commit").click()
+        time.sleep(2)
+        self.assertEqual(driver.title,u"客服系统")
+        driver.find_element_by_id("order_search_form_address").clear()
+        driver.find_element_by_id("order_search_form_tel").clear()
+        driver.find_element_by_id("order_search_form_tel").send_keys(tel)
+        driver.find_element_by_name("commit").click()
+        time.sleep(2)
+        
         
 #         print driver.title
 #         if "We're sorry" in driver.title:
@@ -67,6 +91,8 @@ class KefuTestcase00rdt2orderlist(unittest.TestCase):
         #self.assert_(driver.title, u"客服系统")
         self.assertEqual(driver.title,u"客服系统")
         
+        cursor.close()
+        conn.close()
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False

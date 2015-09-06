@@ -43,9 +43,18 @@ from kefu_testcase07_estimatemanage_middleinfos  import  *
 from kefu_testcase08_estimatecomplain_process import *
 
 
+from kefu_testcase00_rdt2_myuserfeedback import *
+from kefu_testcase00_rdt2_orderlist import *
+from kefu_testcase00_rdt2_orderpinjia import *
+from kefu_testcase00_rdt2_ordertousu import *
+from kefu_testcase00_rdt2_usellyfeedback import *
+from kefu_testcase00_rdt2_usellyquery import *
+from kefu_testcase00_rdt3_orderlist import *
+from kefu_testcase00_rdt3_usellyquery import *
+
 if __name__ == '__main__':  
     suite = unittest.TestSuite()  
- 
+    
     #caiwu testcase01 first need chongzhi,then koukuan,finally is tuikuan testcase
     suite.addTest(KefuTestcase01FeedbackAlllistAll('test_kefu_testcase01_feedback_alllist_all'))
     time.sleep(3)
@@ -119,6 +128,25 @@ if __name__ == '__main__':
     
     #ops testcase08
     suite.addTest(KefuTestcase08EstimateComplainProcess('test_kefu_testcase08_estimatecomplain_process'))
+    time.sleep(3)
+    
+    
+    # persmiiiosn rdt2  and rdt 3
+    suite.addTest(KefuTestcase00rdt2myuserfeedback('test_kefu_testcase00_rdt2_myuserfeedback'))
+    time.sleep(3)
+    suite.addTest(KefuTestcase00rdt2orderlist('test_kefu_testcase00_rdt2_orderlist'))
+    time.sleep(3)
+    suite.addTest(KefuTestcase00rdt2orderpinjia('test_kefu_testcase00_rdt2_orderpinjia'))
+    time.sleep(3)
+    suite.addTest(KefuTestcase00rdt2ordertousu('test_kefu_testcase00_rdt2_ordertousu'))
+    time.sleep(3)
+    suite.addTest(KefuTestcase00rdt2usellyfeedbackl('test_kefu_testcase00_rdt2_usellyfeedback'))
+    time.sleep(3)
+    suite.addTest(KefuTestcase00rdt2usellyquery('test_kefu_testcase00_rdt2_usellyquery'))
+    time.sleep(3)
+    suite.addTest(KefuTestcase00rdt3orderlist('test_kefu_testcase00_rdt3_orderlist'))
+    time.sleep(3)
+    suite.addTest(KefuTestcase00rdt3usellyquery('test_kefu_testcase00_rdt3_usellyquery'))
     time.sleep(3)
 
     currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())

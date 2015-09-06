@@ -16,8 +16,8 @@ class KefuTestcase00rdt2usellyfeedbackl(unittest.TestCase):
         conf.read("C:/edaixi_testdata/userdata_kefu.conf")
         global CAIWU_URL,USER_NAME,PASS_WORD
         KEFU_URL = conf.get("kefusection", "uihostname")
-        USER_NAME = conf.get("kefusection", "uiusername")
-        PASS_WORD = conf.get("kefusection", "uipassword")
+        USER_NAME = conf.get("kefusection", "rdt2uiusername")
+        PASS_WORD = conf.get("kefusection", "rdt2uipassword")
         print KEFU_URL,USER_NAME,PASS_WORD  
         self.base_url = KEFU_URL
         #self.base_url = "http://kefu05.edaixi.cn:81/"
@@ -37,24 +37,9 @@ class KefuTestcase00rdt2usellyfeedbackl(unittest.TestCase):
         time.sleep(1)
         self.assertEqual(driver.title,u"客服系统")
 
-        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:first-child>a").click()
+        driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(3)>a").click()
         #driver.find_element_by_link_text(u"反馈总列表").click()
         #driver.find_element_by_link_text(u"踢").click()
-        self.assertEqual(driver.title,u"客服系统")
-        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary ul.nav.nav-tabs li:first-child.active a").click()
-        #driver.find_element_by_link_text(u"处理").click()
-        self.assertEqual(driver.title,u"客服系统")
-        driver.find_element_by_css_selector("div#container.container div.panel.panel-primary table.table.table-stripe tbody#table_new_customer tr#customer_1239520 td a.btn.btn-success.btn-sm").click()
-        #driver.find_element_by_id("tag_to_feedback_71874").click()
-        self.assertEqual(driver.title,u"客服系统")
-        driver.find_element_by_css_selector("div#container.container div.col-sm-6 ul#replies_navi.nav.nav-tabs li:first-child#ajax_customer_feedbacks_all.active a").click()
-        
-        self.assertEqual(driver.title,u"客服系统")
-        driver.find_element_by_css_selector("div#container.container div.row div.col-sm-12 div.div a.btn.btn-info.pull-right").click()
-        self.assertEqual(driver.title,u"客服系统")
-        driver.find_element_by_css_selector("div#container.container table.table.table-striped tbody tr:first-child td:nth-child(8) a.btn.btn-sm.btn-info").click()
-        time.sleep(1)
-        self.assertEqual(u"确认发券吗？", self.close_alert_and_get_its_text())
         
 #         print driver.title
 #         if "We're sorry" in driver.title:
@@ -65,6 +50,22 @@ class KefuTestcase00rdt2usellyfeedbackl(unittest.TestCase):
 #         print driver.title
         #self.assertTrue("", "We're sorry")
         #self.assert_(driver.title, u"客服系统")
+        
+#         driver.find_element_by_css_selector("div.container>div.navbar-collapse.collapse.navbar-responsive-collapse>ul.nav.navbar-nav>li:nth-child(5)>a").click() 
+#         self.assertEqual(driver.title,u"客服系统")
+        
+        driver.find_element_by_id("content").clear()
+        driver.find_element_by_id("content").send_keys("hell,changyonghuifu")
+        driver.find_element_by_name("commit").click()
+        print driver.title
+        assert u"客服系统" in driver.title
+        time.sleep(2)
+        
+        #driver.find_element_by_css_selector("div#container.container div.panel.panel-primary div.panle-body table.table.table-striped tbody tr:first-child td:last-child a").click()
+        #self.assertEqual(driver.title,u"客服系统")
+        driver.find_element_by_link_text(u"删除").click()
+        time.sleep(1)
+        self.assertRegexpMatches(self.close_alert_and_get_its_text(), u"^确定删除[\s\S]$")
         self.assertEqual(driver.title,u"客服系统")
         
     def is_element_present(self, how, what):
