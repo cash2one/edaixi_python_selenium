@@ -35,6 +35,7 @@ mysqlhostname = conf.get("databaseconn", "mysqlhostname")
 mysqlusername = conf.get("databaseconn", "mysqlusername")
 mysqlpassword = conf.get("databaseconn", "mysqlpassword")
 mysqldatabase = conf.get("databaseconn", "mysqlrongchangdb")
+mysqlrongchangdb  = conf.get("databaseconn", "mysqlrongchangdb")
 print mysqlhostname, mysqlusername, mysqlpassword, mysqldatabase
 
 conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqldatabase,charset="utf8")    
@@ -84,7 +85,15 @@ def getcloseconn():
    elif conn!="":
      conn.close()
      
-     
+
+global signbagnumber
+signbagnumber="E0000000006"
+def updateSignNumber():
+    cursor = conn.cursor()    
+    cursor.execute("UPDATE ims_washing_order SET status_delivery='1',qianshoudian_id= NULL WHERE bagsn='E0000000006'")
+    conn.commit()
+        
+        
 year = strftime("%Y",localtime())
 mon  = strftime("%m",localtime())
 day  = strftime("%d",localtime())
