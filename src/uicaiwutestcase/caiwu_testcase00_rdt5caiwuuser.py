@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser
 from selenium.webdriver.support.ui import WebDriverWait 
 import appobjectcaiwu
-class CaiwuTestcase02Caiwuyouhuicardgroup(unittest.TestCase):
+class CaiwuTestcase00rdt5caiwuuser(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
         self.driver = appobjectcaiwu.GetInstance()
@@ -17,15 +17,15 @@ class CaiwuTestcase02Caiwuyouhuicardgroup(unittest.TestCase):
         conf.read("C:/edaixi_testdata/userdata_caiwu.conf")
         global CAIWU_URL,USER_NAME,PASS_WORD
         CAIWU_URL = conf.get("caiwusection", "uihostname")
-        USER_NAME = conf.get("caiwusection", "uiusername")
-        PASS_WORD = conf.get("caiwusection", "uipassword")
+        USER_NAME = conf.get("caiwusection", "uirdt5username")
+        PASS_WORD = conf.get("caiwusection", "uirdt5password")
         print CAIWU_URL,USER_NAME,PASS_WORD 
         self.base_url = CAIWU_URL
         #self.base_url = "http://caiwu05.edaixi.cn:81/"
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_caiwu_testcase02_caiwuyouhuicardgroup(self):
+    def test_caiwu_testcase00_rdt5caiwuuser(self):
         driver = self.driver
         driver.get(self.base_url + "/")
   
@@ -39,28 +39,23 @@ class CaiwuTestcase02Caiwuyouhuicardgroup(unittest.TestCase):
         time.sleep(2)
         self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"优惠券").click()
-        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
+        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child(5).dropdown a.dropdown-toggle").click()
         #driver.find_element_by_link_text(u"优惠券组").click()
         self.assertEqual(driver.title,u"财务")
-        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:last-child a").click()
-        self.assertEqual(driver.title,u"财务")
+        #html body div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:first-child a
+        driver.find_element_by_css_selector("ul.nav.navbar-nav>li:nth-child(5).dropdown>ul.dropdown-menu>li:nth-child(1)>a").click()
+        
         #driver.find_element_by_link_text(u"新 建").click()
-        driver.find_element_by_css_selector("div.container a.btn.btn-info.col-md-1").click()
-        time.sleep(2)
-        #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
-        self.assertEqual(driver.title,u"财务")
-        driver.find_element_by_id("coupon_group_form_name").clear()
-        driver.find_element_by_id("coupon_group_form_name").send_keys("testyouhuiquangrup")
+
+        time.sleep(1)
+        driver.find_element_by_id("user_id").clear()
+        driver.find_element_by_id("user_id").send_keys("test")
         driver.find_element_by_name("commit").click()
+        
+        time.sleep(1)
         self.assertEqual(driver.title,u"财务")
-        time.sleep(2)
-        #driver.find_element_by_link_text(u"编辑").click()
-        driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:last-child td:last-child a.btn.btn-sm.btn-info").click()
-        driver.find_element_by_id("coupon_group_form_name").clear()
-        driver.find_element_by_id("coupon_group_form_name").send_keys("testyouhuiquangrupedit")
-        driver.find_element_by_name("commit").click()
-        driver.find_element_by_id("name").clear()
-        driver.find_element_by_id("name").send_keys("test")
+        driver.find_element_by_id("mobile").clear()
+        driver.find_element_by_id("mobile").send_keys("18888888888")
         driver.find_element_by_name("commit").click()
         #self.assert_(driver.title, u"财务")
         self.assertEqual(driver.title,u"财务")

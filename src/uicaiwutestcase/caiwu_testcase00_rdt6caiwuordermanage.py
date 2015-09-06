@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re,ConfigParser
 from selenium.webdriver.support.ui import WebDriverWait 
 import appobjectcaiwu
-class CaiwuTestcase02Caiwuyouhuicardgroup(unittest.TestCase):
+class CaiwuTestcase00rdt6caiwuordermanage(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
         self.driver = appobjectcaiwu.GetInstance()
@@ -17,15 +17,15 @@ class CaiwuTestcase02Caiwuyouhuicardgroup(unittest.TestCase):
         conf.read("C:/edaixi_testdata/userdata_caiwu.conf")
         global CAIWU_URL,USER_NAME,PASS_WORD
         CAIWU_URL = conf.get("caiwusection", "uihostname")
-        USER_NAME = conf.get("caiwusection", "uiusername")
-        PASS_WORD = conf.get("caiwusection", "uipassword")
+        USER_NAME = conf.get("caiwusection", "uirdt6username")
+        PASS_WORD = conf.get("caiwusection", "uirdt6password")
         print CAIWU_URL,USER_NAME,PASS_WORD 
         self.base_url = CAIWU_URL
         #self.base_url = "http://caiwu05.edaixi.cn:81/"
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_caiwu_testcase02_caiwuyouhuicardgroup(self):
+    def test_caiwu_testcase00_rdt6caiwuordermanage(self):
         driver = self.driver
         driver.get(self.base_url + "/")
   
@@ -39,29 +39,56 @@ class CaiwuTestcase02Caiwuyouhuicardgroup(unittest.TestCase):
         time.sleep(2)
         self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"优惠券").click()
-        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown a.dropdown-toggle").click()
+        #div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:first-child a
+        driver.find_element_by_css_selector("div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li:first-child a").click()
         #driver.find_element_by_link_text(u"优惠券组").click()
         self.assertEqual(driver.title,u"财务")
-        driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:last-child a").click()
+        time.sleep(1)
+        driver.find_element_by_id("settlement_search_form_ordersn").clear()
+        driver.find_element_by_id("settlement_search_form_ordersn").send_keys("15070210392738")
+        driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title,u"财务")
+        time.sleep(1)
+        driver.find_element_by_id("settlement_search_form_ordersn").clear()
+        driver.find_element_by_id("settlement_search_form_ordersn").send_keys("040300362586")
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title,u"财务")
+        Select(driver.find_element_by_id("settlement_search_form_order_status")).select_by_visible_text(u"已签收")
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title,u"财务")
+        driver.find_element_by_id("settlement_search_form_ordersn").clear()
+        driver.find_element_by_id("settlement_search_form_ordersn").send_keys("")
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title,u"财务")
+        Select(driver.find_element_by_id("settlement_search_form_pay_status")).select_by_visible_text(u"已付款")
+        Select(driver.find_element_by_id("settlement_search_form_caiwu_status")).select_by_visible_text(u"未收款")
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title,u"财务")
+#         driver.find_element_by_link_text("15051210387348").click()
+#         driver.find_element_by_link_text("10941265").click()
+        Select(driver.find_element_by_id("settlement_search_form_shoukuan_caiwu")).select_by_visible_text(u"岑永洪")
+        driver.find_element_by_name("commit").click()
+        
+#         driver.find_element_by_css_selector("ul.nav.navbar-nav li:nth-child(2).dropdown ul.dropdown-menu li:last-child a").click()
+#         self.assertEqual(driver.title,u"财务")
         #driver.find_element_by_link_text(u"新 建").click()
-        driver.find_element_by_css_selector("div.container a.btn.btn-info.col-md-1").click()
-        time.sleep(2)
-        #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
-        self.assertEqual(driver.title,u"财务")
-        driver.find_element_by_id("coupon_group_form_name").clear()
-        driver.find_element_by_id("coupon_group_form_name").send_keys("testyouhuiquangrup")
-        driver.find_element_by_name("commit").click()
-        self.assertEqual(driver.title,u"财务")
-        time.sleep(2)
-        #driver.find_element_by_link_text(u"编辑").click()
-        driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:last-child td:last-child a.btn.btn-sm.btn-info").click()
-        driver.find_element_by_id("coupon_group_form_name").clear()
-        driver.find_element_by_id("coupon_group_form_name").send_keys("testyouhuiquangrupedit")
-        driver.find_element_by_name("commit").click()
-        driver.find_element_by_id("name").clear()
-        driver.find_element_by_id("name").send_keys("test")
-        driver.find_element_by_name("commit").click()
+#         driver.find_element_by_css_selector("div.container a.btn.btn-info.col-md-1").click()
+#         time.sleep(2)
+#         #WebDriverWait(driver, 10).until(lambda the_driver: the_driver.find_element_by_css_selector("div.container").is_displayed()) 
+#         self.assertEqual(driver.title,u"财务")
+#         driver.find_element_by_id("coupon_group_form_name").clear()
+#         driver.find_element_by_id("coupon_group_form_name").send_keys("testyouhuiquangrup")
+#         driver.find_element_by_name("commit").click()
+#         self.assertEqual(driver.title,u"财务")
+#         time.sleep(2)
+#         #driver.find_element_by_link_text(u"编辑").click()
+#         driver.find_element_by_css_selector("div.container div#content div.panel.panel-primary table.table.table-striped tbody tr:last-child td:last-child a.btn.btn-sm.btn-info").click()
+#         driver.find_element_by_id("coupon_group_form_name").clear()
+#         driver.find_element_by_id("coupon_group_form_name").send_keys("testyouhuiquangrupedit")
+#         driver.find_element_by_name("commit").click()
+#         driver.find_element_by_id("name").clear()
+#         driver.find_element_by_id("name").send_keys("test")
+#         driver.find_element_by_name("commit").click()
         #self.assert_(driver.title, u"财务")
         self.assertEqual(driver.title,u"财务")
     def is_element_present(self, how, what):
@@ -86,7 +113,7 @@ class CaiwuTestcase02Caiwuyouhuicardgroup(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
