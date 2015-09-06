@@ -18,8 +18,8 @@ class OpsTestcase01Permissionmanagepermission(unittest.TestCase):
         conf.read("C:/edaixi_testdata/userdata_ops.conf")
         global CAIWU_URL,USER_NAME,PASS_WORD
         OPS_URL = conf.get("opssection", "uihostname")
-        USER_NAME = conf.get("opssection", "uiusername")
-        PASS_WORD = conf.get("opssection", "uipassword")
+        USER_NAME = conf.get("opssection", "uirdt7username")
+        PASS_WORD = conf.get("opssection", "uirdt7password")
         print OPS_URL,USER_NAME,PASS_WORD  
         self.base_url = OPS_URL
         #self.base_url = "http://ops05.edaixi.cn:81"

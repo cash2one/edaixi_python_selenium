@@ -51,105 +51,119 @@ from wuliu_testcase10_site_orderquery import *
 
 from wuliu_testcase11_sitepersonmanage import *
 
+from wuliu_testcase00_editpermission_sitepersmission import *
+from wuliu_testcase00_factorysite_servicesitequery import *
+from wuliu_testcase00_factorysite_sitepeoplemanage import *
+
+
 if __name__ == '__main__':  
-    suite = unittest.TestSuite()  
+     suite = unittest.TestSuite()  
+    
+     #caiwu testcase01 first need chongzhi,then koukuan,finally is tuikuan testcase
+     suite.addTest(WuliuTestcase01EditPermission('test_wuliu_testcase01_EditPermission'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase01Querypermission('test_wuliu_testcase01_querypermission'))
+     time.sleep(3)
+     #caiwu testcase02
+     suite.addTest(WuliuTestcase02factorydelivery('test_wuliu_testcase02_factory_delivery'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase02factoryinoutstockquery('test_wuliu_testcase02_factory_inoutstockquery'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase02factorysign('test_wuliu_testcase02factory_sign'))
+     time.sleep(3)
+     #caiwu testcase03s
+     suite.addTest(WuliuTestcase03sitedelivery('test_wuliu_testcase03_site_delivery'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase03siteinoutstockquery('test_wuliu_testcase03_site_inoutstockquery'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase03sitesign('test_wuliu_testcase03_site_sign'))
+     time.sleep(3)
+     #caiwu testcase04
+     suite.addTest(WuliuTestcase04pushorder('test_wuliu_testcase04_pushorder'))
+     time.sleep(3)
+     #caiwu testcase05
+     suite.addTest(WuliuTestcase05takecloth('test_wuliu_testcase05_takecloth'))
+     time.sleep(3)
+     #caiwu testcase06
+     suite.addTest(WuliuTestcase06pushcloth('test_wuliu_testcase06_pushcloth'))
+     time.sleep(3)
+     #ops testcase07
+     suite.addTest(WuliuTestcase07AccountBalance('test_wuliu_testcase07_accountbalance'))
+     time.sleep(3)
+     #ops testcase08
+     suite.addTest(WuliuTestcase08CitylistAddEdit('test_wuliu_testcase08_citylist_addedit'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan('test_wuliu_testcase08citylist_diaodupaidan_fanxidan_yipandan'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08citylistdiaodupaidanfanxidanYiConfirm('test_wuliu_testcase08citylist_diaodupaidan_fanxidan_yiconfirm'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08citylistdiaoduqueryfanxidan('test_wuliu_testcase08_citylist_diaoduquery_fanxidan'))
+     time.sleep(3)
+     
+     suite.addTest(WuliuTestcase08Citylistdividebasearea('test_wuliu_testcase08_citylist_dividebasearea'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08Citylistdividekuaidiarea('test_wuliu_testcase08_citylist_dividekuaidiarea'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08Citylistdivideluxuryarea('test_wuliu_testcase08_citylist_divideluxuryarea'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08Citylistdividexiaoesitearea('test_wuliu_testcase08_citylist_dividexiaoesitearea'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08Citylistdividezhongbaoarea('test_wuliu_testcase08_citylist_dividezhongbaoarea'))
+     time.sleep(3)
+    
+     suite.addTest(WuliuTestcase08CitylistJiagongdianFactoryBalance('test_wuliu_testcase08_citylist_jiagongdian_factorybalance'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08Citylistjiagongdianmanage('test_wuliu_testcase08_citylist_jiagongdianmanage'))
+     time.sleep(3)
+     
+     suite.addTest(WuliuTestcase08CitylistluxuriesLogistics('test_wuliu_testcase08_citylist_luxuriesLogistics'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08Citylistouttimemanage('test_wuliu_testcase08_citylist_outtimemanage'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08CitylistselfmanagedLogistics('test_wuliu_testcase08_citylist_selfmanagedLogistics'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08CitylistservicesiteLogistics('test_wuliu_testcase08_citylist_servicesiteLogistics'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08Citylistshouyidianmanage('test_wuliu_testcase08_citylist_shouyidianmanage'))
+     time.sleep(3)
+ 
+     
+     suite.addTest(WuliuTestcase08CitylistxiaoemanagerLogistics('test_wuliu_testcase08_citylist_xiaoemanagerLogistics'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase08CitylistxiaoeyizhansiteLogistics('test_wuliu_testcase08_citylist_xiaoeyizhansiteLogistics'))
+     time.sleep(3)
+ #     suite.addTest(WuliuTestcase08Citylistxiaoeyizhansitepersonmanage('test_wuliu_testcase08_citylist_xiaoeyizhansitepersonmanage'))
+ #     time.sleep(3)
+     
+     #wuliu testcase09
+     suite.addTest(WuliuTestcase09FactoryOrderQuery('test_wuliu_testcase09_factory_orderquery'))
+     time.sleep(3)
+     #wuliu testcase10
+     suite.addTest(WuliuTestcase10SiteOrderquery('test_wuliu_testcase10_site_orderquery'))
+     time.sleep(3)
+     
+     #wuliu testcase11
+     suite.addTest(WuliuTestcase11SitePersonManage('test_wuliu_testcase11_site_personmanage'))
+     time.sleep(3)
+    
+    
+    #wuliu permission rdt siteuiusername
+     suite.addTest(WuliuTestcase00EditSitePermission('test_wuliu_testcase00_EditSitePermission'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase00siteservicesitequery('test_wuliu_testcase00_site_servicesitequery'))
+     time.sleep(3)
+     suite.addTest(WuliuTestcase00sitepeoplemanage('test_wuliu_testcase00_site_peoplemanage'))
+     time.sleep(3)
+    
+     currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
+     print currenttime
 
-    #caiwu testcase01 first need chongzhi,then koukuan,finally is tuikuan testcase
-    suite.addTest(WuliuTestcase01EditPermission('test_wuliu_testcase01_EditPermission'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase01Querypermission('test_wuliu_testcase01_querypermission'))
-    time.sleep(3)
-    #caiwu testcase02
-    suite.addTest(WuliuTestcase02factorydelivery('test_wuliu_testcase02_factory_delivery'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase02factoryinoutstockquery('test_wuliu_testcase02_factory_inoutstockquery'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase02factorysign('test_wuliu_testcase02factory_sign'))
-    time.sleep(3)
-    #caiwu testcase03s
-    suite.addTest(WuliuTestcase03sitedelivery('test_wuliu_testcase03_site_delivery'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase03siteinoutstockquery('test_wuliu_testcase03_site_inoutstockquery'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase03sitesign('test_wuliu_testcase03_site_sign'))
-    time.sleep(3)
-    #caiwu testcase04
-    suite.addTest(WuliuTestcase04pushorder('test_wuliu_testcase04_pushorder'))
-    time.sleep(3)
-    #caiwu testcase05
-    suite.addTest(WuliuTestcase05takecloth('test_wuliu_testcase05_takecloth'))
-    time.sleep(3)
-    #caiwu testcase06
-    suite.addTest(WuliuTestcase06pushcloth('test_wuliu_testcase06_pushcloth'))
-    time.sleep(3)
-    #ops testcase07
-    suite.addTest(WuliuTestcase07AccountBalance('test_wuliu_testcase07_accountbalance'))
-    time.sleep(3)
-    #ops testcase08
-    suite.addTest(WuliuTestcase08CitylistAddEdit('test_wuliu_testcase08_citylist_addedit'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08citylistdiaodupaidanfanxidanYiPandan('test_wuliu_testcase08citylist_diaodupaidan_fanxidan_yipandan'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08citylistdiaodupaidanfanxidanYiConfirm('test_wuliu_testcase08citylist_diaodupaidan_fanxidan_yiconfirm'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08citylistdiaoduqueryfanxidan('test_wuliu_testcase08_citylist_diaoduquery_fanxidan'))
-    time.sleep(3)
+     fp = file("c:\\edaixi_testdata\\"+currenttime+"-wuliu_test_report.html", 'wb')
     
-    suite.addTest(WuliuTestcase08Citylistdividebasearea('test_wuliu_testcase08_citylist_dividebasearea'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08Citylistdividekuaidiarea('test_wuliu_testcase08_citylist_dividekuaidiarea'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08Citylistdivideluxuryarea('test_wuliu_testcase08_citylist_divideluxuryarea'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08Citylistdividexiaoesitearea('test_wuliu_testcase08_citylist_dividexiaoesitearea'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08Citylistdividezhongbaoarea('test_wuliu_testcase08_citylist_dividezhongbaoarea'))
-    time.sleep(3)
-    
-    suite.addTest(WuliuTestcase08CitylistJiagongdianFactoryBalance('test_wuliu_testcase08_citylist_jiagongdian_factorybalance'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08Citylistjiagongdianmanage('test_wuliu_testcase08_citylist_jiagongdianmanage'))
-    time.sleep(3)
-    
-    suite.addTest(WuliuTestcase08CitylistluxuriesLogistics('test_wuliu_testcase08_citylist_luxuriesLogistics'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08Citylistouttimemanage('test_wuliu_testcase08_citylist_outtimemanage'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08CitylistselfmanagedLogistics('test_wuliu_testcase08_citylist_selfmanagedLogistics'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08CitylistservicesiteLogistics('test_wuliu_testcase08_citylist_servicesiteLogistics'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08Citylistshouyidianmanage('test_wuliu_testcase08_citylist_shouyidianmanage'))
-    time.sleep(3)
-
-    
-    suite.addTest(WuliuTestcase08CitylistxiaoemanagerLogistics('test_wuliu_testcase08_citylist_xiaoemanagerLogistics'))
-    time.sleep(3)
-    suite.addTest(WuliuTestcase08CitylistxiaoeyizhansiteLogistics('test_wuliu_testcase08_citylist_xiaoeyizhansiteLogistics'))
-    time.sleep(3)
-#     suite.addTest(WuliuTestcase08Citylistxiaoeyizhansitepersonmanage('test_wuliu_testcase08_citylist_xiaoeyizhansitepersonmanage'))
-#     time.sleep(3)
-    
-    #wuliu testcase09
-    suite.addTest(WuliuTestcase09FactoryOrderQuery('test_wuliu_testcase09_factory_orderquery'))
-    time.sleep(3)
-    #wuliu testcase10
-    suite.addTest(WuliuTestcase10SiteOrderquery('test_wuliu_testcase10_site_orderquery'))
-    time.sleep(3)
-    
-    #wuliu testcase11
-    suite.addTest(WuliuTestcase11SitePersonManage('test_wuliu_testcase11_site_personmanage'))
-    time.sleep(3)
-    
-    currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
-    print currenttime
-
-    fp = file("c:\\edaixi_testdata\\"+currenttime+"-wuliu_test_report.html", 'wb')
-    
-    htmlRunner= HTMLTestRunner.HTMLTestRunner(stream=fp,title="edaixi uiwuliu testing result",description="201508 luke")
+     htmlRunner= HTMLTestRunner.HTMLTestRunner(stream=fp,title="edaixi uiwuliu testing result",description="201508 luke")
     #suite =  unittest.TestLoader().loadTestsFromTestCase(MyTest)  
-    htmlRunner.run(suite)
-    fp.close()
+     htmlRunner.run(suite)
+     fp.close()
 '''
 def test_caiwu_suite():
     suite= unittest.TestSuite()  

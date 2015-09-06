@@ -38,6 +38,17 @@ from caiwu_testcase06_caiwuuserquery_huiyuancard_more import *
 from caiwu_testcase06_caiwuuserquery_huiyuancardcrud import *
 from caiwu_testcase06_caiwuuserquery_query import *
 
+
+from caiwu_testcase00_rdt5caiwuchongzhicard import *
+from caiwu_testcase00_rdt5caiwuhuiyuancard import *
+from caiwu_testcase00_rdt5caiwushiticard import *
+from caiwu_testcase00_rdt5caiwuuser import *
+from caiwu_testcase00_rdt5caiwuyouhuiquancard import *
+
+from caiwu_testcase00_rdt6caiwuhuiyuancard import *
+from caiwu_testcase00_rdt6caiwuordermanage import *
+from caiwu_testcase00_rdt6caiwushiticard import *
+
 import HTMLTestRunner
 
 if __name__ == '__main__':  
@@ -60,7 +71,7 @@ if __name__ == '__main__':
     time.sleep(3)
     suite.addTest(CaiwuTestcase02Caiwuyouhuicardgsearch('test_caiwu_testcase02_caiwuyouhuicardsearch'))
     time.sleep(3)
-    
+     
     suite.addTest(CaiwuTestcase02caiwuYouhuiquanlistAddEditEcouple('test_Caiwu_Testcase02_caiwuyouhuiquanlist_addedit_ecouple'))
     time.sleep(3)
     suite.addTest(CaiwuTestcase02caiwuYouhuiquanlistAddEditShitiCouple('test_Caiwu_Testcase02_caiwuyouhuiquanlist_addedit_shiticouple'))
@@ -69,7 +80,7 @@ if __name__ == '__main__':
     time.sleep(3)
     suite.addTest(CaiwuTestcase02caiwuYouhuiquanlistQuery('test_CaiwuTestcase02_caiwuyouhuiquanlist_query'))
     time.sleep(3)
-        
+         
     #caiwu testcase03s
     suite.addTest(CaiwuTestcase03CaiwushiticardCreate('test_caiwu_testcase03_caiwushiticard_create'))
     time.sleep(3)
@@ -77,7 +88,7 @@ if __name__ == '__main__':
     time.sleep(3)
     suite.addTest(CaiwuTestcase03CaiwushiticardQuery('test_caiwu_testcase03_caiwushiticard_query'))
     time.sleep(3)
-    
+     
     #caiwu testcase04
     suite.addTest(CaiwuTestcase04CaiwuhuiyuancardqueryChongzhi('test_caiwu_testcase04_caiwuhuiyuancardquery_chongzhi'))
     time.sleep(3)
@@ -87,7 +98,7 @@ if __name__ == '__main__':
     time.sleep(3)
     suite.addTest(CaiwuTestcase04CaiwuhuiyuancardqueryMore('test_caiwu_testcase04_caiwuhuiyuancardquery_more'))
     time.sleep(3)
-            
+             
     #caiwu testcase05
     suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredCrud('test_caiwu_testcase05_caiwuyouchongzhicared_crud'))
     time.sleep(3)
@@ -99,7 +110,7 @@ if __name__ == '__main__':
     time.sleep(3)
     suite.addTest(CaiwuTestcase05CaiwuyouchongzhicaredQuery('test_caiwu_testcase05_caiwuyouchongzhicared_query'))
     time.sleep(3)
-        
+         
     #caiwu testcase06
     suite.addTest(CaiwuTestcase06CaiwuuserqueryQuery('test_caiwu_testcase06_caiwuuserquery_query'))
     time.sleep(3)
@@ -107,13 +118,38 @@ if __name__ == '__main__':
     time.sleep(3)
     suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuanMore('test_caiwu_testcase06_caiwuuserquery_Huiyuan_more'))
     time.sleep(3)
-            
+             
     suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuncardChongzhi('test_caiwu_testcase06_caiwuuserquery_Huiyuncard_Chongzhi'))
     time.sleep(3)
     suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuncardKoukuan('test_caiwu_testcase06_caiwuuserquery_Huiyuncard_Koukuan'))
     time.sleep(3)
     suite.addTest(CaiwuTestcase06CaiwuuserqueryHuiyuanTuikuan('test_caiwu_testcase06_caiwuuserquery_Huiyuan_Tuikuan'))
     time.sleep(3)
+    
+    
+    
+    #persminssion rdt5 and rdt 6 
+    #rdt 5
+    suite.addTest(CaiwuTestcase00rdt5caiwuchongzhicard('test_caiwu_testcase00_rdt5caiwuchongzhicard'))
+    time.sleep(3)
+    suite.addTest(CaiwuTestcase00rdt5caiwuhuiyuancard('test_caiwu_testcase00_rdt5caiwuhuiyuancard'))
+    time.sleep(3)
+    suite.addTest(CaiwuTestcase00rdt5caiwushiticard('test_caiwu_testcase00_rdt5caiwushiticard'))
+    time.sleep(3)
+    suite.addTest(CaiwuTestcase00rdt5caiwuuser('test_caiwu_testcase00_rdt5caiwuuser'))
+    time.sleep(3)
+    suite.addTest(CaiwuTestcase00rdt5caiwuyouhuiquancard('test_caiwu_testcase00_rdt5caiwuyouhuiquancard'))
+    time.sleep(3)
+    
+    # rdt 6
+    suite.addTest(CaiwuTestcase00rdt6caiwuhuiyuancard('test_caiwu_testcase00_rdt6caiwuhuiyuancard'))
+    time.sleep(3)
+    suite.addTest(CaiwuTestcase00rdt6caiwuordermanage('test_caiwu_testcase00_rdt6caiwuordermanage'))
+    time.sleep(3)
+    suite.addTest(CaiwuTestcase00rdt6caiwushiticard('test_caiwu_testcase00_rdt6caiwushiticard'))
+    time.sleep(3)
+    
+    
 
     currenttime=time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
     #print currenttime

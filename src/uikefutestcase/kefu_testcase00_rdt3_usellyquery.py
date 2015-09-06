@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re ,ConfigParser
 import appobjectkefu
-class KefuTestcase01FeedbackAlllistAll(unittest.TestCase):
+class KefuTestcase00rdt3usellyquery(unittest.TestCase):
     def setUp(self):
         #self.driver = webdriver.Firefox()
         self.driver = appobjectkefu.GetInstance()
@@ -24,7 +24,7 @@ class KefuTestcase01FeedbackAlllistAll(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_kefu_testcase01_feedback_alllist_all(self):
+    def test_kefu_testcase00_rdt3_usellyquery(self):
         driver = self.driver
         driver.get(self.base_url + "/")
         #driver.find_element_by_link_text(u"登陆").click()
