@@ -9,6 +9,7 @@ import unittest, time, re,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
 import appobjectauto3rd
 import auto3rd_utiltools 
+from selenium.webdriver.support.ui import WebDriverWait
 
 class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
     def setUp(self):
@@ -55,11 +56,11 @@ class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
         cursor = conn.cursor() 
         #cursor.execute("DELETE FROM outlet_order_cleaning_details")
         #conn.commit()
-        cursor.execute("DELETE FROM outlet_order_cleanings")
-        conn.commit()
-        
-        cursor.close()
-        conn.close()
+#         cursor.execute("DELETE FROM outlet_order_cleanings")
+#         conn.commit()
+#         
+#         cursor.close()
+#         conn.close()
         
         #html body div.navbar.navbar-default.navbar-static-top div.container div.navbar-collapse.collapse.navbar-responsive-collapse ul.nav.navbar-nav li a
 #         driver.find_element_by_css_selector("div.container nav.collapse.navbar-collapse.bs-navbar-collapse ul.nav.navbar-nav li:nth-child(8).active a").click()
@@ -103,15 +104,31 @@ class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
 #         validrornullname=driver.find_element_by_class_name("div.container>div.alert.fade.in.alert-danger").text
 #         print " the validrornullname is ",validrornullname
         
-        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").send_keys(str(auto3rd_utiltools.get_day_of_day(1)))
+        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").send_keys(str(auto3rd_utiltools.today()))
         #driver.find_element_by_link_text("6").click()
-        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").send_keys(str(auto3rd_utiltools.get_day_of_day(5)))
+        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").send_keys(str(auto3rd_utiltools.get_day_of_day(8)))
+        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").click()
+        
         #driver.find_element_by_link_text("20").click()
         
 #         driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").click()
 #         driver.find_element_by_link_text("7").click()
 #         driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").click()
 #         driver.find_element_by_link_text("10").click()
+        time.sleep(2)
+        #driver.refresh()
+        driver.execute_script("window.scrollBy(0,200)","")
+        driver.execute_script("window.scrollBy(0,document.body.scrollHeight)","")
+        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").clear()
+        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").send_keys(str(auto3rd_utiltools.get_day_of_day(-3)))
+        #driver.find_element_by_link_text("6").click()
+        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").clear()
+        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").send_keys(str(auto3rd_utiltools.get_day_of_day(3)))
+        time.sleep(1)
+        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").click()
+        #WebDriverWait(driver, 3).until(lambda driver : driver.title.lower().startswith(u"python"))
+        #WebDriverWait(driver, 3).until(lambda driver : driver.refresh())
+
         driver.find_element_by_name("commit").click()
         time.sleep(1)
         self.assertEqual(driver.title, u"财务")

@@ -38,6 +38,9 @@ from caiwu_testcase06_caiwuuserquery_huiyuancard_more import *
 from caiwu_testcase06_caiwuuserquery_huiyuancardcrud import *
 from caiwu_testcase06_caiwuuserquery_query import *
 
+
+#http://hongbao03.edaixi.cn/mobile.php?uuid=b9a49e1d89858de633c33b5e4fd74485&method=qrcode
+#http://weixin03.edaixi.cn/
 import HTMLTestRunner
 
 if __name__ == '__main__':  
