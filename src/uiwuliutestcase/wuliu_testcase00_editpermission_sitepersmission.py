@@ -91,16 +91,19 @@ class WuliuTestcase00EditSitePermission(unittest.TestCase):
         driver.find_element_by_id("order_key").send_keys("E0000000006")
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"物流")
+#         zhandianchukuresult=driver.find_element_by_css_selector("html body div#container.container div.panel.panel-primary p.text-center b#check_in_msg").text
+#         print " the zhandianchukuresult null is ",zhandianchukuresult
+#         assert u"出库成功" in zhandianchukuresult
         
-        time.sleep(1)
+        time.sleep(2)
 #         driver.find_element_by_link_text(u"站点出入库管理").click()
 #         driver.find_element_by_link_text(u"出库").click()
-        driver.find_element_by_id("order_key").clear()
-        driver.find_element_by_id("order_key").send_keys("")
-        driver.find_element_by_name("commit").click()
+#         driver.find_element_by_id("order_key").clear()
+#         driver.find_element_by_id("order_key").send_keys("")
+#         driver.find_element_by_name("commit").click()
         zhandianchukuresult=driver.find_element_by_css_selector("html body div#container.container div.panel.panel-primary p.text-center b#check_in_msg").text
         print " the zhandianchukuresult null is ",zhandianchukuresult
-        assert u"未输入封签号" in zhandianchukuresult
+        assert u"出库成功" in zhandianchukuresult
         
         time.sleep(2)
         driver.find_element_by_link_text(u"站点出入库管理").click()
