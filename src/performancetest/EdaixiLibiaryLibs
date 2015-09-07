@@ -1,0 +1,30 @@
+Install and Config Python and Selenium Envs
+
+
+1. Install Python2.7 or Python3.4
+
+cd C:\Python27\Scripts
+
+
+
+pip install selenium
+
+pip install mysql
+
+pip install py.test
+
+pip install nose
+
+pip unittest
+
+2.
+Copy some browser driver packages to python directory
+
+3.Open and Config Eclipse IDE and PyDev
+
+and Import my edaixi automation codes to workspace
+
+and maintains and coding automation scripts for edaixi automation testing
+
+
+
