@@ -1,0 +1,8 @@
+Linux Ubuntu
+Shell
+Perl
+
+Awk
+Sed
+Grep
+
