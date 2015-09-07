@@ -10,6 +10,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 import appobjectauto3rd
 import auto3rd_utiltools 
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
+from selenium.webdriver.support import expected_conditions as EC # available since 2.
 
 class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
     def setUp(self):
@@ -119,16 +121,17 @@ class CaiwuTestcase08CitylistJiagongdianFactoryBalanceBranch(unittest.TestCase):
         #driver.refresh()
         driver.execute_script("window.scrollBy(0,200)","")
         driver.execute_script("window.scrollBy(0,document.body.scrollHeight)","")
-        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").clear()
-        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").send_keys(str(auto3rd_utiltools.get_day_of_day(-3)))
-        #driver.find_element_by_link_text("6").click()
-        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").clear()
-        driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").send_keys(str(auto3rd_utiltools.get_day_of_day(3)))
+#         driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").clear()
+#         driver.find_element_by_id("outlet_jiesuan_form_jiesuan_start_time").send_keys(str(auto3rd_utiltools.get_day_of_day(-7)))
+#         #driver.find_element_by_link_text("6").click()
+#         driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").clear()
+#         driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").send_keys(str(auto3rd_utiltools.get_day_of_day(3)))
         time.sleep(1)
         driver.find_element_by_id("outlet_jiesuan_form_jiesuan_end_time").click()
         #WebDriverWait(driver, 3).until(lambda driver : driver.title.lower().startswith(u"python"))
         #WebDriverWait(driver, 3).until(lambda driver : driver.refresh())
 
+        #WebDriverWait(driver, 3).until(EC.title_contains(u"财务"))
         driver.find_element_by_name("commit").click()
         time.sleep(1)
         self.assertEqual(driver.title, u"财务")
