@@ -1,3 +1,11 @@
+附件是培训的草稿，大家可以先预先了解下，主要讲：
+1,tcp/ip
+2,http,get ,post
+3,websocket
+4,阻塞/非阻塞，异步/非异步
+tcpdump,lsof,trace等命令的使用，
+配合观察各种协议和报文的传递过程．
+
 AB
 
 SIEGE
