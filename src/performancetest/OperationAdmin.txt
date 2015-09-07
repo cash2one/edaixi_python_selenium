@@ -6,3 +6,7 @@ Awk
 Sed
 Grep
 
+http://www.opstool.com/
+
+http://www.zabbix.com/
+

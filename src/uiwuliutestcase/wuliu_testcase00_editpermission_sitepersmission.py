@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-import unittest, time, re ,ConfigParser
+import unittest, time, re ,ConfigParser,MySQLdb
 from selenium.webdriver.common.action_chains import ActionChains
 import appobjectwuliu,wuliu_utiltools
 class WuliuTestcase00EditSitePermission(unittest.TestCase):
@@ -16,12 +16,18 @@ class WuliuTestcase00EditSitePermission(unittest.TestCase):
         self.driver.implicitly_wait(30)
         conf = ConfigParser.ConfigParser()
         conf.read("C:/edaixi_testdata/userdata_wuliu.conf")
-        global WULIU_URL,USER_NAME,PASS_WORD
+        global WULIU_URL,USER_NAME,PASS_WORD,mysqlhostname,mysqlusername,mysqlpassword,mysqlrongchangdb
         WULIU_URL = conf.get("wuliusection", "uihostname")
         USER_NAME = conf.get("wuliusection", "siteuiusername")
         PASS_WORD = conf.get("wuliusection", "siteuipassword")
         print WULIU_URL,USER_NAME,PASS_WORD  
         self.base_url = WULIU_URL
+        mysqlhostname = conf.get("databaseconn", "mysqlhostname")
+        mysqlusername = conf.get("databaseconn", "mysqlusername")
+        mysqlpassword = conf.get("databaseconn", "mysqlpassword")
+        mysqlrongchangdb  = conf.get("databaseconn", "mysqlrongchangdb")
+        
+        print mysqlhostname,mysqlusername,mysqlpassword,mysqlrongchangdb
         #self.base_url = "http://wuliu05.edaixi.cn:81/"
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -50,15 +56,53 @@ class WuliuTestcase00EditSitePermission(unittest.TestCase):
         driver.find_element_by_id("bagsn").send_keys(wuliu_utiltools.signbagnumber)
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"物流")
+        time.sleep(2)
+        #html body div#container.container div.panel.panel-primary p.text-center b#check_in_msg
         qianshouresult=driver.find_element_by_css_selector("div#container.container>div.panel.panel-primary>p.text-center>b#check_in_msg").text
-        print " the qianshouresult is ",qianshouresult
+        print " the qianshouresult failed  is ",qianshouresult
         assert u"签收失败！" in qianshouresult
+        
+# qianshou success for 00 permission
+        conn=MySQLdb.connect(host=mysqlhostname,user=mysqlusername,passwd=mysqlpassword,db=mysqlrongchangdb,charset="utf8")    
+        global cursor 
+        cursor = conn.cursor() 
+        
+        cursor.execute("UPDATE ims_washing_order SET status_delivery='1' ,qianshoudian_id= NULL WHERE bagsn='E0000000006'")
+        conn.commit()
+        
+        n = cursor.execute("SELECT ordersn,bagsn,status_delivery,jiagongdian_id,qianshoudian_id  FROM ims_washing_order WHERE bagsn='E0000000006'") 
+        for i in xrange(cursor.rowcount):
+            ordersn ,bagsn,status_delivery,jiagongdian_id,qianshoudian_id = cursor.fetchone()
+        print ordersn ,bagsn,status_delivery,jiagongdian_id,qianshoudian_id
+        time.sleep(1)
+        driver.find_element_by_id("bagsn").clear()
+        driver.find_element_by_id("bagsn").send_keys(bagsn)
+        driver.find_element_by_name("commit").click()
+        self.assertEqual(driver.title, u"物流")
+        qianshouresult=driver.find_element_by_css_selector("div#container.container>div.panel.panel-primary>p.text-center>b#check_in_msg").text
+        print " the qianshouresult success is ",qianshouresult
+#         assert u"签收成功！" in qianshouresult
+        
+        time.sleep(2)
+
         driver.find_element_by_link_text(u"站点出入库管理").click()
         driver.find_element_by_link_text(u"出库").click()
         driver.find_element_by_id("order_key").clear()
         driver.find_element_by_id("order_key").send_keys("E0000000006")
         driver.find_element_by_name("commit").click()
         self.assertEqual(driver.title, u"物流")
+        
+        time.sleep(1)
+#         driver.find_element_by_link_text(u"站点出入库管理").click()
+#         driver.find_element_by_link_text(u"出库").click()
+        driver.find_element_by_id("order_key").clear()
+        driver.find_element_by_id("order_key").send_keys("")
+        driver.find_element_by_name("commit").click()
+        zhandianchukuresult=driver.find_element_by_css_selector("html body div#container.container div.panel.panel-primary p.text-center b#check_in_msg").text
+        print " the zhandianchukuresult null is ",zhandianchukuresult
+        assert u"未输入封签号" in zhandianchukuresult
+        
+        time.sleep(2)
         driver.find_element_by_link_text(u"站点出入库管理").click()
         driver.find_element_by_link_text(u"出入库查询").click()
 #         driver.find_element_by_name("commit").click()
